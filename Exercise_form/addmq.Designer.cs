@@ -46,7 +46,7 @@
             // 
             this.rquestion.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.rquestion.Location = new System.Drawing.Point(102, 114);
-            this.rquestion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rquestion.Margin = new System.Windows.Forms.Padding(4);
             this.rquestion.Name = "rquestion";
             this.rquestion.Size = new System.Drawing.Size(976, 374);
             this.rquestion.TabIndex = 0;
@@ -65,7 +65,7 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(818, 612);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(100, 31);
             this.button1.TabIndex = 2;
@@ -171,9 +171,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.rquestion);
             this.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "addmq";
-            this.Text = "addmq";
+            this.Text = "添加选择题";
             this.ResumeLayout(false);
             this.PerformLayout();
 
