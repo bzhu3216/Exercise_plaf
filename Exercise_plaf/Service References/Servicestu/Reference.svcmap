@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="928d3f12-6e43-424e-9bcf-52e93c542260" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:65271/Service_stu.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="Service_stu.xsd" MetadataType="Schema" ID="903bb9e7-2f3c-4346-aada-ecc2296d6e0a" SourceId="1" SourceUrl="http://localhost:65271/Service_stu.svc?xsd=xsd2" />
+    <MetadataFile FileName="Service_stu.disco" MetadataType="Disco" ID="bc23d22c-4c91-4187-bbea-5f7f77b9e770" SourceId="1" SourceUrl="http://localhost:65271/Service_stu.svc?disco" />
+    <MetadataFile FileName="Service_stu1.xsd" MetadataType="Schema" ID="7bd343a6-d056-4d48-ade1-0a7ba46facc5" SourceId="1" SourceUrl="http://localhost:65271/Service_stu.svc?xsd=xsd3" />
+    <MetadataFile FileName="Service_stu2.xsd" MetadataType="Schema" ID="5a2fb2a1-30bc-4303-9414-ffbd0ad1dec4" SourceId="1" SourceUrl="http://localhost:65271/Service_stu.svc?xsd=xsd0" />
+    <MetadataFile FileName="Service_stu3.xsd" MetadataType="Schema" ID="e3b380ce-0a46-4b2d-988b-8832579dc1df" SourceId="1" SourceUrl="http://localhost:65271/Service_stu.svc?xsd=xsd1" />
+    <MetadataFile FileName="Service1.wsdl" MetadataType="Wsdl" ID="312a4314-9e9b-4018-ae9c-5a63c315d4bb" SourceId="1" SourceUrl="http://localhost:65271/Service_stu.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

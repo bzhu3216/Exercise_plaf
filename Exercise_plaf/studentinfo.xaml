@@ -1,0 +1,35 @@
+﻿<Window x:Class="Exercise_plaf.studentinfo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Exercise_plaf"
+        mc:Ignorable="d"
+        Height="331" Width="508"
+    WindowStartupLocation ="CenterScreen" FontSize="16" Title="StudentInfo"  >
+    <DockPanel >
+
+        <ToolBar DockPanel.Dock ="Top" Height="36" >
+            <Button Content ="Exit"/>
+            <Separator/>
+            <Button Content ="Import"  VerticalAlignment="Top" Click="Button_Click" Height="31" />
+            <Separator/>
+            <Button x:Name="btnStart" Content="Start" VerticalAlignment="Stretch"/>
+            <Separator/>
+            <Button x:Name="btnStop" Content="Stop" VerticalAlignment="Stretch"  />
+            <Separator/>
+            <TextBox x:Name="textBox" Height="24" Margin="0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="120"/>
+        </ToolBar>
+
+        <DataGrid DockPanel.Dock ="Right" Name="DG1"  IsReadOnly="True" AutoGenerateColumns="False" CanUserSortColumns="False" CanUserResizeRows="False" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserAddRows="False" SelectionChanged="DG1_SelectionChanged"    >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="序号"   Binding="{Binding no}" />
+                <DataGridTextColumn Header="学号"   Binding="{Binding studentid}" />
+                <DataGridTextColumn Header="姓名"  Binding="{Binding name}" />
+
+
+            </DataGrid.Columns>
+        </DataGrid>
+    </DockPanel>
+
+</Window>

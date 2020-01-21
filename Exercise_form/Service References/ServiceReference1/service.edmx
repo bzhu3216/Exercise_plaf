@@ -1,0 +1,25 @@
+﻿<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <edmx:DataServices m:DataServiceVersion="1.0" m:MaxDataServiceVersion="3.0" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
+    <Schema Namespace="db_exerciseModel" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <EntityType Name="mchoiceQues">
+        <Key>
+          <PropertyRef Name="id" />
+        </Key>
+        <Property Name="id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="ques" Type="Edm.String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        <Property Name="answ" Type="Edm.Int32" />
+        <Property Name="con" Type="Edm.Int32" />
+        <Property Name="objective" Type="Edm.Int32" />
+        <Property Name="diff" Type="Edm.Int32" />
+        <Property Name="usenum" Type="Edm.Int32" />
+        <Property Name="errornum" Type="Edm.Int32" />
+        <Property Name="question" Type="Edm.Binary" MaxLength="Max" FixedLength="false" />
+      </EntityType>
+    </Schema>
+    <Schema Namespace="WCFDBservice" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <EntityContainer Name="db_exerciseEntities" m:IsDefaultEntityContainer="true" p6:LazyLoadingEnabled="true" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntitySet Name="mchoiceQues" EntityType="db_exerciseModel.mchoiceQues" />
+      </EntityContainer>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>
