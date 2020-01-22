@@ -51,6 +51,7 @@
             this.rquestion.Size = new System.Drawing.Size(976, 374);
             this.rquestion.TabIndex = 0;
             this.rquestion.Text = "";
+            this.rquestion.TextChanged += new System.EventHandler(this.rquestion_TextChanged);
             // 
             // label1
             // 
@@ -61,6 +62,7 @@
             this.label1.Size = new System.Drawing.Size(40, 16);
             this.label1.TabIndex = 1;
             this.label1.Text = "问题";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // button1
             // 
@@ -71,6 +73,7 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "保存";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label2
             // 
@@ -81,6 +84,7 @@
             this.label2.Size = new System.Drawing.Size(40, 16);
             this.label2.TabIndex = 3;
             this.label2.Text = "答案";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
@@ -91,6 +95,7 @@
             this.label3.Size = new System.Drawing.Size(40, 16);
             this.label3.TabIndex = 4;
             this.label3.Text = "难度";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 
@@ -101,6 +106,7 @@
             this.label4.Size = new System.Drawing.Size(40, 16);
             this.label4.TabIndex = 5;
             this.label4.Text = "章节";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label5
             // 
@@ -111,6 +117,7 @@
             this.label5.Size = new System.Drawing.Size(40, 16);
             this.label5.TabIndex = 6;
             this.label5.Text = "目标";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // comboBox1
             // 
@@ -119,6 +126,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 24);
             this.comboBox1.TabIndex = 7;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // comboBox2
             // 
@@ -127,6 +135,7 @@
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(121, 24);
             this.comboBox2.TabIndex = 8;
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // comboBox3
             // 
@@ -135,14 +144,21 @@
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(121, 24);
             this.comboBox3.TabIndex = 9;
+            this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
             // 
             // comboBox4
             // 
             this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Items.AddRange(new object[] {
+            "A",
+            "B",
+            "C",
+            "D"});
             this.comboBox4.Location = new System.Drawing.Point(102, 535);
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(121, 24);
             this.comboBox4.TabIndex = 10;
+            this.comboBox4.SelectedIndexChanged += new System.EventHandler(this.comboBox4_SelectedIndexChanged);
             // 
             // button2
             // 
@@ -152,6 +168,7 @@
             this.button2.TabIndex = 11;
             this.button2.Text = "取消";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // addmq
             // 
