@@ -126,5 +126,10 @@ namespace Exercise_form
         {
             rquestion.SaveFile(@"d:\a.rtf");
         }
+
+        private void addmq_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

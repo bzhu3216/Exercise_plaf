@@ -12,7 +12,8 @@ namespace Exercise_form
 {
     public partial class MianWindows : Form
     {
-        private classinfo fm1;
+        private classinfoF fm1;
+        private param pp = new param();
         public MianWindows()
         {
             InitializeComponent();
@@ -23,7 +24,7 @@ namespace Exercise_form
 
             if (fm1 == null || fm1.IsDisposed)
             {
-                fm1 = new classinfo();
+                fm1 = new classinfoF(pp);
                 fm1.MdiParent = this;
                 fm1.Show();
             }
@@ -32,6 +33,35 @@ namespace Exercise_form
                 fm1.Activate();
                 fm1.WindowState = FormWindowState.Normal;
             }
+
+
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void MianWindows_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void 登录ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Login fm2=null;
+            if (fm2 == null || fm2.IsDisposed)
+            {
+                fm2 = new Login(pp);
+                fm2.MdiParent = this;
+                fm2.Show();
+            }
+            else
+            {
+                fm2.Activate();
+                fm2.WindowState = FormWindowState.Normal;
+            }
+
 
 
         }

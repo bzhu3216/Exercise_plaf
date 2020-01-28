@@ -189,6 +189,7 @@
             this.Controls.Add(this.rquestion);
             this.Name = "Uptatamcq";
             this.Text = "Uptatamcq";
+            this.Load += new System.EventHandler(this.Uptatamcq_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

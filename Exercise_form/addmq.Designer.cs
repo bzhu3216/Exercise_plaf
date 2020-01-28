@@ -191,6 +191,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "addmq";
             this.Text = "添加选择题";
+            this.Load += new System.EventHandler(this.addmq_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

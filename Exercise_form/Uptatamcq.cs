@@ -67,5 +67,10 @@ namespace Exercise_form
 
 
         }
+
+        private void Uptatamcq_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

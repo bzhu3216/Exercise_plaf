@@ -52,7 +52,7 @@ namespace Exercise_form
                 // Create an DataServiceCollection<T> based on 
                 // execution of the LINQ query for Orders.
                // DataServiceCollection<mchoiceQues> mques = new DataServiceCollection<mchoiceQues>(questionQuery);
-                questionQuery.ToList();
+               // questionQuery.ToList();
              
                 quesView.DataSource = questionQuery.ToList();
 
