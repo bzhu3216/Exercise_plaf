@@ -125,6 +125,12 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="classinfo.cs">
+      <DependentUpon>questions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Course.cs">
+      <DependentUpon>questions.tt</DependentUpon>
+    </Compile>
     <Compile Include="mchoiceQues.cs">
       <DependentUpon>questions.tt</DependentUpon>
     </Compile>
@@ -143,6 +149,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>questions.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="teacherinfo.cs">
+      <DependentUpon>questions.tt</DependentUpon>
     </Compile>
     <Compile Include="WcfDataServicequestion.svc.cs">
       <DependentUpon>WcfDataServicequestion.svc</DependentUpon>

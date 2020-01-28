@@ -26,5 +26,8 @@ namespace WCFDBservice
         }
     
         public DbSet<mchoiceQues> mchoiceQues { get; set; }
+        public DbSet<classinfo> classinfo { get; set; }
+        public DbSet<Course> Course { get; set; }
+        public DbSet<teacherinfo> teacherinfo { get; set; }
     }
 }

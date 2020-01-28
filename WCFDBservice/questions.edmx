@@ -5,6 +5,24 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="db_exerciseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="classinfo">
+          <Key>
+            <PropertyRef Name="classid" />
+          </Key>
+          <Property Name="classid" Type="int" Nullable="false" />
+          <Property Name="classinfo" Type="varchar" MaxLength="50" />
+          <Property Name="courseid" Type="int" />
+          <Property Name="teacher" Type="int" />
+          <Property Name="addtime" Type="date" />
+        </EntityType>
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourseName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Courseid" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="mchoiceQues">
           <Key>
             <PropertyRef Name="id" />
@@ -19,8 +37,19 @@
           <Property Name="errornum" Type="int" />
           <Property Name="question" Type="varbinary(max)" />
         </EntityType>
+        <EntityType Name="teacherinfo">
+          <Key>
+            <PropertyRef Name="teacherid" />
+          </Key>
+          <Property Name="teacherid" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="name" Type="nchar" MaxLength="10" />
+          <Property Name="pd" Type="nchar" MaxLength="10" />
+        </EntityType>
         <EntityContainer Name="db_exerciseModelStoreContainer">
+          <EntitySet Name="classinfo" EntityType="Self.classinfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="mchoiceQues" EntityType="Self.mchoiceQues" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="teacherinfo" EntityType="Self.teacherinfo" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -28,6 +57,9 @@
       <Schema Namespace="db_exerciseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="db_exerciseEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="mchoiceQues" EntityType="db_exerciseModel.mchoiceQues" />
+          <EntitySet Name="classinfo" EntityType="db_exerciseModel.classinfo" />
+          <EntitySet Name="Course" EntityType="db_exerciseModel.Course" />
+          <EntitySet Name="teacherinfo" EntityType="db_exerciseModel.teacherinfo" />
         </EntityContainer>
         <EntityType Name="mchoiceQues">
           <Key>
@@ -42,6 +74,32 @@
           <Property Name="usenum" Type="Int32" />
           <Property Name="errornum" Type="Int32" />
           <Property Name="question" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="classinfo">
+          <Key>
+            <PropertyRef Name="classid" />
+          </Key>
+          <Property Name="classid" Type="Int32" Nullable="false" />
+          <Property Name="classinfo1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="courseid" Type="Int32" />
+          <Property Name="teacher" Type="Int32" />
+          <Property Name="addtime" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Courseid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="teacherinfo">
+          <Key>
+            <PropertyRef Name="teacherid" />
+          </Key>
+          <Property Name="teacherid" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="pd" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -61,6 +119,35 @@
                 <ScalarProperty Name="answ" ColumnName="answ" />
                 <ScalarProperty Name="ques" ColumnName="ques" />
                 <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="classinfo">
+            <EntityTypeMapping TypeName="db_exerciseModel.classinfo">
+              <MappingFragment StoreEntitySet="classinfo">
+                <ScalarProperty Name="addtime" ColumnName="addtime" />
+                <ScalarProperty Name="teacher" ColumnName="teacher" />
+                <ScalarProperty Name="courseid" ColumnName="courseid" />
+                <ScalarProperty Name="classinfo1" ColumnName="classinfo" />
+                <ScalarProperty Name="classid" ColumnName="classid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Course">
+            <EntityTypeMapping TypeName="db_exerciseModel.Course">
+              <MappingFragment StoreEntitySet="Course">
+                <ScalarProperty Name="Courseid" ColumnName="Courseid" />
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="teacherinfo">
+            <EntityTypeMapping TypeName="db_exerciseModel.teacherinfo">
+              <MappingFragment StoreEntitySet="teacherinfo">
+                <ScalarProperty Name="pd" ColumnName="pd" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="teacherid" ColumnName="teacherid" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

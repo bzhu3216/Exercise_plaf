@@ -6,6 +6,9 @@
     <edmx:Diagrams>
       <Diagram DiagramId="d257f13d974d494399d96438caf30c25" Name="Diagram1">
         <EntityTypeShape EntityType="db_exerciseModel.mchoiceQues" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="db_exerciseModel.classinfo" Width="1.5" PointX="3.75" PointY="0.75" />
+        <EntityTypeShape EntityType="db_exerciseModel.Course" Width="1.5" PointX="3.75" PointY="3.75" />
+        <EntityTypeShape EntityType="db_exerciseModel.teacherinfo" Width="1.5" PointX="0.75" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
