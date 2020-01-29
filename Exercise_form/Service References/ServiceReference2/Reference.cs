@@ -15,285 +15,6 @@ namespace Exercise_form.ServiceReference2 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="class_student", Namespace="http://schemas.datacontract.org/2004/07/Exercise_DAL")]
-    [System.SerializableAttribute()]
-    public partial class class_student : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int classidField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> classnoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string studentidField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int classid {
-            get {
-                return this.classidField;
-            }
-            set {
-                if ((this.classidField.Equals(value) != true)) {
-                    this.classidField = value;
-                    this.RaisePropertyChanged("classid");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> classno {
-            get {
-                return this.classnoField;
-            }
-            set {
-                if ((this.classnoField.Equals(value) != true)) {
-                    this.classnoField = value;
-                    this.RaisePropertyChanged("classno");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string studentid {
-            get {
-                return this.studentidField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.studentidField, value) != true)) {
-                    this.studentidField = value;
-                    this.RaisePropertyChanged("studentid");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="StudInfo1", Namespace="http://schemas.datacontract.org/2004/07/Exercise_DAL")]
-    [System.SerializableAttribute()]
-    public partial class StudInfo1 : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string nameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string pdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string studentidField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string name {
-            get {
-                return this.nameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.nameField, value) != true)) {
-                    this.nameField = value;
-                    this.RaisePropertyChanged("name");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string pd {
-            get {
-                return this.pdField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.pdField, value) != true)) {
-                    this.pdField = value;
-                    this.RaisePropertyChanged("pd");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string studentid {
-            get {
-                return this.studentidField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.studentidField, value) != true)) {
-                    this.studentidField = value;
-                    this.RaisePropertyChanged("studentid");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Studenttemp", Namespace="http://schemas.datacontract.org/2004/07/Exercise_DAL")]
-    [System.SerializableAttribute()]
-    public partial class Studenttemp : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int classidField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int courseidField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string nameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int noField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string pdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string studentidField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int classid {
-            get {
-                return this.classidField;
-            }
-            set {
-                if ((this.classidField.Equals(value) != true)) {
-                    this.classidField = value;
-                    this.RaisePropertyChanged("classid");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int courseid {
-            get {
-                return this.courseidField;
-            }
-            set {
-                if ((this.courseidField.Equals(value) != true)) {
-                    this.courseidField = value;
-                    this.RaisePropertyChanged("courseid");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string name {
-            get {
-                return this.nameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.nameField, value) != true)) {
-                    this.nameField = value;
-                    this.RaisePropertyChanged("name");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int no {
-            get {
-                return this.noField;
-            }
-            set {
-                if ((this.noField.Equals(value) != true)) {
-                    this.noField = value;
-                    this.RaisePropertyChanged("no");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string pd {
-            get {
-                return this.pdField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.pdField, value) != true)) {
-                    this.pdField = value;
-                    this.RaisePropertyChanged("pd");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string studentid {
-            get {
-                return this.studentidField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.studentidField, value) != true)) {
-                    this.studentidField = value;
-                    this.RaisePropertyChanged("studentid");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="CompositeType", Namespace="http://schemas.datacontract.org/2004/07/DB_service")]
     [System.SerializableAttribute()]
     public partial class CompositeType : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -358,16 +79,16 @@ namespace Exercise_form.ServiceReference2 {
     public interface IService_stu {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService_stu/Addstu", ReplyAction="http://tempuri.org/IService_stu/AddstuResponse")]
-        int Addstu(Exercise_form.ServiceReference2.class_student[] c_studl, Exercise_form.ServiceReference2.StudInfo1[] studentl);
+        int Addstu(System.Collections.Generic.List<Exercise_DAL.class_student> c_studl, System.Collections.Generic.List<Exercise_DAL.StudInfo1> studentl);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService_stu/Addstu", ReplyAction="http://tempuri.org/IService_stu/AddstuResponse")]
-        System.Threading.Tasks.Task<int> AddstuAsync(Exercise_form.ServiceReference2.class_student[] c_studl, Exercise_form.ServiceReference2.StudInfo1[] studentl);
+        System.Threading.Tasks.Task<int> AddstuAsync(System.Collections.Generic.List<Exercise_DAL.class_student> c_studl, System.Collections.Generic.List<Exercise_DAL.StudInfo1> studentl);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService_stu/searchstubyclassid", ReplyAction="http://tempuri.org/IService_stu/searchstubyclassidResponse")]
-        Exercise_form.ServiceReference2.Studenttemp[] searchstubyclassid(int classid);
+        System.Collections.Generic.List<Exercise_DAL.Studenttemp> searchstubyclassid(int classid);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService_stu/searchstubyclassid", ReplyAction="http://tempuri.org/IService_stu/searchstubyclassidResponse")]
-        System.Threading.Tasks.Task<Exercise_form.ServiceReference2.Studenttemp[]> searchstubyclassidAsync(int classid);
+        System.Threading.Tasks.Task<System.Collections.Generic.List<Exercise_DAL.Studenttemp>> searchstubyclassidAsync(int classid);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService_stu/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService_stu/GetDataUsingDataContractResponse")]
         Exercise_form.ServiceReference2.CompositeType GetDataUsingDataContract(Exercise_form.ServiceReference2.CompositeType composite);
@@ -403,19 +124,19 @@ namespace Exercise_form.ServiceReference2 {
                 base(binding, remoteAddress) {
         }
         
-        public int Addstu(Exercise_form.ServiceReference2.class_student[] c_studl, Exercise_form.ServiceReference2.StudInfo1[] studentl) {
+        public int Addstu(System.Collections.Generic.List<Exercise_DAL.class_student> c_studl, System.Collections.Generic.List<Exercise_DAL.StudInfo1> studentl) {
             return base.Channel.Addstu(c_studl, studentl);
         }
         
-        public System.Threading.Tasks.Task<int> AddstuAsync(Exercise_form.ServiceReference2.class_student[] c_studl, Exercise_form.ServiceReference2.StudInfo1[] studentl) {
+        public System.Threading.Tasks.Task<int> AddstuAsync(System.Collections.Generic.List<Exercise_DAL.class_student> c_studl, System.Collections.Generic.List<Exercise_DAL.StudInfo1> studentl) {
             return base.Channel.AddstuAsync(c_studl, studentl);
         }
         
-        public Exercise_form.ServiceReference2.Studenttemp[] searchstubyclassid(int classid) {
+        public System.Collections.Generic.List<Exercise_DAL.Studenttemp> searchstubyclassid(int classid) {
             return base.Channel.searchstubyclassid(classid);
         }
         
-        public System.Threading.Tasks.Task<Exercise_form.ServiceReference2.Studenttemp[]> searchstubyclassidAsync(int classid) {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<Exercise_DAL.Studenttemp>> searchstubyclassidAsync(int classid) {
             return base.Channel.searchstubyclassidAsync(classid);
         }
         
