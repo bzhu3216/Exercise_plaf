@@ -48,14 +48,19 @@ namespace Exercise_form
             try
             {
                 // Instantiate the DataServiceContext.
-             //   context = new db_exerciseEntities(svcUri);
+                //   context = new db_exerciseEntities(svcUri);
 
                 // Define a LINQ query that returns Orders and 
                 // Order_Details for a specific customer.
                 // var questionQuery = from o in context.Orders.Expand("Order_Details")
                 //                  where o.Customers.CustomerID == customerId
                 //                 select o;
-                var questionQuery1 = from o in context.Course 
+                listBox1.Items.Clear();
+                comboBox1.Items.Clear();
+                textBox1.Text = "";
+                lsc = null;
+                lsc2 = null;
+               var questionQuery1 = from o in context.Course 
                                     select o ;
               
                lsc = questionQuery1.ToList();
@@ -72,7 +77,7 @@ namespace Exercise_form
                   listBox1.Items.Add(cc.classinfo1);
                 }
 
-
+               
                 // Make the DataServiceCollection<T> the binding source for the Grid.
             }
             catch (Exception ex)
@@ -115,10 +120,19 @@ namespace Exercise_form
         private void button1_Click(object sender, EventArgs e)
         {
             classinfo ci = new classinfo();
+            ci.classinfo1 = textBox1.Text;
+            ci.teacher = pp.teacher.teacherid;
+            foreach (Course cc in lsc)
+            {
+                if (comboBox1.Text == cc.CourseName) ci.courseid = cc.id;
+            }
+                ci.addtime = System.DateTime.Now;
+                context.AddToclassinfo(ci);
+                context.SaveChanges();
 
-
-
-
+               
+          
+          classinfo_Load(sender, e);
 
         }
     }

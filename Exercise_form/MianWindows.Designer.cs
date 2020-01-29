@@ -109,8 +109,9 @@
             // 班级名单ToolStripMenuItem
             // 
             this.班级名单ToolStripMenuItem.Name = "班级名单ToolStripMenuItem";
-            this.班级名单ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.班级名单ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.班级名单ToolStripMenuItem.Text = "班级名单";
+            this.班级名单ToolStripMenuItem.Click += new System.EventHandler(this.班级名单ToolStripMenuItem_Click);
             // 
             // 题库管理ToolStripMenuItem
             // 

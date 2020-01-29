@@ -9,10 +9,10 @@
           <Key>
             <PropertyRef Name="classid" />
           </Key>
-          <Property Name="classid" Type="int" Nullable="false" />
-          <Property Name="classinfo" Type="varchar" MaxLength="50" />
+          <Property Name="classid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="classinfo" Type="varchar" MaxLength="100" />
           <Property Name="courseid" Type="int" />
-          <Property Name="teacher" Type="int" />
+          <Property Name="teacher" Type="nchar" MaxLength="4" />
           <Property Name="addtime" Type="date" />
         </EntityType>
         <EntityType Name="Course">
@@ -80,9 +80,9 @@
             <PropertyRef Name="classid" />
           </Key>
           <Property Name="classid" Type="Int32" Nullable="false" />
-          <Property Name="classinfo1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="classinfo1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="courseid" Type="Int32" />
-          <Property Name="teacher" Type="Int32" />
+          <Property Name="teacher" Type="String" MaxLength="4" Unicode="true" FixedLength="true" />
           <Property Name="addtime" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="Course">

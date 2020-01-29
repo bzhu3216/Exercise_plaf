@@ -65,5 +65,22 @@ namespace Exercise_form
 
 
         }
+
+        private void 班级名单ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NameList fm2 = null;
+            if (fm2 == null || fm2.IsDisposed)
+            {
+                fm2 = new NameList(pp);
+                fm2.MdiParent = this;
+                fm2.Show();
+            }
+            else
+            {
+                fm2.Activate();
+                fm2.WindowState = FormWindowState.Normal;
+            }
+
+        }
     }
 }

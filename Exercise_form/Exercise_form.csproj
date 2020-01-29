@@ -112,6 +112,12 @@
     <Compile Include="Uptatamcq.Designer.cs">
       <DependentUpon>Uptatamcq.cs</DependentUpon>
     </Compile>
+    <Compile Include="班级和名单.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="班级和名单.Designer.cs">
+      <DependentUpon>班级和名单.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="addmq.resx">
       <DependentUpon>addmq.cs</DependentUpon>
     </EmbeddedResource>
@@ -138,6 +144,9 @@
     </Compile>
     <EmbeddedResource Include="Uptatamcq.resx">
       <DependentUpon>Uptatamcq.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="班级和名单.resx">
+      <DependentUpon>班级和名单.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

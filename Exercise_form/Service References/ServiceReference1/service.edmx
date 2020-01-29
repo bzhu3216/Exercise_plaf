@@ -20,9 +20,9 @@
           <PropertyRef Name="classid" />
         </Key>
         <Property Name="classid" Type="Edm.Int32" Nullable="false" />
-        <Property Name="classinfo1" Type="Edm.String" MaxLength="50" FixedLength="false" Unicode="false" />
+        <Property Name="classinfo1" Type="Edm.String" MaxLength="100" FixedLength="false" Unicode="false" />
         <Property Name="courseid" Type="Edm.Int32" />
-        <Property Name="teacher" Type="Edm.Int32" />
+        <Property Name="teacher" Type="Edm.String" MaxLength="4" FixedLength="true" Unicode="true" />
         <Property Name="addtime" Type="Edm.DateTime" Precision="0" />
       </EntityType>
       <EntityType Name="Course">

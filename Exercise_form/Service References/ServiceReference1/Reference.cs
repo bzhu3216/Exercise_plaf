@@ -9,7 +9,7 @@
 //------------------------------------------------------------------------------
 
 // 原始文件名:
-// 生成日期: 2020/1/28 15:32:01
+// 生成日期: 2020/1/29 15:03:05
 namespace Exercise_form.ServiceReference1
 {
     
@@ -180,28 +180,28 @@ namespace Exercise_form.ServiceReference1
                 "ype=\"Edm.Int32\" /><Property Name=\"question\" Type=\"Edm.Binary\" MaxLength=\"Max\" Fi" +
                 "xedLength=\"false\" /></EntityType><EntityType Name=\"classinfo\"><Key><PropertyRef " +
                 "Name=\"classid\" /></Key><Property Name=\"classid\" Type=\"Edm.Int32\" Nullable=\"false" +
-                "\" /><Property Name=\"classinfo1\" Type=\"Edm.String\" MaxLength=\"50\" FixedLength=\"fa" +
-                "lse\" Unicode=\"false\" /><Property Name=\"courseid\" Type=\"Edm.Int32\" /><Property Na" +
-                "me=\"teacher\" Type=\"Edm.Int32\" /><Property Name=\"addtime\" Type=\"Edm.DateTime\" Pre" +
-                "cision=\"0\" /></EntityType><EntityType Name=\"Course\"><Key><PropertyRef Name=\"id\" " +
-                "/></Key><Property Name=\"id\" Type=\"Edm.Int32\" Nullable=\"false\" p6:StoreGeneratedP" +
-                "attern=\"Identity\" xmlns:p6=\"http://schemas.microsoft.com/ado/2009/02/edm/annotat" +
-                "ion\" /><Property Name=\"CourseName\" Type=\"Edm.String\" Nullable=\"false\" MaxLength=" +
-                "\"50\" FixedLength=\"false\" Unicode=\"false\" /><Property Name=\"Courseid\" Type=\"Edm.S" +
-                "tring\" MaxLength=\"50\" FixedLength=\"false\" Unicode=\"false\" /></EntityType><Entity" +
-                "Type Name=\"teacherinfo\"><Key><PropertyRef Name=\"teacherid\" /></Key><Property Nam" +
-                "e=\"teacherid\" Type=\"Edm.String\" Nullable=\"false\" MaxLength=\"4\" FixedLength=\"true" +
-                "\" Unicode=\"true\" /><Property Name=\"name\" Type=\"Edm.String\" MaxLength=\"10\" FixedL" +
-                "ength=\"true\" Unicode=\"true\" /><Property Name=\"pd\" Type=\"Edm.String\" MaxLength=\"1" +
-                "0\" FixedLength=\"true\" Unicode=\"true\" /></EntityType></Schema><Schema Namespace=\"" +
-                "WCFDBservice\" xmlns=\"http://schemas.microsoft.com/ado/2009/11/edm\"><EntityContai" +
-                "ner Name=\"db_exerciseEntities\" m:IsDefaultEntityContainer=\"true\" p6:LazyLoadingE" +
-                "nabled=\"true\" xmlns:p6=\"http://schemas.microsoft.com/ado/2009/02/edm/annotation\"" +
-                "><EntitySet Name=\"mchoiceQues\" EntityType=\"db_exerciseModel.mchoiceQues\" /><Enti" +
-                "tySet Name=\"classinfo\" EntityType=\"db_exerciseModel.classinfo\" /><EntitySet Name" +
-                "=\"Course\" EntityType=\"db_exerciseModel.Course\" /><EntitySet Name=\"teacherinfo\" E" +
-                "ntityType=\"db_exerciseModel.teacherinfo\" /></EntityContainer></Schema></edmx:Dat" +
-                "aServices></edmx:Edmx>";
+                "\" /><Property Name=\"classinfo1\" Type=\"Edm.String\" MaxLength=\"100\" FixedLength=\"f" +
+                "alse\" Unicode=\"false\" /><Property Name=\"courseid\" Type=\"Edm.Int32\" /><Property N" +
+                "ame=\"teacher\" Type=\"Edm.String\" MaxLength=\"4\" FixedLength=\"true\" Unicode=\"true\" " +
+                "/><Property Name=\"addtime\" Type=\"Edm.DateTime\" Precision=\"0\" /></EntityType><Ent" +
+                "ityType Name=\"Course\"><Key><PropertyRef Name=\"id\" /></Key><Property Name=\"id\" Ty" +
+                "pe=\"Edm.Int32\" Nullable=\"false\" p6:StoreGeneratedPattern=\"Identity\" xmlns:p6=\"ht" +
+                "tp://schemas.microsoft.com/ado/2009/02/edm/annotation\" /><Property Name=\"CourseN" +
+                "ame\" Type=\"Edm.String\" Nullable=\"false\" MaxLength=\"50\" FixedLength=\"false\" Unico" +
+                "de=\"false\" /><Property Name=\"Courseid\" Type=\"Edm.String\" MaxLength=\"50\" FixedLen" +
+                "gth=\"false\" Unicode=\"false\" /></EntityType><EntityType Name=\"teacherinfo\"><Key><" +
+                "PropertyRef Name=\"teacherid\" /></Key><Property Name=\"teacherid\" Type=\"Edm.String" +
+                "\" Nullable=\"false\" MaxLength=\"4\" FixedLength=\"true\" Unicode=\"true\" /><Property N" +
+                "ame=\"name\" Type=\"Edm.String\" MaxLength=\"10\" FixedLength=\"true\" Unicode=\"true\" />" +
+                "<Property Name=\"pd\" Type=\"Edm.String\" MaxLength=\"10\" FixedLength=\"true\" Unicode=" +
+                "\"true\" /></EntityType></Schema><Schema Namespace=\"WCFDBservice\" xmlns=\"http://sc" +
+                "hemas.microsoft.com/ado/2009/11/edm\"><EntityContainer Name=\"db_exerciseEntities\"" +
+                " m:IsDefaultEntityContainer=\"true\" p6:LazyLoadingEnabled=\"true\" xmlns:p6=\"http:/" +
+                "/schemas.microsoft.com/ado/2009/02/edm/annotation\"><EntitySet Name=\"mchoiceQues\"" +
+                " EntityType=\"db_exerciseModel.mchoiceQues\" /><EntitySet Name=\"classinfo\" EntityT" +
+                "ype=\"db_exerciseModel.classinfo\" /><EntitySet Name=\"Course\" EntityType=\"db_exerc" +
+                "iseModel.Course\" /><EntitySet Name=\"teacherinfo\" EntityType=\"db_exerciseModel.te" +
+                "acherinfo\" /></EntityContainer></Schema></edmx:DataServices></edmx:Edmx>";
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
             private static string GetConcatenatedEdmxString()
             {
@@ -561,7 +561,7 @@ namespace Exercise_form.ServiceReference1
         /// 架构中不存在属性 teacher 的注释。
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public global::System.Nullable<int> teacher
+        public string teacher
         {
             get
             {
@@ -576,8 +576,8 @@ namespace Exercise_form.ServiceReference1
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private global::System.Nullable<int> _teacher;
-        partial void OnteacherChanging(global::System.Nullable<int> value);
+        private string _teacher;
+        partial void OnteacherChanging(string value);
         partial void OnteacherChanged();
         /// <summary>
         /// 架构中不存在属性 addtime 的注释。
