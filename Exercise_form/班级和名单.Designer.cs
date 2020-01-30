@@ -52,7 +52,7 @@
             this.listBox1.ItemHeight = 14;
             this.listBox1.Location = new System.Drawing.Point(21, 70);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(189, 508);
+            this.listBox1.Size = new System.Drawing.Size(218, 508);
             this.listBox1.TabIndex = 1;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
@@ -62,7 +62,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(245, 70);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(772, 505);
+            this.dataGridView1.Size = new System.Drawing.Size(734, 505);
             this.dataGridView1.TabIndex = 2;
             // 
             // button1
@@ -83,6 +83,7 @@
             this.button2.TabIndex = 4;
             this.button2.Text = "显示名单";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // openFileDialog1
             // 
@@ -92,7 +93,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1049, 665);
+            this.ClientSize = new System.Drawing.Size(986, 665);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);

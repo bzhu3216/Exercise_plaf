@@ -12,7 +12,7 @@
         <ToolBar DockPanel.Dock ="Top" Height="36" >
             <Button Content ="Exit"/>
             <Separator/>
-            <Button Content ="Import"  VerticalAlignment="Top" Click="Button_Click" Height="31" />
+            <Button Content ="Import"  VerticalAlignment="Stretch" Click="Button_Click" />
             <Separator/>
             <Button x:Name="btnStart" Content="Start" VerticalAlignment="Stretch"/>
             <Separator/>

@@ -19,6 +19,7 @@ namespace Exercise_form
         private param pp;
         List<classinfo> cls;
         int selindex = -1;
+        ObservableCollection<Student> studentlist;
         public NameList(param p)
         {
             InitializeComponent();
@@ -60,27 +61,55 @@ namespace Exercise_form
 
             //导入学生名单
             String dirup = null;
-            Microsoft.Win32.OpenFileDialog ofd = new Microsoft.Win32.OpenFileDialog();
-            ofd.DefaultExt = ".xlsx";
-            ofd.Filter = "xlsx file|*.xlsx";
-            if (ofd.ShowDialog() == true)
-            {
-                dirup = ofd.FileName;
+            studentlist = null;
+
+            // Microsoft.Win32.OpenFileDialog ofd = new Microsoft.Win32.OpenFileDialog();
+            openFileDialog1.DefaultExt = ".xlsx";
+            openFileDialog1.Filter = "xlsx file|*.xlsx";
+            if(openFileDialog1.ShowDialog() == DialogResult.OK)
+            { 
+
+               dirup = openFileDialog1.FileName;
                 DB_exceltool.getstudentsfromexcel(dirup);
-                DB_exceltool.savestudents(1);
+                DB_exceltool.savestudents(cls[selindex].classid );
 
                 // studentlist = DB_exceltool.studentList;
-                studentlist = DB_exceltool.searchstubyclassid(1);
+                studentlist = DB_exceltool.searchstubyclassid(cls[selindex].classid);
 
 
                 if (studentlist.Count != 0)
 
                     // ((this.FindName("DG1")) as DataGrid).ItemsSource = peopleList;
-                    DG1.ItemsSource = studentlist;
+                    dataGridView1.DataSource  = studentlist;
                 // DB_exceltool.savestudents(1);
 
             }
             //end 导入
+
+
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            //////
+            studentlist = null;
+
+            studentlist = DB_exceltool.searchstubyclassid(cls[selindex].classid);
+
+
+            if (studentlist.Count != 0)
+
+                // ((this.FindName("DG1")) as DataGrid).ItemsSource = peopleList;
+                dataGridView1.DataSource = studentlist;
+
+
+
+
+            //////
+
+
 
 
 

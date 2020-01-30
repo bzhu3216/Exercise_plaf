@@ -21,11 +21,13 @@ namespace Exercise_form
     class DB_exceltool
     {
 
-        public static ObservableCollection<Student> studentList=new ObservableCollection<Student>();
+        //  public static ObservableCollection<Student> studentList=new ObservableCollection<Student>();
+        public static ObservableCollection<Student> studentList =null;
         //////////////////////////addstudent form excel
         public static void getstudentsfromexcel(String updir)
         {
-           
+            studentList = null;
+            studentList = new ObservableCollection<Student>();
             string strFileName = updir;
             object missing = System.Reflection.Missing.Value;
             Excel.Application excel = new Excel.Application();//lauch excel application
@@ -67,7 +69,7 @@ namespace Exercise_form
                 {
                     {
                         if (studentidss[i, 1] != null)
-                            studentList.Add(new Student(studentidss[i, 1].ToString(),namess[i,1].ToString(), int.Parse(noss[i,1].ToString()) ));
+                            studentList.Add(new Student(studentidss[i, 1].ToString(),namess[i,1].ToString(), int.Parse(noss[i,1].ToString()),"11111111" ,-1,-1));
                     }
 
                 }
@@ -125,7 +127,7 @@ namespace Exercise_form
 
             foreach (Exercise_DAL.Studenttemp stt in stl)
             {
-                studentList2.Add(new Student(stt.studentid, stt.name, stt.no));
+                studentList2.Add(new Student(stt.studentid, stt.name, stt.no,stt.pd,stt.classid,stt.courseid ));
 
 
             }

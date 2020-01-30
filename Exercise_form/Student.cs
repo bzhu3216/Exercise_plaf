@@ -36,12 +36,14 @@ namespace Exercise_form
 
         }
 
-        public Student(String id,String name2,int no1)
+        public Student(String id,String name2,int no1,string pd1 ,int clsid,int cid)
         {
             studentid = id;
             name = name2;
             no = no1;
-
+            pd = pd1;
+            classid = clsid;
+            courseid = cid;
 
         }
         //
