@@ -6,14 +6,15 @@
           <PropertyRef Name="id" />
         </Key>
         <Property Name="id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
-        <Property Name="ques" Type="Edm.String" MaxLength="Max" FixedLength="false" Unicode="false" />
-        <Property Name="answ" Type="Edm.Int32" />
         <Property Name="con" Type="Edm.Int32" />
         <Property Name="objective" Type="Edm.Int32" />
         <Property Name="diff" Type="Edm.Int32" />
         <Property Name="usenum" Type="Edm.Int32" />
         <Property Name="errornum" Type="Edm.Int32" />
         <Property Name="question" Type="Edm.Binary" MaxLength="Max" FixedLength="false" />
+        <Property Name="courseid" Type="Edm.Int32" />
+        <Property Name="answ" Type="Edm.Int32" />
+        <Property Name="teacherid" Type="Edm.String" MaxLength="4" FixedLength="true" Unicode="true" />
       </EntityType>
       <EntityType Name="classinfo">
         <Key>
@@ -32,6 +33,9 @@
         <Property Name="id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
         <Property Name="CourseName" Type="Edm.String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         <Property Name="Courseid" Type="Edm.String" MaxLength="50" FixedLength="false" Unicode="false" />
+        <Property Name="numobjective" Type="Edm.Int32" />
+        <Property Name="numcontent" Type="Edm.Int32" />
+        <Property Name="diff" Type="Edm.Int32" />
       </EntityType>
       <EntityType Name="teacherinfo">
         <Key>

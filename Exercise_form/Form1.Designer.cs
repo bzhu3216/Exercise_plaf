@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.quesView = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ques = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.objective = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.con = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.quesView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,16 +50,7 @@
             this.quesView.RowTemplate.Height = 23;
             this.quesView.Size = new System.Drawing.Size(862, 443);
             this.quesView.TabIndex = 0;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(484, 79);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "查询";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.quesView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.quesView_CellContentClick);
             // 
             // id
             // 
@@ -84,6 +75,16 @@
             this.con.DataPropertyName = "con";
             this.con.HeaderText = "章节";
             this.con.Name = "con";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(484, 79);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "查询";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 

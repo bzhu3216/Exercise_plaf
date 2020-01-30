@@ -17,5 +17,8 @@ namespace WCFDBservice
         public int id { get; set; }
         public string CourseName { get; set; }
         public string Courseid { get; set; }
+        public Nullable<int> numobjective { get; set; }
+        public Nullable<int> numcontent { get; set; }
+        public Nullable<int> diff { get; set; }
     }
 }

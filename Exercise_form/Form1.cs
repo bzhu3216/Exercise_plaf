@@ -69,5 +69,10 @@ namespace Exercise_form
 
 
         }
+
+        private void quesView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

@@ -22,20 +22,24 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CourseName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Courseid" Type="varchar" MaxLength="50" />
+          <Property Name="numobjective" Type="int" />
+          <Property Name="numcontent" Type="int" />
+          <Property Name="diff" Type="int" />
         </EntityType>
         <EntityType Name="mchoiceQues">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ques" Type="text" />
-          <Property Name="answ" Type="int" />
+          <Property Name="teacherid" Type="nchar" MaxLength="4" />
+          <Property Name="courseid" Type="int" />
           <Property Name="con" Type="int" />
           <Property Name="objective" Type="int" />
           <Property Name="diff" Type="int" />
           <Property Name="usenum" Type="int" />
           <Property Name="errornum" Type="int" />
           <Property Name="question" Type="varbinary(max)" />
+          <Property Name="answ" Type="int" />
         </EntityType>
         <EntityType Name="teacherinfo">
           <Key>
@@ -66,14 +70,15 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ques" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="answ" Type="Int32" />
           <Property Name="con" Type="Int32" />
           <Property Name="objective" Type="Int32" />
           <Property Name="diff" Type="Int32" />
           <Property Name="usenum" Type="Int32" />
           <Property Name="errornum" Type="Int32" />
           <Property Name="question" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="courseid" Type="Int32" />
+          <Property Name="answ" Type="Int32" />
+          <Property Name="teacherid" Type="String" MaxLength="4" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="classinfo">
           <Key>
@@ -92,6 +97,9 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CourseName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Courseid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="numobjective" Type="Int32" />
+          <Property Name="numcontent" Type="Int32" />
+          <Property Name="diff" Type="Int32" />
         </EntityType>
         <EntityType Name="teacherinfo">
           <Key>
@@ -110,14 +118,15 @@
           <EntitySetMapping Name="mchoiceQues">
             <EntityTypeMapping TypeName="db_exerciseModel.mchoiceQues">
               <MappingFragment StoreEntitySet="mchoiceQues">
+                <ScalarProperty Name="teacherid" ColumnName="teacherid" />
+                <ScalarProperty Name="answ" ColumnName="answ" />
+                <ScalarProperty Name="courseid" ColumnName="courseid" />
                 <ScalarProperty Name="question" ColumnName="question" />
                 <ScalarProperty Name="errornum" ColumnName="errornum" />
                 <ScalarProperty Name="usenum" ColumnName="usenum" />
                 <ScalarProperty Name="diff" ColumnName="diff" />
                 <ScalarProperty Name="objective" ColumnName="objective" />
                 <ScalarProperty Name="con" ColumnName="con" />
-                <ScalarProperty Name="answ" ColumnName="answ" />
-                <ScalarProperty Name="ques" ColumnName="ques" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -136,6 +145,9 @@
           <EntitySetMapping Name="Course">
             <EntityTypeMapping TypeName="db_exerciseModel.Course">
               <MappingFragment StoreEntitySet="Course">
+                <ScalarProperty Name="diff" ColumnName="diff" />
+                <ScalarProperty Name="numcontent" ColumnName="numcontent" />
+                <ScalarProperty Name="numobjective" ColumnName="numobjective" />
                 <ScalarProperty Name="Courseid" ColumnName="Courseid" />
                 <ScalarProperty Name="CourseName" ColumnName="CourseName" />
                 <ScalarProperty Name="id" ColumnName="id" />

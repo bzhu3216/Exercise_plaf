@@ -15,13 +15,14 @@ namespace WCFDBservice
     public partial class mchoiceQues
     {
         public int id { get; set; }
-        public string ques { get; set; }
-        public Nullable<int> answ { get; set; }
         public Nullable<int> con { get; set; }
         public Nullable<int> objective { get; set; }
         public Nullable<int> diff { get; set; }
         public Nullable<int> usenum { get; set; }
         public Nullable<int> errornum { get; set; }
         public byte[] question { get; set; }
+        public Nullable<int> courseid { get; set; }
+        public Nullable<int> answ { get; set; }
+        public string teacherid { get; set; }
     }
 }

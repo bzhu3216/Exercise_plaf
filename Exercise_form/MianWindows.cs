@@ -82,5 +82,30 @@ namespace Exercise_form
             }
 
         }
+
+        private void 选择题ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+
+
+            addmq mq = null;
+            if (mq == null || mq.IsDisposed)
+            {
+                mq = new addmq(pp);
+                mq.MdiParent = this;
+                mq.Show();
+            }
+            else
+            {
+                mq.Activate();
+                mq.WindowState = FormWindowState.Normal;
+            }
+
+        }
+
+
+
+
+
     }
 }
