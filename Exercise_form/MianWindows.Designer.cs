@@ -158,7 +158,8 @@
             // 
             this.简单题ToolStripMenuItem.Name = "简单题ToolStripMenuItem";
             this.简单题ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.简单题ToolStripMenuItem.Text = "简单题";
+            this.简单题ToolStripMenuItem.Text = "简答题";
+            this.简单题ToolStripMenuItem.Click += new System.EventHandler(this.简单题ToolStripMenuItem_Click);
             // 
             // 分析题ToolStripMenuItem
             // 

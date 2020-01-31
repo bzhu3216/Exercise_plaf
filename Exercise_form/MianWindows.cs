@@ -125,5 +125,28 @@ namespace Exercise_form
 
 
         }
+
+        private void 简单题ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+
+            addS mq = null;
+            if (mq == null || mq.IsDisposed)
+            {
+                mq = new addS(pp);
+                mq.MdiParent = this;
+                mq.Show();
+            }
+            else
+            {
+                mq.Activate();
+                mq.WindowState = FormWindowState.Normal;
+            }
+
+
+
+
+
+        }
     }
 }

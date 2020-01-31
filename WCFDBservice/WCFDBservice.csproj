@@ -125,6 +125,9 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AQues.cs">
+      <DependentUpon>questions.tt</DependentUpon>
+    </Compile>
     <Compile Include="classinfo.cs">
       <DependentUpon>questions.tt</DependentUpon>
     </Compile>

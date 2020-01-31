@@ -5,6 +5,21 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="db_exerciseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AQues">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="teacherid" Type="nchar" MaxLength="4" />
+          <Property Name="courseid" Type="int" />
+          <Property Name="con" Type="int" />
+          <Property Name="objective" Type="int" />
+          <Property Name="diff" Type="int" />
+          <Property Name="usenum" Type="int" />
+          <Property Name="errornum" Type="int" />
+          <Property Name="question" Type="varbinary(max)" />
+          <Property Name="answ" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="classinfo">
           <Key>
             <PropertyRef Name="classid" />
@@ -80,6 +95,7 @@
           <Property Name="answ" Type="bit" />
         </EntityType>
         <EntityContainer Name="db_exerciseModelStoreContainer">
+          <EntitySet Name="AQues" EntityType="Self.AQues" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="classinfo" EntityType="Self.classinfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="mchoiceQues" EntityType="Self.mchoiceQues" Schema="dbo" store:Type="Tables" />
@@ -98,6 +114,7 @@
           <EntitySet Name="teacherinfo" EntityType="db_exerciseModel.teacherinfo" />
           <EntitySet Name="TFQues" EntityType="db_exerciseModel.TFQues" />
           <EntitySet Name="SQues" EntityType="db_exerciseModel.SQues" />
+          <EntitySet Name="AQues" EntityType="db_exerciseModel.AQues" />
         </EntityContainer>
         <EntityType Name="mchoiceQues">
           <Key>
@@ -159,6 +176,21 @@
           <Property Name="answ" Type="Boolean" />
         </EntityType>
         <EntityType Name="SQues">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="teacherid" Type="String" MaxLength="4" FixedLength="true" Unicode="true" />
+          <Property Name="courseid" Type="Int32" />
+          <Property Name="con" Type="Int32" />
+          <Property Name="objective" Type="Int32" />
+          <Property Name="diff" Type="Int32" />
+          <Property Name="usenum" Type="Int32" />
+          <Property Name="errornum" Type="Int32" />
+          <Property Name="question" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="answ" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="AQues">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -246,6 +278,22 @@
           <EntitySetMapping Name="SQues">
             <EntityTypeMapping TypeName="db_exerciseModel.SQues">
               <MappingFragment StoreEntitySet="SQues">
+                <ScalarProperty Name="answ" ColumnName="answ" />
+                <ScalarProperty Name="question" ColumnName="question" />
+                <ScalarProperty Name="errornum" ColumnName="errornum" />
+                <ScalarProperty Name="usenum" ColumnName="usenum" />
+                <ScalarProperty Name="diff" ColumnName="diff" />
+                <ScalarProperty Name="objective" ColumnName="objective" />
+                <ScalarProperty Name="con" ColumnName="con" />
+                <ScalarProperty Name="courseid" ColumnName="courseid" />
+                <ScalarProperty Name="teacherid" ColumnName="teacherid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AQues">
+            <EntityTypeMapping TypeName="db_exerciseModel.AQues">
+              <MappingFragment StoreEntitySet="AQues">
                 <ScalarProperty Name="answ" ColumnName="answ" />
                 <ScalarProperty Name="question" ColumnName="question" />
                 <ScalarProperty Name="errornum" ColumnName="errornum" />
