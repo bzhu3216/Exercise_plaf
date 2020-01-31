@@ -166,6 +166,7 @@
             this.分析题ToolStripMenuItem.Name = "分析题ToolStripMenuItem";
             this.分析题ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.分析题ToolStripMenuItem.Text = "分析题";
+            this.分析题ToolStripMenuItem.Click += new System.EventHandler(this.分析题ToolStripMenuItem_Click);
             // 
             // 修改土木ToolStripMenuItem
             // 
@@ -187,8 +188,9 @@
             // 习题生成ToolStripMenuItem
             // 
             this.习题生成ToolStripMenuItem.Name = "习题生成ToolStripMenuItem";
-            this.习题生成ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.习题生成ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.习题生成ToolStripMenuItem.Text = "习题生成";
+            this.习题生成ToolStripMenuItem.Click += new System.EventHandler(this.习题生成ToolStripMenuItem_Click);
             // 
             // 批改习题ToolStripMenuItem
             // 

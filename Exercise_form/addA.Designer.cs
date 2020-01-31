@@ -93,6 +93,7 @@
             this.comboBox5.Name = "comboBox5";
             this.comboBox5.Size = new System.Drawing.Size(214, 20);
             this.comboBox5.TabIndex = 43;
+            this.comboBox5.SelectedIndexChanged += new System.EventHandler(this.comboBox5_SelectedIndexChanged);
             // 
             // button2
             // 
@@ -176,6 +177,7 @@
             this.button1.TabIndex = 34;
             this.button1.Text = "保存";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 
@@ -220,6 +222,7 @@
             this.Controls.Add(this.rquestion);
             this.Name = "addA";
             this.Text = "addA";
+            this.Load += new System.EventHandler(this.addA_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -148,5 +148,40 @@ namespace Exercise_form
 
 
         }
+
+        private void 分析题ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            addA mq = null;
+            if (mq == null || mq.IsDisposed)
+            {
+                mq = new addA(pp);
+                mq.MdiParent = this;
+                mq.Show();
+            }
+            else
+            {
+                mq.Activate();
+                mq.WindowState = FormWindowState.Normal;
+            }
+        }
+
+        private void 习题生成ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+
+            exerList  mq = null;
+            if (mq == null || mq.IsDisposed)
+            {
+                mq = new exerList();
+                mq.MdiParent = this;
+                mq.Show();
+            }
+            else
+            {
+                mq.Activate();
+                mq.WindowState = FormWindowState.Normal;
+            }
+
+        }
     }
 }
