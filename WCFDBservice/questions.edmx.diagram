@@ -9,6 +9,8 @@
         <EntityTypeShape EntityType="db_exerciseModel.classinfo" Width="1.5" PointX="3.75" PointY="0.75" />
         <EntityTypeShape EntityType="db_exerciseModel.Course" Width="1.5" PointX="3.75" PointY="3.75" />
         <EntityTypeShape EntityType="db_exerciseModel.teacherinfo" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="db_exerciseModel.TFQues" Width="1.5" PointX="6.375" PointY="0.75" />
+        <EntityTypeShape EntityType="db_exerciseModel.SQues" Width="1.5" PointX="7.75" PointY="4.5" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

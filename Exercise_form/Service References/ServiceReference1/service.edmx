@@ -45,6 +45,36 @@
         <Property Name="name" Type="Edm.String" MaxLength="10" FixedLength="true" Unicode="true" />
         <Property Name="pd" Type="Edm.String" MaxLength="10" FixedLength="true" Unicode="true" />
       </EntityType>
+      <EntityType Name="TFQues">
+        <Key>
+          <PropertyRef Name="id" />
+        </Key>
+        <Property Name="id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="teacherid" Type="Edm.String" MaxLength="4" FixedLength="true" Unicode="true" />
+        <Property Name="courseid" Type="Edm.Int32" />
+        <Property Name="con" Type="Edm.Int32" />
+        <Property Name="objective" Type="Edm.Int32" />
+        <Property Name="diff" Type="Edm.Int32" />
+        <Property Name="usenum" Type="Edm.Int32" />
+        <Property Name="errornum" Type="Edm.Int32" />
+        <Property Name="question" Type="Edm.Binary" MaxLength="Max" FixedLength="false" />
+        <Property Name="answ" Type="Edm.Boolean" />
+      </EntityType>
+      <EntityType Name="SQues">
+        <Key>
+          <PropertyRef Name="id" />
+        </Key>
+        <Property Name="id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="teacherid" Type="Edm.String" MaxLength="4" FixedLength="true" Unicode="true" />
+        <Property Name="courseid" Type="Edm.Int32" />
+        <Property Name="con" Type="Edm.Int32" />
+        <Property Name="objective" Type="Edm.Int32" />
+        <Property Name="diff" Type="Edm.Int32" />
+        <Property Name="usenum" Type="Edm.Int32" />
+        <Property Name="errornum" Type="Edm.Int32" />
+        <Property Name="question" Type="Edm.Binary" MaxLength="Max" FixedLength="false" />
+        <Property Name="answ" Type="Edm.Binary" MaxLength="Max" FixedLength="false" />
+      </EntityType>
     </Schema>
     <Schema Namespace="WCFDBservice" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
       <EntityContainer Name="db_exerciseEntities" m:IsDefaultEntityContainer="true" p6:LazyLoadingEnabled="true" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
@@ -52,6 +82,8 @@
         <EntitySet Name="classinfo" EntityType="db_exerciseModel.classinfo" />
         <EntitySet Name="Course" EntityType="db_exerciseModel.Course" />
         <EntitySet Name="teacherinfo" EntityType="db_exerciseModel.teacherinfo" />
+        <EntitySet Name="TFQues" EntityType="db_exerciseModel.TFQues" />
+        <EntitySet Name="SQues" EntityType="db_exerciseModel.SQues" />
       </EntityContainer>
     </Schema>
   </edmx:DataServices>

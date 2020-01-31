@@ -103,9 +103,27 @@ namespace Exercise_form
 
         }
 
+        private void 判断题ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+
+            addTF mq = null;
+            if (mq == null || mq.IsDisposed)
+            {
+                mq = new addTF(pp);
+                mq.MdiParent = this;
+                mq.Show();
+            }
+            else
+            {
+                mq.Activate();
+                mq.WindowState = FormWindowState.Normal;
+            }
 
 
 
 
+
+        }
     }
 }

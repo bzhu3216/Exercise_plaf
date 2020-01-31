@@ -14,7 +14,7 @@ namespace Exercise_form
     public partial class addmq : Form
     {
         private db_exerciseEntities context;
-        private Uri svcUri = new Uri("http://localhost:1800/WcfDataServicequestion.svc");
+       // private Uri svcUri = new Uri("http://localhost:1800/WcfDataServicequestion.svc");
         param pp;
         List<Course> lcs = null;
         int cid=-1;

@@ -150,7 +150,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>questions.edmx</DependentUpon>
     </Compile>
+    <Compile Include="SQues.cs">
+      <DependentUpon>questions.tt</DependentUpon>
+    </Compile>
     <Compile Include="teacherinfo.cs">
+      <DependentUpon>questions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TFQues.cs">
       <DependentUpon>questions.tt</DependentUpon>
     </Compile>
     <Compile Include="WcfDataServicequestion.svc.cs">

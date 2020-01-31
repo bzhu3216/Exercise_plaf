@@ -152,6 +152,7 @@
             this.判断题ToolStripMenuItem.Name = "判断题ToolStripMenuItem";
             this.判断题ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.判断题ToolStripMenuItem.Text = "判断题";
+            this.判断题ToolStripMenuItem.Click += new System.EventHandler(this.判断题ToolStripMenuItem_Click);
             // 
             // 简单题ToolStripMenuItem
             // 
@@ -185,25 +186,25 @@
             // 习题生成ToolStripMenuItem
             // 
             this.习题生成ToolStripMenuItem.Name = "习题生成ToolStripMenuItem";
-            this.习题生成ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.习题生成ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.习题生成ToolStripMenuItem.Text = "习题生成";
             // 
             // 批改习题ToolStripMenuItem
             // 
             this.批改习题ToolStripMenuItem.Name = "批改习题ToolStripMenuItem";
-            this.批改习题ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.批改习题ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.批改习题ToolStripMenuItem.Text = "批改习题";
             // 
             // 导出成绩ToolStripMenuItem
             // 
             this.导出成绩ToolStripMenuItem.Name = "导出成绩ToolStripMenuItem";
-            this.导出成绩ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.导出成绩ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.导出成绩ToolStripMenuItem.Text = "导出成绩";
             // 
             // 导出习题ToolStripMenuItem
             // 
             this.导出习题ToolStripMenuItem.Name = "导出习题ToolStripMenuItem";
-            this.导出习题ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.导出习题ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.导出习题ToolStripMenuItem.Text = "导出习题";
             // 
             // 用户管理ToolStripMenuItem

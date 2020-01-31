@@ -41,6 +41,21 @@
           <Property Name="question" Type="varbinary(max)" />
           <Property Name="answ" Type="int" />
         </EntityType>
+        <EntityType Name="SQues">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="teacherid" Type="nchar" MaxLength="4" />
+          <Property Name="courseid" Type="int" />
+          <Property Name="con" Type="int" />
+          <Property Name="objective" Type="int" />
+          <Property Name="diff" Type="int" />
+          <Property Name="usenum" Type="int" />
+          <Property Name="errornum" Type="int" />
+          <Property Name="question" Type="varbinary(max)" />
+          <Property Name="answ" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="teacherinfo">
           <Key>
             <PropertyRef Name="teacherid" />
@@ -49,11 +64,28 @@
           <Property Name="name" Type="nchar" MaxLength="10" />
           <Property Name="pd" Type="nchar" MaxLength="10" />
         </EntityType>
+        <EntityType Name="TFQues">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="teacherid" Type="nchar" MaxLength="4" />
+          <Property Name="courseid" Type="int" />
+          <Property Name="con" Type="int" />
+          <Property Name="objective" Type="int" />
+          <Property Name="diff" Type="int" />
+          <Property Name="usenum" Type="int" />
+          <Property Name="errornum" Type="int" />
+          <Property Name="question" Type="varbinary(max)" />
+          <Property Name="answ" Type="bit" />
+        </EntityType>
         <EntityContainer Name="db_exerciseModelStoreContainer">
           <EntitySet Name="classinfo" EntityType="Self.classinfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="mchoiceQues" EntityType="Self.mchoiceQues" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SQues" EntityType="Self.SQues" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="teacherinfo" EntityType="Self.teacherinfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TFQues" EntityType="Self.TFQues" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -64,6 +96,8 @@
           <EntitySet Name="classinfo" EntityType="db_exerciseModel.classinfo" />
           <EntitySet Name="Course" EntityType="db_exerciseModel.Course" />
           <EntitySet Name="teacherinfo" EntityType="db_exerciseModel.teacherinfo" />
+          <EntitySet Name="TFQues" EntityType="db_exerciseModel.TFQues" />
+          <EntitySet Name="SQues" EntityType="db_exerciseModel.SQues" />
         </EntityContainer>
         <EntityType Name="mchoiceQues">
           <Key>
@@ -108,6 +142,36 @@
           <Property Name="teacherid" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="true" />
           <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="pd" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TFQues">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="teacherid" Type="String" MaxLength="4" FixedLength="true" Unicode="true" />
+          <Property Name="courseid" Type="Int32" />
+          <Property Name="con" Type="Int32" />
+          <Property Name="objective" Type="Int32" />
+          <Property Name="diff" Type="Int32" />
+          <Property Name="usenum" Type="Int32" />
+          <Property Name="errornum" Type="Int32" />
+          <Property Name="question" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="answ" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="SQues">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="teacherid" Type="String" MaxLength="4" FixedLength="true" Unicode="true" />
+          <Property Name="courseid" Type="Int32" />
+          <Property Name="con" Type="Int32" />
+          <Property Name="objective" Type="Int32" />
+          <Property Name="diff" Type="Int32" />
+          <Property Name="usenum" Type="Int32" />
+          <Property Name="errornum" Type="Int32" />
+          <Property Name="question" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="answ" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -160,6 +224,38 @@
                 <ScalarProperty Name="pd" ColumnName="pd" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="teacherid" ColumnName="teacherid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TFQues">
+            <EntityTypeMapping TypeName="db_exerciseModel.TFQues">
+              <MappingFragment StoreEntitySet="TFQues">
+                <ScalarProperty Name="answ" ColumnName="answ" />
+                <ScalarProperty Name="question" ColumnName="question" />
+                <ScalarProperty Name="errornum" ColumnName="errornum" />
+                <ScalarProperty Name="usenum" ColumnName="usenum" />
+                <ScalarProperty Name="diff" ColumnName="diff" />
+                <ScalarProperty Name="objective" ColumnName="objective" />
+                <ScalarProperty Name="con" ColumnName="con" />
+                <ScalarProperty Name="courseid" ColumnName="courseid" />
+                <ScalarProperty Name="teacherid" ColumnName="teacherid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SQues">
+            <EntityTypeMapping TypeName="db_exerciseModel.SQues">
+              <MappingFragment StoreEntitySet="SQues">
+                <ScalarProperty Name="answ" ColumnName="answ" />
+                <ScalarProperty Name="question" ColumnName="question" />
+                <ScalarProperty Name="errornum" ColumnName="errornum" />
+                <ScalarProperty Name="usenum" ColumnName="usenum" />
+                <ScalarProperty Name="diff" ColumnName="diff" />
+                <ScalarProperty Name="objective" ColumnName="objective" />
+                <ScalarProperty Name="con" ColumnName="con" />
+                <ScalarProperty Name="courseid" ColumnName="courseid" />
+                <ScalarProperty Name="teacherid" ColumnName="teacherid" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
