@@ -128,10 +128,19 @@
     <Compile Include="AQues.cs">
       <DependentUpon>questions.tt</DependentUpon>
     </Compile>
+    <Compile Include="classExer.cs">
+      <DependentUpon>questions.tt</DependentUpon>
+    </Compile>
     <Compile Include="classinfo.cs">
       <DependentUpon>questions.tt</DependentUpon>
     </Compile>
     <Compile Include="Course.cs">
+      <DependentUpon>questions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="exerDetail.cs">
+      <DependentUpon>questions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="exerL.cs">
       <DependentUpon>questions.tt</DependentUpon>
     </Compile>
     <Compile Include="mchoiceQues.cs">
@@ -154,6 +163,9 @@
       <DependentUpon>questions.edmx</DependentUpon>
     </Compile>
     <Compile Include="SQues.cs">
+      <DependentUpon>questions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="studAnsw.cs">
       <DependentUpon>questions.tt</DependentUpon>
     </Compile>
     <Compile Include="teacherinfo.cs">

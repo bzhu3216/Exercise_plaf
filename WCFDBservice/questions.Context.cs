@@ -32,5 +32,9 @@ namespace WCFDBservice
         public DbSet<TFQues> TFQues { get; set; }
         public DbSet<SQues> SQues { get; set; }
         public DbSet<AQues> AQues { get; set; }
+        public DbSet<classExer> classExer { get; set; }
+        public DbSet<exerDetail> exerDetail { get; set; }
+        public DbSet<exerL> exerL { get; set; }
+        public DbSet<studAnsw> studAnsw { get; set; }
     }
 }

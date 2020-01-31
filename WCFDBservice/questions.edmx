@@ -20,6 +20,17 @@
           <Property Name="question" Type="varbinary(max)" />
           <Property Name="answ" Type="varbinary(max)" />
         </EntityType>
+        <EntityType Name="classExer">
+          <Key>
+            <PropertyRef Name="cid" />
+            <PropertyRef Name="eid" />
+          </Key>
+          <Property Name="cid" Type="int" Nullable="false" />
+          <Property Name="eid" Type="int" Nullable="false" />
+          <Property Name="starttime" Type="date" />
+          <Property Name="endtime" Type="date" />
+          <Property Name="dispaly" Type="int" />
+        </EntityType>
         <EntityType Name="classinfo">
           <Key>
             <PropertyRef Name="classid" />
@@ -40,6 +51,26 @@
           <Property Name="numobjective" Type="int" />
           <Property Name="numcontent" Type="int" />
           <Property Name="diff" Type="int" />
+        </EntityType>
+        <EntityType Name="exerDetail">
+          <Key>
+            <PropertyRef Name="typeq" />
+            <PropertyRef Name="qid" />
+            <PropertyRef Name="lid" />
+          </Key>
+          <Property Name="typeq" Type="int" Nullable="false" />
+          <Property Name="qid" Type="int" Nullable="false" />
+          <Property Name="lid" Type="int" Nullable="false" />
+          <Property Name="score" Type="int" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="exerL">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="teacherid" Type="nchar" MaxLength="4" />
+          <Property Name="public" Type="bit" />
         </EntityType>
         <EntityType Name="mchoiceQues">
           <Key>
@@ -71,6 +102,18 @@
           <Property Name="question" Type="varbinary(max)" />
           <Property Name="answ" Type="varbinary(max)" />
         </EntityType>
+        <EntityType Name="studAnsw">
+          <Key>
+            <PropertyRef Name="stid" />
+            <PropertyRef Name="did" />
+          </Key>
+          <Property Name="stid" Type="int" Nullable="false" />
+          <Property Name="did" Type="int" Nullable="false" />
+          <Property Name="answ1" Type="int" />
+          <Property Name="answ2" Type="bit" />
+          <Property Name="answ3" Type="nvarchar(max)" />
+          <Property Name="mark" Type="int" />
+        </EntityType>
         <EntityType Name="teacherinfo">
           <Key>
             <PropertyRef Name="teacherid" />
@@ -96,10 +139,14 @@
         </EntityType>
         <EntityContainer Name="db_exerciseModelStoreContainer">
           <EntitySet Name="AQues" EntityType="Self.AQues" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="classExer" EntityType="Self.classExer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="classinfo" EntityType="Self.classinfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="exerDetail" EntityType="Self.exerDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="exerL" EntityType="Self.exerL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="mchoiceQues" EntityType="Self.mchoiceQues" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SQues" EntityType="Self.SQues" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="studAnsw" EntityType="Self.studAnsw" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="teacherinfo" EntityType="Self.teacherinfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TFQues" EntityType="Self.TFQues" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
@@ -115,6 +162,10 @@
           <EntitySet Name="TFQues" EntityType="db_exerciseModel.TFQues" />
           <EntitySet Name="SQues" EntityType="db_exerciseModel.SQues" />
           <EntitySet Name="AQues" EntityType="db_exerciseModel.AQues" />
+          <EntitySet Name="classExer" EntityType="db_exerciseModel.classExer" />
+          <EntitySet Name="exerDetail" EntityType="db_exerciseModel.exerDetail" />
+          <EntitySet Name="exerL" EntityType="db_exerciseModel.exerL" />
+          <EntitySet Name="studAnsw" EntityType="db_exerciseModel.studAnsw" />
         </EntityContainer>
         <EntityType Name="mchoiceQues">
           <Key>
@@ -204,6 +255,49 @@
           <Property Name="errornum" Type="Int32" />
           <Property Name="question" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="answ" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="classExer">
+          <Key>
+            <PropertyRef Name="cid" />
+            <PropertyRef Name="eid" />
+          </Key>
+          <Property Name="cid" Type="Int32" Nullable="false" />
+          <Property Name="eid" Type="Int32" Nullable="false" />
+          <Property Name="starttime" Type="DateTime" Precision="0" />
+          <Property Name="endtime" Type="DateTime" Precision="0" />
+          <Property Name="dispaly" Type="Int32" />
+        </EntityType>
+        <EntityType Name="exerDetail">
+          <Key>
+            <PropertyRef Name="typeq" />
+            <PropertyRef Name="qid" />
+            <PropertyRef Name="lid" />
+          </Key>
+          <Property Name="typeq" Type="Int32" Nullable="false" />
+          <Property Name="qid" Type="Int32" Nullable="false" />
+          <Property Name="lid" Type="Int32" Nullable="false" />
+          <Property Name="score" Type="Int32" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="exerL">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="teacherid" Type="String" MaxLength="4" FixedLength="true" Unicode="true" />
+          <Property Name="public" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="studAnsw">
+          <Key>
+            <PropertyRef Name="stid" />
+            <PropertyRef Name="did" />
+          </Key>
+          <Property Name="stid" Type="Int32" Nullable="false" />
+          <Property Name="did" Type="Int32" Nullable="false" />
+          <Property Name="answ1" Type="Int32" />
+          <Property Name="answ2" Type="Boolean" />
+          <Property Name="answ3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="mark" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -304,6 +398,49 @@
                 <ScalarProperty Name="courseid" ColumnName="courseid" />
                 <ScalarProperty Name="teacherid" ColumnName="teacherid" />
                 <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="classExer">
+            <EntityTypeMapping TypeName="db_exerciseModel.classExer">
+              <MappingFragment StoreEntitySet="classExer">
+                <ScalarProperty Name="dispaly" ColumnName="dispaly" />
+                <ScalarProperty Name="endtime" ColumnName="endtime" />
+                <ScalarProperty Name="starttime" ColumnName="starttime" />
+                <ScalarProperty Name="eid" ColumnName="eid" />
+                <ScalarProperty Name="cid" ColumnName="cid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="exerDetail">
+            <EntityTypeMapping TypeName="db_exerciseModel.exerDetail">
+              <MappingFragment StoreEntitySet="exerDetail">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="score" ColumnName="score" />
+                <ScalarProperty Name="lid" ColumnName="lid" />
+                <ScalarProperty Name="qid" ColumnName="qid" />
+                <ScalarProperty Name="typeq" ColumnName="typeq" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="exerL">
+            <EntityTypeMapping TypeName="db_exerciseModel.exerL">
+              <MappingFragment StoreEntitySet="exerL">
+                <ScalarProperty Name="public" ColumnName="public" />
+                <ScalarProperty Name="teacherid" ColumnName="teacherid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="studAnsw">
+            <EntityTypeMapping TypeName="db_exerciseModel.studAnsw">
+              <MappingFragment StoreEntitySet="studAnsw">
+                <ScalarProperty Name="mark" ColumnName="mark" />
+                <ScalarProperty Name="answ3" ColumnName="answ3" />
+                <ScalarProperty Name="answ2" ColumnName="answ2" />
+                <ScalarProperty Name="answ1" ColumnName="answ1" />
+                <ScalarProperty Name="did" ColumnName="did" />
+                <ScalarProperty Name="stid" ColumnName="stid" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
