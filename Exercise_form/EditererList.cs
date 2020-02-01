@@ -31,6 +31,49 @@ namespace Exercise_form
         private void EditererList_Load(object sender, EventArgs e)
         {
 
+
+
+
+
+
+
         }
+
+        ///////////////start 
+
+        private void display(int a,int b,int c,int d)
+        {
+            if (a == 0)
+            {
+
+
+
+
+
+
+            }
+
+
+
+
+
+
+        }
+
+
+
+
+
+
+        ///////////////end
+
+
+
+
+
+
+
+
+
     }
 }

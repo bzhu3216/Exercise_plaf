@@ -195,7 +195,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Name = "EditererList";
-            this.Text = "EditererList";
+            this.Text = "EditexerList";
             this.Load += new System.EventHandler(this.EditererList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
