@@ -172,7 +172,7 @@ namespace Exercise_form
             exerList  mq = null;
             if (mq == null || mq.IsDisposed)
             {
-                mq = new exerList();
+                mq = new exerList(pp);
                 mq.MdiParent = this;
                 mq.Show();
             }

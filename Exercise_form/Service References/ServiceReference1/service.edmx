@@ -90,6 +90,65 @@
         <Property Name="question" Type="Edm.Binary" MaxLength="Max" FixedLength="false" />
         <Property Name="answ" Type="Edm.Binary" MaxLength="Max" FixedLength="false" />
       </EntityType>
+      <EntityType Name="classExer">
+        <Key>
+          <PropertyRef Name="cid" />
+          <PropertyRef Name="eid" />
+        </Key>
+        <Property Name="cid" Type="Edm.Int32" Nullable="false" />
+        <Property Name="eid" Type="Edm.Int32" Nullable="false" />
+        <Property Name="starttime" Type="Edm.DateTime" Precision="0" />
+        <Property Name="endtime" Type="Edm.DateTime" Precision="0" />
+        <Property Name="dispaly" Type="Edm.Int32" />
+      </EntityType>
+      <EntityType Name="exerDetail">
+        <Key>
+          <PropertyRef Name="lid" />
+          <PropertyRef Name="qid" />
+          <PropertyRef Name="typeq" />
+        </Key>
+        <Property Name="typeq" Type="Edm.Int32" Nullable="false" />
+        <Property Name="qid" Type="Edm.Int32" Nullable="false" />
+        <Property Name="lid" Type="Edm.Int32" Nullable="false" />
+        <Property Name="score" Type="Edm.Int32" />
+        <Property Name="id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <NavigationProperty Name="exerL" Relationship="db_exerciseModel.FK_exerDetail_exerL" ToRole="exerL" FromRole="exerDetail" />
+      </EntityType>
+      <EntityType Name="exerL">
+        <Key>
+          <PropertyRef Name="id" />
+        </Key>
+        <Property Name="id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="teacherid" Type="Edm.String" MaxLength="4" FixedLength="true" Unicode="true" />
+        <Property Name="name" Type="Edm.String" MaxLength="50" FixedLength="false" Unicode="false" />
+        <Property Name="courseid" Type="Edm.Int32" />
+        <Property Name="pub" Type="Edm.Boolean" />
+        <NavigationProperty Name="exerDetail" Relationship="db_exerciseModel.FK_exerDetail_exerL" ToRole="exerDetail" FromRole="exerL" />
+      </EntityType>
+      <EntityType Name="studAnsw">
+        <Key>
+          <PropertyRef Name="did" />
+          <PropertyRef Name="stid" />
+        </Key>
+        <Property Name="stid" Type="Edm.Int32" Nullable="false" />
+        <Property Name="did" Type="Edm.Int32" Nullable="false" />
+        <Property Name="answ1" Type="Edm.Int32" />
+        <Property Name="answ2" Type="Edm.Boolean" />
+        <Property Name="answ3" Type="Edm.String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        <Property Name="mark" Type="Edm.Int32" />
+      </EntityType>
+      <Association Name="FK_exerDetail_exerL">
+        <End Type="db_exerciseModel.exerL" Role="exerL" Multiplicity="1" />
+        <End Type="db_exerciseModel.exerDetail" Role="exerDetail" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="exerL">
+            <PropertyRef Name="id" />
+          </Principal>
+          <Dependent Role="exerDetail">
+            <PropertyRef Name="lid" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
     </Schema>
     <Schema Namespace="WCFDBservice" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
       <EntityContainer Name="db_exerciseEntities" m:IsDefaultEntityContainer="true" p6:LazyLoadingEnabled="true" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
@@ -100,6 +159,14 @@
         <EntitySet Name="TFQues" EntityType="db_exerciseModel.TFQues" />
         <EntitySet Name="SQues" EntityType="db_exerciseModel.SQues" />
         <EntitySet Name="AQues" EntityType="db_exerciseModel.AQues" />
+        <EntitySet Name="classExer" EntityType="db_exerciseModel.classExer" />
+        <EntitySet Name="exerDetail" EntityType="db_exerciseModel.exerDetail" />
+        <EntitySet Name="exerL" EntityType="db_exerciseModel.exerL" />
+        <EntitySet Name="studAnsw" EntityType="db_exerciseModel.studAnsw" />
+        <AssociationSet Name="FK_exerDetail_exerL" Association="db_exerciseModel.FK_exerDetail_exerL">
+          <End Role="exerDetail" EntitySet="exerDetail" />
+          <End Role="exerL" EntitySet="exerL" />
+        </AssociationSet>
       </EntityContainer>
     </Schema>
   </edmx:DataServices>

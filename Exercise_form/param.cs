@@ -11,6 +11,7 @@ namespace Exercise_form
         public db_exerciseEntities context;
         private Uri svcUri = new Uri("http://localhost:1800/WcfDataServicequestion.svc");
         public teacherinfo teacher=new teacherinfo();
+        public int exerl1 = -1;
         public param()
         {
             context = new db_exerciseEntities(svcUri);
