@@ -137,6 +137,18 @@
           <Property Name="question" Type="varbinary(max)" />
           <Property Name="answ" Type="bit" />
         </EntityType>
+        <Association Name="FK_exerDetail_exerL">
+          <End Role="exerL" Type="Self.exerL" Multiplicity="1" />
+          <End Role="exerDetail" Type="Self.exerDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="exerL">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="exerDetail">
+              <PropertyRef Name="lid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="db_exerciseModelStoreContainer">
           <EntitySet Name="AQues" EntityType="Self.AQues" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="classExer" EntityType="Self.classExer" Schema="dbo" store:Type="Tables" />
@@ -149,6 +161,10 @@
           <EntitySet Name="studAnsw" EntityType="Self.studAnsw" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="teacherinfo" EntityType="Self.teacherinfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TFQues" EntityType="Self.TFQues" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_exerDetail_exerL" Association="Self.FK_exerDetail_exerL">
+            <End Role="exerL" EntitySet="exerL" />
+            <End Role="exerDetail" EntitySet="exerDetail" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -166,6 +182,10 @@
           <EntitySet Name="exerDetail" EntityType="db_exerciseModel.exerDetail" />
           <EntitySet Name="exerL" EntityType="db_exerciseModel.exerL" />
           <EntitySet Name="studAnsw" EntityType="db_exerciseModel.studAnsw" />
+          <AssociationSet Name="FK_exerDetail_exerL" Association="db_exerciseModel.FK_exerDetail_exerL">
+            <End Role="exerL" EntitySet="exerL" />
+            <End Role="exerDetail" EntitySet="exerDetail" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="mchoiceQues">
           <Key>
@@ -278,6 +298,7 @@
           <Property Name="lid" Type="Int32" Nullable="false" />
           <Property Name="score" Type="Int32" />
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="exerL" Relationship="db_exerciseModel.FK_exerDetail_exerL" FromRole="exerDetail" ToRole="exerL" />
         </EntityType>
         <EntityType Name="exerL">
           <Key>
@@ -286,7 +307,8 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="teacherid" Type="String" MaxLength="4" FixedLength="true" Unicode="true" />
           <Property Name="public" Type="Boolean" />
-        </EntityType>
+          <NavigationProperty Name="exerDetail" Relationship="db_exerciseModel.FK_exerDetail_exerL" FromRole="exerL" ToRole="exerDetail" />
+          </EntityType>
         <EntityType Name="studAnsw">
           <Key>
             <PropertyRef Name="stid" />
@@ -299,6 +321,18 @@
           <Property Name="answ3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="mark" Type="Int32" />
         </EntityType>
+        <Association Name="FK_exerDetail_exerL">
+          <End Type="db_exerciseModel.exerL" Role="exerL" Multiplicity="1" />
+          <End Type="db_exerciseModel.exerDetail" Role="exerDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="exerL">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="exerDetail">
+              <PropertyRef Name="lid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

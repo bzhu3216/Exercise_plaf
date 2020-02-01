@@ -13,9 +13,10 @@
         <EntityTypeShape EntityType="db_exerciseModel.SQues" Width="1.5" PointX="8.25" PointY="0.875" />
         <EntityTypeShape EntityType="db_exerciseModel.AQues" Width="1.5" PointX="2.25" PointY="6" />
         <EntityTypeShape EntityType="db_exerciseModel.classExer" Width="1.5" PointX="6.75" PointY="4.75" />
-        <EntityTypeShape EntityType="db_exerciseModel.exerDetail" Width="1.5" PointX="6.375" PointY="7.875" />
+        <EntityTypeShape EntityType="db_exerciseModel.exerDetail" Width="1.5" PointX="7.375" PointY="8.125" />
         <EntityTypeShape EntityType="db_exerciseModel.exerL" Width="1.5" PointX="4.875" PointY="6.125" />
-        <EntityTypeShape EntityType="db_exerciseModel.studAnsw" Width="1.5" PointX="8.375" PointY="7.75" />
+        <EntityTypeShape EntityType="db_exerciseModel.studAnsw" Width="1.5" PointX="9.375" PointY="5.625" />
+        <AssociationConnector Association="db_exerciseModel.FK_exerDetail_exerL" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

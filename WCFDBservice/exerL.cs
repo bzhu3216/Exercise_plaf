@@ -14,8 +14,15 @@ namespace WCFDBservice
     
     public partial class exerL
     {
+        public exerL()
+        {
+            this.exerDetail = new HashSet<exerDetail>();
+        }
+    
         public int id { get; set; }
         public string teacherid { get; set; }
         public Nullable<bool> @public { get; set; }
+    
+        public virtual ICollection<exerDetail> exerDetail { get; set; }
     }
 }
