@@ -14,10 +14,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exercise_form", "Exercise_f
 		{9F338FC2-751E-4B3C-8B4E-7F5C4CFDBE00} = {9F338FC2-751E-4B3C-8B4E-7F5C4CFDBE00}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "C_q", "C_q\C_q.csproj", "{A78E33F5-651A-4480-AD37-D423A0B859C3}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataGridViewRichTextBox", "..\..\temp\DataGridViewRichTextBox\DataGridViewRichTextBox.csproj", "{D9826CC9-BF43-4B72-A211-19E312E8C184}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,22 +54,6 @@ Global
 		{0040A64A-2A1C-4FAE-9846-A51F0A4D18B4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0040A64A-2A1C-4FAE-9846-A51F0A4D18B4}.Release|x86.ActiveCfg = Release|Any CPU
 		{0040A64A-2A1C-4FAE-9846-A51F0A4D18B4}.Release|x86.Build.0 = Release|Any CPU
-		{A78E33F5-651A-4480-AD37-D423A0B859C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A78E33F5-651A-4480-AD37-D423A0B859C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A78E33F5-651A-4480-AD37-D423A0B859C3}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{A78E33F5-651A-4480-AD37-D423A0B859C3}.Debug|x86.Build.0 = Debug|Any CPU
-		{A78E33F5-651A-4480-AD37-D423A0B859C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A78E33F5-651A-4480-AD37-D423A0B859C3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A78E33F5-651A-4480-AD37-D423A0B859C3}.Release|x86.ActiveCfg = Release|Any CPU
-		{A78E33F5-651A-4480-AD37-D423A0B859C3}.Release|x86.Build.0 = Release|Any CPU
-		{D9826CC9-BF43-4B72-A211-19E312E8C184}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D9826CC9-BF43-4B72-A211-19E312E8C184}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D9826CC9-BF43-4B72-A211-19E312E8C184}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{D9826CC9-BF43-4B72-A211-19E312E8C184}.Debug|x86.Build.0 = Debug|Any CPU
-		{D9826CC9-BF43-4B72-A211-19E312E8C184}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D9826CC9-BF43-4B72-A211-19E312E8C184}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D9826CC9-BF43-4B72-A211-19E312E8C184}.Release|x86.ActiveCfg = Release|Any CPU
-		{D9826CC9-BF43-4B72-A211-19E312E8C184}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
