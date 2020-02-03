@@ -33,9 +33,10 @@
         <Property Name="id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
         <Property Name="CourseName" Type="Edm.String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         <Property Name="Courseid" Type="Edm.String" MaxLength="50" FixedLength="false" Unicode="false" />
-        <Property Name="numobjective" Type="Edm.Int32" />
-        <Property Name="numcontent" Type="Edm.Int32" />
-        <Property Name="diff" Type="Edm.Int32" />
+        <Property Name="numobjective" Type="Edm.Int32" Nullable="false" />
+        <Property Name="numcontent" Type="Edm.Int32" Nullable="false" />
+        <Property Name="diff" Type="Edm.Int32" Nullable="false" />
+        <NavigationProperty Name="exerL" Relationship="db_exerciseModel.FK_exerL_Course" ToRole="exerL" FromRole="Course" />
       </EntityType>
       <EntityType Name="teacherinfo">
         <Key>
@@ -119,11 +120,12 @@
           <PropertyRef Name="id" />
         </Key>
         <Property Name="id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
-        <Property Name="teacherid" Type="Edm.String" MaxLength="4" FixedLength="true" Unicode="true" />
-        <Property Name="name" Type="Edm.String" MaxLength="50" FixedLength="false" Unicode="false" />
-        <Property Name="courseid" Type="Edm.Int32" />
-        <Property Name="pub" Type="Edm.Boolean" />
+        <Property Name="teacherid" Type="Edm.String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="true" />
+        <Property Name="name" Type="Edm.String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        <Property Name="courseid" Type="Edm.Int32" Nullable="false" />
+        <Property Name="pub" Type="Edm.Boolean" Nullable="false" />
         <NavigationProperty Name="exerDetail" Relationship="db_exerciseModel.FK_exerDetail_exerL" ToRole="exerDetail" FromRole="exerL" />
+        <NavigationProperty Name="Course" Relationship="db_exerciseModel.FK_exerL_Course" ToRole="Course" FromRole="exerL" />
       </EntityType>
       <EntityType Name="studAnsw">
         <Key>
@@ -137,6 +139,18 @@
         <Property Name="answ3" Type="Edm.String" MaxLength="Max" FixedLength="false" Unicode="true" />
         <Property Name="mark" Type="Edm.Int32" />
       </EntityType>
+      <Association Name="FK_exerL_Course">
+        <End Type="db_exerciseModel.Course" Role="Course" Multiplicity="1" />
+        <End Type="db_exerciseModel.exerL" Role="exerL" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="Course">
+            <PropertyRef Name="id" />
+          </Principal>
+          <Dependent Role="exerL">
+            <PropertyRef Name="courseid" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
       <Association Name="FK_exerDetail_exerL">
         <End Type="db_exerciseModel.exerL" Role="exerL" Multiplicity="1" />
         <End Type="db_exerciseModel.exerDetail" Role="exerDetail" Multiplicity="*" />
@@ -163,6 +177,10 @@
         <EntitySet Name="exerDetail" EntityType="db_exerciseModel.exerDetail" />
         <EntitySet Name="exerL" EntityType="db_exerciseModel.exerL" />
         <EntitySet Name="studAnsw" EntityType="db_exerciseModel.studAnsw" />
+        <AssociationSet Name="FK_exerL_Course" Association="db_exerciseModel.FK_exerL_Course">
+          <End Role="Course" EntitySet="Course" />
+          <End Role="exerL" EntitySet="exerL" />
+        </AssociationSet>
         <AssociationSet Name="FK_exerDetail_exerL" Association="db_exerciseModel.FK_exerDetail_exerL">
           <End Role="exerDetail" EntitySet="exerDetail" />
           <End Role="exerL" EntitySet="exerL" />

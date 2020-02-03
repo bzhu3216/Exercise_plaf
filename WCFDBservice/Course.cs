@@ -14,11 +14,18 @@ namespace WCFDBservice
     
     public partial class Course
     {
+        public Course()
+        {
+            this.exerL = new HashSet<exerL>();
+        }
+    
         public int id { get; set; }
         public string CourseName { get; set; }
         public string Courseid { get; set; }
-        public Nullable<int> numobjective { get; set; }
-        public Nullable<int> numcontent { get; set; }
-        public Nullable<int> diff { get; set; }
+        public int numobjective { get; set; }
+        public int numcontent { get; set; }
+        public int diff { get; set; }
+    
+        public virtual ICollection<exerL> exerL { get; set; }
     }
 }

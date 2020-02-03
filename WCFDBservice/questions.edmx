@@ -48,9 +48,9 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CourseName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Courseid" Type="varchar" MaxLength="50" />
-          <Property Name="numobjective" Type="int" />
-          <Property Name="numcontent" Type="int" />
-          <Property Name="diff" Type="int" />
+          <Property Name="numobjective" Type="int" Nullable="false" />
+          <Property Name="numcontent" Type="int" Nullable="false" />
+          <Property Name="diff" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="exerDetail">
           <Key>
@@ -69,10 +69,10 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="teacherid" Type="nchar" MaxLength="4" />
-          <Property Name="pub" Type="bit" />
-          <Property Name="name" Type="varchar" MaxLength="50" />
-          <Property Name="courseid" Type="int" />
+          <Property Name="teacherid" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="pub" Type="bit" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="courseid" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="mchoiceQues">
           <Key>
@@ -151,6 +151,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_exerL_Course">
+          <End Role="Course" Type="Self.Course" Multiplicity="1" />
+          <End Role="exerL" Type="Self.exerL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="exerL">
+              <PropertyRef Name="courseid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="db_exerciseModelStoreContainer">
           <EntitySet Name="AQues" EntityType="Self.AQues" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="classExer" EntityType="Self.classExer" Schema="dbo" store:Type="Tables" />
@@ -166,6 +178,10 @@
           <AssociationSet Name="FK_exerDetail_exerL" Association="Self.FK_exerDetail_exerL">
             <End Role="exerL" EntitySet="exerL" />
             <End Role="exerDetail" EntitySet="exerDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_exerL_Course" Association="Self.FK_exerL_Course">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="exerL" EntitySet="exerL" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -187,6 +203,10 @@
           <AssociationSet Name="FK_exerDetail_exerL" Association="db_exerciseModel.FK_exerDetail_exerL">
             <End Role="exerL" EntitySet="exerL" />
             <End Role="exerDetail" EntitySet="exerDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_exerL_Course" Association="db_exerciseModel.FK_exerL_Course">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="exerL" EntitySet="exerL" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="mchoiceQues">
@@ -221,9 +241,10 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CourseName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Courseid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="numobjective" Type="Int32" />
-          <Property Name="numcontent" Type="Int32" />
-          <Property Name="diff" Type="Int32" />
+          <Property Name="numobjective" Type="Int32" Nullable="false" />
+          <Property Name="numcontent" Type="Int32" Nullable="false" />
+          <Property Name="diff" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="exerL" Relationship="db_exerciseModel.FK_exerL_Course" FromRole="Course" ToRole="exerL" />
         </EntityType>
         <EntityType Name="teacherinfo">
           <Key>
@@ -307,11 +328,12 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="teacherid" Type="String" MaxLength="4" FixedLength="true" Unicode="true" />
+          <Property Name="teacherid" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
           <NavigationProperty Name="exerDetail" Relationship="db_exerciseModel.FK_exerDetail_exerL" FromRole="exerL" ToRole="exerDetail" />
-          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="courseid" Type="Int32" />
-          <Property Name="pub" Type="Boolean" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="courseid" Type="Int32" Nullable="false" />
+          <Property Name="pub" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Course" Relationship="db_exerciseModel.FK_exerL_Course" FromRole="exerL" ToRole="Course" />
           </EntityType>
         <EntityType Name="studAnsw">
           <Key>
@@ -334,6 +356,18 @@
             </Principal>
             <Dependent Role="exerDetail">
               <PropertyRef Name="lid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_exerL_Course">
+          <End Type="db_exerciseModel.Course" Role="Course" Multiplicity="1" />
+          <End Type="db_exerciseModel.exerL" Role="exerL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="exerL">
+              <PropertyRef Name="courseid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>

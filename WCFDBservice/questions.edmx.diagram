@@ -7,7 +7,7 @@
       <Diagram DiagramId="d257f13d974d494399d96438caf30c25" Name="Diagram1">
         <EntityTypeShape EntityType="db_exerciseModel.mchoiceQues" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="db_exerciseModel.classinfo" Width="1.5" PointX="3.75" PointY="0.75" />
-        <EntityTypeShape EntityType="db_exerciseModel.Course" Width="1.5" PointX="3.75" PointY="3.75" />
+        <EntityTypeShape EntityType="db_exerciseModel.Course" Width="1.5" PointX="3.5" PointY="3.375" />
         <EntityTypeShape EntityType="db_exerciseModel.teacherinfo" Width="1.5" PointX="0.75" PointY="4.75" />
         <EntityTypeShape EntityType="db_exerciseModel.TFQues" Width="1.5" PointX="6.375" PointY="0.75" />
         <EntityTypeShape EntityType="db_exerciseModel.SQues" Width="1.5" PointX="8.25" PointY="0.875" />
@@ -17,6 +17,7 @@
         <EntityTypeShape EntityType="db_exerciseModel.exerL" Width="1.5" PointX="4.875" PointY="6.125" />
         <EntityTypeShape EntityType="db_exerciseModel.studAnsw" Width="1.5" PointX="9.375" PointY="5.625" />
         <AssociationConnector Association="db_exerciseModel.FK_exerDetail_exerL" />
+        <AssociationConnector Association="db_exerciseModel.FK_exerL_Course" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

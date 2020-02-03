@@ -22,9 +22,10 @@ namespace WCFDBservice
         public int id { get; set; }
         public string teacherid { get; set; }
         public string name { get; set; }
-        public Nullable<int> courseid { get; set; }
-        public Nullable<bool> pub { get; set; }
+        public int courseid { get; set; }
+        public bool pub { get; set; }
     
         public virtual ICollection<exerDetail> exerDetail { get; set; }
+        public virtual Course Course { get; set; }
     }
 }
