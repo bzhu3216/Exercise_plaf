@@ -178,11 +178,78 @@ namespace Exercise_form
                 }
                 ////endTF
 
+                //startSques
+                if (a == 3)
+                {
+                    // comboBox1.Text = comboBox1.Items[a].ToString();
+                    comboBox5.Text = "5";
+                    var questionQuery3 = (from o in context.SQues 
+                                          where (b1 || o.objective == c1)
+                                       && (b2 || o.con == c2)
+                                       && (b3 || o.diff == c3)
+                                          select o).Skip(pageNum * pagesize).Take(pagesize);
+                    List<SQues> lmq = questionQuery3.ToList<SQues>();
+                    this.dataGridView1.RowTemplate.Height = 100;
+                    foreach (SQues mcq in lmq)
+                    {
+                        System.IO.MemoryStream mstream = new System.IO.MemoryStream(mcq.question, false);
+                        this.richTextBox1.LoadFile(mstream, RichTextBoxStreamType.RichText);
+                        //   rrtf.Add(richTextBox1.Rtf);
+                        DataGridViewRow dgvr = new DataGridViewRow();
+                        dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+                        foreach (DataGridViewColumn c in this.dataGridView1.Columns)
+                        {
+
+                            dgvr.Cells.Add(c.CellTemplate.Clone() as DataGridViewCell);
+                        }
+                        dgvr.Cells[1].Value = richTextBox1.Rtf;
+                        dgvr.Cells[0].Value = mcq.id;
+                        int hh = (int)(richTextBox1.Rtf.Length / 10);
+                        if (hh > 300) hh = 300;
+                        dgvr.Height = hh;
+                        this.dataGridView1.Rows.Add(dgvr);
+
+                    }
+
+                }
+                //endSques
 
 
+                //startAques
+                if (a == 4)
+                {
+                    // comboBox1.Text = comboBox1.Items[a].ToString();
+                    comboBox5.Text = "10";
+                    var questionQuery3 = (from o in context.AQues 
+                                          where (b1 || o.objective == c1)
+                                       && (b2 || o.con == c2)
+                                       && (b3 || o.diff == c3)
+                                          select o).Skip(pageNum * pagesize).Take(pagesize);
+                    List<AQues> lmq = questionQuery3.ToList<AQues>();
+                    this.dataGridView1.RowTemplate.Height = 100;
+                    foreach (AQues mcq in lmq)
+                    {
+                        System.IO.MemoryStream mstream = new System.IO.MemoryStream(mcq.question, false);
+                        this.richTextBox1.LoadFile(mstream, RichTextBoxStreamType.RichText);
+                        //   rrtf.Add(richTextBox1.Rtf);
+                        DataGridViewRow dgvr = new DataGridViewRow();
+                        dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+                        foreach (DataGridViewColumn c in this.dataGridView1.Columns)
+                        {
 
+                            dgvr.Cells.Add(c.CellTemplate.Clone() as DataGridViewCell);
+                        }
+                        dgvr.Cells[1].Value = richTextBox1.Rtf;
+                        dgvr.Cells[0].Value = mcq.id;
+                        int hh = (int)(richTextBox1.Rtf.Length / 10);
+                        if (hh > 300) hh = 300;
+                        dgvr.Height = hh;
+                        this.dataGridView1.Rows.Add(dgvr);
 
+                    }
 
+                }
+                //endAques
 
 
 

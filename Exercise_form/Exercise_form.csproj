@@ -126,11 +126,18 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DB_exceltool.cs" />
+    <Compile Include="DB_u.cs" />
     <Compile Include="EditererList.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="EditererList.Designer.cs">
       <DependentUpon>EditererList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Edit_cal_exerL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Edit_cal_exerL.Designer.cs">
+      <DependentUpon>Edit_cal_exerL.cs</DependentUpon>
     </Compile>
     <Compile Include="exerList.cs">
       <SubType>Form</SubType>
@@ -203,6 +210,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditererList.resx">
       <DependentUpon>EditererList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Edit_cal_exerL.resx">
+      <DependentUpon>Edit_cal_exerL.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="exerList.resx">
       <DependentUpon>exerList.cs</DependentUpon>

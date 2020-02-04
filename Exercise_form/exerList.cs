@@ -182,6 +182,31 @@ namespace Exercise_form
 
         }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+            if (listBox2.SelectedIndex >= 0)
+            {
+                pp.exerl1 = el[listBox2.SelectedIndex].id;
+                Edit_cal_exerL mq = null;
+                if (mq == null || mq.IsDisposed)
+                {
+                    mq = new Edit_cal_exerL();
+                    mq.ShowDialog();
+                    // mq.Show();
+                }
+                else
+                {
+                    mq.Activate();
+                    mq.WindowState = FormWindowState.Normal;
+                }
+            }
+
+
+
+
+        }
+
 
 
 
