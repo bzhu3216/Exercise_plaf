@@ -1,0 +1,190 @@
+﻿<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <edmx:DataServices m:DataServiceVersion="1.0" m:MaxDataServiceVersion="3.0" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
+    <Schema Namespace="db_exerciseModel" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <EntityType Name="mchoiceQues">
+        <Key>
+          <PropertyRef Name="id" />
+        </Key>
+        <Property Name="id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="con" Type="Edm.Int32" />
+        <Property Name="objective" Type="Edm.Int32" />
+        <Property Name="diff" Type="Edm.Int32" />
+        <Property Name="usenum" Type="Edm.Int32" />
+        <Property Name="errornum" Type="Edm.Int32" />
+        <Property Name="question" Type="Edm.Binary" MaxLength="Max" FixedLength="false" />
+        <Property Name="courseid" Type="Edm.Int32" />
+        <Property Name="answ" Type="Edm.Int32" />
+        <Property Name="teacherid" Type="Edm.String" MaxLength="4" FixedLength="true" Unicode="true" />
+      </EntityType>
+      <EntityType Name="classinfo">
+        <Key>
+          <PropertyRef Name="classid" />
+        </Key>
+        <Property Name="classid" Type="Edm.Int32" Nullable="false" />
+        <Property Name="classinfo1" Type="Edm.String" MaxLength="100" FixedLength="false" Unicode="false" />
+        <Property Name="courseid" Type="Edm.Int32" />
+        <Property Name="teacher" Type="Edm.String" MaxLength="4" FixedLength="true" Unicode="true" />
+        <Property Name="addtime" Type="Edm.DateTime" Precision="0" />
+      </EntityType>
+      <EntityType Name="Course">
+        <Key>
+          <PropertyRef Name="id" />
+        </Key>
+        <Property Name="id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="CourseName" Type="Edm.String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        <Property Name="Courseid" Type="Edm.String" MaxLength="50" FixedLength="false" Unicode="false" />
+        <Property Name="numobjective" Type="Edm.Int32" Nullable="false" />
+        <Property Name="numcontent" Type="Edm.Int32" Nullable="false" />
+        <Property Name="diff" Type="Edm.Int32" Nullable="false" />
+        <NavigationProperty Name="exerL" Relationship="db_exerciseModel.FK_exerL_Course" ToRole="exerL" FromRole="Course" />
+      </EntityType>
+      <EntityType Name="teacherinfo">
+        <Key>
+          <PropertyRef Name="teacherid" />
+        </Key>
+        <Property Name="teacherid" Type="Edm.String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="true" />
+        <Property Name="name" Type="Edm.String" MaxLength="10" FixedLength="true" Unicode="true" />
+        <Property Name="pd" Type="Edm.String" MaxLength="10" FixedLength="true" Unicode="true" />
+      </EntityType>
+      <EntityType Name="TFQues">
+        <Key>
+          <PropertyRef Name="id" />
+        </Key>
+        <Property Name="id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="teacherid" Type="Edm.String" MaxLength="4" FixedLength="true" Unicode="true" />
+        <Property Name="courseid" Type="Edm.Int32" />
+        <Property Name="con" Type="Edm.Int32" />
+        <Property Name="objective" Type="Edm.Int32" />
+        <Property Name="diff" Type="Edm.Int32" />
+        <Property Name="usenum" Type="Edm.Int32" />
+        <Property Name="errornum" Type="Edm.Int32" />
+        <Property Name="question" Type="Edm.Binary" MaxLength="Max" FixedLength="false" />
+        <Property Name="answ" Type="Edm.Boolean" />
+      </EntityType>
+      <EntityType Name="SQues">
+        <Key>
+          <PropertyRef Name="id" />
+        </Key>
+        <Property Name="id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="teacherid" Type="Edm.String" MaxLength="4" FixedLength="true" Unicode="true" />
+        <Property Name="courseid" Type="Edm.Int32" />
+        <Property Name="con" Type="Edm.Int32" />
+        <Property Name="objective" Type="Edm.Int32" />
+        <Property Name="diff" Type="Edm.Int32" />
+        <Property Name="usenum" Type="Edm.Int32" />
+        <Property Name="errornum" Type="Edm.Int32" />
+        <Property Name="question" Type="Edm.Binary" MaxLength="Max" FixedLength="false" />
+        <Property Name="answ" Type="Edm.Binary" MaxLength="Max" FixedLength="false" />
+      </EntityType>
+      <EntityType Name="AQues">
+        <Key>
+          <PropertyRef Name="id" />
+        </Key>
+        <Property Name="id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="teacherid" Type="Edm.String" MaxLength="4" FixedLength="true" Unicode="true" />
+        <Property Name="courseid" Type="Edm.Int32" />
+        <Property Name="con" Type="Edm.Int32" />
+        <Property Name="objective" Type="Edm.Int32" />
+        <Property Name="diff" Type="Edm.Int32" />
+        <Property Name="usenum" Type="Edm.Int32" />
+        <Property Name="errornum" Type="Edm.Int32" />
+        <Property Name="question" Type="Edm.Binary" MaxLength="Max" FixedLength="false" />
+        <Property Name="answ" Type="Edm.Binary" MaxLength="Max" FixedLength="false" />
+      </EntityType>
+      <EntityType Name="classExer">
+        <Key>
+          <PropertyRef Name="cid" />
+          <PropertyRef Name="eid" />
+        </Key>
+        <Property Name="cid" Type="Edm.Int32" Nullable="false" />
+        <Property Name="eid" Type="Edm.Int32" Nullable="false" />
+        <Property Name="starttime" Type="Edm.DateTime" Precision="0" />
+        <Property Name="endtime" Type="Edm.DateTime" Precision="0" />
+        <Property Name="dispaly" Type="Edm.Int32" />
+      </EntityType>
+      <EntityType Name="exerL">
+        <Key>
+          <PropertyRef Name="id" />
+        </Key>
+        <Property Name="id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="teacherid" Type="Edm.String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="true" />
+        <Property Name="name" Type="Edm.String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        <Property Name="courseid" Type="Edm.Int32" Nullable="false" />
+        <Property Name="pub" Type="Edm.Boolean" Nullable="false" />
+        <NavigationProperty Name="Course" Relationship="db_exerciseModel.FK_exerL_Course" ToRole="Course" FromRole="exerL" />
+      </EntityType>
+      <EntityType Name="studAnsw">
+        <Key>
+          <PropertyRef Name="did" />
+          <PropertyRef Name="stid" />
+        </Key>
+        <Property Name="stid" Type="Edm.Int32" Nullable="false" />
+        <Property Name="did" Type="Edm.Int32" Nullable="false" />
+        <Property Name="answ1" Type="Edm.Int32" />
+        <Property Name="answ2" Type="Edm.Boolean" />
+        <Property Name="answ3" Type="Edm.String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        <Property Name="mark" Type="Edm.Int32" />
+      </EntityType>
+      <EntityType Name="class_student">
+        <Key>
+          <PropertyRef Name="classid" />
+          <PropertyRef Name="studentid" />
+        </Key>
+        <Property Name="classid" Type="Edm.Int32" Nullable="false" />
+        <Property Name="studentid" Type="Edm.String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+        <Property Name="classno" Type="Edm.Int32" />
+      </EntityType>
+      <EntityType Name="StudInfo">
+        <Key>
+          <PropertyRef Name="studentid" />
+        </Key>
+        <Property Name="studentid" Type="Edm.String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="true" />
+        <Property Name="name" Type="Edm.String" MaxLength="50" FixedLength="false" Unicode="false" />
+        <Property Name="pd" Type="Edm.String" MaxLength="8" FixedLength="false" Unicode="false" />
+      </EntityType>
+      <EntityType Name="exerDetail">
+        <Key>
+          <PropertyRef Name="id" />
+        </Key>
+        <Property Name="typeq" Type="Edm.Int32" Nullable="false" />
+        <Property Name="qid" Type="Edm.Int32" Nullable="false" />
+        <Property Name="lid" Type="Edm.Int32" Nullable="false" />
+        <Property Name="score" Type="Edm.Int32" />
+        <Property Name="id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+      </EntityType>
+      <Association Name="FK_exerL_Course">
+        <End Type="db_exerciseModel.Course" Role="Course" Multiplicity="1" />
+        <End Type="db_exerciseModel.exerL" Role="exerL" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="Course">
+            <PropertyRef Name="id" />
+          </Principal>
+          <Dependent Role="exerL">
+            <PropertyRef Name="courseid" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+    </Schema>
+    <Schema Namespace="WCFDBservice" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <EntityContainer Name="db_exerciseEntities" m:IsDefaultEntityContainer="true" p6:LazyLoadingEnabled="true" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntitySet Name="mchoiceQues" EntityType="db_exerciseModel.mchoiceQues" />
+        <EntitySet Name="classinfo" EntityType="db_exerciseModel.classinfo" />
+        <EntitySet Name="Course" EntityType="db_exerciseModel.Course" />
+        <EntitySet Name="teacherinfo" EntityType="db_exerciseModel.teacherinfo" />
+        <EntitySet Name="TFQues" EntityType="db_exerciseModel.TFQues" />
+        <EntitySet Name="SQues" EntityType="db_exerciseModel.SQues" />
+        <EntitySet Name="AQues" EntityType="db_exerciseModel.AQues" />
+        <EntitySet Name="classExer" EntityType="db_exerciseModel.classExer" />
+        <EntitySet Name="exerL" EntityType="db_exerciseModel.exerL" />
+        <EntitySet Name="studAnsw" EntityType="db_exerciseModel.studAnsw" />
+        <EntitySet Name="class_student" EntityType="db_exerciseModel.class_student" />
+        <EntitySet Name="StudInfoes" EntityType="db_exerciseModel.StudInfo" />
+        <EntitySet Name="exerDetail" EntityType="db_exerciseModel.exerDetail" />
+        <AssociationSet Name="FK_exerL_Course" Association="db_exerciseModel.FK_exerL_Course">
+          <End Role="Course" EntitySet="Course" />
+          <End Role="exerL" EntitySet="exerL" />
+        </AssociationSet>
+      </EntityContainer>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

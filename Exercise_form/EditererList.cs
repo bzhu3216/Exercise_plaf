@@ -17,6 +17,7 @@ namespace Exercise_form
     {
         private db_exerciseEntities context;
         param pp;
+        List<exerDetail> ell=null;
         // List<Course> lcs = null;
         //  List<exerL> el = null;
         // int cid = -1;
@@ -320,7 +321,7 @@ namespace Exercise_form
                 var questionQuery1 = from o in  context.exerDetail  
                                      where o.lid == pp.exerl1 && o.typeq == 0
                                      select o;
-                List<exerDetail> ell = questionQuery1.ToList<exerDetail>();
+                ell = questionQuery1.ToList<exerDetail>();
 
                 int numm = 0;
                 foreach (exerDetail el in ell)
@@ -339,7 +340,8 @@ namespace Exercise_form
 
                         dgvr.Cells.Add(c.CellTemplate.Clone() as DataGridViewCell);
                     }
-                    dgvr.Cells[1].Value = richTextBox1.Rtf;
+                    dgvr.Cells[2].Value = richTextBox1.Rtf;
+                    dgvr.Cells[1].Value = mcq.id;
                     numm++;
                     dgvr.Cells[0].Value = numm;
                     int hh = (int)(richTextBox1.Rtf.Length / 10);
@@ -354,11 +356,38 @@ namespace Exercise_form
 
             }
             if (a == 1)
-            { 
-            var questionQuery2 = from o in context.exerDetail
-                                 join cc in context.TFQues on o.qid equals cc.id
-                                 where (o.lid == pp.exerl1 && o.typeq == 0)
-                                 select cc;
+            {
+                var questionQuery1 = from o in context.exerDetail
+                                     where o.lid == pp.exerl1 && o.typeq == 1
+                                     select o;
+                ell = questionQuery1.ToList<exerDetail>();
+
+                int numm = 0;
+                foreach (exerDetail el in ell)
+                {
+                    var questionQuery2 = from o in context.TFQues
+                                         where o.id == el.qid
+                                         select o;
+                    TFQues mcq = questionQuery2.First<TFQues>();
+                    System.IO.MemoryStream mstream = new System.IO.MemoryStream(mcq.question, false);
+                    this.richTextBox1.LoadFile(mstream, RichTextBoxStreamType.RichText);
+                    //   rrtf.Add(richTextBox1.Rtf);
+                    DataGridViewRow dgvr = new DataGridViewRow();
+                    dataGridView2.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+                    foreach (DataGridViewColumn c in this.dataGridView2.Columns)
+                    {
+
+                        dgvr.Cells.Add(c.CellTemplate.Clone() as DataGridViewCell);
+                    }
+                    dgvr.Cells[2].Value = richTextBox1.Rtf;
+                    dgvr.Cells[1].Value = mcq.id;
+                    numm++;
+                    dgvr.Cells[0].Value = numm;
+                    int hh = (int)(richTextBox1.Rtf.Length / 10);
+                    if (hh > 300) hh = 300;
+                    dgvr.Height = hh;
+                    this.dataGridView2.Rows.Add(dgvr);
+                }
             }
             /*
             var questionQuery3 = from o in context.exerDetail
@@ -368,19 +397,72 @@ namespace Exercise_form
                                  */
             if (a == 3)
             {
-                var questionQuery4 = from o in context.exerDetail
-                                     join cc in context.SQues on o.qid equals cc.id
-                                     where (o.lid == pp.exerl1 && o.typeq == 0)
-                                     select cc;
+                var questionQuery1 = from o in context.exerDetail
+                                     where o.lid == pp.exerl1 && o.typeq == 3
+                                     select o;
+                ell = questionQuery1.ToList<exerDetail>();
+
+                int numm = 0;
+                foreach (exerDetail el in ell)
+                {
+                    var questionQuery2 = from o in context.SQues
+                                         where o.id == el.qid
+                                         select o;
+                    SQues mcq = questionQuery2.First<SQues>();
+                    System.IO.MemoryStream mstream = new System.IO.MemoryStream(mcq.question, false);
+                    this.richTextBox1.LoadFile(mstream, RichTextBoxStreamType.RichText);
+                    //   rrtf.Add(richTextBox1.Rtf);
+                    DataGridViewRow dgvr = new DataGridViewRow();
+                    dataGridView2.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+                    foreach (DataGridViewColumn c in this.dataGridView2.Columns)
+                    {
+
+                        dgvr.Cells.Add(c.CellTemplate.Clone() as DataGridViewCell);
+                    }
+                    dgvr.Cells[2].Value = richTextBox1.Rtf;
+                    dgvr.Cells[1].Value = mcq.id;
+                    numm++;
+                    dgvr.Cells[0].Value = numm;
+                    int hh = (int)(richTextBox1.Rtf.Length / 10);
+                    if (hh > 300) hh = 300;
+                    dgvr.Height = hh;
+                    this.dataGridView2.Rows.Add(dgvr);
+                }
             }
             if (a == 4)
-            { 
-                var questionQuery5 = from o in context.exerDetail
-                                 join cc in context.AQues  on o.qid equals cc.id
-                                 where (o.lid == pp.exerl1 && o.typeq == 0)
-                                 select cc;
-            }
+            {
+                var questionQuery1 = from o in context.exerDetail
+                                     where o.lid == pp.exerl1 && o.typeq == 4
+                                     select o;
+                ell = questionQuery1.ToList<exerDetail>();
 
+                int numm = 0;
+                foreach (exerDetail el in ell)
+                {
+                    var questionQuery2 = from o in context.AQues
+                                         where o.id == el.qid
+                                         select o;
+                    AQues mcq = questionQuery2.First<AQues>();
+                    System.IO.MemoryStream mstream = new System.IO.MemoryStream(mcq.question, false);
+                    this.richTextBox1.LoadFile(mstream, RichTextBoxStreamType.RichText);
+                    //   rrtf.Add(richTextBox1.Rtf);
+                    DataGridViewRow dgvr = new DataGridViewRow();
+                    dataGridView2.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+                    foreach (DataGridViewColumn c in this.dataGridView2.Columns)
+                    {
+
+                        dgvr.Cells.Add(c.CellTemplate.Clone() as DataGridViewCell);
+                    }
+                    dgvr.Cells[2].Value = richTextBox1.Rtf;
+                    dgvr.Cells[1].Value = mcq.id;
+                    numm++;
+                    dgvr.Cells[0].Value = numm;
+                    int hh = (int)(richTextBox1.Rtf.Length / 10);
+                    if (hh > 300) hh = 300;
+                    dgvr.Height = hh;
+                    this.dataGridView2.Rows.Add(dgvr);
+                }
+            }
 
 
 
@@ -392,22 +474,21 @@ namespace Exercise_form
         private void button2_Click(object sender, EventArgs e)
         {
             int selid = -1;
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            for (int i = 0; i < dataGridView2.Rows.Count; i++)
             {
-                if (dataGridView1.Rows[i].Selected == true)
+                if (dataGridView2.Rows[i].Selected == true)
                 {
-                    selid = int.Parse(dataGridView1.Rows[i].Cells[0].Value.ToString());
+                    selid = int.Parse(dataGridView2.Rows[i].Cells[1].Value.ToString());
                 }
             }
             if (selid != -1)
             {
-                exerDetail edl = new exerDetail();
-                edl.lid = pp.exerl1;
-                edl.qid = selid;
-                edl.score = int.Parse(comboBox5.Text);
-                edl.typeq = comboBox1.SelectedIndex;
-                saveExerD(edl);
-                reloadd2(comboBox1.SelectedIndex);
+                exerDetail eed= ell.Find(x => x.qid  == selid);
+                context.DeleteObject(eed);
+                context.SaveChanges();
+                reloadd2(comboBox1.SelectedIndex);                               
+                
+                  
 
             }
 
@@ -415,6 +496,39 @@ namespace Exercise_form
 
 
 
+
+
+
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridView2_SelectionChanged(object sender, EventArgs e)
+        {
+
+
+            int selid = -1;
+            for (int i = 0; i < dataGridView2.Rows.Count; i++)
+            {
+                if (dataGridView2.Rows[i].Selected == true)
+                {
+                    selid = int.Parse(dataGridView2.Rows[i].Cells[1].Value.ToString());
+                }
+            }
+            if (selid != -1)
+            {
+
+                exerDetail eed = ell.Find(x => x.qid == selid);
+                comboBox5.Text = eed.score.ToString();
+
+
+
+
+
+            }
 
 
 
