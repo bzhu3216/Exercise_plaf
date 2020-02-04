@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Exercise_form.ServiceReference1;
 using System.Data.Services.Client;
 
+
 namespace Exercise_form
 {
     public partial class EditererList : Form
@@ -198,6 +199,7 @@ namespace Exercise_form
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             display(comboBox1.SelectedIndex,true );
+            reloadd2(comboBox1.SelectedIndex);
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -241,12 +243,26 @@ namespace Exercise_form
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-
-
-
-
-
+           
+            int selid = -1;
+            for(int i = 0; i < dataGridView1.Rows.Count; i++)
+          {
+                if (dataGridView1.Rows[i].Selected == true)
+                {
+                   selid  =int.Parse( dataGridView1.Rows[i].Cells[0].Value.ToString());
+                }
+            }
+            if (selid != -1)
+                {
+                exerDetail edl = new exerDetail();
+                edl.lid = pp.exerl1;
+                edl.qid = selid;
+                edl.score = int.Parse(comboBox5.Text);
+                edl.typeq = comboBox1.SelectedIndex;
+                saveExerD(edl);
+                reloadd2(comboBox1.SelectedIndex);
+                
+                    }
 
 
 
@@ -256,8 +272,154 @@ namespace Exercise_form
 
         }
 
+        //////////////////////startexerdetail
+        private void saveExerD(exerDetail exl)
+        {   // context.StudInfo1Set
+          // exerDetail etemp = null;
+            var q1 = from o in context.exerDetail
+                     where o.lid == exl.lid && o.qid == exl.qid && o.typeq == exl.typeq
+                     select o;
+           
+
+            if (q1.Count<exerDetail>() == 0)
+
+            {
+                context.AddToexerDetail(exl);
+                context.SaveChanges();
+            }
+            else
+            {
 
 
+                MessageBox.Show("该题目已经存在！");
+
+            }
+            
+
+
+        }
+        ////////////////////endexerdetail
+
+        //////////////////////startexerdetail
+        private void reloadd2(int a)
+        {
+            if (dataGridView2.DataSource != null)
+            {
+                DataTable dt = (DataTable)dataGridView2.DataSource;
+                dt.Rows.Clear();
+                dataGridView2.DataSource = dt;
+            }
+            else
+
+            {
+                dataGridView2.Rows.Clear();
+
+            }
+            if (a == 0)
+            {
+                var questionQuery1 = from o in  context.exerDetail  
+                                     where o.lid == pp.exerl1 && o.typeq == 0
+                                     select o;
+                List<exerDetail> ell = questionQuery1.ToList<exerDetail>();
+
+                int numm = 0;
+                foreach (exerDetail el in ell)
+                {
+                    var questionQuery2 = from o in context.mchoiceQues 
+                                         where o.id==el.qid 
+                                         select o;
+                    mchoiceQues mcq = questionQuery2.First<mchoiceQues>();
+                    System.IO.MemoryStream mstream = new System.IO.MemoryStream(mcq.question, false);
+                    this.richTextBox1.LoadFile(mstream, RichTextBoxStreamType.RichText);
+                    //   rrtf.Add(richTextBox1.Rtf);
+                    DataGridViewRow dgvr = new DataGridViewRow();
+                    dataGridView2.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+                    foreach (DataGridViewColumn c in this.dataGridView2.Columns)
+                    {
+
+                        dgvr.Cells.Add(c.CellTemplate.Clone() as DataGridViewCell);
+                    }
+                    dgvr.Cells[1].Value = richTextBox1.Rtf;
+                    numm++;
+                    dgvr.Cells[0].Value = numm;
+                    int hh = (int)(richTextBox1.Rtf.Length / 10);
+                    if (hh > 300) hh = 300;
+                    dgvr.Height = hh;
+                    this.dataGridView2.Rows.Add(dgvr);
+
+                }
+
+
+
+
+            }
+            if (a == 1)
+            { 
+            var questionQuery2 = from o in context.exerDetail
+                                 join cc in context.TFQues on o.qid equals cc.id
+                                 where (o.lid == pp.exerl1 && o.typeq == 0)
+                                 select cc;
+            }
+            /*
+            var questionQuery3 = from o in context.exerDetail
+                                 join cc in context. on o.qid equals cc.id
+                                 where (o.lid == pp.exerl1 && o.typeq == 0)
+                                 select o;
+                                 */
+            if (a == 3)
+            {
+                var questionQuery4 = from o in context.exerDetail
+                                     join cc in context.SQues on o.qid equals cc.id
+                                     where (o.lid == pp.exerl1 && o.typeq == 0)
+                                     select cc;
+            }
+            if (a == 4)
+            { 
+                var questionQuery5 = from o in context.exerDetail
+                                 join cc in context.AQues  on o.qid equals cc.id
+                                 where (o.lid == pp.exerl1 && o.typeq == 0)
+                                 select cc;
+            }
+
+
+
+
+
+
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            int selid = -1;
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            {
+                if (dataGridView1.Rows[i].Selected == true)
+                {
+                    selid = int.Parse(dataGridView1.Rows[i].Cells[0].Value.ToString());
+                }
+            }
+            if (selid != -1)
+            {
+                exerDetail edl = new exerDetail();
+                edl.lid = pp.exerl1;
+                edl.qid = selid;
+                edl.score = int.Parse(comboBox5.Text);
+                edl.typeq = comboBox1.SelectedIndex;
+                saveExerD(edl);
+                reloadd2(comboBox1.SelectedIndex);
+
+            }
+
+
+
+
+
+
+
+
+        }
+        ////////////////////endexerdetail
 
 
         ///////////////end

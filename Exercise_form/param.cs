@@ -15,6 +15,7 @@ namespace Exercise_form
         public param()
         {
             context = new db_exerciseEntities(svcUri);
+            
         }
 
     }

@@ -134,6 +134,9 @@
     <Compile Include="classinfo.cs">
       <DependentUpon>questions.tt</DependentUpon>
     </Compile>
+    <Compile Include="class_student.cs">
+      <DependentUpon>questions.tt</DependentUpon>
+    </Compile>
     <Compile Include="Course.cs">
       <DependentUpon>questions.tt</DependentUpon>
     </Compile>
@@ -168,9 +171,13 @@
     <Compile Include="studAnsw.cs">
       <DependentUpon>questions.tt</DependentUpon>
     </Compile>
+    <Compile Include="StudInfo.cs">
+      <DependentUpon>questions.tt</DependentUpon>
+    </Compile>
     <Compile Include="teacherinfo.cs">
       <DependentUpon>questions.tt</DependentUpon>
     </Compile>
+    <Compile Include="testfind.cs" />
     <Compile Include="TFQues.cs">
       <DependentUpon>questions.tt</DependentUpon>
     </Compile>

@@ -12,14 +12,10 @@ namespace WCFDBservice
     using System;
     using System.Collections.Generic;
     
-    public partial class exerL
+    public partial class class_student
     {
-        public int id { get; set; }
-        public string teacherid { get; set; }
-        public string name { get; set; }
-        public int courseid { get; set; }
-        public bool pub { get; set; }
-    
-        public virtual Course Course { get; set; }
+        public int classid { get; set; }
+        public string studentid { get; set; }
+        public Nullable<int> classno { get; set; }
     }
 }

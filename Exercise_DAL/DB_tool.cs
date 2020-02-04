@@ -18,6 +18,7 @@ namespace Exercise_DAL
                if( cn.StudInfo1Set.Find(student.studentid)==null)
                 cn.StudInfo1Set.Add(student);
                 cn.SaveChanges();
+                
                 return 1;
             }
             //catch (DbEntityValidationException ex)
@@ -69,7 +70,7 @@ namespace Exercise_DAL
                 int delid = c_studl[0].classid;
                 var delobj = cn.class_student.Where<class_student>(e => e.classid == delid);
                 cn.class_student.RemoveRange(delobj);
-
+               
 
                 foreach (class_student c_stud in c_studl)      
                         cn.class_student.Add(c_stud);

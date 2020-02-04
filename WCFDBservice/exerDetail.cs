@@ -19,7 +19,5 @@ namespace WCFDBservice
         public int lid { get; set; }
         public Nullable<int> score { get; set; }
         public int id { get; set; }
-    
-        public virtual exerL exerL { get; set; }
     }
 }

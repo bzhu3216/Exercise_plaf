@@ -33,8 +33,10 @@ namespace WCFDBservice
         public DbSet<SQues> SQues { get; set; }
         public DbSet<AQues> AQues { get; set; }
         public DbSet<classExer> classExer { get; set; }
-        public DbSet<exerDetail> exerDetail { get; set; }
         public DbSet<exerL> exerL { get; set; }
         public DbSet<studAnsw> studAnsw { get; set; }
+        public DbSet<class_student> class_student { get; set; }
+        public DbSet<StudInfo> StudInfoes { get; set; }
+        public DbSet<exerDetail> exerDetail { get; set; }
     }
 }
