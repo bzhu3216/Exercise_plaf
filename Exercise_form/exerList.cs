@@ -191,7 +191,7 @@ namespace Exercise_form
                 Edit_cal_exerL mq = null;
                 if (mq == null || mq.IsDisposed)
                 {
-                    mq = new Edit_cal_exerL();
+                    mq = new Edit_cal_exerL(el[listBox2.SelectedIndex].id,pp);
                     mq.ShowDialog();
                     // mq.Show();
                 }

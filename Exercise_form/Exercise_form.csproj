@@ -126,7 +126,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DB_exceltool.cs" />
-    <Compile Include="DB_u.cs" />
     <Compile Include="EditererList.cs">
       <SubType>Form</SubType>
     </Compile>
