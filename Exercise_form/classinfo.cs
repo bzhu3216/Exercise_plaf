@@ -118,7 +118,7 @@ namespace Exercise_form
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {
+        {  if (textBox1.Text != null) { 
             classinfo ci = new classinfo();
             ci.classinfo1 = textBox1.Text;
             ci.teacher = pp.teacher.teacherid;
@@ -130,9 +130,9 @@ namespace Exercise_form
                 context.AddToclassinfo(ci);
                 context.SaveChanges();
 
-               
-          
-          classinfo_Load(sender, e);
+            }
+
+            classinfo_Load(sender, e);
 
         }
     }

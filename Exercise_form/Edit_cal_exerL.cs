@@ -17,7 +17,11 @@ namespace Exercise_form
         
         param pp;
         int lid = -1;
+        int sel1 = -1;
         List<classinfo> Lcs = null;
+        List<classinfo> Lcs2 = null;
+        List<classinfo> Lcs3 = null;
+        exerL el;
         public Edit_cal_exerL(int lid2,param p)
         {
             InitializeComponent();
@@ -30,10 +34,19 @@ namespace Exercise_form
         {
               dateTimePicker1.Value= System.DateTime.Now;
               dateTimePicker2.Value = dateTimePicker1.Value.AddDays(9);
-               exerL el = getexerL(lid);
-               Lcs = getclasslist(el);
-              listBox1.DataSource = Lcs;
-              listBox1.ValueMember = "classinfo1";
+               el = getexerL(lid);
+               Lcs = getclasslist(el);            
+             
+            Lcs2 = getclasslin2(el);
+            listBox2.DataSource = Lcs2;
+            listBox2.ValueMember = "classinfo1";
+            var qq = Lcs.Except(Lcs2);
+            Lcs3 = qq.ToList();
+            listBox1.DataSource = Lcs3;
+            listBox1.ValueMember = "classinfo1";
+
+
+
 
         }
 
@@ -49,6 +62,22 @@ namespace Exercise_form
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (listBox1.SelectedIndex >= 0)
+            {
+                sel1= listBox1.SelectedIndex;
+                classExer ce = new classExer();
+                ce.cid = Lcs3[sel1].classid;
+                ce.eid = lid;
+                ce.starttime = dateTimePicker1.Value;
+                ce.endtime= dateTimePicker2.Value;
+                pp.context.AddToclassExer(ce);
+                pp.context.SaveChanges();               
+
+            }
+
+            Edit_cal_exerL_Load(sender, e);
+
+
 
 
 
@@ -57,7 +86,7 @@ namespace Exercise_form
         }
 
 
-        //////////////////////////
+       
 
 
 
@@ -71,6 +100,39 @@ namespace Exercise_form
             lcl = q1.ToList<classinfo>();
             return lcl;
         }
+        public List<classinfo> getclasslin2(exerL el)
+        {
+            List<classinfo> lcl = null;
+            int cl = el.id;
+            int cc = el.courseid;
+            var q2 = from cc1 in pp.context.classExer
+                     where cc1.eid == cl
+                     select cc1;
+            List <classExer>  lce = q2.ToList<classExer>(); 
+            var q1 = from o in pp.context.classinfo  
+                     where (o.courseid==cc) && (o.teacher == pp.teacher.teacherid) 
+                     select o;
+            List<classinfo> lcl2 = q1.ToList<classinfo>();
+            try
+            {  if (lcl2 != null && lce != null)
+                {
+                    var lcl3 = lcl2.Where(s1 => lce.Any(c1 => s1.classid == c1.cid));
+                    lcl = lcl3.ToList<classinfo>();
+                }
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show(e.Message );
+
+            }
+           
+            return lcl;
+
+
+        }
+
+
+
 
         public exerL getexerL(int lid)
         {
