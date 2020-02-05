@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 using Exercise_student.ServiceExer;
 namespace Exercise_student
 {
-   public class param
+   public class paramst
     {
         public db_exerciseEntities context;
         private Uri svcUri = new Uri("http://localhost:1800/WcfDataServicequestion.svc");
         public StudInfo st;
         
-        public param()
+        public paramst()
         {
             context = new db_exerciseEntities(svcUri);
             st = new StudInfo();
