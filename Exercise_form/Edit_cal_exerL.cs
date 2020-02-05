@@ -18,6 +18,7 @@ namespace Exercise_form
         param pp;
         int lid = -1;
         int sel1 = -1;
+        int sel2 = -1;
         List<classinfo> Lcs = null;
         List<classinfo> Lcs2 = null;
         List<classinfo> Lcs3 = null;
@@ -143,6 +144,32 @@ namespace Exercise_form
                      select o;
             el = q1.First<exerL>();
             return el;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (listBox2.SelectedIndex >= 0)
+            {
+                sel2 = listBox2.SelectedIndex;                
+               int cid = Lcs2[sel2].classid;
+                int eid = lid;
+                var q4= from o in pp.context.classExer
+                                 where o.cid == cid && o.eid == eid
+                                 select o;
+                classExer eed = q4.First<classExer>( );
+                pp.context.DeleteObject(eed);
+                pp.context.SaveChanges();
+                
+
+
+
+            }
+
+            Edit_cal_exerL_Load(sender, e);
+
+
+
+
         }
 
         ///////////////////////////////
