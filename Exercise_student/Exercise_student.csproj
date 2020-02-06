@@ -65,6 +65,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataGridViewRichTextBoxColumn.cs" />
+    <Compile Include="do.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="do.Designer.cs">
+      <DependentUpon>do.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +92,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.datasvcmap</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="do.resx">
+      <DependentUpon>do.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
