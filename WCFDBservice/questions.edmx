@@ -117,7 +117,7 @@
             <PropertyRef Name="did" />
             <PropertyRef Name="lid" />
           </Key>
-          <Property Name="stid" Type="int" Nullable="false" />
+          <Property Name="stid" Type="nchar" MaxLength="11" Nullable="false" />
           <Property Name="did" Type="int" Nullable="false" />
           <Property Name="answ1" Type="int" />
           <Property Name="answ2" Type="bit" />
@@ -367,7 +367,7 @@
             <PropertyRef Name="did" />
             <PropertyRef Name="lid" />
           </Key>
-          <Property Name="stid" Type="Int32" Nullable="false" />
+          <Property Name="stid" Type="String" Nullable="false" MaxLength="11" FixedLength="true" Unicode="true" />
           <Property Name="did" Type="Int32" Nullable="false" />
           <Property Name="answ1" Type="Int32" />
           <Property Name="answ2" Type="Boolean" />

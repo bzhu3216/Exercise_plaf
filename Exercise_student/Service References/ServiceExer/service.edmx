@@ -113,18 +113,6 @@
         <Property Name="pub" Type="Edm.Boolean" Nullable="false" />
         <NavigationProperty Name="Course" Relationship="db_exerciseModel.FK_exerL_Course" ToRole="Course" FromRole="exerL" />
       </EntityType>
-      <EntityType Name="studAnsw">
-        <Key>
-          <PropertyRef Name="did" />
-          <PropertyRef Name="stid" />
-        </Key>
-        <Property Name="stid" Type="Edm.Int32" Nullable="false" />
-        <Property Name="did" Type="Edm.Int32" Nullable="false" />
-        <Property Name="answ1" Type="Edm.Int32" />
-        <Property Name="answ2" Type="Edm.Boolean" />
-        <Property Name="answ3" Type="Edm.String" MaxLength="Max" FixedLength="false" Unicode="true" />
-        <Property Name="mark" Type="Edm.Int32" />
-      </EntityType>
       <EntityType Name="class_student">
         <Key>
           <PropertyRef Name="classid" />
@@ -152,6 +140,20 @@
         <Property Name="score" Type="Edm.Int32" />
         <Property Name="id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
       </EntityType>
+      <EntityType Name="studAnsw">
+        <Key>
+          <PropertyRef Name="did" />
+          <PropertyRef Name="lid" />
+          <PropertyRef Name="stid" />
+        </Key>
+        <Property Name="stid" Type="Edm.String" Nullable="false" MaxLength="11" FixedLength="true" Unicode="true" />
+        <Property Name="did" Type="Edm.Int32" Nullable="false" />
+        <Property Name="answ1" Type="Edm.Int32" />
+        <Property Name="answ2" Type="Edm.Boolean" />
+        <Property Name="answ3" Type="Edm.Binary" MaxLength="Max" FixedLength="false" />
+        <Property Name="mark" Type="Edm.Int32" />
+        <Property Name="lid" Type="Edm.Int32" Nullable="false" />
+      </EntityType>
       <Association Name="FK_exerL_Course">
         <End Type="db_exerciseModel.Course" Role="Course" Multiplicity="1" />
         <End Type="db_exerciseModel.exerL" Role="exerL" Multiplicity="*" />
@@ -176,10 +178,10 @@
         <EntitySet Name="AQues" EntityType="db_exerciseModel.AQues" />
         <EntitySet Name="classExer" EntityType="db_exerciseModel.classExer" />
         <EntitySet Name="exerL" EntityType="db_exerciseModel.exerL" />
-        <EntitySet Name="studAnsw" EntityType="db_exerciseModel.studAnsw" />
         <EntitySet Name="class_student" EntityType="db_exerciseModel.class_student" />
         <EntitySet Name="StudInfoes" EntityType="db_exerciseModel.StudInfo" />
         <EntitySet Name="exerDetail" EntityType="db_exerciseModel.exerDetail" />
+        <EntitySet Name="studAnsw" EntityType="db_exerciseModel.studAnsw" />
         <AssociationSet Name="FK_exerL_Course" Association="db_exerciseModel.FK_exerL_Course">
           <End Role="Course" EntitySet="Course" />
           <End Role="exerL" EntitySet="exerL" />

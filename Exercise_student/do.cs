@@ -86,6 +86,16 @@ namespace Exercise_student
                     //   rrtf.Add(richTextBox1.Rtf);
                     DataGridViewRow dgvr = new DataGridViewRow();
                     dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+
+                    //查询答案
+                    var q2 = from q in pp.context.studAnsw
+                             where q.lid == el.lid && q.stid == pp.st.studentid && q.did == mcq.id
+                             select q;
+                    studAnsw answ1 = null;
+
+                    if (q2.Count<studAnsw>() > 0) answ1 = q2.First<studAnsw>(); 
+
+
                     foreach (DataGridViewColumn c in this.dataGridView1.Columns)
                     {
 
@@ -95,12 +105,19 @@ namespace Exercise_student
                     dgvr.Cells[1].Value = mcq.id;
                     numm++;
                     dgvr.Cells[0].Value = numm;
+                    string mqkey = null;
+                    if (answ1 != null)
+                    {
+                        if (answ1.answ1 == 0) mqkey = "A";
+                        if (answ1.answ1 == 1) mqkey = "B";
+                        if (answ1.answ1 == 2) mqkey = "C";
+                        if (answ1.answ1 == 3) mqkey = "D";
+                    }
+                    
+                    dgvr.Cells[3].Value = mqkey;
                     int hh = (int)(richTextBox1.Rtf.Length / 10);
                     if (hh > 300) hh = 300;
-                    dgvr.Height = hh;
-                   
-
-
+                    dgvr.Height = hh;                 
                     this.dataGridView1.Rows.Add(dgvr);
 
                 }
@@ -164,7 +181,7 @@ namespace Exercise_student
             System.Windows.Forms.ComboBox cb = (System.Windows.Forms.ComboBox)sender;
            // MessageBox.Show("dao1");
             int irow = dataGridView1.CurrentCell.RowIndex;
-            savemqk(irow);
+            savemqk(cb.SelectedIndex );
 
             if (isBind)
             {
@@ -176,17 +193,19 @@ namespace Exercise_student
 
         ////////////////////////////savemqkey
 
-        private void savemqk(int i)
+        private void savemqk(int key)
         {
 
             DataGridViewRow dv = this.dataGridView1.CurrentRow;
             int qid = int.Parse(dv.Cells[1].Value.ToString());
             // MessageBox.Show(dv.Cells[1].Value.ToString());
             studAnsw sansw = new studAnsw();
-          
-
-
-
+            sansw.answ1 = key;
+            sansw.stid = pp.st.studentid;
+            sansw.lid = el.id;
+            sansw.did = qid;
+            pp.context.AddTostudAnsw(sansw);
+            pp.context.SaveChanges();
 
 
         }

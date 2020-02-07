@@ -14,7 +14,7 @@ namespace WCFDBservice
     
     public partial class studAnsw
     {
-        public int stid { get; set; }
+        public string stid { get; set; }
         public int did { get; set; }
         public Nullable<int> answ1 { get; set; }
         public Nullable<bool> answ2 { get; set; }
