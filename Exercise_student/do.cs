@@ -16,6 +16,7 @@ namespace Exercise_student
         paramst pp;
         exerL el;
         bool isBind = false;
+        List<studAnsw> Lmqansw = new List<studAnsw>();
 
         public fdo(Form1  f)
         {
@@ -75,6 +76,7 @@ namespace Exercise_student
                List<exerDetail> ell = questionQuery1.ToList<exerDetail>();
 
                 int numm = 0;
+            
                 foreach (exerDetail el in ell)
                 {
                     var questionQuery2 = from o in pp.context.mchoiceQues
@@ -93,7 +95,7 @@ namespace Exercise_student
                              select q;
                     studAnsw answ1 = null;
 
-                    if (q2.Count<studAnsw>() > 0) answ1 = q2.First<studAnsw>(); 
+                    if (q2.Count<studAnsw>() > 0) { answ1 = q2.First<studAnsw>(); Lmqansw.Add(answ1); }
 
 
                     foreach (DataGridViewColumn c in this.dataGridView1.Columns)
@@ -204,7 +206,24 @@ namespace Exercise_student
             sansw.stid = pp.st.studentid;
             sansw.lid = el.id;
             sansw.did = qid;
-            pp.context.AddTostudAnsw(sansw);
+
+            var q2 = from q in pp.context.studAnsw
+                     where q.lid == el.id && q.stid == pp.st.studentid && q.did == qid
+                     select q;
+
+            studAnsw sansw2 = q2.First<studAnsw>();
+
+            if (sansw2 == null)
+            {
+                pp.context.AddTostudAnsw(sansw);
+                
+            }
+            else
+            {
+                sansw2.answ1 = key;
+                pp.context.UpdateObject(sansw2);                    
+                    
+                    }
             pp.context.SaveChanges();
 
 
