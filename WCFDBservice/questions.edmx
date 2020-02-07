@@ -115,13 +115,15 @@
           <Key>
             <PropertyRef Name="stid" />
             <PropertyRef Name="did" />
+            <PropertyRef Name="lid" />
           </Key>
           <Property Name="stid" Type="int" Nullable="false" />
           <Property Name="did" Type="int" Nullable="false" />
           <Property Name="answ1" Type="int" />
           <Property Name="answ2" Type="bit" />
-          <Property Name="answ3" Type="nvarchar(max)" />
+          <Property Name="answ3" Type="varbinary(max)" />
           <Property Name="mark" Type="int" />
+          <Property Name="lid" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="StudInfo">
           <Key>
@@ -199,7 +201,6 @@
           <EntitySet Name="AQues" EntityType="db_exerciseModel.AQues" />
           <EntitySet Name="classExer" EntityType="db_exerciseModel.classExer" />
           <EntitySet Name="exerL" EntityType="db_exerciseModel.exerL" />
-          <EntitySet Name="studAnsw" EntityType="db_exerciseModel.studAnsw" />
           <AssociationSet Name="FK_exerL_Course" Association="db_exerciseModel.FK_exerL_Course">
             <End Role="Course" EntitySet="Course" />
             <End Role="exerL" EntitySet="exerL" />
@@ -207,6 +208,7 @@
           <EntitySet Name="class_student" EntityType="db_exerciseModel.class_student" />
           <EntitySet Name="StudInfoes" EntityType="db_exerciseModel.StudInfo" />
           <EntitySet Name="exerDetail" EntityType="db_exerciseModel.exerDetail" />
+          <EntitySet Name="studAnsw" EntityType="db_exerciseModel.studAnsw" />
         </EntityContainer>
         <EntityType Name="mchoiceQues">
           <Key>
@@ -320,18 +322,6 @@
           <Property Name="pub" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Course" Relationship="db_exerciseModel.FK_exerL_Course" FromRole="exerL" ToRole="Course" />
           </EntityType>
-        <EntityType Name="studAnsw">
-          <Key>
-            <PropertyRef Name="stid" />
-            <PropertyRef Name="did" />
-          </Key>
-          <Property Name="stid" Type="Int32" Nullable="false" />
-          <Property Name="did" Type="Int32" Nullable="false" />
-          <Property Name="answ1" Type="Int32" />
-          <Property Name="answ2" Type="Boolean" />
-          <Property Name="answ3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="mark" Type="Int32" />
-        </EntityType>
         <Association Name="FK_exerL_Course">
           <End Type="db_exerciseModel.Course" Role="Course" Multiplicity="1" />
           <End Type="db_exerciseModel.exerL" Role="exerL" Multiplicity="*" />
@@ -370,6 +360,20 @@
           <Property Name="lid" Type="Int32" Nullable="false" />
           <Property Name="score" Type="Int32" />
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="studAnsw">
+          <Key>
+            <PropertyRef Name="stid" />
+            <PropertyRef Name="did" />
+            <PropertyRef Name="lid" />
+          </Key>
+          <Property Name="stid" Type="Int32" Nullable="false" />
+          <Property Name="did" Type="Int32" Nullable="false" />
+          <Property Name="answ1" Type="Int32" />
+          <Property Name="answ2" Type="Boolean" />
+          <Property Name="answ3" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="mark" Type="Int32" />
+          <Property Name="lid" Type="Int32" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -495,18 +499,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="studAnsw">
-            <EntityTypeMapping TypeName="db_exerciseModel.studAnsw">
-              <MappingFragment StoreEntitySet="studAnsw">
-                <ScalarProperty Name="mark" ColumnName="mark" />
-                <ScalarProperty Name="answ3" ColumnName="answ3" />
-                <ScalarProperty Name="answ2" ColumnName="answ2" />
-                <ScalarProperty Name="answ1" ColumnName="answ1" />
-                <ScalarProperty Name="did" ColumnName="did" />
-                <ScalarProperty Name="stid" ColumnName="stid" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="class_student">
             <EntityTypeMapping TypeName="db_exerciseModel.class_student">
               <MappingFragment StoreEntitySet="class_student">
@@ -533,6 +525,19 @@
                 <ScalarProperty Name="lid" ColumnName="lid" />
                 <ScalarProperty Name="qid" ColumnName="qid" />
                 <ScalarProperty Name="typeq" ColumnName="typeq" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="studAnsw">
+            <EntityTypeMapping TypeName="db_exerciseModel.studAnsw">
+              <MappingFragment StoreEntitySet="studAnsw">
+                <ScalarProperty Name="lid" ColumnName="lid" />
+                <ScalarProperty Name="mark" ColumnName="mark" />
+                <ScalarProperty Name="answ3" ColumnName="answ3" />
+                <ScalarProperty Name="answ2" ColumnName="answ2" />
+                <ScalarProperty Name="answ1" ColumnName="answ1" />
+                <ScalarProperty Name="did" ColumnName="did" />
+                <ScalarProperty Name="stid" ColumnName="stid" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

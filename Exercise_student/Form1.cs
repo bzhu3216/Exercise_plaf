@@ -13,12 +13,14 @@ namespace Exercise_student
 {
     public partial class Form1 : Form
     {
-        paramst pp;
-        List<class_student> lcsl = null;
-        List<classinfo> lclinfo = null;
-        List<classExer> lce = null;
-        List<exerL> erl = null;
+        public paramst pp;
+        public List<class_student> lcsl = null;
+        public List<classinfo> lclinfo = null;
+        public List<classExer> lce = null;
+        public List<exerL> erl = null;
         int sel1 = -1;
+        public int sel2 = -1;
+
         List<Object> ltemp = null;
         public Form1(paramst p)
         {
@@ -117,7 +119,28 @@ namespace Exercise_student
         /// ////////////
 
         private void button1_Click(object sender, EventArgs e)
+
         {
+             sel2 = -1;           
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            {
+                if (dataGridView1.Rows[i].Selected == true)
+                {
+                    sel2 = int.Parse(dataGridView1.Rows[i].Cells[0].Value.ToString());
+                }
+            }
+
+            fdo mq = null;
+            if (mq == null || mq.IsDisposed)
+            {
+                mq = new fdo(this);
+                mq.Show();
+            }
+            else
+            {
+                mq.Activate();
+                mq.WindowState = FormWindowState.Normal;
+            }
 
         }
 

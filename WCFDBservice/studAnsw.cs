@@ -18,7 +18,8 @@ namespace WCFDBservice
         public int did { get; set; }
         public Nullable<int> answ1 { get; set; }
         public Nullable<bool> answ2 { get; set; }
-        public string answ3 { get; set; }
+        public byte[] answ3 { get; set; }
         public Nullable<int> mark { get; set; }
+        public int lid { get; set; }
     }
 }
