@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Exercise_student.ServiceExer;
+using System.IO;
 
 namespace Exercise_student
 {
@@ -139,9 +140,9 @@ namespace Exercise_student
                 }
 
                 dataGridView1.Columns[4].Visible = false;
+                dataGridView1.Columns[5].Visible = false;
 
-
-              }//end 0
+            }//end 0
 
             if (a == 1)
 
@@ -205,6 +206,7 @@ namespace Exercise_student
                 }
 
                 dataGridView1.Columns[4].Visible = false;
+                dataGridView1.Columns[5].Visible = false;
 
 
             }//end 1
@@ -217,6 +219,7 @@ namespace Exercise_student
                 dataGridView1.Columns[3].Visible = false;
 
                 dataGridView1.Columns[4].Visible = true;
+                dataGridView1.Columns[5].Visible = true;
 
                 ell = null;
 
@@ -447,10 +450,89 @@ namespace Exercise_student
             }
 
         }
-//////////////////////////////////////
+
+        private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+
+
+            int CIndex = e.ColumnIndex;
+            if (CIndex == 5)
+            {
+                openFileDialog1.DefaultExt = ".jpg";
+                openFileDialog1.Filter = "JPG file|*.jpg";
+                if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                   
+                    int irow = e.RowIndex;
+                    int did = -1;
+                    if (ell != null) did = ell[irow].id;
+                    String dirup = openFileDialog1.FileName;
+                    System.IO.FileStream fs = new System.IO.FileStream(dirup, FileMode.Open, FileAccess.Read);
+                    //声明Byte数组
+                    Byte[] mybyte = new byte[fs.Length];
+                    //读取数据
+                    fs.Read(mybyte, 0, mybyte.Length);
+                    
+                    saveimg(mybyte, did);
+                    loadex(3);
+                    fs.Close();
+
+
+                }
+            }
 
 
 
+
+
+
+        }
+        //////////////////////////////////////
+
+
+        private void saveimg(Byte[]   key3, int did3)
+        {
+
+            DataGridViewRow dv = this.dataGridView1.CurrentRow;
+            int qid = int.Parse(dv.Cells[1].Value.ToString());
+            // MessageBox.Show(dv.Cells[1].Value.ToString());
+            studAnsw sansw = new studAnsw();
+            sansw.answ3 = key3;
+            sansw.stid = pp.st.studentid;
+            sansw.lid = el.id;
+            sansw.did = did3;
+            studAnsw sansw2 = null;
+
+            try
+            {
+                var q3 = from q in pp.context.studAnsw
+                         where q.lid == el.id && q.stid == pp.st.studentid && q.did == did3
+                         select q;
+                if (q3.Count<studAnsw>() > 0)
+                    sansw2 = q3.First<studAnsw>();
+
+                if (sansw2 == null)
+                {
+                    pp.context.AddTostudAnsw(sansw);
+
+                }
+                else
+                {
+                    sansw2.answ3 = key3;
+                    pp.context.UpdateObject(sansw2);
+
+                }
+                pp.context.SaveChanges();
+
+            }
+            catch (Exception e)
+
+            {
+
+                MessageBox.Show(e.Message);
+            }
+
+        }
 
 
 
