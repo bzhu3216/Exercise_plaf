@@ -71,8 +71,9 @@ namespace Exercise_student
             }
             if (a == 0)
             {
-               
-                    ((System.Windows.Forms.DataGridViewComboBoxColumn)dataGridView1.Columns[3]).Items.Clear();
+                dataGridView1.Columns[3].Visible = true;
+
+                ((System.Windows.Forms.DataGridViewComboBoxColumn)dataGridView1.Columns[3]).Items.Clear();
                     ((System.Windows.Forms.DataGridViewComboBoxColumn)dataGridView1.Columns[3]).Items.AddRange(new object[] {
             "A",
             "B",
@@ -81,19 +82,19 @@ namespace Exercise_student
             });
 
 
+                ell = null;
 
-
-                    var questionQuery1 = from o in pp.context.exerDetail
+                var questionQuery1 = from o in pp.context.exerDetail
                                      where o.lid ==el.id && o.typeq==0
                                      select o;
                ell = questionQuery1.ToList<exerDetail>();
 
                 int numm = 0;
             
-                foreach (exerDetail el in ell)
+                foreach (exerDetail eld in ell)
                 {
                     var questionQuery2 = from o in pp.context.mchoiceQues
-                                         where o.id == el.qid
+                                         where o.id == eld.qid
                                          select o;
                     mchoiceQues mcq = questionQuery2.First<mchoiceQues>();
                     System.IO.MemoryStream mstream = new System.IO.MemoryStream(mcq.question, false);
@@ -104,7 +105,7 @@ namespace Exercise_student
 
                     //查询答案
                     var q2 = from q in pp.context.studAnsw
-                             where q.lid == el.lid && q.stid == pp.st.studentid && q.did == mcq.id
+                             where q.lid == eld.lid && q.stid == pp.st.studentid && q.did == eld.id 
                              select q;
                     studAnsw answ1 = null;
 
@@ -150,8 +151,8 @@ namespace Exercise_student
             "True",
             "False"
             });
-
-           
+                dataGridView1.Columns[3].Visible = true;
+                ell = null;
                 var questionQuery1 = from o in pp.context.exerDetail
                                      where o.lid == el.id && o.typeq == 1
                                      select o;
@@ -159,10 +160,10 @@ namespace Exercise_student
 
                 int numm = 0;
 
-                foreach (exerDetail el in ell)
+                foreach (exerDetail eld in ell)
                 {
                     var questionQuery2 = from o in pp.context.TFQues
-                                         where o.id == el.qid
+                                         where o.id == eld.qid
                                          select o;
                     TFQues mcq = questionQuery2.First<TFQues>();
                     System.IO.MemoryStream mstream = new System.IO.MemoryStream(mcq.question, false);
@@ -173,7 +174,7 @@ namespace Exercise_student
 
                     //查询答案
                     var q2 = from q in pp.context.studAnsw
-                             where q.lid == el.lid && q.stid == pp.st.studentid && q.did == mcq.id
+                             where q.lid == eld.lid && q.stid == pp.st.studentid && q.did == eld.id
                              select q;
                     studAnsw answ1 = null;
 
@@ -215,7 +216,7 @@ namespace Exercise_student
             {
                 dataGridView1.Columns[3].Visible = false;
 
-
+                dataGridView1.Columns[4].Visible = true;
 
                 ell = null;
 
@@ -226,10 +227,10 @@ namespace Exercise_student
 
                 int numm = 0;
 
-                foreach (exerDetail el in ell)
+                foreach (exerDetail eld in ell)
                 {
                     var questionQuery2 = from o in pp.context.SQues
-                                         where o.id == el.qid
+                                         where o.id == eld.qid
                                          select o;
                     SQues mcq = questionQuery2.First<SQues>();
                     System.IO.MemoryStream mstream = new System.IO.MemoryStream(mcq.question, false);
@@ -240,15 +241,18 @@ namespace Exercise_student
 
                     //查询答案
                     var q2 = from q in pp.context.studAnsw
-                             where q.lid == el.lid && q.stid == pp.st.studentid && q.did == mcq.id
+                             where q.lid == eld.lid && q.stid == pp.st.studentid && q.did == eld.id
                              select q;
                     studAnsw answ1 = null;
-
+                    System.IO.MemoryStream ms = null;
                     if (q2.Count<studAnsw>() > 0) {
                         answ1 = q2.First<studAnsw>(); Lmqansw.Add(answ1);
+                        //读取图片
+                        Byte[] mybyte = answ1.answ3;
+                        if(mybyte !=null)
+                        ms = new System.IO.MemoryStream(mybyte);                     
 
-
-
+                        //
 
                     }
 
@@ -262,7 +266,8 @@ namespace Exercise_student
                     dgvr.Cells[1].Value = mcq.id;
                     numm++;
                     dgvr.Cells[0].Value = numm;
-                    
+                    if(ms!=null)
+                    dgvr.Cells[4].Value= Image.FromStream(ms);
                     int hh = (int)(richTextBox1.Rtf.Length / 8);
                     if (hh > 300) hh = 300;
                     dgvr.Height = hh;
@@ -377,7 +382,7 @@ namespace Exercise_student
             sansw.did = did2;
             studAnsw sansw2 = null;
             var q2 = from q in pp.context.studAnsw
-                     where q.lid == el.id && q.stid == pp.st.studentid && q.did == qid
+                     where q.lid == el.id && q.stid == pp.st.studentid && q.did == did2
                      select q;
             if(q2.Count<studAnsw>()>0)
             sansw2 = q2.First<studAnsw>();
@@ -415,7 +420,7 @@ namespace Exercise_student
             try
             {
                 var q3 = from q in pp.context.studAnsw
-                         where q.lid == el.id && q.stid == pp.st.studentid && q.did == qid
+                         where q.lid == el.id && q.stid == pp.st.studentid && q.did == did3
                          select q;
                 if (q3.Count<studAnsw>() > 0)
                     sansw2 = q3.First<studAnsw>();
