@@ -57,8 +57,10 @@
             // maskedTextBox1
             // 
             this.maskedTextBox1.BeepOnError = true;
+            this.maskedTextBox1.CausesValidation = false;
             this.maskedTextBox1.Location = new System.Drawing.Point(83, 89);
             this.maskedTextBox1.Name = "maskedTextBox1";
+            this.maskedTextBox1.PasswordChar = '*';
             this.maskedTextBox1.Size = new System.Drawing.Size(122, 21);
             this.maskedTextBox1.TabIndex = 2;
             this.maskedTextBox1.Text = "11111111";

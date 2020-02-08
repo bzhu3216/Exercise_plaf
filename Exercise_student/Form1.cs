@@ -177,5 +177,30 @@ namespace Exercise_student
         {
 
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            password mq = null;
+            if (mq == null || mq.IsDisposed)
+            {
+                mq = new password(pp);
+                mq.ShowDialog(); 
+            }
+            else
+            {
+                mq.Activate();
+                mq.WindowState = FormWindowState.Normal;
+            }
+        }
     }
 }
