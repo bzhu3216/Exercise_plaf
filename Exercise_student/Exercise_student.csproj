@@ -90,6 +90,19 @@
     <Compile Include="password.Designer.cs">
       <DependentUpon>password.cs</DependentUpon>
     </Compile>
+    <Compile Include="Fpic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fpic.Designer.cs">
+      <DependentUpon>Fpic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Piczip.cs" />
+    <Compile Include="picZoom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="picZoom.Designer.cs">
+      <DependentUpon>picZoom.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RichTextBoxPrinter.cs" />
@@ -109,6 +122,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="password.resx">
       <DependentUpon>password.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fpic.resx">
+      <DependentUpon>Fpic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="picZoom.resx">
+      <DependentUpon>picZoom.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

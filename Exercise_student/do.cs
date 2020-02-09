@@ -192,11 +192,13 @@ namespace Exercise_student
                     numm++;
                     dgvr.Cells[0].Value = numm;
                     if (answ1 != null)
-                     { 
+                     {
+                        if (answ1.answ2 != null) { 
                     bool mqkey = (bool)answ1.answ2;
 
                     dgvr.Cells[3].Value = mqkey.ToString();
-                      }
+                        }
+                    }
                     
                     int hh = (int)(richTextBox1.Rtf.Length / 8);
                     if (hh > 300) hh = 300;
@@ -211,8 +213,8 @@ namespace Exercise_student
 
             }//end 1
 
-
-
+//填空题预留
+////
             if (a == 3)
 
             {
@@ -282,7 +284,75 @@ namespace Exercise_student
             }//end 3
 
 
+            ////
+            if (a == 4)
 
+            {
+                dataGridView1.Columns[3].Visible = false;
+
+                dataGridView1.Columns[4].Visible = true;
+                dataGridView1.Columns[5].Visible = true;
+
+                ell = null;
+
+                var questionQuery1 = from o in pp.context.exerDetail
+                                     where o.lid == el.id && o.typeq == 1
+                                     select o;
+                ell = questionQuery1.ToList<exerDetail>();
+
+                int numm = 0;
+
+                foreach (exerDetail eld in ell)
+                {
+                    var questionQuery2 = from o in pp.context.SQues
+                                         where o.id == eld.qid
+                                         select o;
+                    SQues mcq = questionQuery2.First<SQues>();
+                    System.IO.MemoryStream mstream = new System.IO.MemoryStream(mcq.question, false);
+                    this.richTextBox1.LoadFile(mstream, RichTextBoxStreamType.RichText);
+                    //   rrtf.Add(richTextBox1.Rtf);
+                    DataGridViewRow dgvr = new DataGridViewRow();
+                    dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+
+                    //查询答案
+                    var q2 = from q in pp.context.studAnsw
+                             where q.lid == eld.lid && q.stid == pp.st.studentid && q.did == eld.id
+                             select q;
+                    studAnsw answ1 = null;
+                    System.IO.MemoryStream ms = null;
+                    if (q2.Count<studAnsw>() > 0)
+                    {
+                        answ1 = q2.First<studAnsw>(); Lmqansw.Add(answ1);
+                        //读取图片
+                        Byte[] mybyte = answ1.answ3;
+                        if (mybyte != null)
+                            ms = new System.IO.MemoryStream(mybyte);
+
+                        //
+
+                    }
+
+
+                    foreach (DataGridViewColumn c in this.dataGridView1.Columns)
+                    {
+
+                        dgvr.Cells.Add(c.CellTemplate.Clone() as DataGridViewCell);
+                    }
+                    dgvr.Cells[2].Value = richTextBox1.Rtf;
+                    dgvr.Cells[1].Value = mcq.id;
+                    numm++;
+                    dgvr.Cells[0].Value = numm;
+                    if (ms != null)
+                        dgvr.Cells[4].Value = Image.FromStream(ms);
+                    int hh = (int)(richTextBox1.Rtf.Length / 8);
+                    if (hh > 300) hh = 300;
+                    dgvr.Height = hh;
+                    this.dataGridView1.Rows.Add(dgvr);
+
+                }
+
+
+            }//end 4
 
 
 
@@ -460,29 +530,71 @@ namespace Exercise_student
             {
                 openFileDialog1.DefaultExt = ".jpg";
                 openFileDialog1.Filter = "JPG file|*.jpg";
+                String dirup = null;
+                int irow = e.RowIndex;
+                int did = -1;
+                if (ell != null) did = ell[irow].id;
                 if (openFileDialog1.ShowDialog() == DialogResult.OK)
-                {
-                   
-                    int irow = e.RowIndex;
-                    int did = -1;
-                    if (ell != null) did = ell[irow].id;
-                    String dirup = openFileDialog1.FileName;
-                    System.IO.FileStream fs = new System.IO.FileStream(dirup, FileMode.Open, FileAccess.Read);
-                    //声明Byte数组
-                    Byte[] mybyte = new byte[fs.Length];
-                    //读取数据
-                    fs.Read(mybyte, 0, mybyte.Length);
-                    
-                    saveimg(mybyte, did);
-                    loadex(3);
-                    fs.Close();
-
-
+                {                   
+                    dirup = openFileDialog1.FileName;
                 }
+
+                if (dirup != null) {
+                   
+                   
+                   Piczip.CompressImage(dirup, @"c:\temp.jpg", 90, 120, true);
+                  
+                    System.IO.FileStream fs = new System.IO.FileStream(@"c:\temp.jpg", FileMode.Open, FileAccess.Read);
+                  
+
+                    //System.IO.FileStream fs = new System.IO.FileStream(dirup, FileMode.Open, FileAccess.Read);
+
+                    // System.IO.MemoryStream fs = Piczip.CompressImage2(dirup, 80, 300, true);
+                    /// if (fs.Length > 300 * 1024) { fs = Piczip.CompressImage2(dirup, 60, 300, true);MessageBox.Show(fs.Length.ToString()); }
+                    // if (fs.Length > 300 * 1024) { fs = Piczip.CompressImage2(dirup, 40, 300, true); MessageBox.Show(fs.Length.ToString()); }
+                    // if (fs.Length > 300 * 1024) { fs = Piczip.CompressImage2(dirup, 20, 300, true); MessageBox.Show(fs.Length.ToString()); }
+                    // if (fs.Length > 300 * 1024) { fs = Piczip.CompressImage2(dirup, 10, 300, true); MessageBox.Show(fs.Length.ToString()); }
+                    //声明Byte数组
+
+
+
+                    if (fs.Length > 120 * 1024)
+                    {
+                        MessageBox.Show("请把图片处理成小于100k的再上传");
+                    }
+                    else
+                    {
+                       // MessageBox.Show(fs.Length.ToString() );
+                        Byte[] mybyte = new byte[fs.Length];
+                        //读取数据
+                        fs.Read(mybyte, 0, mybyte.Length);                    
+                        saveimg(mybyte, did);
+
+                        loadex(3);
+                    }
+                    fs.Close();
+                }
+
+
             }
+            if (CIndex == 4)
+            {
 
-
-
+                picZoom mq = null;
+                    if (mq == null || mq.IsDisposed)
+                {
+                    DataGridViewRow dv = this.dataGridView1.CurrentRow;                   
+                    mq = new picZoom();
+                    mq.pictureBox1.Image = (Image)dv.Cells[4].Value;
+                        mq.Show();
+                    }
+                    else
+                    {  
+                        mq.Activate();
+                        mq.WindowState = FormWindowState.Normal;
+                    }
+                
+             }
 
 
 
@@ -518,6 +630,7 @@ namespace Exercise_student
                 }
                 else
                 {
+                    sansw2.answ3 = null;
                     sansw2.answ3 = key3;
                     pp.context.UpdateObject(sansw2);
 

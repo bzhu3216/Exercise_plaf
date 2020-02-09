@@ -129,18 +129,25 @@ namespace Exercise_student
                     sel2 = int.Parse(dataGridView1.Rows[i].Cells[0].Value.ToString());
                 }
             }
-            if (sel2 != -1) { 
-            fdo mq = null;
-            if (mq == null || mq.IsDisposed)
+            if (sel2 != -1)
             {
-                mq = new fdo(this);
-                mq.Show();
+                fdo mq = null;
+                if (mq == null || mq.IsDisposed)
+                {
+                    mq = new fdo(this);
+                    mq.Show();
+                }
+                else
+                {
+                    mq.Activate();
+                    mq.WindowState = FormWindowState.Normal;
+                }
             }
             else
+
             {
-                mq.Activate();
-                mq.WindowState = FormWindowState.Normal;
-            }
+                MessageBox.Show("请点击列表最前面选择一个作业");
+
             }
 
         }

@@ -28,7 +28,7 @@ namespace Exercise_student
         private void button1_Click(object sender, EventArgs e)
         {
 
-            if (maskedTextBox1.Text == maskedTextBox2.Text  && maskedTextBox2.Text.Length<9)
+            if (maskedTextBox1.Text == maskedTextBox2.Text  && maskedTextBox2.Text.Length<9 && maskedTextBox2.Text.Length >3)
             {
                 var questionQuery = from o in pp.context.StudInfoes
                                     where o.studentid == pp.st.studentid 
@@ -44,7 +44,7 @@ namespace Exercise_student
             }
             else
             {
-                MessageBox.Show("两次的密码输入不一样,密码大于八位！");
+                MessageBox.Show("两次的密码输入不一样,密码大于八位或小于四位！");
             }
 
 
