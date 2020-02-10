@@ -217,6 +217,145 @@ namespace Exercise_student
         private void button4_Click(object sender, EventArgs e)
         {
 
+            //导出联习
+
+            if (sel2 >= 0)
+            {
+                // sel1 = comboBox1.SelectedIndex;
+                // classinfo cin = lclinfo[sel1];
+                //lce = getclexerl(cin);
+                // erl = getexerl2(cin);
+                //  persons.Join(cities, p => p.CityID, c => c.ID, (p, c) => new { PersonName = p.Name, CityName = c.Name });
+                // var q1 = lce.Join(erl, p => p.eid, c => c.id, (p, c) => new { eid = p.eid, ename = c.name, stime = p.starttime, etime = p.endtime });
+                richTextBox2.Text = "";
+                
+                exerL tel1 = erl[sel2];
+                List<exerDetail> led = null;
+                var q11 = from o in pp.context.exerDetail
+                          where o.lid == tel1.id
+                          orderby o.typeq 
+                          select o;
+                if (q11 != null)
+                {
+                    led = q11.ToList<exerDetail>();
+                    foreach (exerDetail ed1 in led)
+                    {
+                         //get question
+                        if (ed1.typeq == 0)
+                        {
+                            
+                            var q12 = from o in pp.context.mchoiceQues
+                                      where o.id == ed1.qid
+                                      select o;
+                            mchoiceQues mcq = q12.First<mchoiceQues>();
+                            System.IO.MemoryStream mstream = new System.IO.MemoryStream(mcq.question, false);
+                            this.richTextBox1.LoadFile(mstream, RichTextBoxStreamType.RichText);
+                            this.richTextBox2.AppendText(richTextBox1.Text );
+                            //get student answervar
+
+
+                            var q13 = from o in pp.context.studAnsw
+                                      where o.stid == pp.st.studentid && o.did == ed1.id
+                                      select o;
+
+                            studAnsw tsa = q13.First<studAnsw>();
+                            String key1 = null;
+                            if (tsa.answ1 == 0) key1 = "A";
+                            if (tsa.answ1 == 1) key1 = "B";
+                            if (tsa.answ1 == 2) key1 = "C";
+                            if (tsa.answ1 == 3) key1 = "D";
+                            this.richTextBox2.AppendText("\n(" + key1 + ")");
+                            this.richTextBox2.AppendText("_____________________________\n");
+
+                        }
+                        if (ed1.typeq == 1)
+                        {
+
+                            var q12 = from o in pp.context.TFQues 
+                                      where o.id == ed1.qid
+                                      select o;
+                            TFQues mcq = q12.First<TFQues>();
+                            System.IO.MemoryStream mstream = new System.IO.MemoryStream(mcq.question, false);
+                            this.richTextBox1.LoadFile(mstream, RichTextBoxStreamType.RichText);
+                            this.richTextBox2.AppendText(richTextBox1.Text);
+                            //get student answervar
+
+
+                            var q13 = from o in pp.context.studAnsw
+                                      where o.stid == pp.st.studentid && o.did == ed1.id
+                                      select o;
+
+                            studAnsw tsa = q13.First<studAnsw>();
+                            String key1 = null;
+                            if (tsa.answ2 == true) key1 = "True";
+                            if (tsa.answ2 == false) key1 = "False";
+                            
+                            this.richTextBox2.AppendText("\n(" + key1 + ")");
+                            this.richTextBox2.AppendText("_____________________________\n");
+
+                        }
+
+                        if (ed1.typeq == 2)
+                        {
+
+                            
+
+                        }
+
+                        if (ed1.typeq == 3)
+                        {
+
+                            var q12 = from o in pp.context.SQues 
+                                      where o.id == ed1.qid
+                                      select o;
+                            SQues mcq = q12.First<SQues>();
+                            System.IO.MemoryStream mstream = new System.IO.MemoryStream(mcq.question, false);
+                            this.richTextBox1.LoadFile(mstream, RichTextBoxStreamType.RichText);
+                            this.richTextBox2.AppendText(richTextBox1.Text);
+                            //get student answervar
+
+
+                            var q13 = from o in pp.context.studAnsw
+                                      where o.stid == pp.st.studentid && o.did == ed1.id
+                                      select o;
+
+                            studAnsw tsa = q13.First<studAnsw>();
+                          //  String key1 = null;
+                            System.IO.MemoryStream mstream2 = new System.IO.MemoryStream(tsa.answ3 , false);
+                            this.richTextBox1.LoadFile(mstream2, RichTextBoxStreamType.RichText);
+                            this.richTextBox2.AppendText("\n_____________________________\n");
+                            this.richTextBox2.AppendText(richTextBox1.Text);
+                            this.richTextBox2.AppendText("\n_____________________________\n");
+
+                        }
+
+
+
+
+
+
+
+                    }
+
+
+
+                }
+
+
+
+
+
+            }
+            else
+            {
+                MessageBox.Show("Please select an exercise!");
+            }
+
+
+
+
+
+
         }
 
         private void dataGridView1_RowHeaderCellChanged(object sender, DataGridViewRowEventArgs e)
@@ -236,8 +375,8 @@ namespace Exercise_student
             if (now1 < lce[e.RowIndex].starttime) c_l = 1;
             if (now1 > lce[e.RowIndex].endtime ) c_l = 3;
             // MessageBox.Show(e.RowIndex.ToString());
-         //   MessageBox.Show(lce[e.RowIndex].starttime.ToString());
-
+            //   MessageBox.Show(lce[e.RowIndex].starttime.ToString());
+            sel2 = e.RowIndex;
 
 
         }
