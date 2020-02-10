@@ -20,6 +20,7 @@ namespace Exercise_student
         List<studAnsw> Lmqansw = new List<studAnsw>();
         int sel = -1;
         List<exerDetail> ell=null;
+        Form1 ff = null;
         public fdo(Form1  f)
         {
             InitializeComponent();
@@ -30,6 +31,7 @@ namespace Exercise_student
                     el = tel; 
 
             }
+            ff = f;
         }
 
         private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
@@ -46,7 +48,8 @@ namespace Exercise_student
 
         private void fdo_Load(object sender, EventArgs e)
         {
-
+            if (ff.c_l == 3) { dataGridView1.ReadOnly = true; dataGridView1.Columns[5].Visible = false; }
+            if (ff.c_l == 2) { dataGridView1.ReadOnly = false; dataGridView1.Columns[5].Visible = true; }
 
 
 
@@ -70,6 +73,7 @@ namespace Exercise_student
                 dataGridView1.Rows.Clear();
 
             }
+
             if (a == 0)
             {
                 dataGridView1.Columns[3].Visible = true;
@@ -222,11 +226,14 @@ namespace Exercise_student
 
                 dataGridView1.Columns[4].Visible = true;
                 dataGridView1.Columns[5].Visible = true;
+                if (ff.c_l == 3) { dataGridView1.ReadOnly = true; dataGridView1.Columns[5].Visible = false; }
+                if (ff.c_l == 2) { dataGridView1.ReadOnly = false; dataGridView1.Columns[5].Visible = true; }
+
 
                 ell = null;
 
                 var questionQuery1 = from o in pp.context.exerDetail
-                                     where o.lid == el.id && o.typeq == 1
+                                     where o.lid == el.id && o.typeq == 3
                                      select o;
                 ell = questionQuery1.ToList<exerDetail>();
 
@@ -289,14 +296,14 @@ namespace Exercise_student
 
             {
                 dataGridView1.Columns[3].Visible = false;
-
                 dataGridView1.Columns[4].Visible = true;
                 dataGridView1.Columns[5].Visible = true;
+                if (ff.c_l == 3) { dataGridView1.ReadOnly = true; dataGridView1.Columns[5].Visible = false; }
+                if (ff.c_l == 2) { dataGridView1.ReadOnly = false; dataGridView1.Columns[5].Visible = true; }
 
                 ell = null;
-
                 var questionQuery1 = from o in pp.context.exerDetail
-                                     where o.lid == el.id && o.typeq == 1
+                                     where o.lid == el.id && o.typeq == 4
                                      select o;
                 ell = questionQuery1.ToList<exerDetail>();
 
@@ -304,10 +311,10 @@ namespace Exercise_student
 
                 foreach (exerDetail eld in ell)
                 {
-                    var questionQuery2 = from o in pp.context.SQues
+                    var questionQuery2 = from o in pp.context.AQues 
                                          where o.id == eld.qid
                                          select o;
-                    SQues mcq = questionQuery2.First<SQues>();
+                    AQues mcq = questionQuery2.First<AQues>();
                     System.IO.MemoryStream mstream = new System.IO.MemoryStream(mcq.question, false);
                     this.richTextBox1.LoadFile(mstream, RichTextBoxStreamType.RichText);
                     //   rrtf.Add(richTextBox1.Rtf);
@@ -569,8 +576,7 @@ namespace Exercise_student
                         //读取数据
                         fs.Read(mybyte, 0, mybyte.Length);                    
                         saveimg(mybyte, did);
-
-                        loadex(3);
+                        loadex(sel);
                     }
                     fs.Close();
                 }
@@ -644,6 +650,13 @@ namespace Exercise_student
 
                 MessageBox.Show(e.Message);
             }
+
+        }
+
+        private void fdo_Shown(object sender, EventArgs e)
+        {
+            if (ff.c_l == 3) { dataGridView1.ReadOnly = true; dataGridView1.Columns[5].Visible = false; }
+            if (ff.c_l == 2) { dataGridView1.ReadOnly = false; dataGridView1.Columns[5].Visible = true; }
 
         }
 

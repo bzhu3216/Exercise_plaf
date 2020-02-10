@@ -151,6 +151,7 @@
             this.Name = "Edit_cal_exerL";
             this.Text = "Edit_cal_exerL";
             this.Load += new System.EventHandler(this.Edit_cal_exerL_Load);
+            this.Shown += new System.EventHandler(this.Edit_cal_exerL_Shown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

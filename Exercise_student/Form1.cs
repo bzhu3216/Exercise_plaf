@@ -20,7 +20,7 @@ namespace Exercise_student
         public List<exerL> erl = null;
         int sel1 = -1;
         public int sel2 = -1;
-
+        public int c_l = 0;
         List<Object> ltemp = null;
         public Form1(paramst p)
         {
@@ -120,8 +120,10 @@ namespace Exercise_student
 
         private void button1_Click(object sender, EventArgs e)
 
-        {
-             sel2 = -1;           
+        {  if (c_l == 1) { MessageBox.Show("The time limit is not up!");return; }
+            sel2 = -1;
+           if (c_l == 3) { MessageBox.Show("The due time has expired. You can only view your submission."); ; }
+
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
                 if (dataGridView1.Rows[i].Selected == true)
@@ -170,6 +172,8 @@ namespace Exercise_student
                 ltemp =q1.ToList<Object>();
                 dataGridView1.DataSource = ltemp;
 
+              
+
                 
 
             }
@@ -208,6 +212,34 @@ namespace Exercise_student
                 mq.Activate();
                 mq.WindowState = FormWindowState.Normal;
             }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_RowHeaderCellChanged(object sender, DataGridViewRowEventArgs e)
+        {
+           
+        }
+
+        private void dataGridView1_MultiSelectChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void dataGridView1_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            c_l = 2;
+            DateTime now1=System.DateTime.Now;
+            if (now1 < lce[e.RowIndex].starttime) c_l = 1;
+            if (now1 > lce[e.RowIndex].endtime ) c_l = 3;
+            // MessageBox.Show(e.RowIndex.ToString());
+         //   MessageBox.Show(lce[e.RowIndex].starttime.ToString());
+
+
+
         }
     }
 }

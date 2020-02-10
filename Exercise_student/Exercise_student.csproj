@@ -90,12 +90,6 @@
     <Compile Include="password.Designer.cs">
       <DependentUpon>password.cs</DependentUpon>
     </Compile>
-    <Compile Include="Fpic.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Fpic.Designer.cs">
-      <DependentUpon>Fpic.cs</DependentUpon>
-    </Compile>
     <Compile Include="Piczip.cs" />
     <Compile Include="picZoom.cs">
       <SubType>Form</SubType>
@@ -122,9 +116,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="password.resx">
       <DependentUpon>password.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Fpic.resx">
-      <DependentUpon>Fpic.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="picZoom.resx">
       <DependentUpon>picZoom.cs</DependentUpon>

@@ -177,6 +177,10 @@ namespace Exercise_form
 
         }
 
+        private void Edit_cal_exerL_Shown(object sender, EventArgs e)
+        {
+        }
+
         ///////////////////////////////
 
 
