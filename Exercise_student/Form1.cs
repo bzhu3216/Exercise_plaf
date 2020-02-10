@@ -259,13 +259,13 @@ namespace Exercise_student
                                       select o;
 
                             studAnsw tsa = q13.First<studAnsw>();
-                            String key1 = null;
+                            String key1 = "Question not being attemped"; ;
                             if (tsa.answ1 == 0) key1 = "A";
                             if (tsa.answ1 == 1) key1 = "B";
                             if (tsa.answ1 == 2) key1 = "C";
                             if (tsa.answ1 == 3) key1 = "D";
                             this.richTextBox2.AppendText("\n(" + key1 + ")");
-                            this.richTextBox2.AppendText("_____________________________\n");
+                            this.richTextBox2.AppendText("\n_____________________________\n");
 
                         }
                         if (ed1.typeq == 1)
@@ -286,12 +286,12 @@ namespace Exercise_student
                                       select o;
 
                             studAnsw tsa = q13.First<studAnsw>();
-                            String key1 = null;
+                            String key1 = "Question not being attemped";
                             if (tsa.answ2 == true) key1 = "True";
                             if (tsa.answ2 == false) key1 = "False";
                             
                             this.richTextBox2.AppendText("\n(" + key1 + ")");
-                            this.richTextBox2.AppendText("_____________________________\n");
+                            this.richTextBox2.AppendText("\n_____________________________\n");
 
                         }
 
@@ -320,27 +320,80 @@ namespace Exercise_student
                                       select o;
 
                             studAnsw tsa = q13.First<studAnsw>();
-                          //  String key1 = null;
-                            System.IO.MemoryStream mstream2 = new System.IO.MemoryStream(tsa.answ3 , false);
-                            this.richTextBox1.LoadFile(mstream2, RichTextBoxStreamType.RichText);
-                            this.richTextBox2.AppendText("\n_____________________________\n");
+                            //  String key1 = null;
+                            // System.IO.MemoryStream mstream2 = new System.IO.MemoryStream(tsa.answ3 , false);
+                            //this.richTextBox1.LoadFile(mstream2, RichTextBoxStreamType.RichText);
+                            Byte[] mybyte = tsa.answ3;
+                            System.IO.MemoryStream ms = null;
+                            if (q13.Count<studAnsw>() > 0)
+                            {
+                                if (mybyte != null)
+                                    ms = new System.IO.MemoryStream(mybyte);
+                                Image im = Image.FromStream(ms);
+                                this.richTextBox2.AppendText("\n_____________________________\n");
+                                Clipboard.SetDataObject(im, false);
+                                richTextBox2.Paste();
+                                this.richTextBox2.AppendText("\n_____________________________\n");
+                            }
+                           
+                        }
+                        //////////////////////////////////////end3
+                        if (ed1.typeq == 4)
+                        {
+
+                            var q12 = from o in pp.context.AQues
+                                      where o.id == ed1.qid
+                                      select o;
+                            AQues  mcq = q12.First<AQues>();
+                            System.IO.MemoryStream mstream = new System.IO.MemoryStream(mcq.question, false);
+                            this.richTextBox1.LoadFile(mstream, RichTextBoxStreamType.RichText);
                             this.richTextBox2.AppendText(richTextBox1.Text);
-                            this.richTextBox2.AppendText("\n_____________________________\n");
+                            //get student answervar
+
+
+                            var q13 = from o in pp.context.studAnsw
+                                      where o.stid == pp.st.studentid && o.did == ed1.id
+                                      select o;
+
+                            studAnsw tsa = q13.First<studAnsw>();
+                            //  String key1 = null;
+                            // System.IO.MemoryStream mstream2 = new System.IO.MemoryStream(tsa.answ3 , false);
+                            //this.richTextBox1.LoadFile(mstream2, RichTextBoxStreamType.RichText);
+                            Byte[] mybyte = tsa.answ3;
+                            System.IO.MemoryStream ms = null;
+                            if (q13.Count<studAnsw>() > 0)
+                            {
+                                if (mybyte != null)
+                                    ms = new System.IO.MemoryStream(mybyte);
+                                Image im = Image.FromStream(ms);
+                                this.richTextBox2.AppendText("\n_____________________________\n");
+                                Clipboard.SetDataObject(im, false);
+                                richTextBox2.Paste();
+                                this.richTextBox2.AppendText("\n_____________________________\n");
+                            }
+
+                        }
+
+
+                        
 
                         }
 
 
 
-
-
-
-
-                    }
-
-
-
                 }
 
+                //////////////////savertf//////////////////////
+                saveFileDialog1.DefaultExt = ".rtf";
+                saveFileDialog1.Filter = "RTF file|*.rtf";
+
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+
+                    richTextBox2.SaveFile(saveFileDialog1.FileName);
+
+                }
+                //////////////////////
 
 
 
@@ -355,11 +408,10 @@ namespace Exercise_student
 
 
 
-
         }
 
         private void dataGridView1_RowHeaderCellChanged(object sender, DataGridViewRowEventArgs e)
-        {
+        { 
            
         }
 
