@@ -85,7 +85,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(249, 207);
+            this.button2.Location = new System.Drawing.Point(249, 202);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 5;
@@ -115,6 +115,7 @@
             this.Controls.Add(this.listBox1);
             this.Name = "TaskList";
             this.Text = "TaskList";
+            this.Load += new System.EventHandler(this.TaskList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

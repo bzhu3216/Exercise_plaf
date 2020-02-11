@@ -183,5 +183,22 @@ namespace Exercise_form
             }
 
         }
+
+        private void 批改习题ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TaskList mq = null;
+            if (mq == null || mq.IsDisposed)
+            {
+                mq = new TaskList(pp);
+                mq.MdiParent = this;
+                mq.Show();
+            }
+            else
+            {
+                mq.Activate();
+                mq.WindowState = FormWindowState.Normal;
+            }
+
+        }
     }
 }
