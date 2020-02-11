@@ -71,6 +71,7 @@ namespace Exercise_student
             try
             {
                 var q1 = from o in pp.context.classinfo
+                         where o.finish !=1 ||o.finish==null
                          select o;
                 tcsl2 = q1.ToList<classinfo>();
                 var qtcsl = tcsl2.Where(p => tlcs.Any(c => c.classid == p.classid));
@@ -430,6 +431,11 @@ namespace Exercise_student
             //   MessageBox.Show(lce[e.RowIndex].starttime.ToString());
             sel2 = e.RowIndex;
 
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }

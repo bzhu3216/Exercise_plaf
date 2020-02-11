@@ -49,6 +49,7 @@
           <Property Name="courseid" Type="int" />
           <Property Name="teacher" Type="nchar" MaxLength="4" />
           <Property Name="addtime" Type="date" />
+          <Property Name="finish" Type="int" />
         </EntityType>
         <EntityType Name="Course">
           <Key>
@@ -234,6 +235,7 @@
           <Property Name="courseid" Type="Int32" />
           <Property Name="teacher" Type="String" MaxLength="4" Unicode="true" FixedLength="true" />
           <Property Name="addtime" Type="DateTime" Precision="0" />
+          <Property Name="finish" Type="Int32" />
         </EntityType>
         <EntityType Name="Course">
           <Key>
@@ -400,6 +402,7 @@
           <EntitySetMapping Name="classinfo">
             <EntityTypeMapping TypeName="db_exerciseModel.classinfo">
               <MappingFragment StoreEntitySet="classinfo">
+                <ScalarProperty Name="finish" ColumnName="finish" />
                 <ScalarProperty Name="addtime" ColumnName="addtime" />
                 <ScalarProperty Name="teacher" ColumnName="teacher" />
                 <ScalarProperty Name="courseid" ColumnName="courseid" />

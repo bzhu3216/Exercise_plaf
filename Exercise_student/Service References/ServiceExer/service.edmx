@@ -25,6 +25,7 @@
         <Property Name="courseid" Type="Edm.Int32" />
         <Property Name="teacher" Type="Edm.String" MaxLength="4" FixedLength="true" Unicode="true" />
         <Property Name="addtime" Type="Edm.DateTime" Precision="0" />
+        <Property Name="finish" Type="Edm.Int32" />
       </EntityType>
       <EntityType Name="Course">
         <Key>

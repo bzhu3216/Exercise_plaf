@@ -19,6 +19,7 @@ namespace Exercise_form
        // private Uri svcUri = new Uri("http://localhost:1800/WcfDataServicequestion.svc");
         List<Course> lsc;
         List<classinfo> lsc2;
+        int selindex = -1;
         param pp;
         public classinfoF(param p)
         {
@@ -69,6 +70,7 @@ namespace Exercise_form
                     comboBox1.Items.Add(cc.CourseName);
                 }
                 var questionQuery2 = from p in context.classinfo
+                                     where p.teacher ==pp.teacher.teacherid 
                                      select p;
 
                 lsc2 = questionQuery2.ToList();
@@ -76,7 +78,8 @@ namespace Exercise_form
                 {
                   listBox1.Items.Add(cc.classinfo1);
                 }
-
+                comboBox2.Text = "";
+                comboBox1.Text = "";
                
                 // Make the DataServiceCollection<T> the binding source for the Grid.
             }
@@ -104,12 +107,13 @@ namespace Exercise_form
 
         private void listBox1_Click(object sender, EventArgs e)
         {
-            int selindex = listBox1.SelectedIndex;
+             selindex = listBox1.SelectedIndex;
             //  comboBox1.Text=
              textBox1.Text = lsc2[selindex].classinfo1;
+            comboBox2.Text =comboBox2.Items[(int)(lsc2[selindex].finish)].ToString();
             int cid = (int)lsc2[selindex].courseid;
              foreach (Course cc in lsc) {
-                if ((int)cc.id == cid) comboBox1.Text = cc.CourseName;
+                if ((int)cc.id == cid) { comboBox1.Text = cc.CourseName;  }
 
             }
 
@@ -118,13 +122,19 @@ namespace Exercise_form
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {  if (textBox1.Text != null) { 
+        {  if (textBox1.Text != null && comboBox2.SelectedIndex >-1) { 
             classinfo ci = new classinfo();
             ci.classinfo1 = textBox1.Text;
+                foreach (classinfo cinfo in lsc2) {
+
+                    if (cinfo.classinfo1.Trim() == textBox1.Text.Trim()) { MessageBox.Show("已有同样的班级名称请改名!"); return; }   
+                }
             ci.teacher = pp.teacher.teacherid;
+                ci.finish = comboBox2.SelectedIndex;
             foreach (Course cc in lsc)
             {
                 if (comboBox1.Text == cc.CourseName) ci.courseid = cc.id;
+
             }
                 ci.addtime = System.DateTime.Now;
                 context.AddToclassinfo(ci);
@@ -133,6 +143,52 @@ namespace Exercise_form
             }
 
             classinfo_Load(sender, e);
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+            if (selindex >0)
+            {
+                String yname = lsc2[selindex].classinfo1.ToString();
+                foreach (classinfo cinfo in lsc2)
+                {
+
+                    if (cinfo.classinfo1.Trim() == textBox1.Text.Trim() && yname.Trim()!= textBox1.Text.Trim()) { MessageBox.Show("已有同样的班级名称请改名!"); return; }
+                }
+                classinfo ci = lsc2[selindex] ;
+                ci.classinfo1 = textBox1.Text;
+              
+                ci.teacher = pp.teacher.teacherid;
+                ci.finish = comboBox2.SelectedIndex;
+                foreach (Course cc in lsc)
+                {
+                    if (comboBox1.Text == cc.CourseName) ci.courseid = cc.id;
+
+                }
+                //  ci.addtime = System.DateTime.Now;
+                context.UpdateObject(ci);
+                context.SaveChanges();
+
+            }
+
+            classinfo_Load(sender, e);
+
+
+
+
+
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+
+
+
+
 
         }
     }

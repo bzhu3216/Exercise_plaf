@@ -19,5 +19,6 @@ namespace WCFDBservice
         public Nullable<int> courseid { get; set; }
         public string teacher { get; set; }
         public Nullable<System.DateTime> addtime { get; set; }
+        public Nullable<int> finish { get; set; }
     }
 }
