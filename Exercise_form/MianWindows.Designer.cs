@@ -47,7 +47,6 @@
             this.习题生成ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.批改习题ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.导出成绩ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.导出习题ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.用户管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.登录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.修改密码ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -102,14 +101,14 @@
             // 班级管理ToolStripMenuItem1
             // 
             this.班级管理ToolStripMenuItem1.Name = "班级管理ToolStripMenuItem1";
-            this.班级管理ToolStripMenuItem1.Size = new System.Drawing.Size(124, 22);
+            this.班级管理ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.班级管理ToolStripMenuItem1.Text = "班级信息";
             this.班级管理ToolStripMenuItem1.Click += new System.EventHandler(this.班级管理ToolStripMenuItem1_Click);
             // 
             // 班级名单ToolStripMenuItem
             // 
             this.班级名单ToolStripMenuItem.Name = "班级名单ToolStripMenuItem";
-            this.班级名单ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.班级名单ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.班级名单ToolStripMenuItem.Text = "班级名单";
             this.班级名单ToolStripMenuItem.Click += new System.EventHandler(this.班级名单ToolStripMenuItem_Click);
             // 
@@ -131,7 +130,7 @@
             this.简单题ToolStripMenuItem,
             this.分析题ToolStripMenuItem});
             this.输入题目ToolStripMenuItem.Name = "输入题目ToolStripMenuItem";
-            this.输入题目ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.输入题目ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.输入题目ToolStripMenuItem.Text = "输入题目";
             // 
             // 选择题ToolStripMenuItem
@@ -171,7 +170,7 @@
             // 修改土木ToolStripMenuItem
             // 
             this.修改土木ToolStripMenuItem.Name = "修改土木ToolStripMenuItem";
-            this.修改土木ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.修改土木ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.修改土木ToolStripMenuItem.Text = "修改题目";
             // 
             // 习题管理ToolStripMenuItem
@@ -179,8 +178,7 @@
             this.习题管理ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.习题生成ToolStripMenuItem,
             this.批改习题ToolStripMenuItem,
-            this.导出成绩ToolStripMenuItem,
-            this.导出习题ToolStripMenuItem});
+            this.导出成绩ToolStripMenuItem});
             this.习题管理ToolStripMenuItem.Name = "习题管理ToolStripMenuItem";
             this.习题管理ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
             this.习题管理ToolStripMenuItem.Text = "习题管理";
@@ -188,27 +186,21 @@
             // 习题生成ToolStripMenuItem
             // 
             this.习题生成ToolStripMenuItem.Name = "习题生成ToolStripMenuItem";
-            this.习题生成ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.习题生成ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.习题生成ToolStripMenuItem.Text = "习题生成";
             this.习题生成ToolStripMenuItem.Click += new System.EventHandler(this.习题生成ToolStripMenuItem_Click);
             // 
             // 批改习题ToolStripMenuItem
             // 
             this.批改习题ToolStripMenuItem.Name = "批改习题ToolStripMenuItem";
-            this.批改习题ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.批改习题ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.批改习题ToolStripMenuItem.Text = "批改习题";
             // 
             // 导出成绩ToolStripMenuItem
             // 
             this.导出成绩ToolStripMenuItem.Name = "导出成绩ToolStripMenuItem";
-            this.导出成绩ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.导出成绩ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.导出成绩ToolStripMenuItem.Text = "导出成绩";
-            // 
-            // 导出习题ToolStripMenuItem
-            // 
-            this.导出习题ToolStripMenuItem.Name = "导出习题ToolStripMenuItem";
-            this.导出习题ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.导出习题ToolStripMenuItem.Text = "导出习题";
             // 
             // 用户管理ToolStripMenuItem
             // 
@@ -269,7 +261,6 @@
         private System.Windows.Forms.ToolStripMenuItem 习题生成ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 批改习题ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 导出成绩ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 导出习题ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 班级管理ToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem 班级名单ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 用户管理ToolStripMenuItem;

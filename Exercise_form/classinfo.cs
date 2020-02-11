@@ -149,7 +149,7 @@ namespace Exercise_form
         private void button3_Click(object sender, EventArgs e)
         {
 
-            if (selindex >0)
+            if (selindex >=0)
             {
                 String yname = lsc2[selindex].classinfo1.ToString();
                 foreach (classinfo cinfo in lsc2)
@@ -184,12 +184,28 @@ namespace Exercise_form
 
         private void button2_Click(object sender, EventArgs e)
         {
+            if (selindex >=0)
+            {
 
+                classinfo tcl = lsc2[selindex];
+                var re = from o in pp.context.classExer
+                         where o.cid == tcl.classid
+                         select o;
+                if (re.Count<classExer>() > 0)
+                {
+                    MessageBox.Show("已经有练习关联不能删除！先去除关联或联系管理员");
 
+                }
+                else
+                {
 
-
-
+                    pp.context.DeleteObject(tcl);
+                    pp.context.SaveChanges();
+                    classinfo_Load(sender, e);
+                }
+            }
 
         }
+  ////////////////////////      ////////////
     }
 }
