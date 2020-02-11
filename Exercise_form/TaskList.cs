@@ -17,7 +17,7 @@ namespace Exercise_form
         public List<class_student> lcsl = null;
         public List<classinfo> lclinfo = null;
         public List<classExer> lce = null;
-        public List<exerL> ler = null;
+        public List<exerL> ler = new List<exerL>();
         public int sel1 = -1;
         public int sel2 = -1;
         public TaskList(param p)
@@ -56,16 +56,65 @@ namespace Exercise_form
 
         }
         ////////////////////////////
-        private List<exerL> tlel()
+        private List<classExer> tlce(classinfo tcl)
         {
-            List<exerL> tlel2 = null;
+            List<classExer> tlce2 = null;
+            var q2 = from o in pp.context.classExer
+                     where o.cid == tcl.classid
+                     select o;
+            if (q2.Count<classExer>() > 0)
+            {
+                tlce2 = q2.ToList<classExer>();
 
+            }
             
 
+            return tlce2;
+
+        }
+        private void tlel(classinfo tcl)
+        {
+            
+            lce = tlce(tcl);
+            if (lce != null){
+                foreach (classExer ce in lce)
+                {
+
+                    var q1 = from o in pp.context.exerL
+                             where o.id == ce.eid 
+                             select o;
+                    if (q1.Count<exerL>() > 0)
+                    {
+
+                        exerL tel = q1.First<exerL>();
+                        ler.Add(tel);
+
+                    }
+
+                }
+            }
+
+
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (dataGridView1.DataSource != null)
+           {
+               DataTable dt = (DataTable)dataGridView1.DataSource;
+               dt.Rows.Clear();
+                dataGridView1.DataSource = dt;
+           }
+            sel1 = listBox1.SelectedIndex;
+            tlel(lclinfo[sel1]);
+            dataGridView1.DataSource = ler;
 
 
 
-            return tlel2;
+
+          //  TaskList_Load(sender, e);
+
+
 
         }
 
