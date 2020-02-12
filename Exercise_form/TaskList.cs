@@ -31,6 +31,9 @@ namespace Exercise_form
             lclinfo=tlcin();
             listBox1.DataSource = lclinfo;
             listBox1.ValueMember = "classinfo1";
+         //   dataGridView1.AutoGenerateColumns = false;
+
+
 
 
 
@@ -76,6 +79,7 @@ namespace Exercise_form
         {
             
             lce = tlce(tcl);
+            ler.Clear() ;
             if (lce != null){
                 foreach (classExer ce in lce)
                 {
@@ -99,20 +103,24 @@ namespace Exercise_form
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (dataGridView1.DataSource != null)
-           {
-               DataTable dt = (DataTable)dataGridView1.DataSource;
-               dt.Rows.Clear();
-                dataGridView1.DataSource = dt;
-           }
+            //  if (dataGridView1.DataSource != null)
+            // {
+            //     DataTable dt = (DataTable)dataGridView1.DataSource;
+            //    dt.Rows.Clear();
+            //     dataGridView1.DataSource = dt;
+            //  }
+            dataGridView1.DataSource = null;
+            dataGridView1.Rows.Clear();
             sel1 = listBox1.SelectedIndex;
             tlel(lclinfo[sel1]);
+            dataGridView1.AutoGenerateColumns = false;
             dataGridView1.DataSource = ler;
+          
 
 
 
 
-          //  TaskList_Load(sender, e);
+          
 
 
 

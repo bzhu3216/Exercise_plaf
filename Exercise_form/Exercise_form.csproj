@@ -156,6 +156,12 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="mark.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mark.Designer.cs">
+      <DependentUpon>mark.cs</DependentUpon>
+    </Compile>
     <Compile Include="MianWindows.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -227,6 +233,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mark.resx">
+      <DependentUpon>mark.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MianWindows.resx">
       <DependentUpon>MianWindows.cs</DependentUpon>
