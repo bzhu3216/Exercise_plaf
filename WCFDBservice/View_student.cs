@@ -17,8 +17,7 @@ namespace WCFDBservice
         public string stid { get; set; }
         public string stname { get; set; }
         public Nullable<int> cno { get; set; }
+        public Nullable<int> cfinish { get; set; }
         public int cid { get; set; }
-        public string cteacher { get; set; }
-        public Nullable<int> cfinishr { get; set; }
     }
 }

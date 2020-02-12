@@ -167,9 +167,8 @@
           <Property Name="stid" Type="nvarchar" MaxLength="11" Nullable="false" />
           <Property Name="stname" Type="varchar" MaxLength="50" />
           <Property Name="cno" Type="int" />
+          <Property Name="cfinish" Type="int" />
           <Property Name="cid" Type="int" Nullable="false" />
-          <Property Name="cteacher" Type="nchar" MaxLength="4" />
-          <Property Name="cfinishr" Type="int" />
         </EntityType>
         <Association Name="FK_exerL_Course">
           <End Role="Course" Type="Self.Course" Multiplicity="1" />
@@ -202,9 +201,8 @@
 [View_student].[stid] AS [stid], 
 [View_student].[stname] AS [stname], 
 [View_student].[cno] AS [cno], 
-[View_student].[cid] AS [cid], 
-[View_student].[cteacher] AS [cteacher], 
-[View_student].[cfinishr] AS [cfinishr]
+[View_student].[cfinish] AS [cfinish], 
+[View_student].[cid] AS [cid]
 FROM [dbo].[View_student] AS [View_student]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_exerL_Course" Association="Self.FK_exerL_Course">
@@ -410,9 +408,8 @@ FROM [dbo].[View_student] AS [View_student]</DefiningQuery>
           <Property Name="stid" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="true" />
           <Property Name="stname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="cno" Type="Int32" />
+          <Property Name="cfinish" Type="Int32" />
           <Property Name="cid" Type="Int32" Nullable="false" />
-          <Property Name="cteacher" Type="String" MaxLength="4" FixedLength="true" Unicode="true" />
-          <Property Name="cfinishr" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -584,9 +581,8 @@ FROM [dbo].[View_student] AS [View_student]</DefiningQuery>
           <EntitySetMapping Name="View_student">
             <EntityTypeMapping TypeName="db_exerciseModel.View_student">
               <MappingFragment StoreEntitySet="View_student">
-                <ScalarProperty Name="cfinishr" ColumnName="cfinishr" />
-                <ScalarProperty Name="cteacher" ColumnName="cteacher" />
                 <ScalarProperty Name="cid" ColumnName="cid" />
+                <ScalarProperty Name="cfinish" ColumnName="cfinish" />
                 <ScalarProperty Name="cno" ColumnName="cno" />
                 <ScalarProperty Name="stname" ColumnName="stname" />
                 <ScalarProperty Name="stid" ColumnName="stid" />

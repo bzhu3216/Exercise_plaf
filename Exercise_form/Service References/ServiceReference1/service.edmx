@@ -163,9 +163,8 @@
         <Property Name="stid" Type="Edm.String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="true" />
         <Property Name="stname" Type="Edm.String" MaxLength="50" FixedLength="false" Unicode="false" />
         <Property Name="cno" Type="Edm.Int32" />
+        <Property Name="cfinish" Type="Edm.Int32" />
         <Property Name="cid" Type="Edm.Int32" Nullable="false" />
-        <Property Name="cteacher" Type="Edm.String" MaxLength="4" FixedLength="true" Unicode="true" />
-        <Property Name="cfinishr" Type="Edm.Int32" />
       </EntityType>
       <Association Name="FK_exerL_Course">
         <End Type="db_exerciseModel.Course" Role="Course" Multiplicity="1" />
