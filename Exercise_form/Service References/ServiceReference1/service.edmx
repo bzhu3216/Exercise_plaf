@@ -155,6 +155,18 @@
         <Property Name="mark" Type="Edm.Int32" />
         <Property Name="lid" Type="Edm.Int32" Nullable="false" />
       </EntityType>
+      <EntityType Name="View_student">
+        <Key>
+          <PropertyRef Name="cid" />
+          <PropertyRef Name="stid" />
+        </Key>
+        <Property Name="stid" Type="Edm.String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="true" />
+        <Property Name="stname" Type="Edm.String" MaxLength="50" FixedLength="false" Unicode="false" />
+        <Property Name="cno" Type="Edm.Int32" />
+        <Property Name="cid" Type="Edm.Int32" Nullable="false" />
+        <Property Name="cteacher" Type="Edm.String" MaxLength="4" FixedLength="true" Unicode="true" />
+        <Property Name="cfinishr" Type="Edm.Int32" />
+      </EntityType>
       <Association Name="FK_exerL_Course">
         <End Type="db_exerciseModel.Course" Role="Course" Multiplicity="1" />
         <End Type="db_exerciseModel.exerL" Role="exerL" Multiplicity="*" />
@@ -183,6 +195,7 @@
         <EntitySet Name="StudInfoes" EntityType="db_exerciseModel.StudInfo" />
         <EntitySet Name="exerDetail" EntityType="db_exerciseModel.exerDetail" />
         <EntitySet Name="studAnsw" EntityType="db_exerciseModel.studAnsw" />
+        <EntitySet Name="View_student" EntityType="db_exerciseModel.View_student" />
         <AssociationSet Name="FK_exerL_Course" Association="db_exerciseModel.FK_exerL_Course">
           <End Role="Course" EntitySet="Course" />
           <End Role="exerL" EntitySet="exerL" />

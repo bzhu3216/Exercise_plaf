@@ -38,5 +38,6 @@ namespace WCFDBservice
         public DbSet<StudInfo> StudInfoes { get; set; }
         public DbSet<exerDetail> exerDetail { get; set; }
         public DbSet<studAnsw> studAnsw { get; set; }
+        public DbSet<View_student> View_student { get; set; }
     }
 }

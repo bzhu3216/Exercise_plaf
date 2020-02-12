@@ -14,7 +14,7 @@ namespace Exercise_form
     public partial class TaskList : Form
     {
         public param pp;
-        public List<class_student> lcsl = null;
+       //public List<class_student> lcsl = null;
         public List<classinfo> lclinfo = null;
         public List<classExer> lce = null;
         public List<exerL> ler = new List<exerL>();
@@ -121,6 +121,28 @@ namespace Exercise_form
 
 
           
+
+
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            mark mq = null;
+            if (mq == null || mq.IsDisposed)
+            {
+                mq = new mark(this);
+              //  mq.MdiParent = this;
+                mq.Show();
+            }
+            else
+            {
+                mq.Activate();
+                mq.WindowState = FormWindowState.Normal;
+            }
+
+
+
 
 
 

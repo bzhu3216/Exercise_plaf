@@ -157,6 +157,20 @@
           <Property Name="question" Type="varbinary(max)" />
           <Property Name="answ" Type="bit" />
         </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“db_exercise.dbo.View_student”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="View_student">
+          <Key>
+            <PropertyRef Name="stid" />
+            <PropertyRef Name="cid" />
+          </Key>
+          <Property Name="stid" Type="nvarchar" MaxLength="11" Nullable="false" />
+          <Property Name="stname" Type="varchar" MaxLength="50" />
+          <Property Name="cno" Type="int" />
+          <Property Name="cid" Type="int" Nullable="false" />
+          <Property Name="cteacher" Type="nchar" MaxLength="4" />
+          <Property Name="cfinishr" Type="int" />
+        </EntityType>
         <Association Name="FK_exerL_Course">
           <End Role="Course" Type="Self.Course" Multiplicity="1" />
           <End Role="exerL" Type="Self.exerL" Multiplicity="*" />
@@ -183,6 +197,16 @@
           <EntitySet Name="StudInfo" EntityType="Self.StudInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="teacherinfo" EntityType="Self.teacherinfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TFQues" EntityType="Self.TFQues" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="View_student" EntityType="Self.View_student" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[View_student].[stid] AS [stid], 
+[View_student].[stname] AS [stname], 
+[View_student].[cno] AS [cno], 
+[View_student].[cid] AS [cid], 
+[View_student].[cteacher] AS [cteacher], 
+[View_student].[cfinishr] AS [cfinishr]
+FROM [dbo].[View_student] AS [View_student]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_exerL_Course" Association="Self.FK_exerL_Course">
             <End Role="Course" EntitySet="Course" />
             <End Role="exerL" EntitySet="exerL" />
@@ -210,6 +234,7 @@
           <EntitySet Name="StudInfoes" EntityType="db_exerciseModel.StudInfo" />
           <EntitySet Name="exerDetail" EntityType="db_exerciseModel.exerDetail" />
           <EntitySet Name="studAnsw" EntityType="db_exerciseModel.studAnsw" />
+          <EntitySet Name="View_student" EntityType="db_exerciseModel.View_student" />
         </EntityContainer>
         <EntityType Name="mchoiceQues">
           <Key>
@@ -377,6 +402,18 @@
           <Property Name="mark" Type="Int32" />
           <Property Name="lid" Type="Int32" Nullable="false" />
         </EntityType>
+        <EntityType Name="View_student">
+          <Key>
+            <PropertyRef Name="stid" />
+            <PropertyRef Name="cid" />
+          </Key>
+          <Property Name="stid" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="stname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cno" Type="Int32" />
+          <Property Name="cid" Type="Int32" Nullable="false" />
+          <Property Name="cteacher" Type="String" MaxLength="4" FixedLength="true" Unicode="true" />
+          <Property Name="cfinishr" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -540,6 +577,18 @@
                 <ScalarProperty Name="answ2" ColumnName="answ2" />
                 <ScalarProperty Name="answ1" ColumnName="answ1" />
                 <ScalarProperty Name="did" ColumnName="did" />
+                <ScalarProperty Name="stid" ColumnName="stid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_student">
+            <EntityTypeMapping TypeName="db_exerciseModel.View_student">
+              <MappingFragment StoreEntitySet="View_student">
+                <ScalarProperty Name="cfinishr" ColumnName="cfinishr" />
+                <ScalarProperty Name="cteacher" ColumnName="cteacher" />
+                <ScalarProperty Name="cid" ColumnName="cid" />
+                <ScalarProperty Name="cno" ColumnName="cno" />
+                <ScalarProperty Name="stname" ColumnName="stname" />
                 <ScalarProperty Name="stid" ColumnName="stid" />
               </MappingFragment>
             </EntityTypeMapping>
