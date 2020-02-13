@@ -158,6 +158,21 @@
           <Property Name="answ" Type="bit" />
         </EntityType>
         <!--生成过程中发现错误:
+警告 6002: 表/视图“db_exercise.dbo.View_detai_exerL”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="View_detai_exerL">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="typeq" />
+            <PropertyRef Name="qid" />
+            <PropertyRef Name="Expr1" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="typeq" Type="int" Nullable="false" />
+          <Property Name="qid" Type="int" Nullable="false" />
+          <Property Name="Expr1" Type="int" Nullable="false" />
+          <Property Name="score" Type="int" />
+        </EntityType>
+        <!--生成过程中发现错误:
 警告 6002: 表/视图“db_exercise.dbo.View_student”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
         <EntityType Name="View_student">
           <Key>
@@ -196,6 +211,15 @@
           <EntitySet Name="StudInfo" EntityType="Self.StudInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="teacherinfo" EntityType="Self.teacherinfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TFQues" EntityType="Self.TFQues" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="View_detai_exerL" EntityType="Self.View_detai_exerL" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[View_detai_exerL].[id] AS [id], 
+[View_detai_exerL].[typeq] AS [typeq], 
+[View_detai_exerL].[qid] AS [qid], 
+[View_detai_exerL].[Expr1] AS [Expr1], 
+[View_detai_exerL].[score] AS [score]
+FROM [dbo].[View_detai_exerL] AS [View_detai_exerL]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="View_student" EntityType="Self.View_student" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
 [View_student].[stid] AS [stid], 
@@ -233,6 +257,7 @@ FROM [dbo].[View_student] AS [View_student]</DefiningQuery>
           <EntitySet Name="exerDetail" EntityType="db_exerciseModel.exerDetail" />
           <EntitySet Name="studAnsw" EntityType="db_exerciseModel.studAnsw" />
           <EntitySet Name="View_student" EntityType="db_exerciseModel.View_student" />
+          <EntitySet Name="View_detai_exerL" EntityType="db_exerciseModel.View_detai_exerL" />
         </EntityContainer>
         <EntityType Name="mchoiceQues">
           <Key>
@@ -411,6 +436,19 @@ FROM [dbo].[View_student] AS [View_student]</DefiningQuery>
           <Property Name="cfinish" Type="Int32" />
           <Property Name="cid" Type="Int32" Nullable="false" />
         </EntityType>
+        <EntityType Name="View_detai_exerL">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="typeq" />
+            <PropertyRef Name="qid" />
+            <PropertyRef Name="Expr1" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="typeq" Type="Int32" Nullable="false" />
+          <Property Name="qid" Type="Int32" Nullable="false" />
+          <Property Name="Expr1" Type="Int32" Nullable="false" />
+          <Property Name="score" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -586,6 +624,17 @@ FROM [dbo].[View_student] AS [View_student]</DefiningQuery>
                 <ScalarProperty Name="cno" ColumnName="cno" />
                 <ScalarProperty Name="stname" ColumnName="stname" />
                 <ScalarProperty Name="stid" ColumnName="stid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_detai_exerL">
+            <EntityTypeMapping TypeName="db_exerciseModel.View_detai_exerL">
+              <MappingFragment StoreEntitySet="View_detai_exerL">
+                <ScalarProperty Name="score" ColumnName="score" />
+                <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+                <ScalarProperty Name="qid" ColumnName="qid" />
+                <ScalarProperty Name="typeq" ColumnName="typeq" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

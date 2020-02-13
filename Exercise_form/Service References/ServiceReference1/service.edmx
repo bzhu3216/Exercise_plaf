@@ -166,6 +166,19 @@
         <Property Name="cfinish" Type="Edm.Int32" />
         <Property Name="cid" Type="Edm.Int32" Nullable="false" />
       </EntityType>
+      <EntityType Name="View_detai_exerL">
+        <Key>
+          <PropertyRef Name="Expr1" />
+          <PropertyRef Name="id" />
+          <PropertyRef Name="qid" />
+          <PropertyRef Name="typeq" />
+        </Key>
+        <Property Name="id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="typeq" Type="Edm.Int32" Nullable="false" />
+        <Property Name="qid" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Expr1" Type="Edm.Int32" Nullable="false" />
+        <Property Name="score" Type="Edm.Int32" />
+      </EntityType>
       <Association Name="FK_exerL_Course">
         <End Type="db_exerciseModel.Course" Role="Course" Multiplicity="1" />
         <End Type="db_exerciseModel.exerL" Role="exerL" Multiplicity="*" />
@@ -195,6 +208,7 @@
         <EntitySet Name="exerDetail" EntityType="db_exerciseModel.exerDetail" />
         <EntitySet Name="studAnsw" EntityType="db_exerciseModel.studAnsw" />
         <EntitySet Name="View_student" EntityType="db_exerciseModel.View_student" />
+        <EntitySet Name="View_detai_exerL" EntityType="db_exerciseModel.View_detai_exerL" />
         <AssociationSet Name="FK_exerL_Course" Association="db_exerciseModel.FK_exerL_Course">
           <End Role="Course" EntitySet="Course" />
           <End Role="exerL" EntitySet="exerL" />

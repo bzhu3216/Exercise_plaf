@@ -18,6 +18,8 @@ namespace Exercise_form
         classinfo clinfo = null;
         List<View_student> lstv = null;
         exerL el = null;
+        //List<mchoiceQues> Lmq = null;
+        List<View_detai_exerL> ltvdl= null;
         public mark(TaskList tl1)
         {
             InitializeComponent();
@@ -26,6 +28,8 @@ namespace Exercise_form
             pp = tl.pp;
             lstv=getstudent2(clinfo);
             el = tl1.ler[tl.sel2];
+            ltvdl = getmqbylnio(el);
+          
         }
 
         private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
@@ -76,9 +80,7 @@ namespace Exercise_form
                 lst2.Add(st);
 
             }
-           
-
-            return lst2;
+               return lst2;
 
         }
 
@@ -130,6 +132,83 @@ namespace Exercise_form
             if (i >0)
                 dataGridView2.CurrentCell = dataGridView2.Rows[i - 1].Cells[0];
         }
+
+        //////////
+
+
+        private List<View_detai_exerL> getmqbylnio(exerL  texl)
+        {
+            List<View_detai_exerL> ltvdl2 = new List<View_detai_exerL>();
+            var q1 = from o in pp.context.View_detai_exerL 
+
+                     where o.id == texl.id
+                     select o;
+
+            if (q1.Count<View_detai_exerL>() > 0)
+                ltvdl2= q1.ToList<View_detai_exerL>();
+
+            return ltvdl2;
+
+        }
+
+        private void dataGridView2_RowHeaderCellChanged(object sender, DataGridViewRowEventArgs e)
+        {
+
+
+           
+
+        }
+
+        private void dataGridView2_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+         
+    
+
+
+
+
+        }
+
+        private void showdatagrid()
+        {  
+            View_student vst= lstv[dataGridView2.CurrentRow.Index];
+            int qtype = listBox1.SelectedIndex;
+            if(qtype==0)
+            {
+                //ltvdl
+                var q0 = ltvdl.Where(o => o.typeq == 0);
+                List<View_detai_exerL> ltvdl0 = q0.ToList<View_detai_exerL>();
+
+
+
+
+
+
+            }
+
+
+
+
+
+        }
+
+        private void dataGridView1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            Rectangle rectangle = new Rectangle(e.RowBounds.Location.X,
+                       e.RowBounds.Location.Y,
+                       dataGridView1.RowHeadersWidth,
+                       e.RowBounds.Height);
+
+            TextRenderer.DrawText(e.Graphics, (e.RowIndex + 1).ToString(),
+                dataGridView1.RowHeadersDefaultCellStyle.Font,
+                rectangle,
+                dataGridView1.RowHeadersDefaultCellStyle.ForeColor,
+                TextFormatFlags.VerticalCenter | TextFormatFlags.Right);
+        }
+
+
+
+
 
 
 
