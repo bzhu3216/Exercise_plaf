@@ -80,6 +80,7 @@
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(420, 436);
             this.dataGridView1.TabIndex = 3;
+            this.dataGridView1.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_RowHeaderMouseClick);
             // 
             // Column1
             // 

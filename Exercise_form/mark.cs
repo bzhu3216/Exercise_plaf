@@ -17,6 +17,7 @@ namespace Exercise_form
         public List<class_student> lcsl = null;
         classinfo clinfo = null;
         List<View_student> lstv = null;
+        exerL el = null;
         public mark(TaskList tl1)
         {
             InitializeComponent();
@@ -24,6 +25,7 @@ namespace Exercise_form
             clinfo = tl.lclinfo[tl.sel1];
             pp = tl.pp;
             lstv=getstudent2(clinfo);
+            el = tl1.ler[tl.sel2];
         }
 
         private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
@@ -35,7 +37,7 @@ namespace Exercise_form
             dataGridView2.AutoGenerateColumns = false;
             dataGridView2.DataSource = lstv;
             
-
+            
 
 
         }
@@ -105,7 +107,28 @@ namespace Exercise_form
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            int count = dataGridView2.RowCount;
+            //DataGridViewRow row = dataGridView1.sle
+            int i= 0;
+            if(dataGridView2.CurrentRow!=null)
+             i = dataGridView2.CurrentRow.Index;   
+            if(i<count-1)        
+            dataGridView2.CurrentCell = dataGridView2.Rows[i+1].Cells[0]; 
+
+
+
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //int count = dataGridView2.RowCount;
+            //DataGridViewRow row = dataGridView1.sle
+            int i = 0;
+            if (dataGridView2.CurrentRow != null)
+                i = dataGridView2.CurrentRow.Index;
+            if (i >0)
+                dataGridView2.CurrentCell = dataGridView2.Rows[i - 1].Cells[0];
         }
 
 

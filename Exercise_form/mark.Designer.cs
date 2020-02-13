@@ -83,6 +83,7 @@
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowHeadersWidth = 20;
             this.dataGridView2.RowTemplate.Height = 23;
+            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView2.Size = new System.Drawing.Size(209, 561);
             this.dataGridView2.TabIndex = 4;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
@@ -104,6 +105,7 @@
             this.button2.TabIndex = 2;
             this.button2.Text = "前一个";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
