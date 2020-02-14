@@ -12,15 +12,16 @@ using Exercise_form.ServiceReference1;
 namespace Exercise_form
 {
     public partial class mark : Form
-    { param pp = null;
+    {
+        param pp = null;
         TaskList tl = null;
         public List<class_student> lcsl = null;
         classinfo clinfo = null;
         List<View_student> lstv = null;
         exerL el = null;
         //List<mchoiceQues> Lmq = null;
-        List<View_detai_exerL> ltvdl= null;
-        List<stkey> qansw = new List<stkey>() ;
+        List<View_detai_exerL> ltvdl = null;
+        List<stkey> qansw = new List<stkey>();
         List<stkey2> TFansw = new List<stkey2>();
         public mark(TaskList tl1)
         {
@@ -28,10 +29,10 @@ namespace Exercise_form
             tl = tl1;
             clinfo = tl.lclinfo[tl.sel1];
             pp = tl.pp;
-            lstv=getstudent2(clinfo);
+            lstv = getstudent2(clinfo);
             el = tl1.ler[tl.sel2];
             ltvdl = getmqbylnio(el);
-          
+
         }
 
         private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
@@ -42,8 +43,8 @@ namespace Exercise_form
         {
             dataGridView2.AutoGenerateColumns = false;
             dataGridView2.DataSource = lstv;
-            
-            
+
+
 
 
         }
@@ -58,9 +59,9 @@ namespace Exercise_form
                      select o;
             if (q1.Count<class_student>() > 0)
             {
-                lcsl2=q1.ToList<class_student>();
+                lcsl2 = q1.ToList<class_student>();
             }
-            
+
             return lcsl2;
 
         }
@@ -82,7 +83,7 @@ namespace Exercise_form
                 lst2.Add(st);
 
             }
-               return lst2;
+            return lst2;
 
         }
 
@@ -92,11 +93,11 @@ namespace Exercise_form
             List<View_student> lst2 = new List<View_student>();
 
             var q1 = from o in pp.context.View_student
-                    
-                     where o.cid  == tcinfo.classid
+
+                     where o.cid == tcinfo.classid
                      select o;
 
-             if (q1.Count<View_student>()>0)
+            if (q1.Count<View_student>() > 0)
                 lst2 = q1.ToList<View_student>();
 
             return lst2;
@@ -113,12 +114,14 @@ namespace Exercise_form
         {
             int count = dataGridView2.RowCount;
             //DataGridViewRow row = dataGridView1.sle
-            int i= 0;
-            if(dataGridView2.CurrentRow!=null)
-             i = dataGridView2.CurrentRow.Index;   
-            if(i<count-1)        
-            dataGridView2.CurrentCell = dataGridView2.Rows[i+1].Cells[0]; 
+            int i = 0;
+            if (dataGridView2.CurrentRow != null)
+                i = dataGridView2.CurrentRow.Index;
+            if (i < count - 1)
+                dataGridView2.CurrentCell = dataGridView2.Rows[i + 1].Cells[0];
 
+            dataGridView1.Rows.Clear();
+            showdatagrid();
 
 
 
@@ -131,23 +134,23 @@ namespace Exercise_form
             int i = 0;
             if (dataGridView2.CurrentRow != null)
                 i = dataGridView2.CurrentRow.Index;
-            if (i >0)
+            if (i > 0)
                 dataGridView2.CurrentCell = dataGridView2.Rows[i - 1].Cells[0];
         }
 
         //////////
 
 
-        private List<View_detai_exerL> getmqbylnio(exerL  texl)
+        private List<View_detai_exerL> getmqbylnio(exerL texl)
         {
             List<View_detai_exerL> ltvdl2 = new List<View_detai_exerL>();
-            var q1 = from o in pp.context.View_detai_exerL 
+            var q1 = from o in pp.context.View_detai_exerL
 
                      where o.id == texl.id
                      select o;
 
             if (q1.Count<View_detai_exerL>() > 0)
-                ltvdl2= q1.ToList<View_detai_exerL>();
+                ltvdl2 = q1.ToList<View_detai_exerL>();
 
             return ltvdl2;
 
@@ -157,14 +160,14 @@ namespace Exercise_form
         {
 
 
-           
+
 
         }
 
         private void dataGridView2_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-         
-    
+
+
 
 
 
@@ -172,41 +175,147 @@ namespace Exercise_form
         }
 
         private void showdatagrid()
-        {  
-            View_student vst= lstv[dataGridView2.CurrentRow.Index];
+        {
+            View_student vst = lstv[dataGridView2.CurrentRow.Index];
             int qtype = listBox1.SelectedIndex;
-            if(qtype==0)
+            if (qtype == 0)
             {
                 //ltvdl
+
                 var q0 = ltvdl.Where(o => o.typeq == 0);
                 List<View_detai_exerL> ltvdl0 = q0.ToList<View_detai_exerL>();
+                foreach (View_detai_exerL vel in ltvdl0)
+                {
+                    if (vel.typeq == 0)
+                    {
+                        var q1 = from o in pp.context.studAnsw
+                                 where o.did == vel.Expr1 && o.stid == vst.stid
+                                 select o;
+                        if (q1.Count() > 0)
+                        {
+                            studAnsw stA = q1.First<studAnsw>();
+                            DataGridViewRow dgvr = new DataGridViewRow();
+                           // dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
 
+                            foreach (DataGridViewColumn c in this.dataGridView1.Columns)
+                            {
 
+                                dgvr.Cells.Add(c.CellTemplate.Clone() as DataGridViewCell);
+                            }
+                            dgvr.Cells[0].Value = stA.did;
+                            String an = "";
+                            if (stA.answ1 == 0) an = "A";
+                            if (stA.answ1 == 1) an = "B";
+                            if (stA.answ1 == 2) an = "C";
+                            if (stA.answ1 == 3) an = "D";
+                            dgvr.Cells[1].Value = an;
+                            dgvr.Cells[2].Value = stA.mark;
+                            this.dataGridView1.Rows.Add(dgvr);
 
+                            /////////////////////////////
 
+                        }
+                        else
+                        {
+                            DataGridViewRow dgvr = new DataGridViewRow();
+                            //dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+                            foreach (DataGridViewColumn c in this.dataGridView1.Columns)
+                            {
 
+                                dgvr.Cells.Add(c.CellTemplate.Clone() as DataGridViewCell);
+                            }
+                            dgvr.Cells[0].Value = vel.Expr1;
+                            dgvr.Cells[1].Value = null;
+                            dgvr.Cells[2].Value = 0;
+                            this.dataGridView1.Rows.Add(dgvr);
+                        }
+                    }
+                }
+            }//end0
 
+            ////////////////////////////////////////////////
+            if (qtype == 1)
+            {
+                //ltvdl
 
+                var q0 = ltvdl.Where(o => o.typeq == 1);
+                List<View_detai_exerL> ltvdl0 = q0.ToList<View_detai_exerL>();
+                foreach (View_detai_exerL vel in ltvdl0)
+                {
+                    if (vel.typeq ==1)
+                    {
+                        var q1 = from o in pp.context.studAnsw
+                                 where o.did == vel.Expr1 && o.stid == vst.stid
+                                 select o;
+                        if (q1.Count() > 0)
+                        {
+                            studAnsw stA = q1.First<studAnsw>();
+                            DataGridViewRow dgvr = new DataGridViewRow();
+                            // dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
 
+                            foreach (DataGridViewColumn c in this.dataGridView1.Columns)
+                            {
 
+                                dgvr.Cells.Add(c.CellTemplate.Clone() as DataGridViewCell);
+                            }
+                            dgvr.Cells[0].Value = stA.did;
+                            dgvr.Cells[1].Value = stA.answ2;
+                            dgvr.Cells[2].Value = stA.mark;
+                            this.dataGridView1.Rows.Add(dgvr);
 
+                            /////////////////////////////
 
+                        }
+                        else
+                        {
+                            DataGridViewRow dgvr = new DataGridViewRow();
+                            //dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+                            foreach (DataGridViewColumn c in this.dataGridView1.Columns)
+                            {
 
-
-
-
-
-
-
-
+                                dgvr.Cells.Add(c.CellTemplate.Clone() as DataGridViewCell);
+                            }
+                            dgvr.Cells[0].Value = vel.Expr1;
+                            dgvr.Cells[1].Value = null;
+                            dgvr.Cells[2].Value = 0;
+                            this.dataGridView1.Rows.Add(dgvr);
+                        }
+                    }
+                }
             }
+            ////////////////////////////////////////////////
+
+            ///////////////////////////////////////end2
 
 
 
 
 
-        }
-       //end shows
+
+
+
+
+
+
+
+
+
+
+/////////////////////////////            end3
+
+
+
+
+
+
+
+
+
+
+
+
+
+        }       //end shows
         private void dataGridView1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
             Rectangle rectangle = new Rectangle(e.RowBounds.Location.X,
