@@ -182,6 +182,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="stkey.cs" />
+    <Compile Include="stkey2.cs" />
     <Compile Include="Student.cs" />
     <Compile Include="TaskList.cs">
       <SubType>Form</SubType>

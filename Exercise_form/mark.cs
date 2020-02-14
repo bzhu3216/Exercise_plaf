@@ -20,6 +20,8 @@ namespace Exercise_form
         exerL el = null;
         //List<mchoiceQues> Lmq = null;
         List<View_detai_exerL> ltvdl= null;
+        List<stkey> qansw = new List<stkey>() ;
+        List<stkey2> TFansw = new List<stkey2>();
         public mark(TaskList tl1)
         {
             InitializeComponent();
@@ -185,6 +187,18 @@ namespace Exercise_form
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
             }
 
 
@@ -192,7 +206,7 @@ namespace Exercise_form
 
 
         }
-
+       //end shows
         private void dataGridView1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
             Rectangle rectangle = new Rectangle(e.RowBounds.Location.X,
@@ -208,8 +222,154 @@ namespace Exercise_form
         }
 
 
+        ///////////////////////////////////////////
+
+        private void markmqandTF()
+        {
+            // View_student vst = lstv[dataGridView2.CurrentRow.Index];
+            var q0 = ltvdl.Where(o => o.typeq == 0) ;
+            List<View_detai_exerL> ltvdl0 = q0.ToList<View_detai_exerL>();
+            foreach (View_detai_exerL vde in ltvdl0)
+            {
+                var q01 = from o in pp.context.mchoiceQues
+                          where o.id == vde.qid
+                          orderby o.id 
+                          select new stkey{ qid=o.id,qkey=(int)o.answ, lid=(int)vde.Expr1};
+                if (q01.Count() > 0)
+
+                {
+                    qansw.Add(q01.First());
+
+                }          
+  
+               }
+            ////////////////////////////////////////endmq
+
+            var t1 = ltvdl.Where(o => o.typeq == 1);
+            List<View_detai_exerL> ltvdl1 =t1.ToList<View_detai_exerL>();
+            foreach (View_detai_exerL vde in ltvdl1)
+            {
+                var t11 = from o in pp.context.TFQues 
+                          where o.id == vde.qid
+                          orderby o.id
+                          select  new stkey2{ qid = o.id, qkey =(bool)o.answ, lid = (int)vde.Expr1 };
+                if (t11.Count() > 0)
+
+                {
+                   TFansw.Add(t11.First());
+
+                }
+
+            }
 
 
+
+
+
+
+
+
+            //////////////////////////////////////////////////
+
+
+
+            foreach (View_student vs in lstv)
+
+            {
+                //if (vs.stid== "20171113202") { 
+               
+                foreach (View_detai_exerL vel in ltvdl)
+                {
+                        if (vel.typeq == 0)
+                        {
+                            var q1 = from o in pp.context.studAnsw
+                                     where o.did == vel.Expr1 && o.stid == vs.stid
+                                     select o;
+                            if (q1.Count() > 0)
+                            {
+                               studAnsw stA = q1.First<studAnsw>();
+                              stkey bstk = qansw.Find(o => o.lid == stA.did && (o.qkey == stA.answ1 + 1));
+                                if (bstk != null)
+                                {
+                                    stA.mark = vel.score;
+                                    pp.context.UpdateObject(stA);
+                                   // pp.context.SaveChanges();
+
+                                }
+                                else
+                                {
+                                    stA.mark = 0;
+                                    pp.context.UpdateObject(stA);
+                                   // pp.context.SaveChanges();
+                                }
+                            }
+                         }
+                    ////////////////////////////////end 00
+                    if (vel.typeq == 1)
+                    {
+                        var q1 = from o in pp.context.studAnsw
+                                 where o.did == vel.Expr1 && o.stid == vs.stid
+                                 select o;
+                        if (q1.Count() > 0)
+                        {
+                            studAnsw stA = q1.First<studAnsw>();
+                            stkey2 bstk = TFansw.Find(o => o.lid == stA.did && (o.qkey ==(bool)stA.answ2 ));
+                            if (bstk != null)
+                            {
+                                stA.mark = vel.score;
+                                pp.context.UpdateObject(stA);
+                                // pp.context.SaveChanges();
+
+                            }
+                            else
+                            {
+                                stA.mark = 0;
+                                pp.context.UpdateObject(stA);
+                                // pp.context.SaveChanges();
+                            }
+                        }
+                    }
+
+
+
+                    ///////////////////////////////////////////////////////////
+
+                    pp.context.SaveChanges();
+
+                   // }
+                }//for each vel
+
+
+
+
+
+
+
+            }  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            markmqandTF();
+        }
 
 
 

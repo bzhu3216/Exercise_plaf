@@ -41,6 +41,7 @@
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.答案 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button4 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -58,6 +59,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.button4);
             this.splitContainer1.Panel1.Controls.Add(this.dataGridView2);
             this.splitContainer1.Panel1.Controls.Add(this.button3);
             this.splitContainer1.Panel1.Controls.Add(this.button2);
@@ -118,7 +120,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(123, 88);
+            this.button3.Location = new System.Drawing.Point(123, 70);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(67, 23);
             this.button3.TabIndex = 3;
@@ -127,7 +129,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(123, 50);
+            this.button2.Location = new System.Drawing.Point(123, 41);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(67, 23);
             this.button2.TabIndex = 2;
@@ -192,6 +194,16 @@
             this.答案.HeaderText = "得分";
             this.答案.Name = "答案";
             // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(123, 99);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(67, 23);
+            this.button4.TabIndex = 5;
+            this.button4.Text = "批客观题";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // mark
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -226,5 +238,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn 答案;
+        private System.Windows.Forms.Button button4;
     }
 }
