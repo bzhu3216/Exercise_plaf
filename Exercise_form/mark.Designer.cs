@@ -139,7 +139,7 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(67, 23);
             this.button3.TabIndex = 3;
-            this.button3.Text = "批改情况";
+            this.button3.Text = "未批情况";
             this.button3.UseVisualStyleBackColor = true;
             // 
             // button2
@@ -177,6 +177,7 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(78, 99);
             this.listBox1.TabIndex = 0;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // dataGridView1
             // 
@@ -194,11 +195,12 @@
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(918, 703);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
             this.dataGridView1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridView1_RowPostPaint);
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(307, 582);
+            this.richTextBox1.Location = new System.Drawing.Point(268, 365);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(100, 96);
             this.richTextBox1.TabIndex = 1;
@@ -214,6 +216,7 @@
             // 
             this.Column4.HeaderText = "编号";
             this.Column4.Name = "Column4";
+            this.Column4.Width = 60;
             // 
             // Column5
             // 
@@ -230,7 +233,7 @@
             this.Column7.HeaderText = "答案";
             this.Column7.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.Column7.Name = "Column7";
-            this.Column7.Width = 500;
+            this.Column7.Width = 600;
             // 
             // Column8
             // 

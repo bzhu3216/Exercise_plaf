@@ -43,6 +43,9 @@ namespace Exercise_form
         {
             dataGridView2.AutoGenerateColumns = false;
             dataGridView2.DataSource = lstv;
+         //   dataGridView2.CurrentCell = dataGridView2.Rows[0].Cells[0];
+           listBox1.SelectedIndex = 3;
+            
 
 
 
@@ -107,7 +110,7 @@ namespace Exercise_form
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            showdatagrid();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -136,6 +139,7 @@ namespace Exercise_form
                 i = dataGridView2.CurrentRow.Index;
             if (i > 0)
                 dataGridView2.CurrentCell = dataGridView2.Rows[i - 1].Cells[0];
+            showdatagrid();
         }
 
         //////////
@@ -166,7 +170,7 @@ namespace Exercise_form
 
         private void dataGridView2_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-
+           // showdatagrid();
 
 
 
@@ -176,12 +180,16 @@ namespace Exercise_form
 
         private void showdatagrid()
         {
+            dataGridView1.Rows.Clear();
             View_student vst = lstv[dataGridView2.CurrentRow.Index];
             int qtype = listBox1.SelectedIndex;
             if (qtype == 0)
             {
                 //ltvdl
-
+                dataGridView1.Columns[1].Visible = true;
+                dataGridView1.Columns[2].Visible = true;
+                dataGridView1.Columns[3].Visible = false;
+                dataGridView1.Columns[4].Visible = false;
                 var q0 = ltvdl.Where(o => o.typeq == 0);
                 List<View_detai_exerL> ltvdl0 = q0.ToList<View_detai_exerL>();
                 foreach (View_detai_exerL vel in ltvdl0)
@@ -237,7 +245,10 @@ namespace Exercise_form
             if (qtype == 1)
             {
                 //ltvdl
-
+                dataGridView1.Columns[1].Visible = true;
+                dataGridView1.Columns[2].Visible = true;
+                dataGridView1.Columns[3].Visible = false;
+                dataGridView1.Columns[4].Visible = false;
                 var q0 = ltvdl.Where(o => o.typeq == 1);
                 List<View_detai_exerL> ltvdl0 = q0.ToList<View_detai_exerL>();
                 foreach (View_detai_exerL vel in ltvdl0)
@@ -292,7 +303,10 @@ namespace Exercise_form
             if (qtype ==3)
             {
                 //ltvdl
-
+                dataGridView1.Columns[1].Visible = false;
+                dataGridView1.Columns[2].Visible = false;
+                dataGridView1.Columns[3].Visible = true;
+                dataGridView1.Columns[4].Visible = true;
                 var q0 = ltvdl.Where(o => o.typeq == 3);
                 List<View_detai_exerL> ltvdl0 = q0.ToList<View_detai_exerL>();
                 foreach (View_detai_exerL vel in ltvdl0)
@@ -382,7 +396,100 @@ namespace Exercise_form
             /////////////////////////////            end3
 
 
+            if (qtype == 4)
+            {
+                //ltvdl
+                dataGridView1.Columns[1].Visible = false;
+                dataGridView1.Columns[2].Visible = false;
+                dataGridView1.Columns[3].Visible = true;
+                dataGridView1.Columns[4].Visible = true;
+                var q0 = ltvdl.Where(o => o.typeq == 4);
+                List<View_detai_exerL> ltvdl0 = q0.ToList<View_detai_exerL>();
+                foreach (View_detai_exerL vel in ltvdl0)
+                {
+                    if (vel.typeq == 4)
+                    {
+                        var q1 = from o in pp.context.studAnsw
+                                 where o.did == vel.Expr1 && o.stid == vst.stid
+                                 select o;
+                        if (q1.Count() > 0)
+                        {
+                            studAnsw stA = q1.First<studAnsw>();
+                            DataGridViewRow dgvr = new DataGridViewRow();
+                            // dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
 
+                            foreach (DataGridViewColumn c in this.dataGridView1.Columns)
+                            {
+
+                                dgvr.Cells.Add(c.CellTemplate.Clone() as DataGridViewCell);
+                            }
+                            dgvr.Cells[0].Value = stA.did;
+                            //  dgvr.Cells[1].Value = stA.answ2;
+                            //  dgvr.Cells[2].Value = stA.mark;
+                            System.IO.MemoryStream ms = null;
+                            Byte[] mybyte = stA.answ3;
+                            if (mybyte != null)
+                                ms = new System.IO.MemoryStream(mybyte);
+                            if (ms != null)
+                                dgvr.Cells[3].Value = Image.FromStream(ms);
+                            ((System.Windows.Forms.DataGridViewComboBoxColumn)dataGridView1.Columns[4]).Items.Clear();
+                            for (int i = 0; i <= vel.score; i++)
+                            {
+                                //  a.Add(i); 
+
+                                ((System.Windows.Forms.DataGridViewComboBoxColumn)dataGridView1.Columns[4]).Items.Add(i.ToString());
+                            }
+
+                            if (stA.mark != null)
+                                dgvr.Cells[4].Value = stA.mark.ToString();
+                            else
+                                dgvr.Cells[4].Value = "0";
+                            int hh = (int)ms.Length / 250;
+                            //MessageBox.Show(hh.ToString()); 
+                            if (hh > 350) hh = 350;
+                            dgvr.Height = hh;
+                            this.dataGridView1.Rows.Add(dgvr);
+
+                            /////////////////////////////
+
+                        }
+                        else
+                        {
+                            DataGridViewRow dgvr = new DataGridViewRow();
+                            //dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+                            foreach (DataGridViewColumn c in this.dataGridView1.Columns)
+                            {
+
+                                dgvr.Cells.Add(c.CellTemplate.Clone() as DataGridViewCell);
+                            }
+                            dgvr.Cells[0].Value = vel.Expr1;
+                            //  dgvr.Cells[3].Value = null;
+                            ((System.Windows.Forms.DataGridViewComboBoxColumn)dataGridView1.Columns[4]).Items.Clear();
+                            // List<int>  a = new List<int>();
+                            for (int i = 0; i <= vel.score; i++)
+                            {
+                                //  a.Add(i); 
+
+                                ((System.Windows.Forms.DataGridViewComboBoxColumn)dataGridView1.Columns[4]).Items.Add(i.ToString());
+                            }
+                            dgvr.Cells[4].Value = "0";
+                            this.dataGridView1.Rows.Add(dgvr);
+                        }
+                    }
+                }
+            }
+
+
+
+
+
+
+
+
+
+
+
+            /////////////////////////////            end4
 
 
 
@@ -556,6 +663,59 @@ namespace Exercise_form
         private void button4_Click(object sender, EventArgs e)
         {
             markmqandTF();
+        }
+
+        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            //  MessageBox.Show("ok"); 
+            if (e.ColumnIndex == 4 && listBox1.SelectedIndex == 3)
+            {
+                studAnsw stA = null;
+                int qid = 0;
+                qid = (int)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
+                //  var q2 = ltvdl.Where(o => o.Expr1 == qid && o.typeq == 3);
+                var q3 = from o in pp.context.studAnsw
+                         where o.did == qid
+                         select o;
+                if (q3.Count<studAnsw>() > 0) stA = q3.First<studAnsw>();
+                stA.mark = int.Parse( dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString() );
+
+                pp.context.UpdateObject(stA);
+                pp.context.SaveChanges(); 
+
+                //  MessageBox.Show("ok");
+
+            }
+
+
+            if (e.ColumnIndex == 4 && listBox1.SelectedIndex == 4)
+            {
+                studAnsw stA = null;
+                int qid = 0;
+                qid = (int)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
+                //  var q2 = ltvdl.Where(o => o.Expr1 == qid && o.typeq == 3);
+                var q3 = from o in pp.context.studAnsw
+                         where o.did == qid
+                         select o;
+                if (q3.Count<studAnsw>() > 0) stA = q3.First<studAnsw>();
+                stA.mark = int.Parse(dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString());
+
+                pp.context.UpdateObject(stA);
+                pp.context.SaveChanges();
+
+                //  MessageBox.Show("ok");
+
+            }
+
+
+
+
+
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            showdatagrid();
         }
 
 
