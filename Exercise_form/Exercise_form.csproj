@@ -197,6 +197,12 @@
     <Compile Include="TaskList.Designer.cs">
       <DependentUpon>TaskList.cs</DependentUpon>
     </Compile>
+    <Compile Include="UPmq.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UPmq.Designer.cs">
+      <DependentUpon>UPmq.cs</DependentUpon>
+    </Compile>
     <Compile Include="Uptatamcq.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -263,6 +269,9 @@
     </Compile>
     <EmbeddedResource Include="TaskList.resx">
       <DependentUpon>TaskList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UPmq.resx">
+      <DependentUpon>UPmq.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Uptatamcq.resx">
       <DependentUpon>Uptatamcq.cs</DependentUpon>

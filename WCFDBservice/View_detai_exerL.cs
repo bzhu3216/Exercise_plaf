@@ -19,5 +19,6 @@ namespace WCFDBservice
         public int qid { get; set; }
         public int Expr1 { get; set; }
         public Nullable<int> score { get; set; }
+        public int lid { get; set; }
     }
 }

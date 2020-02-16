@@ -178,6 +178,19 @@ namespace Exercise_form
                 TextFormatFlags.VerticalCenter | TextFormatFlags.Right);
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+
+
+
+
+
+
+
+
+        }
+
 
 
 
@@ -186,6 +199,220 @@ namespace Exercise_form
 
 
         ////////////////////////////
+
+        private void toFTR(classinfo tci,exerL tel )
+        {
+              saveFileDialog1.DefaultExt = ".rtf";
+              saveFileDialog1.Filter = "RTF file|*.rtf";
+             String dirsave = null;
+            List<View_student> tlvst = null;
+           
+              if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+             {
+
+               string  localFilePath = saveFileDialog1.FileName.ToString();
+                dirsave = localFilePath.Substring(0, localFilePath.LastIndexOf("\\")); 
+
+             }
+
+            var q5 = from o in pp.context.View_student
+                     where o.cid == tci.classid
+                     select o;
+
+
+            if (sel2 >= 0)
+            {
+                // sel1 = comboBox1.SelectedIndex;
+                // classinfo cin = lclinfo[sel1];
+                //lce = getclexerl(cin);
+                // erl = getexerl2(cin);
+                //  persons.Join(cities, p => p.CityID, c => c.ID, (p, c) => new { PersonName = p.Name, CityName = c.Name });
+                // var q1 = lce.Join(erl, p => p.eid, c => c.id, (p, c) => new { eid = p.eid, ename = c.name, stime = p.starttime, etime = p.endtime });
+                richTextBox1.Text = "";
+                exerL tel1 = tel;
+                List<exerDetail> led = null;
+                var q11 = from o in pp.context.exerDetail
+                          where o.lid == tel1.id
+                          orderby o.typeq
+                          select o;
+                if (q11 != null)
+                {
+                    led = q11.ToList<exerDetail>();
+                    foreach (exerDetail ed1 in led)
+                    {
+                        //get question
+                        if (ed1.typeq == 0)
+                        {
+
+                            var q12 = from o in pp.context.mchoiceQues
+                                      where o.id == ed1.qid
+                                      select o;
+                            mchoiceQues mcq = q12.First<mchoiceQues>();
+                            System.IO.MemoryStream mstream = new System.IO.MemoryStream(mcq.question, false);
+                            this.richTextBox1.LoadFile(mstream, RichTextBoxStreamType.RichText);
+                            this.richTextBox1.AppendText(richTextBox1.Text);
+                            //get student answervar
+
+
+                            var q13 = from o in pp.context.studAnsw
+                                      where o.stid == pp.st.studentid && o.did == ed1.id
+                                      select o;
+
+                            studAnsw tsa = q13.First<studAnsw>();
+                            String key1 = "Question not being attemped"; ;
+                            if (tsa.answ1 == 0) key1 = "A";
+                            if (tsa.answ1 == 1) key1 = "B";
+                            if (tsa.answ1 == 2) key1 = "C";
+                            if (tsa.answ1 == 3) key1 = "D";
+                            this.richTextBox1.AppendText("\n(" + key1 + ")");
+                            this.richTextBox1.AppendText("\n_____________________________\n");
+
+                        }
+                        if (ed1.typeq == 1)
+                        {
+
+                            var q12 = from o in pp.context.TFQues
+                                      where o.id == ed1.qid
+                                      select o;
+                            TFQues mcq = q12.First<TFQues>();
+                            System.IO.MemoryStream mstream = new System.IO.MemoryStream(mcq.question, false);
+                            this.richTextBox1.LoadFile(mstream, RichTextBoxStreamType.RichText);
+                            this.richTextBox1.AppendText(richTextBox1.Text);
+                            //get student answervar
+
+
+                            var q13 = from o in pp.context.studAnsw
+                                      where o.stid == pp.st.studentid && o.did == ed1.id
+                                      select o;
+
+                            studAnsw tsa = q13.First<studAnsw>();
+                            String key1 = "Question not being attemped";
+                            if (tsa.answ2 == true) key1 = "True";
+                            if (tsa.answ2 == false) key1 = "False";
+
+                            this.richTextBox1.AppendText("\n(" + key1 + ")");
+                            this.richTextBox1.AppendText("\n_____________________________\n");
+
+                        }
+
+                        if (ed1.typeq == 2)
+                        {
+
+
+
+                        }
+
+                        if (ed1.typeq == 3)
+                        {
+
+                            var q12 = from o in pp.context.SQues
+                                      where o.id == ed1.qid
+                                      select o;
+                            SQues mcq = q12.First<SQues>();
+                            System.IO.MemoryStream mstream = new System.IO.MemoryStream(mcq.question, false);
+                            this.richTextBox1.LoadFile(mstream, RichTextBoxStreamType.RichText);
+                            this.richTextBox2.AppendText(richTextBox1.Text);
+                            //get student answervar
+
+
+                            var q13 = from o in pp.context.studAnsw
+                                      where o.stid == pp.st.studentid && o.did == ed1.id
+                                      select o;
+
+                            studAnsw tsa = q13.First<studAnsw>();
+                            //  String key1 = null;
+                            // System.IO.MemoryStream mstream2 = new System.IO.MemoryStream(tsa.answ3 , false);
+                            //this.richTextBox1.LoadFile(mstream2, RichTextBoxStreamType.RichText);
+                            Byte[] mybyte = tsa.answ3;
+                            System.IO.MemoryStream ms = null;
+                            if (q13.Count<studAnsw>() > 0)
+                            {
+                                if (mybyte != null)
+                                    ms = new System.IO.MemoryStream(mybyte);
+                                Image im = Image.FromStream(ms);
+                                this.richTextBox2.AppendText("\n_____________________________\n");
+                                Clipboard.SetDataObject(im, false);
+                                richTextBox2.Paste();
+                                this.richTextBox2.AppendText("\n_____________________________\n");
+                            }
+
+                        }
+                        //////////////////////////////////////end3
+                        if (ed1.typeq == 4)
+                        {
+
+                            var q12 = from o in pp.context.AQues
+                                      where o.id == ed1.qid
+                                      select o;
+                            AQues mcq = q12.First<AQues>();
+                            System.IO.MemoryStream mstream = new System.IO.MemoryStream(mcq.question, false);
+                            this.richTextBox1.LoadFile(mstream, RichTextBoxStreamType.RichText);
+                            this.richTextBox2.AppendText(richTextBox1.Text);
+                            //get student answervar
+
+
+                            var q13 = from o in pp.context.studAnsw
+                                      where o.stid == pp.st.studentid && o.did == ed1.id
+                                      select o;
+
+                            studAnsw tsa = q13.First<studAnsw>();
+                            //  String key1 = null;
+                            // System.IO.MemoryStream mstream2 = new System.IO.MemoryStream(tsa.answ3 , false);
+                            //this.richTextBox1.LoadFile(mstream2, RichTextBoxStreamType.RichText);
+                            Byte[] mybyte = tsa.answ3;
+                            System.IO.MemoryStream ms = null;
+                            if (q13.Count<studAnsw>() > 0)
+                            {
+                                if (mybyte != null)
+                                    ms = new System.IO.MemoryStream(mybyte);
+                                Image im = Image.FromStream(ms);
+                                this.richTextBox2.AppendText("\n_____________________________\n");
+                                Clipboard.SetDataObject(im, false);
+                                richTextBox2.Paste();
+                                this.richTextBox2.AppendText("\n_____________________________\n");
+                            }
+
+                        }
+
+
+
+
+                    }
+
+
+
+                }
+
+                //////////////////savertf//////////////////////
+              //  saveFileDialog1.DefaultExt = ".rtf";
+             //   saveFileDialog1.Filter = "RTF file|*.rtf";
+
+              //  if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+               // {
+
+                 //   richTextBox2.SaveFile(saveFileDialog1.FileName);
+
+               // }
+                //////////////////////
+
+
+
+
+            }
+            else
+            {
+                MessageBox.Show("Please select an exercise!");
+            }
+
+
+
+
+
+
+        }
+
+
+        //////////////////////////////
 
 
         //      ////////////////////////////////////////////////////////////////////////////

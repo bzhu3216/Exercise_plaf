@@ -37,6 +37,9 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -107,12 +110,13 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(249, 192);
+            this.button2.Location = new System.Drawing.Point(249, 185);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 5;
             this.button2.Text = "导出作业";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -123,11 +127,31 @@
             this.button3.Text = "批改情况";
             this.button3.UseVisualStyleBackColor = true;
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(268, 328);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(36, 54);
+            this.richTextBox1.TabIndex = 7;
+            this.richTextBox1.Text = "";
+            this.richTextBox1.Visible = false;
+            // 
+            // richTextBox2
+            // 
+            this.richTextBox2.Location = new System.Drawing.Point(246, 406);
+            this.richTextBox2.Name = "richTextBox2";
+            this.richTextBox2.Size = new System.Drawing.Size(100, 96);
+            this.richTextBox2.TabIndex = 8;
+            this.richTextBox2.Text = "";
+            this.richTextBox2.Visible = false;
+            // 
             // TaskList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(794, 550);
+            this.Controls.Add(this.richTextBox2);
+            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -155,5 +179,8 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox richTextBox2;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
