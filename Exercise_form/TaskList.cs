@@ -109,6 +109,7 @@ namespace Exercise_form
             //    dt.Rows.Clear();
             //     dataGridView1.DataSource = dt;
             //  }
+            sel2 = -1;
             dataGridView1.DataSource = null;
             dataGridView1.Rows.Clear();
             sel1 = listBox1.SelectedIndex;
@@ -128,30 +129,31 @@ namespace Exercise_form
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-            if (sel2 >= 0)
+            if (listBox1.SelectedIndex >= 0 )
             {
-
-                mark mq = null;
-                if (mq == null || mq.IsDisposed)
+                if (sel2 >= 0)
                 {
-                    mq = new mark(this);
-                    //  mq.MdiParent = this;
-                    mq.Show();
+
+                    mark mq = null;
+                    if (mq == null || mq.IsDisposed)
+                    {
+                        mq = new mark(this);
+                        //  mq.MdiParent = this;
+                        mq.Show();
+                    }
+                    else
+                    {
+                        mq.Activate();
+                        mq.WindowState = FormWindowState.Normal;
+                    }
                 }
                 else
                 {
-                    mq.Activate();
-                    mq.WindowState = FormWindowState.Normal;
+
+                    MessageBox.Show("请选择一个作业");
                 }
+
             }
-            else
-            {
-
-                MessageBox.Show("请选择一个作业");
-            }
-
-
 
 
 

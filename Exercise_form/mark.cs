@@ -718,6 +718,30 @@ namespace Exercise_form
             showdatagrid();
         }
 
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+           
+
+                NOMark  mq = null;
+                if (mq == null || mq.IsDisposed)
+                {
+                    mq = new NOMark(pp, el);
+                    //  mq.MdiParent = this;
+                    mq.Show();
+                }
+                else
+                {
+                    mq.Activate();
+                    mq.WindowState = FormWindowState.Normal;
+                }
+            }
+       
+
 
 
         //////        ////////////////////////////////////////

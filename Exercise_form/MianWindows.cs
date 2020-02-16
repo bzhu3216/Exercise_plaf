@@ -72,8 +72,8 @@ namespace Exercise_form
             if (fm2 == null || fm2.IsDisposed)
             {
                 fm2 = new NameList(pp);
-                fm2.MdiParent = this;
-                fm2.Show();
+               fm2.MdiParent = this;
+                fm2.Show(); 
             }
             else
             {
@@ -92,8 +92,8 @@ namespace Exercise_form
             if (mq == null || mq.IsDisposed)
             {
                 mq = new addmq(pp);
-                mq.MdiParent = this;
-                mq.Show();
+                // mq.MdiParent = this;
+                mq.ShowDialog();
             }
             else
             {
@@ -111,8 +111,8 @@ namespace Exercise_form
             if (mq == null || mq.IsDisposed)
             {
                 mq = new addTF(pp);
-                mq.MdiParent = this;
-                mq.Show();
+                // fm2.MdiParent = this;
+                mq.ShowDialog();
             }
             else
             {
@@ -134,8 +134,8 @@ namespace Exercise_form
             if (mq == null || mq.IsDisposed)
             {
                 mq = new addS(pp);
-                mq.MdiParent = this;
-                mq.Show();
+                // fm2.MdiParent = this;
+                mq.ShowDialog();
             }
             else
             {
@@ -155,8 +155,8 @@ namespace Exercise_form
             if (mq == null || mq.IsDisposed)
             {
                 mq = new addA(pp);
-                mq.MdiParent = this;
-                mq.Show();
+                // fm2.MdiParent = this;
+                mq.ShowDialog();
             }
             else
             {

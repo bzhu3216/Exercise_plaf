@@ -46,21 +46,27 @@
             this.习题管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.习题生成ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.批改习题ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.导出成绩ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.用户管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.登录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.修改密码ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.选择题ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.判断题ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.填空题ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.简单题ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.分析题ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.试卷管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.用户管理ToolStripMenuItem,
             this.课程管理ToolStripMenuItem,
             this.班级管理ToolStripMenuItem,
             this.题库管理ToolStripMenuItem,
             this.习题管理ToolStripMenuItem,
-            this.用户管理ToolStripMenuItem});
+            this.试卷管理ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(826, 25);
@@ -80,13 +86,13 @@
             // 添加课程ToolStripMenuItem
             // 
             this.添加课程ToolStripMenuItem.Name = "添加课程ToolStripMenuItem";
-            this.添加课程ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.添加课程ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.添加课程ToolStripMenuItem.Text = "添加课程";
             // 
             // 修改课程ToolStripMenuItem
             // 
             this.修改课程ToolStripMenuItem.Name = "修改课程ToolStripMenuItem";
-            this.修改课程ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.修改课程ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.修改课程ToolStripMenuItem.Text = "修改课程";
             // 
             // 班级管理ToolStripMenuItem
@@ -169,6 +175,12 @@
             // 
             // 修改土木ToolStripMenuItem
             // 
+            this.修改土木ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.选择题ToolStripMenuItem1,
+            this.判断题ToolStripMenuItem1,
+            this.填空题ToolStripMenuItem1,
+            this.简单题ToolStripMenuItem1,
+            this.分析题ToolStripMenuItem1});
             this.修改土木ToolStripMenuItem.Name = "修改土木ToolStripMenuItem";
             this.修改土木ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.修改土木ToolStripMenuItem.Text = "修改题目";
@@ -177,8 +189,7 @@
             // 
             this.习题管理ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.习题生成ToolStripMenuItem,
-            this.批改习题ToolStripMenuItem,
-            this.导出成绩ToolStripMenuItem});
+            this.批改习题ToolStripMenuItem});
             this.习题管理ToolStripMenuItem.Name = "习题管理ToolStripMenuItem";
             this.习题管理ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
             this.习题管理ToolStripMenuItem.Text = "习题管理";
@@ -197,12 +208,6 @@
             this.批改习题ToolStripMenuItem.Text = "批改习题";
             this.批改习题ToolStripMenuItem.Click += new System.EventHandler(this.批改习题ToolStripMenuItem_Click);
             // 
-            // 导出成绩ToolStripMenuItem
-            // 
-            this.导出成绩ToolStripMenuItem.Name = "导出成绩ToolStripMenuItem";
-            this.导出成绩ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.导出成绩ToolStripMenuItem.Text = "导出成绩";
-            // 
             // 用户管理ToolStripMenuItem
             // 
             this.用户管理ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -215,15 +220,51 @@
             // 登录ToolStripMenuItem
             // 
             this.登录ToolStripMenuItem.Name = "登录ToolStripMenuItem";
-            this.登录ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.登录ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.登录ToolStripMenuItem.Text = "登录";
             this.登录ToolStripMenuItem.Click += new System.EventHandler(this.登录ToolStripMenuItem_Click);
             // 
             // 修改密码ToolStripMenuItem
             // 
             this.修改密码ToolStripMenuItem.Name = "修改密码ToolStripMenuItem";
-            this.修改密码ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.修改密码ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.修改密码ToolStripMenuItem.Text = "修改密码";
+            // 
+            // 选择题ToolStripMenuItem1
+            // 
+            this.选择题ToolStripMenuItem1.Name = "选择题ToolStripMenuItem1";
+            this.选择题ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.选择题ToolStripMenuItem1.Text = "选择题";
+            // 
+            // 判断题ToolStripMenuItem1
+            // 
+            this.判断题ToolStripMenuItem1.Name = "判断题ToolStripMenuItem1";
+            this.判断题ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.判断题ToolStripMenuItem1.Text = "判断题";
+            // 
+            // 填空题ToolStripMenuItem1
+            // 
+            this.填空题ToolStripMenuItem1.Name = "填空题ToolStripMenuItem1";
+            this.填空题ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.填空题ToolStripMenuItem1.Text = "填空题";
+            // 
+            // 简单题ToolStripMenuItem1
+            // 
+            this.简单题ToolStripMenuItem1.Name = "简单题ToolStripMenuItem1";
+            this.简单题ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.简单题ToolStripMenuItem1.Text = "简单题";
+            // 
+            // 分析题ToolStripMenuItem1
+            // 
+            this.分析题ToolStripMenuItem1.Name = "分析题ToolStripMenuItem1";
+            this.分析题ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.分析题ToolStripMenuItem1.Text = "分析题";
+            // 
+            // 试卷管理ToolStripMenuItem
+            // 
+            this.试卷管理ToolStripMenuItem.Name = "试卷管理ToolStripMenuItem";
+            this.试卷管理ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
+            this.试卷管理ToolStripMenuItem.Text = "试卷管理";
             // 
             // MianWindows
             // 
@@ -261,11 +302,16 @@
         private System.Windows.Forms.ToolStripMenuItem 习题管理ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 习题生成ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 批改习题ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 导出成绩ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 班级管理ToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem 班级名单ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 用户管理ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 登录ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 修改密码ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 选择题ToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem 判断题ToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem 填空题ToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem 简单题ToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem 分析题ToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem 试卷管理ToolStripMenuItem;
     }
 }
