@@ -234,15 +234,18 @@ namespace Exercise_form
                       where o.lid == tel1.id
                       orderby o.typeq
                       select o;
-
-            foreach (View_student vst in tlvst )
-            { 
+            if (q11.Count<exerDetail>()>0 )
+            {
+                led = q11.ToList<exerDetail>();
+            }
+                foreach (View_student vst in tlvst )
+               { 
 
                 richTextBox1.Text = "";
                 this.richTextBox2.Text = ""; 
-                if (q11 != null)
+                if (q11.Count<exerDetail>() > 0)
                 {
-                    led = q11.ToList<exerDetail>();
+                   // led = q11.ToList<exerDetail>();
                     foreach (exerDetail ed1 in led)
                     {
                         //get question
@@ -698,7 +701,20 @@ namespace Exercise_form
             }
        
 }
-            
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+            if (sel1 >= 0 && sel2 >= 0)
+            {
+
+
+                EXtools.toScore(lclinfo[sel1], ler[sel2],@"d:\testexce.xlsx",pp);
+            }
+
+
+        }
+
         //////////////////////////////
         /////
         //      ////////////////////////////////////////////////////////////////////////////
