@@ -21,5 +21,15 @@ namespace Exercise_student
         {
 
         }
+
+        private void pictureBox1_DoubleClick(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void picZoom_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

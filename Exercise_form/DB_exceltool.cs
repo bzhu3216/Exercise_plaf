@@ -16,6 +16,7 @@ using System.Diagnostics;
 using Exercise_DAL;
 using System.Windows.Forms;
 using Exercise_form.ServiceReference2;
+
 namespace Exercise_form
 {
     class DB_exceltool
@@ -138,6 +139,12 @@ namespace Exercise_form
         }
 
 
+        //////end search
+
+        //////////////////////start score
+
+
+      
 
 
 
@@ -145,7 +152,17 @@ namespace Exercise_form
 
 
 
-//////end search
+
+
+
+        ////endscore
+
+
+
+
+
+
+
 
     }//endclass
 
