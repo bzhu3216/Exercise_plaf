@@ -709,7 +709,7 @@ namespace Exercise_form
             {
 
 
-                EXtools.toScore(lclinfo[sel1], ler[sel2],@"d:\testexce.xlsx",pp);
+                EXtools.toScore(lclinfo[sel1], ler[sel2],@"D:\testexce.xlsx",pp);
             }
 
 
