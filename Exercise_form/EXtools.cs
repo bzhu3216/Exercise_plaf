@@ -131,14 +131,21 @@ namespace Exercise_form
                         {
                             //write head
                             sheet.Range[2, dcol].NumberValue = n_mq;
-                            sheet.Range[3, dcol].Text = "分值";
-                            sheet.Range[4, dcol].Text = "分值";
+                            sheet.Range[2, dcol].NumberFormat = "0"; 
+                            sheet.Range[3, dcol].NumberValue = (int)ed1.score;
+                            sheet.Range[3, dcol].NumberFormat = "0";
+                            sheet.Range[4, dcol].NumberValue = (int)mcq.objective ;
+                            sheet.Range[4, dcol].NumberFormat = "0";
+                            n_mq = n_mq + 1; 
 
+                        }
 
-
-                        } 
-                      
-
+                        if (tsa == null)
+                            sheet.Range[irow, dcol].NumberValue = 0;
+                        else
+                            sheet.Range[irow, dcol].NumberValue = (int)tsa.mark;
+                        sheet.Range[irow , dcol].NumberFormat = "0";
+                        dcol = dcol + 1;
 
 
 
@@ -163,14 +170,32 @@ namespace Exercise_form
                                   select o;
 
                         studAnsw tsa = null;
-                        String key1 = "Question not being attemped"; ;
+                       
                         if (q13.Count<studAnsw>() > 0)
                         {
                             tsa = q13.First<studAnsw>();
-                            if (tsa.answ2 == true) key1 = "True";
-                            if (tsa.answ2 == false) key1 = "False";
+                            
                         }
 
+                        if (irow == 4)
+                        {
+                            //write head
+                            sheet.Range[2, dcol].NumberValue = n_TF;
+                            sheet.Range[2, dcol].NumberFormat = "0";
+                            sheet.Range[3, dcol].NumberValue = (int)ed1.score;
+                            sheet.Range[3, dcol].NumberFormat = "0";
+                            sheet.Range[4, dcol].NumberValue = (int)mcq.objective;
+                            sheet.Range[4, dcol].NumberFormat = "0";
+                            n_TF = n_TF + 1;
+
+                        }
+
+                        if (tsa == null)
+                            sheet.Range[irow, dcol].NumberValue = 0;
+                        else
+                            sheet.Range[irow, dcol].NumberValue = (int)tsa.mark;
+                        sheet.Range[irow, dcol].NumberFormat = "0";
+                        dcol = dcol + 1;
 
                     }
 
@@ -188,22 +213,36 @@ namespace Exercise_form
                         var q12 = from o in pp.context.SQues
                                   where o.id == ed1.qid
                                   select o;
-                        SQues mcq = q12.First<SQues>();
-                        System.IO.MemoryStream mstream = new System.IO.MemoryStream(mcq.question, false);
+                        SQues mcq = q12.First<SQues>();                       
 
                         var q13 = from o in pp.context.studAnsw
                                   where o.stid == vst.stid && o.did == ed1.id
                                   select o;
+                        studAnsw tsa = null;
                         if (q13.Count<studAnsw>() > 0)
                         {
-                            studAnsw tsa = q13.First<studAnsw>();
-                            //  String key1 = null;
-                            // System.IO.MemoryStream mstream2 = new System.IO.MemoryStream(tsa.answ3 , false);
-                            //this.richTextBox1.LoadFile(mstream2, RichTextBoxStreamType.RichText);
-
-
+                           tsa = q13.First<studAnsw>();                           
 
                         }
+                        if (irow == 4)
+                        {
+                            //write head
+                            sheet.Range[2, dcol].NumberValue = n_sq;
+                            sheet.Range[2, dcol].NumberFormat = "0";
+                            sheet.Range[3, dcol].NumberValue = (int)ed1.score;
+                            sheet.Range[3, dcol].NumberFormat = "0";
+                            sheet.Range[4, dcol].NumberValue = (int)mcq.objective;
+                            sheet.Range[4, dcol].NumberFormat = "0";
+                            n_sq = n_sq + 1;
+
+                        }
+
+                        if (tsa == null)
+                            sheet.Range[irow, dcol].NumberValue = 0;
+                        else
+                            sheet.Range[irow, dcol].NumberValue = (int)tsa.mark;
+                        sheet.Range[irow, dcol].NumberFormat = "0";
+                        dcol = dcol + 1;
 
                     }
                     //////////////////////////////////////end3
@@ -219,11 +258,30 @@ namespace Exercise_form
                         var q13 = from o in pp.context.studAnsw
                                   where o.stid == vst.stid && o.did == ed1.id
                                   select o;
+                        studAnsw tsa = null;
                         if (q13.Count<studAnsw>() > 0)
                         {
-                            studAnsw tsa = q13.First<studAnsw>();
+                            tsa = q13.First<studAnsw>();
 
                         }
+                        if (irow == 4)
+                        {
+                            //write head
+                            sheet.Range[2, dcol].NumberValue = n_sq;
+                            sheet.Range[2, dcol].NumberFormat = "0";
+                            sheet.Range[3, dcol].NumberValue = (int)ed1.score;
+                            sheet.Range[3, dcol].NumberFormat = "0";
+                            sheet.Range[4, dcol].NumberValue = (int)mcq.objective;
+                            sheet.Range[4, dcol].NumberFormat = "0";
+                            n_sq = n_sq + 1;
+
+                        }
+                        if (tsa == null)
+                            sheet.Range[irow, dcol].NumberValue = 0;
+                        else
+                            sheet.Range[irow, dcol].NumberValue = (int)tsa.mark;
+                        sheet.Range[irow, dcol].NumberFormat = "0";
+                        dcol = dcol + 1;
 
 
                     }
