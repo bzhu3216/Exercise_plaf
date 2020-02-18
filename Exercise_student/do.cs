@@ -547,11 +547,21 @@ namespace Exercise_student
                 }
 
                 if (dirup != null) {
-                   
-                   
+                    System.IO.FileStream fs = null;
+
+
                    Piczip.CompressImage(dirup, @"c:\temp.jpg", 90, 120, true);
-                  
-                    System.IO.FileStream fs = new System.IO.FileStream(@"c:\temp.jpg", FileMode.Open, FileAccess.Read);
+                    FileInfo ff = new FileInfo(@"c:\temp.jpg");
+                    if (ff != null)
+                    {
+
+                       fs = new System.IO.FileStream(@"c:\temp.jpg", FileMode.Open, FileAccess.Read);
+                    }
+                    else
+                    {
+                        Piczip.CompressImage(dirup, @"c:\temp.jpg", 90, 120, true);
+                        fs = new System.IO.FileStream(@"c:\temp.jpg", FileMode.Open, FileAccess.Read);
+                    }
                   
 
                     //System.IO.FileStream fs = new System.IO.FileStream(dirup, FileMode.Open, FileAccess.Read);

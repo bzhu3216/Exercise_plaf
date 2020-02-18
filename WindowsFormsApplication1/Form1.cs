@@ -29,7 +29,7 @@ namespace WindowsFormsApplication1
             {
 
 
-                Exercise_student.Piczip.CompressImage(dirup, @"c:\temp.jpg", 90, 1200, true);
+                Exercise_student.Piczip.CompressImage(dirup, @"d:\temp.jpg", 90, 1200, true);
 
 
 
