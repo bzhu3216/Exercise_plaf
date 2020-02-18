@@ -713,7 +713,7 @@ namespace Exercise_form
             {
 
                 var q1 = from o in pp.context.studAnsw
-                         where o.mark == null && o.did == ler[sel2].id
+                         where o.mark<0 && o.lid == ler[sel2].id
                          orderby o.stid
                          select o;
               

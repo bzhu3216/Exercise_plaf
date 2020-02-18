@@ -123,7 +123,7 @@
           <Property Name="answ1" Type="int" />
           <Property Name="answ2" Type="bit" />
           <Property Name="answ3" Type="varbinary(max)" />
-          <Property Name="mark" Type="int" />
+          <Property Name="mark" Type="int" Nullable="false" />
           <Property Name="lid" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="StudInfo">
@@ -425,7 +425,7 @@ FROM [dbo].[View_student] AS [View_student]</DefiningQuery>
           <Property Name="answ1" Type="Int32" />
           <Property Name="answ2" Type="Boolean" />
           <Property Name="answ3" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="mark" Type="Int32" />
+          <Property Name="mark" Type="Int32" Nullable="false" />
           <Property Name="lid" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="View_student">

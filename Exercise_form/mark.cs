@@ -35,10 +35,6 @@ namespace Exercise_form
 
         }
 
-        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
-        {
-        }
-
         private void mark_Load(object sender, EventArgs e)
         {
             dataGridView2.AutoGenerateColumns = false;
@@ -303,16 +299,20 @@ namespace Exercise_form
             if (qtype ==3)
             {
                 //ltvdl
-                dataGridView1.Columns[1].Visible = false;
-                dataGridView1.Columns[2].Visible = false;
-                dataGridView1.Columns[3].Visible = true;
-                dataGridView1.Columns[4].Visible = true;
+                
                 var q0 = ltvdl.Where(o => o.typeq == 3);
                 List<View_detai_exerL> ltvdl0 = q0.ToList<View_detai_exerL>();
                 foreach (View_detai_exerL vel in ltvdl0)
                 {
                     if (vel.typeq == 3)
                     {
+                        //((System.Windows.Forms.DataGridViewComboBoxColumn)dataGridView1.Columns[4]).Items.Clear();
+                      //  for (int i = 0; i <= vel.score; i++)
+                       // {
+                            //  a.Add(i); 
+
+                            //((System.Windows.Forms.DataGridViewComboBoxColumn)dataGridView1.Columns[4]).Items.Add(i.ToString());
+                       // }
                         var q1 = from o in pp.context.studAnsw
                                  where o.did == vel.Expr1 && o.stid == vst.stid
                                  select o;
@@ -327,6 +327,12 @@ namespace Exercise_form
 
                                 dgvr.Cells.Add(c.CellTemplate.Clone() as DataGridViewCell);
                             }
+                            DataGridViewComboBoxCell dc = (DataGridViewComboBoxCell)dgvr.Cells[4];
+                            dc.Items.Clear();
+                            for (int i = 0; i <= vel.score; i++)
+                            {
+                                dc.Items.Add(i.ToString());
+                            }
                             dgvr.Cells[0].Value = stA.did;
                             //  dgvr.Cells[1].Value = stA.answ2;
                             //  dgvr.Cells[2].Value = stA.mark;
@@ -336,19 +342,13 @@ namespace Exercise_form
                                 ms = new System.IO.MemoryStream(mybyte);
                             if (ms != null)
                                 dgvr.Cells[3].Value = Image.FromStream(ms);
-                            ((System.Windows.Forms.DataGridViewComboBoxColumn)dataGridView1.Columns[4]).Items.Clear();
-                            for (int i = 0; i <= vel.score; i++)
-                            {
-                                //  a.Add(i); 
-
-                                ((System.Windows.Forms.DataGridViewComboBoxColumn)dataGridView1.Columns[4]).Items.Add(i.ToString() );
-                            }
                            
-                           if (stA.mark != null) { 
+                         
+                            if (stA.mark >=0) { 
                             dgvr.Cells[4].Value = stA.mark.ToString ();
                         }
-                            else
-                               dgvr.Cells[4].Value = "0";
+                          // else
+                             //  dgvr.Cells[4].Value = "0";
                             int hh = (int)ms.Length / 250;
                             //MessageBox.Show(hh.ToString()); 
                             if (hh > 350) hh = 350;
@@ -361,27 +361,34 @@ namespace Exercise_form
                         else
                         {
                             DataGridViewRow dgvr = new DataGridViewRow();
+                           
+
                             //dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
                             foreach (DataGridViewColumn c in this.dataGridView1.Columns)
                             {
 
                                 dgvr.Cells.Add(c.CellTemplate.Clone() as DataGridViewCell);
                             }
-                            dgvr.Cells[0].Value = vel.Expr1;
-                            //  dgvr.Cells[3].Value = null;
-                            ((System.Windows.Forms.DataGridViewComboBoxColumn)dataGridView1.Columns[4]).Items.Clear();
-                           // List<int>  a = new List<int>();
+                            DataGridViewComboBoxCell dc = (DataGridViewComboBoxCell)dgvr.Cells[4];
+                            dc.Items.Clear();
                             for (int i = 0; i <= vel.score; i++)
                             {
-                              //  a.Add(i); 
-    
-                            ((System.Windows.Forms.DataGridViewComboBoxColumn)dataGridView1.Columns[4]).Items.Add(i.ToString());
-                        }
+                                dc.Items.Add(i.ToString());
+                            }
+                            dgvr.Cells[0].Value = vel.Expr1;
+                            //  dgvr.Cells[3].Value = null;
+                           // ((System.Windows.Forms.DataGridViewComboBoxColumn)dataGridView1.Columns[4]).Items.Clear();
+                           // List<int>  a = new List<int>();
+                            
                              dgvr.Cells[4].Value  = "0";
                             this.dataGridView1.Rows.Add(dgvr);
                         }
                     }
                 }
+                dataGridView1.Columns[1].Visible = false;
+                dataGridView1.Columns[2].Visible = false;
+                dataGridView1.Columns[3].Visible = true;
+                dataGridView1.Columns[4].Visible = true;
             }
 
 
@@ -400,21 +407,21 @@ namespace Exercise_form
             if (qtype == 4)
             {
                 //ltvdl
-                dataGridView1.Columns[1].Visible = false;
-                dataGridView1.Columns[2].Visible = false;
-                dataGridView1.Columns[3].Visible = true;
-                dataGridView1.Columns[4].Visible = true;
+
+
                 var q0 = ltvdl.Where(o => o.typeq == 4);
                 List<View_detai_exerL> ltvdl0 = q0.ToList<View_detai_exerL>();
                 foreach (View_detai_exerL vel in ltvdl0)
                 {
                     if (vel.typeq == 4)
                     {
+                       
                         var q1 = from o in pp.context.studAnsw
                                  where o.did == vel.Expr1 && o.stid == vst.stid
                                  select o;
                         if (q1.Count() > 0)
                         {
+                           
                             studAnsw stA = q1.First<studAnsw>();
                             DataGridViewRow dgvr = new DataGridViewRow();
                             // dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
@@ -423,6 +430,12 @@ namespace Exercise_form
                             {
 
                                 dgvr.Cells.Add(c.CellTemplate.Clone() as DataGridViewCell);
+                            }
+                            DataGridViewComboBoxCell dc = (DataGridViewComboBoxCell)dgvr.Cells[4];
+                            dc.Items.Clear();
+                            for (int i = 0; i <= vel.score; i++)
+                            {
+                                dc.Items.Add(i.ToString());
                             }
                             dgvr.Cells[0].Value = stA.did;
                             //  dgvr.Cells[1].Value = stA.answ2;
@@ -433,18 +446,13 @@ namespace Exercise_form
                                 ms = new System.IO.MemoryStream(mybyte);
                             if (ms != null)
                                 dgvr.Cells[3].Value = Image.FromStream(ms);
-                            ((System.Windows.Forms.DataGridViewComboBoxColumn)dataGridView1.Columns[4]).Items.Clear();
-                            for (int i = 0; i <= vel.score; i++)
-                            {
-                                //  a.Add(i); 
+                         //   ((System.Windows.Forms.DataGridViewComboBoxColumn)dataGridView1.Columns[4]).Items.Clear();
+                            
 
-                                ((System.Windows.Forms.DataGridViewComboBoxColumn)dataGridView1.Columns[4]).Items.Add(i.ToString());
-                            }
-
-                            if (stA.mark != null)
+                            if (stA.mark >=0)
                                 dgvr.Cells[4].Value = stA.mark.ToString();
-                            else
-                                dgvr.Cells[4].Value = "0";
+                           // else
+                             //   dgvr.Cells[4].Value = "0";
                             int hh = (int)ms.Length / 250;
                             //MessageBox.Show(hh.ToString()); 
                             if (hh > 350) hh = 350;
@@ -456,6 +464,8 @@ namespace Exercise_form
                         }
                         else
                         {
+                           
+
                             DataGridViewRow dgvr = new DataGridViewRow();
                             //dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
                             foreach (DataGridViewColumn c in this.dataGridView1.Columns)
@@ -463,21 +473,30 @@ namespace Exercise_form
 
                                 dgvr.Cells.Add(c.CellTemplate.Clone() as DataGridViewCell);
                             }
-                            dgvr.Cells[0].Value = vel.Expr1;
-                            //  dgvr.Cells[3].Value = null;
-                            ((System.Windows.Forms.DataGridViewComboBoxColumn)dataGridView1.Columns[4]).Items.Clear();
-                            // List<int>  a = new List<int>();
+                            DataGridViewComboBoxCell dc = (DataGridViewComboBoxCell)dgvr.Cells[4];
+                            dc.Items.Clear();
                             for (int i = 0; i <= vel.score; i++)
                             {
-                                //  a.Add(i); 
-
-                                ((System.Windows.Forms.DataGridViewComboBoxColumn)dataGridView1.Columns[4]).Items.Add(i.ToString());
+                                dc.Items.Add(i.ToString());
                             }
+                            dgvr.Cells[0].Value = vel.Expr1;
+                            //  dgvr.Cells[3].Value = null;
+                           // 
+                            // List<int>  a = new List<int>();
+                            
                             dgvr.Cells[4].Value = "0";
                             this.dataGridView1.Rows.Add(dgvr);
                         }
                     }
                 }
+
+                dataGridView1.Columns[1].Visible = false;
+                dataGridView1.Columns[2].Visible = false;
+                dataGridView1.Columns[3].Visible = true;
+                dataGridView1.Columns[4].Visible = true;
+
+
+
             }
 
 
@@ -586,7 +605,7 @@ namespace Exercise_form
                               stkey bstk = qansw.Find(o => o.lid == stA.did && (o.qkey == stA.answ1 + 1));
                                 if (bstk != null)
                                 {
-                                    stA.mark = vel.score;
+                                    stA.mark =(int) vel.score;
                                     pp.context.UpdateObject(stA);
                                    // pp.context.SaveChanges();
 
@@ -611,7 +630,7 @@ namespace Exercise_form
                             stkey2 bstk = TFansw.Find(o => o.lid == stA.did && (o.qkey ==(bool)stA.answ2 ));
                             if (bstk != null)
                             {
-                                stA.mark = vel.score;
+                                stA.mark = (int)vel.score;
                                 pp.context.UpdateObject(stA);
                                 // pp.context.SaveChanges();
 
@@ -672,7 +691,7 @@ namespace Exercise_form
             if (e.ColumnIndex == 4 && listBox1.SelectedIndex == 3)
             {
                 studAnsw stA = null;
-                int qid = 0;
+                int qid = -1;
                 qid = (int)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
                 //  var q2 = ltvdl.Where(o => o.Expr1 == qid && o.typeq == 3);
                 var q3 = from o in pp.context.studAnsw
@@ -694,7 +713,7 @@ namespace Exercise_form
             if (e.ColumnIndex == 4 && listBox1.SelectedIndex == 4)
             {
                 studAnsw stA = null;
-                int qid = 0;
+                int qid = -1;
                 qid = (int)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
                 //  var q2 = ltvdl.Where(o => o.Expr1 == qid && o.typeq == 3);
                 var q3 = from o in pp.context.studAnsw
@@ -723,11 +742,6 @@ namespace Exercise_form
             showdatagrid();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void button3_Click(object sender, EventArgs e)
         {
            
@@ -745,7 +759,12 @@ namespace Exercise_form
                     mq.WindowState = FormWindowState.Normal;
                 }
             }
-       
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
 
 
 

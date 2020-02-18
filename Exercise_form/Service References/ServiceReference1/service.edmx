@@ -152,7 +152,7 @@
         <Property Name="answ1" Type="Edm.Int32" />
         <Property Name="answ2" Type="Edm.Boolean" />
         <Property Name="answ3" Type="Edm.Binary" MaxLength="Max" FixedLength="false" />
-        <Property Name="mark" Type="Edm.Int32" />
+        <Property Name="mark" Type="Edm.Int32" Nullable="false" />
         <Property Name="lid" Type="Edm.Int32" Nullable="false" />
       </EntityType>
       <EntityType Name="View_student">

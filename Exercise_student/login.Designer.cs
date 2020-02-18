@@ -52,7 +52,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(122, 21);
             this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "20171113202";
+            this.textBox1.Text = "20171113301";
             // 
             // maskedTextBox1
             // 

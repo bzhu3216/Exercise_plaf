@@ -74,6 +74,7 @@ namespace Exercise_form
 
             int irow = 5;
             int icol = 1;
+            if (tlvst ==null) { MessageBox.Show("班级没有学生");return; }
             foreach (View_student vst in tlvst)
             {
                 List<int> listobj = new List<int>(tobj + 1) ;

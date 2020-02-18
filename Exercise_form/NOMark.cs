@@ -25,12 +25,13 @@ namespace Exercise_form
         {
 
             var q1 = from o in pp.context.studAnsw
-                     where o.mark == null  && o.did ==el.id 
+                         // where  o.mark==-100 && o.did ==el.id   
+                     where o.mark < 0 &&o.lid  == el.id
                      orderby o.stid 
                      select o;
 
             List<studAnsw> lst = null;
-            if (q1.Count<studAnsw>() > 0)
+            if (q1.Count<studAnsw>()> 0)
             {
 
                 lst = q1.ToList<studAnsw>();

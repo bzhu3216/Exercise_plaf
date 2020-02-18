@@ -9,7 +9,7 @@
 //------------------------------------------------------------------------------
 
 // 原始文件名:
-// 生成日期: 2020/2/17 15:17:37
+// 生成日期: 2020/2/18 21:15:46
 namespace Exercise_form.ServiceReference1
 {
     
@@ -537,44 +537,44 @@ namespace Exercise_form.ServiceReference1
                 " /><Property Name=\"answ2\" Type=\"Edm.Boolean\" /><Property Na";
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
             private const string ModelPart1 = "me=\"answ3\" Type=\"Edm.Binary\" MaxLength=\"Max\" FixedLength=\"false\" /><Property Name" +
-                "=\"mark\" Type=\"Edm.Int32\" /><Property Name=\"lid\" Type=\"Edm.Int32\" Nullable=\"false" +
-                "\" /></EntityType><EntityType Name=\"View_student\"><Key><PropertyRef Name=\"cid\" />" +
-                "<PropertyRef Name=\"stid\" /></Key><Property Name=\"stid\" Type=\"Edm.String\" Nullabl" +
-                "e=\"false\" MaxLength=\"11\" FixedLength=\"false\" Unicode=\"true\" /><Property Name=\"st" +
-                "name\" Type=\"Edm.String\" MaxLength=\"50\" FixedLength=\"false\" Unicode=\"false\" /><Pr" +
-                "operty Name=\"cno\" Type=\"Edm.Int32\" /><Property Name=\"cfinish\" Type=\"Edm.Int32\" /" +
-                "><Property Name=\"cid\" Type=\"Edm.Int32\" Nullable=\"false\" /></EntityType><EntityTy" +
-                "pe Name=\"View_detai_exerL\"><Key><PropertyRef Name=\"Expr1\" /><PropertyRef Name=\"i" +
-                "d\" /><PropertyRef Name=\"lid\" /><PropertyRef Name=\"qid\" /><PropertyRef Name=\"type" +
-                "q\" /></Key><Property Name=\"id\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Nam" +
-                "e=\"typeq\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"qid\" Type=\"Edm.Int" +
-                "32\" Nullable=\"false\" /><Property Name=\"Expr1\" Type=\"Edm.Int32\" Nullable=\"false\" " +
-                "/><Property Name=\"score\" Type=\"Edm.Int32\" /><Property Name=\"lid\" Type=\"Edm.Int32" +
-                "\" Nullable=\"false\" /></EntityType><Association Name=\"FK_exerL_Course\"><End Type=" +
-                "\"db_exerciseModel.Course\" Role=\"Course\" Multiplicity=\"1\" /><End Type=\"db_exercis" +
-                "eModel.exerL\" Role=\"exerL\" Multiplicity=\"*\" /><ReferentialConstraint><Principal " +
-                "Role=\"Course\"><PropertyRef Name=\"id\" /></Principal><Dependent Role=\"exerL\"><Prop" +
-                "ertyRef Name=\"courseid\" /></Dependent></ReferentialConstraint></Association></Sc" +
-                "hema><Schema Namespace=\"WCFDBservice\" xmlns=\"http://schemas.microsoft.com/ado/20" +
-                "09/11/edm\"><EntityContainer Name=\"db_exerciseEntities\" m:IsDefaultEntityContaine" +
-                "r=\"true\" p6:LazyLoadingEnabled=\"true\" xmlns:p6=\"http://schemas.microsoft.com/ado" +
-                "/2009/02/edm/annotation\"><EntitySet Name=\"mchoiceQues\" EntityType=\"db_exerciseMo" +
-                "del.mchoiceQues\" /><EntitySet Name=\"classinfo\" EntityType=\"db_exerciseModel.clas" +
-                "sinfo\" /><EntitySet Name=\"Course\" EntityType=\"db_exerciseModel.Course\" /><Entity" +
-                "Set Name=\"teacherinfo\" EntityType=\"db_exerciseModel.teacherinfo\" /><EntitySet Na" +
-                "me=\"TFQues\" EntityType=\"db_exerciseModel.TFQues\" /><EntitySet Name=\"SQues\" Entit" +
-                "yType=\"db_exerciseModel.SQues\" /><EntitySet Name=\"AQues\" EntityType=\"db_exercise" +
-                "Model.AQues\" /><EntitySet Name=\"classExer\" EntityType=\"db_exerciseModel.classExe" +
-                "r\" /><EntitySet Name=\"exerL\" EntityType=\"db_exerciseModel.exerL\" /><EntitySet Na" +
-                "me=\"class_student\" EntityType=\"db_exerciseModel.class_student\" /><EntitySet Name" +
-                "=\"StudInfoes\" EntityType=\"db_exerciseModel.StudInfo\" /><EntitySet Name=\"exerDeta" +
-                "il\" EntityType=\"db_exerciseModel.exerDetail\" /><EntitySet Name=\"studAnsw\" Entity" +
-                "Type=\"db_exerciseModel.studAnsw\" /><EntitySet Name=\"View_student\" EntityType=\"db" +
-                "_exerciseModel.View_student\" /><EntitySet Name=\"View_detai_exerL\" EntityType=\"db" +
-                "_exerciseModel.View_detai_exerL\" /><AssociationSet Name=\"FK_exerL_Course\" Associ" +
-                "ation=\"db_exerciseModel.FK_exerL_Course\"><End Role=\"Course\" EntitySet=\"Course\" /" +
-                "><End Role=\"exerL\" EntitySet=\"exerL\" /></AssociationSet></EntityContainer></Sche" +
-                "ma></edmx:DataServices></edmx:Edmx>";
+                "=\"mark\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"lid\" Type=\"Edm.Int32" +
+                "\" Nullable=\"false\" /></EntityType><EntityType Name=\"View_student\"><Key><Property" +
+                "Ref Name=\"cid\" /><PropertyRef Name=\"stid\" /></Key><Property Name=\"stid\" Type=\"Ed" +
+                "m.String\" Nullable=\"false\" MaxLength=\"11\" FixedLength=\"false\" Unicode=\"true\" /><" +
+                "Property Name=\"stname\" Type=\"Edm.String\" MaxLength=\"50\" FixedLength=\"false\" Unic" +
+                "ode=\"false\" /><Property Name=\"cno\" Type=\"Edm.Int32\" /><Property Name=\"cfinish\" T" +
+                "ype=\"Edm.Int32\" /><Property Name=\"cid\" Type=\"Edm.Int32\" Nullable=\"false\" /></Ent" +
+                "ityType><EntityType Name=\"View_detai_exerL\"><Key><PropertyRef Name=\"Expr1\" /><Pr" +
+                "opertyRef Name=\"id\" /><PropertyRef Name=\"lid\" /><PropertyRef Name=\"qid\" /><Prope" +
+                "rtyRef Name=\"typeq\" /></Key><Property Name=\"id\" Type=\"Edm.Int32\" Nullable=\"false" +
+                "\" /><Property Name=\"typeq\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"q" +
+                "id\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"Expr1\" Type=\"Edm.Int32\" " +
+                "Nullable=\"false\" /><Property Name=\"score\" Type=\"Edm.Int32\" /><Property Name=\"lid" +
+                "\" Type=\"Edm.Int32\" Nullable=\"false\" /></EntityType><Association Name=\"FK_exerL_C" +
+                "ourse\"><End Type=\"db_exerciseModel.Course\" Role=\"Course\" Multiplicity=\"1\" /><End" +
+                " Type=\"db_exerciseModel.exerL\" Role=\"exerL\" Multiplicity=\"*\" /><ReferentialConst" +
+                "raint><Principal Role=\"Course\"><PropertyRef Name=\"id\" /></Principal><Dependent R" +
+                "ole=\"exerL\"><PropertyRef Name=\"courseid\" /></Dependent></ReferentialConstraint><" +
+                "/Association></Schema><Schema Namespace=\"WCFDBservice\" xmlns=\"http://schemas.mic" +
+                "rosoft.com/ado/2009/11/edm\"><EntityContainer Name=\"db_exerciseEntities\" m:IsDefa" +
+                "ultEntityContainer=\"true\" p6:LazyLoadingEnabled=\"true\" xmlns:p6=\"http://schemas." +
+                "microsoft.com/ado/2009/02/edm/annotation\"><EntitySet Name=\"mchoiceQues\" EntityTy" +
+                "pe=\"db_exerciseModel.mchoiceQues\" /><EntitySet Name=\"classinfo\" EntityType=\"db_e" +
+                "xerciseModel.classinfo\" /><EntitySet Name=\"Course\" EntityType=\"db_exerciseModel." +
+                "Course\" /><EntitySet Name=\"teacherinfo\" EntityType=\"db_exerciseModel.teacherinfo" +
+                "\" /><EntitySet Name=\"TFQues\" EntityType=\"db_exerciseModel.TFQues\" /><EntitySet N" +
+                "ame=\"SQues\" EntityType=\"db_exerciseModel.SQues\" /><EntitySet Name=\"AQues\" Entity" +
+                "Type=\"db_exerciseModel.AQues\" /><EntitySet Name=\"classExer\" EntityType=\"db_exerc" +
+                "iseModel.classExer\" /><EntitySet Name=\"exerL\" EntityType=\"db_exerciseModel.exerL" +
+                "\" /><EntitySet Name=\"class_student\" EntityType=\"db_exerciseModel.class_student\" " +
+                "/><EntitySet Name=\"StudInfoes\" EntityType=\"db_exerciseModel.StudInfo\" /><EntityS" +
+                "et Name=\"exerDetail\" EntityType=\"db_exerciseModel.exerDetail\" /><EntitySet Name=" +
+                "\"studAnsw\" EntityType=\"db_exerciseModel.studAnsw\" /><EntitySet Name=\"View_studen" +
+                "t\" EntityType=\"db_exerciseModel.View_student\" /><EntitySet Name=\"View_detai_exer" +
+                "L\" EntityType=\"db_exerciseModel.View_detai_exerL\" /><AssociationSet Name=\"FK_exe" +
+                "rL_Course\" Association=\"db_exerciseModel.FK_exerL_Course\"><End Role=\"Course\" Ent" +
+                "itySet=\"Course\" /><End Role=\"exerL\" EntitySet=\"exerL\" /></AssociationSet></Entit" +
+                "yContainer></Schema></edmx:DataServices></edmx:Edmx>";
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
             private static string GetConcatenatedEdmxString()
             {
@@ -2785,13 +2785,15 @@ namespace Exercise_form.ServiceReference1
         /// </summary>
         /// <param name="stid">stid 的初始值。</param>
         /// <param name="did">did 的初始值。</param>
+        /// <param name="mark">mark 的初始值。</param>
         /// <param name="lid">lid 的初始值。</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public static studAnsw CreatestudAnsw(string stid, int did, int lid)
+        public static studAnsw CreatestudAnsw(string stid, int did, int mark, int lid)
         {
             studAnsw studAnsw = new studAnsw();
             studAnsw.stid = stid;
             studAnsw.did = did;
+            studAnsw.mark = mark;
             studAnsw.lid = lid;
             return studAnsw;
         }
@@ -2916,7 +2918,7 @@ namespace Exercise_form.ServiceReference1
         /// 架构中不存在属性 mark 的注释。
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public global::System.Nullable<int> mark
+        public int mark
         {
             get
             {
@@ -2931,8 +2933,8 @@ namespace Exercise_form.ServiceReference1
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private global::System.Nullable<int> _mark;
-        partial void OnmarkChanging(global::System.Nullable<int> value);
+        private int _mark;
+        partial void OnmarkChanging(int value);
         partial void OnmarkChanged();
         /// <summary>
         /// 架构中不存在属性 lid 的注释。

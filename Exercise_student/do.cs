@@ -469,6 +469,7 @@ namespace Exercise_student
 
             if (sansw2 == null)
             {
+                sansw.mark = -100;
                 pp.context.AddTostudAnsw(sansw);
                 
             }
@@ -506,8 +507,9 @@ namespace Exercise_student
                     sansw2 = q3.First<studAnsw>();
                 
             if (sansw2 == null)
-            {
-                pp.context.AddTostudAnsw(sansw);
+                {
+                    sansw.mark = -100;
+                    pp.context.AddTostudAnsw(sansw);
 
             }
             else
@@ -641,6 +643,7 @@ namespace Exercise_student
 
                 if (sansw2 == null)
                 {
+                    sansw.mark = -100;
                     pp.context.AddTostudAnsw(sansw);
 
                 }
