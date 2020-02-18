@@ -344,8 +344,9 @@ namespace Exercise_form
                                 ((System.Windows.Forms.DataGridViewComboBoxColumn)dataGridView1.Columns[4]).Items.Add(i.ToString() );
                             }
                            
-                           if (stA.mark !=null)
-                           dgvr.Cells[4].Value = stA.mark.ToString ();
+                           if (stA.mark != null) { 
+                            dgvr.Cells[4].Value = stA.mark.ToString ();
+                        }
                             else
                                dgvr.Cells[4].Value = "0";
                             int hh = (int)ms.Length / 250;
@@ -677,12 +678,14 @@ namespace Exercise_form
                 var q3 = from o in pp.context.studAnsw
                          where o.did == qid
                          select o;
-                if (q3.Count<studAnsw>() > 0) stA = q3.First<studAnsw>();
-                stA.mark = int.Parse( dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString() );
+                if (q3.Count<studAnsw>() > 0)
+                {
+                    stA = q3.First<studAnsw>();
+                    stA.mark = int.Parse(dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString());
 
-                pp.context.UpdateObject(stA);
-                pp.context.SaveChanges(); 
-
+                    pp.context.UpdateObject(stA);
+                    pp.context.SaveChanges();
+                }
                 //  MessageBox.Show("ok");
 
             }
@@ -697,12 +700,14 @@ namespace Exercise_form
                 var q3 = from o in pp.context.studAnsw
                          where o.did == qid
                          select o;
-                if (q3.Count<studAnsw>() > 0) stA = q3.First<studAnsw>();
-                stA.mark = int.Parse(dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString());
+                if (q3.Count<studAnsw>() > 0)
+                {
+                    stA = q3.First<studAnsw>();
+                    stA.mark = int.Parse(dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString());
 
-                pp.context.UpdateObject(stA);
-                pp.context.SaveChanges();
-
+                    pp.context.UpdateObject(stA);
+                    pp.context.SaveChanges();
+                }
                 //  MessageBox.Show("ok");
 
             }

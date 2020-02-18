@@ -34,8 +34,7 @@ namespace Exercise_form
             wb.Worksheets.Clear();
             //添加一个工作表并指定表名
             Worksheet sheet = wb.Worksheets.Add("score");
-            
-
+          
             param pp = p;
             String dirsave = dirst;
             List<View_student> tlvst = null;
@@ -77,6 +76,12 @@ namespace Exercise_form
             int icol = 1;
             foreach (View_student vst in tlvst)
             {
+                List<int> listobj = new List<int>(tobj + 1) ;
+                for (int i = 0; i <= tobj; i++) { listobj.Add(0); }
+                for (int i = 0; i <= tobj; i++) { listobj[i] = 0; }
+                List<int> listobj2 = new List<int>(tobj + 1);
+                for (int i = 0; i <= tobj; i++) { listobj2.Add(0); }
+                for (int i = 0; i <= tobj; i++) { listobj2[i] = 0; }
                 sheet.Range[irow, icol].Text = vst.stid;
                 sheet.Range[irow, icol + 1].Text = vst.stname ;
                 int dcol = 3;
@@ -120,8 +125,12 @@ namespace Exercise_form
                         if (tsa == null)
                             sheet.Range[irow, dcol].NumberValue = 0;
                         else
-                            sheet.Range[irow, dcol].NumberValue = (int)tsa.mark;
+                            sheet.Range[irow, dcol].NumberValue = (int)tsa.mark;                        
                         sheet.Range[irow , dcol].NumberFormat = "0";
+                        listobj[(int)mcq.objective] = listobj[(int)mcq.objective] + (int)sheet.Range[irow, dcol].NumberValue ;
+                        listobj2[(int)mcq.objective] = listobj2[(int)mcq.objective] + (int)ed1.score ;
+
+
                         dcol = dcol + 1;
 
 
@@ -172,6 +181,8 @@ namespace Exercise_form
                         else
                             sheet.Range[irow, dcol].NumberValue = (int)tsa.mark;
                         sheet.Range[irow, dcol].NumberFormat = "0";
+                        listobj[(int)mcq.objective] = listobj[(int)mcq.objective] + (int)sheet.Range[irow, dcol].NumberValue;
+                        listobj2[(int)mcq.objective] = listobj2[(int)mcq.objective] + (int)ed1.score;
                         dcol = dcol + 1;
 
                     }
@@ -219,6 +230,8 @@ namespace Exercise_form
                         else
                             sheet.Range[irow, dcol].NumberValue = (int)tsa.mark;
                         sheet.Range[irow, dcol].NumberFormat = "0";
+                        listobj[(int)mcq.objective] = listobj[(int)mcq.objective] + (int)sheet.Range[irow, dcol].NumberValue;
+                        listobj2[(int)mcq.objective] = listobj2[(int)mcq.objective] + (int)ed1.score;
                         dcol = dcol + 1;
 
                     }
@@ -258,6 +271,8 @@ namespace Exercise_form
                         else
                             sheet.Range[irow, dcol].NumberValue = (int)tsa.mark;
                         sheet.Range[irow, dcol].NumberFormat = "0";
+                        listobj[(int)mcq.objective] = listobj[(int)mcq.objective] + (int)sheet.Range[irow, dcol].NumberValue;
+                        listobj2[(int)mcq.objective] = listobj2[(int)mcq.objective] + (int)ed1.score;
                         dcol = dcol + 1;
 
 
@@ -266,16 +281,37 @@ namespace Exercise_form
                     ////end4
 
                 }//end each student
-                irow = irow + 1;
+                 ///////////////////////////处理目标///
+                dcol++;
+                for (int i = 1; i <= tobj; i++)
+                {
 
+                    if (irow == 5)
+                    {
+                        sheet.Range[4, dcol].NumberValue = i;
+                        sheet.Range[2 ,dcol].Text  = "目标";
+                        sheet.Range[3, dcol].NumberValue = listobj2[i];
+                        sheet.Range[3, dcol].NumberFormat = "0";
+                    }
+
+                    sheet.Range[irow, dcol].NumberValue = listobj[i];
+                    sheet.Range[irow, dcol].NumberFormat = "0";
+                    dcol++;
+
+                }
+                irow = irow + 1;
 
             }
 
 
 
-            ///////////////////////////处理目标///
+          
 
-         
+
+
+
+
+
 
 
 

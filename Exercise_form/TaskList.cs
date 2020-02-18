@@ -704,12 +704,45 @@ namespace Exercise_form
 
         private void button3_Click(object sender, EventArgs e)
         {
+            //需要验证以及批改完，传入课程目标
+            //
+
+            
 
             if (sel1 >= 0 && sel2 >= 0)
             {
 
+                var q1 = from o in pp.context.studAnsw
+                         where o.mark == null && o.did == ler[sel2].id
+                         orderby o.stid
+                         select o;
+              
+                if (q1.Count<studAnsw>()>0)
+                {
+          
+                    MessageBox.Show("还有作业没批好!");
+                    return;
+                }
+                else
+                { 
+                /////////////////////////
+                var q2 = from o in pp.context.Course
+                         where o.id == lclinfo[sel1].courseid
+                         select o;
+                //
+                int iobj = 0;
+                if (q2.Count<Course>() > 0)
+                {
+                    iobj = q2.First<Course>().numobjective;
+                    EXtools.toScore(lclinfo[sel1], ler[sel2], @"D:\testexce.xlsx", pp, iobj);
+                }
+                else
+                {
+                    MessageBox.Show("未关联任何习题或有问题联系管理员!");
+                }
 
-                EXtools.toScore(lclinfo[sel1], ler[sel2],@"D:\testexce.xlsx",pp,5);
+                }
+
             }
 
 
