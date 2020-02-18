@@ -552,15 +552,15 @@ namespace Exercise_student
 
                    Piczip.CompressImage(dirup, @"c:\temp.jpg", 90, 120, true);
                     FileInfo ff = new FileInfo(@"c:\temp.jpg");
-                    if (ff != null)
+                    if (ff.Exists )
                     {
 
                        fs = new System.IO.FileStream(@"c:\temp.jpg", FileMode.Open, FileAccess.Read);
                     }
                     else
                     {
-                        Piczip.CompressImage(dirup, @"c:\temp.jpg", 90, 120, true);
-                        fs = new System.IO.FileStream(@"c:\temp.jpg", FileMode.Open, FileAccess.Read);
+                        Piczip.CompressImage(dirup, @"d:\temp.jpg", 90, 120, true);
+                        fs = new System.IO.FileStream(@"d:\temp.jpg", FileMode.Open, FileAccess.Read);
                     }
                   
 
