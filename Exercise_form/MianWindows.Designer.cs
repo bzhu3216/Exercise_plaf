@@ -175,8 +175,8 @@
             // 
             this.修改土木ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.选择题ToolStripMenuItem1,
-            this.判断题ToolStripMenuItem1,
             this.填空题ToolStripMenuItem1,
+            this.判断题ToolStripMenuItem1,
             this.简单题ToolStripMenuItem1,
             this.分析题ToolStripMenuItem1});
             this.修改土木ToolStripMenuItem.Name = "修改土木ToolStripMenuItem";
@@ -193,14 +193,16 @@
             // 判断题ToolStripMenuItem1
             // 
             this.判断题ToolStripMenuItem1.Name = "判断题ToolStripMenuItem1";
-            this.判断题ToolStripMenuItem1.Size = new System.Drawing.Size(112, 22);
+            this.判断题ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.判断题ToolStripMenuItem1.Text = "判断题";
+            this.判断题ToolStripMenuItem1.Click += new System.EventHandler(this.判断题ToolStripMenuItem1_Click);
             // 
             // 填空题ToolStripMenuItem1
             // 
             this.填空题ToolStripMenuItem1.Name = "填空题ToolStripMenuItem1";
-            this.填空题ToolStripMenuItem1.Size = new System.Drawing.Size(112, 22);
+            this.填空题ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.填空题ToolStripMenuItem1.Text = "填空题";
+            this.填空题ToolStripMenuItem1.Click += new System.EventHandler(this.填空题ToolStripMenuItem1_Click);
             // 
             // 简单题ToolStripMenuItem1
             // 

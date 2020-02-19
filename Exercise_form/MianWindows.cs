@@ -236,5 +236,30 @@ namespace Exercise_form
 
 
         }
+
+        private void 填空题ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void 判断题ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+            UPTF mq = null;
+            if (mq == null || mq.IsDisposed)
+            {
+                mq = new UPTF(pp, -1);
+                // mq.MdiParent = this;
+                mq.Show();
+            }
+            else
+            {
+                mq.Activate();
+                mq.WindowState = FormWindowState.Normal;
+            }
+
+
+
+        }
     }
 }
