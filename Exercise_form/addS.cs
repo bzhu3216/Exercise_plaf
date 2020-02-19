@@ -16,7 +16,7 @@ namespace Exercise_form
     {
         private db_exerciseEntities context;
         param pp;
-        List<Course> lcs = null;
+        List<V_tea_course > lcs = null;
         int cid = -1;
         public addS(param p)
         {
@@ -28,9 +28,12 @@ namespace Exercise_form
         private void addS_Load(object sender, EventArgs e)
         {
             context = pp.context;
+            /*
             var questionQuery = from o in context.Course
                                 select o;
             lcs = questionQuery.ToList<Course>();
+            */
+            lcs = pp.ltea_c;
             comboBox5.DataSource = lcs;
 
             comboBox5.ValueMember = "CourseName";
@@ -44,13 +47,13 @@ namespace Exercise_form
             int con = 0;
             int diff = 0;
 
-            foreach (Course cc in lcs)
+            foreach (V_tea_course  cc in lcs)
                 if (comboBox5.Text == cc.CourseName)
                 {
                     numobjective = (int)cc.numobjective;
                     con = (int)cc.numcontent;
                     diff = (int)cc.diff;
-                    cid = (int)cc.id;
+                    cid = (int)cc.couseid ;
                 }
             comboBox1.Items.Clear();
             for (int i = 0; i < numobjective; i++) comboBox1.Items.Add(i + 1);

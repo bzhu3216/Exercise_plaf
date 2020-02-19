@@ -117,6 +117,7 @@ namespace Exercise_form
         {
              selindex = listBox1.SelectedIndex;
             //  comboBox1.Text=
+            if (selindex >= 0) { 
              textBox1.Text = lsc2[selindex].classinfo1;
             comboBox2.Text =comboBox2.Items[(int)(lsc2[selindex].finish)].ToString();
             int cid = (int)lsc2[selindex].courseid;
@@ -124,7 +125,7 @@ namespace Exercise_form
                 if ((int)cc.couseid  == cid) { comboBox1.Text = cc.CourseName;  }
 
             }
-
+            }
 
 
         }
@@ -149,8 +150,10 @@ namespace Exercise_form
                 context.SaveChanges();
 
             }
+            listBox1.ValueMember = null;
             listBox1.DataSource = null;
-               var questionQuery2 = from p in context.classinfo
+
+            var questionQuery2 = from p in context.classinfo
                                  where p.teacher == pp.teacher.teacherid
                                  select p;
 
@@ -185,6 +188,18 @@ namespace Exercise_form
                 context.UpdateObject(ci);
                 context.SaveChanges();
 
+                listBox1.ValueMember = null;
+                listBox1.DataSource = null;
+
+                var questionQuery2 = from p in context.classinfo
+                                     where p.teacher == pp.teacher.teacherid
+                                     select p;
+
+                lsc2 = questionQuery2.ToList();
+                // classinfo_Load(sender, e);
+                listBox1.DataSource = lsc2;
+                listBox1.ValueMember = "classinfo1";
+
             }
 
          
@@ -218,6 +233,17 @@ namespace Exercise_form
                     
                 }
             }
+            listBox1.ValueMember = null;
+            listBox1.DataSource = null;
+
+            var questionQuery2 = from p in context.classinfo
+                                 where p.teacher == pp.teacher.teacherid
+                                 select p;
+
+            lsc2 = questionQuery2.ToList();
+            // classinfo_Load(sender, e);
+            listBox1.DataSource = lsc2;
+            listBox1.ValueMember = "classinfo1";
 
         }
   ////////////////////////      ////////////

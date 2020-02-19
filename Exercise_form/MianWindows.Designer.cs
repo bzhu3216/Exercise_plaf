@@ -32,9 +32,6 @@
             this.用户管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.登录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.修改密码ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.课程管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.添加课程ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.修改课程ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.班级管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.班级管理ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.班级名单ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,7 +59,6 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.用户管理ToolStripMenuItem,
-            this.课程管理ToolStripMenuItem,
             this.班级管理ToolStripMenuItem,
             this.题库管理ToolStripMenuItem,
             this.习题管理ToolStripMenuItem,
@@ -86,37 +82,16 @@
             // 登录ToolStripMenuItem
             // 
             this.登录ToolStripMenuItem.Name = "登录ToolStripMenuItem";
-            this.登录ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.登录ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.登录ToolStripMenuItem.Text = "登录";
             this.登录ToolStripMenuItem.Click += new System.EventHandler(this.登录ToolStripMenuItem_Click);
             // 
             // 修改密码ToolStripMenuItem
             // 
             this.修改密码ToolStripMenuItem.Name = "修改密码ToolStripMenuItem";
-            this.修改密码ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.修改密码ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.修改密码ToolStripMenuItem.Text = "修改密码";
             this.修改密码ToolStripMenuItem.Click += new System.EventHandler(this.修改密码ToolStripMenuItem_Click);
-            // 
-            // 课程管理ToolStripMenuItem
-            // 
-            this.课程管理ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.添加课程ToolStripMenuItem,
-            this.修改课程ToolStripMenuItem});
-            this.课程管理ToolStripMenuItem.Name = "课程管理ToolStripMenuItem";
-            this.课程管理ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
-            this.课程管理ToolStripMenuItem.Text = "课程管理";
-            // 
-            // 添加课程ToolStripMenuItem
-            // 
-            this.添加课程ToolStripMenuItem.Name = "添加课程ToolStripMenuItem";
-            this.添加课程ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.添加课程ToolStripMenuItem.Text = "添加课程";
-            // 
-            // 修改课程ToolStripMenuItem
-            // 
-            this.修改课程ToolStripMenuItem.Name = "修改课程ToolStripMenuItem";
-            this.修改课程ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.修改课程ToolStripMenuItem.Text = "修改课程";
             // 
             // 班级管理ToolStripMenuItem
             // 
@@ -130,14 +105,14 @@
             // 班级管理ToolStripMenuItem1
             // 
             this.班级管理ToolStripMenuItem1.Name = "班级管理ToolStripMenuItem1";
-            this.班级管理ToolStripMenuItem1.Size = new System.Drawing.Size(124, 22);
+            this.班级管理ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.班级管理ToolStripMenuItem1.Text = "班级信息";
             this.班级管理ToolStripMenuItem1.Click += new System.EventHandler(this.班级管理ToolStripMenuItem1_Click);
             // 
             // 班级名单ToolStripMenuItem
             // 
             this.班级名单ToolStripMenuItem.Name = "班级名单ToolStripMenuItem";
-            this.班级名单ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.班级名单ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.班级名单ToolStripMenuItem.Text = "班级名单";
             this.班级名单ToolStripMenuItem.Click += new System.EventHandler(this.班级名单ToolStripMenuItem_Click);
             // 
@@ -288,9 +263,6 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem 课程管理ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 添加课程ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 修改课程ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 班级管理ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 题库管理ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 输入题目ToolStripMenuItem;
