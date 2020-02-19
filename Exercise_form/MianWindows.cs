@@ -200,5 +200,21 @@ namespace Exercise_form
             }
 
         }
+
+        private void 修改密码ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            password mq = null;
+            if (mq == null || mq.IsDisposed)
+            {
+                mq = new password(pp);
+               // mq.MdiParent = this;
+                mq.Show();
+            }
+            else
+            {
+                mq.Activate();
+                mq.WindowState = FormWindowState.Normal;
+            }
+        }
     }
 }

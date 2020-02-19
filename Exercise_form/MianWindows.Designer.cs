@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.用户管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.登录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.修改密码ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.课程管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.添加课程ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.修改课程ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,17 +46,14 @@
             this.简单题ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.分析题ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.修改土木ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.习题管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.习题生成ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.批改习题ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.用户管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.登录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.修改密码ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.选择题ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.判断题ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.填空题ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.简单题ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.分析题ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.习题管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.习题生成ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.批改习题ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.试卷管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -73,140 +73,6 @@
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
-            // 
-            // 课程管理ToolStripMenuItem
-            // 
-            this.课程管理ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.添加课程ToolStripMenuItem,
-            this.修改课程ToolStripMenuItem});
-            this.课程管理ToolStripMenuItem.Name = "课程管理ToolStripMenuItem";
-            this.课程管理ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
-            this.课程管理ToolStripMenuItem.Text = "课程管理";
-            // 
-            // 添加课程ToolStripMenuItem
-            // 
-            this.添加课程ToolStripMenuItem.Name = "添加课程ToolStripMenuItem";
-            this.添加课程ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.添加课程ToolStripMenuItem.Text = "添加课程";
-            // 
-            // 修改课程ToolStripMenuItem
-            // 
-            this.修改课程ToolStripMenuItem.Name = "修改课程ToolStripMenuItem";
-            this.修改课程ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.修改课程ToolStripMenuItem.Text = "修改课程";
-            // 
-            // 班级管理ToolStripMenuItem
-            // 
-            this.班级管理ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.班级管理ToolStripMenuItem1,
-            this.班级名单ToolStripMenuItem});
-            this.班级管理ToolStripMenuItem.Name = "班级管理ToolStripMenuItem";
-            this.班级管理ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
-            this.班级管理ToolStripMenuItem.Text = "班级管理";
-            // 
-            // 班级管理ToolStripMenuItem1
-            // 
-            this.班级管理ToolStripMenuItem1.Name = "班级管理ToolStripMenuItem1";
-            this.班级管理ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
-            this.班级管理ToolStripMenuItem1.Text = "班级信息";
-            this.班级管理ToolStripMenuItem1.Click += new System.EventHandler(this.班级管理ToolStripMenuItem1_Click);
-            // 
-            // 班级名单ToolStripMenuItem
-            // 
-            this.班级名单ToolStripMenuItem.Name = "班级名单ToolStripMenuItem";
-            this.班级名单ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.班级名单ToolStripMenuItem.Text = "班级名单";
-            this.班级名单ToolStripMenuItem.Click += new System.EventHandler(this.班级名单ToolStripMenuItem_Click);
-            // 
-            // 题库管理ToolStripMenuItem
-            // 
-            this.题库管理ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.输入题目ToolStripMenuItem,
-            this.修改土木ToolStripMenuItem});
-            this.题库管理ToolStripMenuItem.Name = "题库管理ToolStripMenuItem";
-            this.题库管理ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
-            this.题库管理ToolStripMenuItem.Text = "题库管理";
-            // 
-            // 输入题目ToolStripMenuItem
-            // 
-            this.输入题目ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.选择题ToolStripMenuItem,
-            this.填空题ToolStripMenuItem,
-            this.判断题ToolStripMenuItem,
-            this.简单题ToolStripMenuItem,
-            this.分析题ToolStripMenuItem});
-            this.输入题目ToolStripMenuItem.Name = "输入题目ToolStripMenuItem";
-            this.输入题目ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.输入题目ToolStripMenuItem.Text = "输入题目";
-            // 
-            // 选择题ToolStripMenuItem
-            // 
-            this.选择题ToolStripMenuItem.Name = "选择题ToolStripMenuItem";
-            this.选择题ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.选择题ToolStripMenuItem.Text = "选择题";
-            this.选择题ToolStripMenuItem.Click += new System.EventHandler(this.选择题ToolStripMenuItem_Click);
-            // 
-            // 填空题ToolStripMenuItem
-            // 
-            this.填空题ToolStripMenuItem.Name = "填空题ToolStripMenuItem";
-            this.填空题ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.填空题ToolStripMenuItem.Text = "填空题";
-            // 
-            // 判断题ToolStripMenuItem
-            // 
-            this.判断题ToolStripMenuItem.Name = "判断题ToolStripMenuItem";
-            this.判断题ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.判断题ToolStripMenuItem.Text = "判断题";
-            this.判断题ToolStripMenuItem.Click += new System.EventHandler(this.判断题ToolStripMenuItem_Click);
-            // 
-            // 简单题ToolStripMenuItem
-            // 
-            this.简单题ToolStripMenuItem.Name = "简单题ToolStripMenuItem";
-            this.简单题ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.简单题ToolStripMenuItem.Text = "简答题";
-            this.简单题ToolStripMenuItem.Click += new System.EventHandler(this.简单题ToolStripMenuItem_Click);
-            // 
-            // 分析题ToolStripMenuItem
-            // 
-            this.分析题ToolStripMenuItem.Name = "分析题ToolStripMenuItem";
-            this.分析题ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.分析题ToolStripMenuItem.Text = "分析题";
-            this.分析题ToolStripMenuItem.Click += new System.EventHandler(this.分析题ToolStripMenuItem_Click);
-            // 
-            // 修改土木ToolStripMenuItem
-            // 
-            this.修改土木ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.选择题ToolStripMenuItem1,
-            this.判断题ToolStripMenuItem1,
-            this.填空题ToolStripMenuItem1,
-            this.简单题ToolStripMenuItem1,
-            this.分析题ToolStripMenuItem1});
-            this.修改土木ToolStripMenuItem.Name = "修改土木ToolStripMenuItem";
-            this.修改土木ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.修改土木ToolStripMenuItem.Text = "修改题目";
-            // 
-            // 习题管理ToolStripMenuItem
-            // 
-            this.习题管理ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.习题生成ToolStripMenuItem,
-            this.批改习题ToolStripMenuItem});
-            this.习题管理ToolStripMenuItem.Name = "习题管理ToolStripMenuItem";
-            this.习题管理ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
-            this.习题管理ToolStripMenuItem.Text = "习题管理";
-            // 
-            // 习题生成ToolStripMenuItem
-            // 
-            this.习题生成ToolStripMenuItem.Name = "习题生成ToolStripMenuItem";
-            this.习题生成ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.习题生成ToolStripMenuItem.Text = "习题生成";
-            this.习题生成ToolStripMenuItem.Click += new System.EventHandler(this.习题生成ToolStripMenuItem_Click);
-            // 
-            // 批改习题ToolStripMenuItem
-            // 
-            this.批改习题ToolStripMenuItem.Name = "批改习题ToolStripMenuItem";
-            this.批改习题ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.批改习题ToolStripMenuItem.Text = "批改习题";
-            this.批改习题ToolStripMenuItem.Click += new System.EventHandler(this.批改习题ToolStripMenuItem_Click);
             // 
             // 用户管理ToolStripMenuItem
             // 
@@ -229,36 +95,171 @@
             this.修改密码ToolStripMenuItem.Name = "修改密码ToolStripMenuItem";
             this.修改密码ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.修改密码ToolStripMenuItem.Text = "修改密码";
+            this.修改密码ToolStripMenuItem.Click += new System.EventHandler(this.修改密码ToolStripMenuItem_Click);
+            // 
+            // 课程管理ToolStripMenuItem
+            // 
+            this.课程管理ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.添加课程ToolStripMenuItem,
+            this.修改课程ToolStripMenuItem});
+            this.课程管理ToolStripMenuItem.Name = "课程管理ToolStripMenuItem";
+            this.课程管理ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
+            this.课程管理ToolStripMenuItem.Text = "课程管理";
+            // 
+            // 添加课程ToolStripMenuItem
+            // 
+            this.添加课程ToolStripMenuItem.Name = "添加课程ToolStripMenuItem";
+            this.添加课程ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.添加课程ToolStripMenuItem.Text = "添加课程";
+            // 
+            // 修改课程ToolStripMenuItem
+            // 
+            this.修改课程ToolStripMenuItem.Name = "修改课程ToolStripMenuItem";
+            this.修改课程ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.修改课程ToolStripMenuItem.Text = "修改课程";
+            // 
+            // 班级管理ToolStripMenuItem
+            // 
+            this.班级管理ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.班级管理ToolStripMenuItem1,
+            this.班级名单ToolStripMenuItem});
+            this.班级管理ToolStripMenuItem.Name = "班级管理ToolStripMenuItem";
+            this.班级管理ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
+            this.班级管理ToolStripMenuItem.Text = "班级管理";
+            // 
+            // 班级管理ToolStripMenuItem1
+            // 
+            this.班级管理ToolStripMenuItem1.Name = "班级管理ToolStripMenuItem1";
+            this.班级管理ToolStripMenuItem1.Size = new System.Drawing.Size(124, 22);
+            this.班级管理ToolStripMenuItem1.Text = "班级信息";
+            this.班级管理ToolStripMenuItem1.Click += new System.EventHandler(this.班级管理ToolStripMenuItem1_Click);
+            // 
+            // 班级名单ToolStripMenuItem
+            // 
+            this.班级名单ToolStripMenuItem.Name = "班级名单ToolStripMenuItem";
+            this.班级名单ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.班级名单ToolStripMenuItem.Text = "班级名单";
+            this.班级名单ToolStripMenuItem.Click += new System.EventHandler(this.班级名单ToolStripMenuItem_Click);
+            // 
+            // 题库管理ToolStripMenuItem
+            // 
+            this.题库管理ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.输入题目ToolStripMenuItem,
+            this.修改土木ToolStripMenuItem});
+            this.题库管理ToolStripMenuItem.Name = "题库管理ToolStripMenuItem";
+            this.题库管理ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
+            this.题库管理ToolStripMenuItem.Text = "题库管理";
+            // 
+            // 输入题目ToolStripMenuItem
+            // 
+            this.输入题目ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.选择题ToolStripMenuItem,
+            this.填空题ToolStripMenuItem,
+            this.判断题ToolStripMenuItem,
+            this.简单题ToolStripMenuItem,
+            this.分析题ToolStripMenuItem});
+            this.输入题目ToolStripMenuItem.Name = "输入题目ToolStripMenuItem";
+            this.输入题目ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.输入题目ToolStripMenuItem.Text = "输入题目";
+            // 
+            // 选择题ToolStripMenuItem
+            // 
+            this.选择题ToolStripMenuItem.Name = "选择题ToolStripMenuItem";
+            this.选择题ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.选择题ToolStripMenuItem.Text = "选择题";
+            this.选择题ToolStripMenuItem.Click += new System.EventHandler(this.选择题ToolStripMenuItem_Click);
+            // 
+            // 填空题ToolStripMenuItem
+            // 
+            this.填空题ToolStripMenuItem.Name = "填空题ToolStripMenuItem";
+            this.填空题ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.填空题ToolStripMenuItem.Text = "填空题";
+            // 
+            // 判断题ToolStripMenuItem
+            // 
+            this.判断题ToolStripMenuItem.Name = "判断题ToolStripMenuItem";
+            this.判断题ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.判断题ToolStripMenuItem.Text = "判断题";
+            this.判断题ToolStripMenuItem.Click += new System.EventHandler(this.判断题ToolStripMenuItem_Click);
+            // 
+            // 简单题ToolStripMenuItem
+            // 
+            this.简单题ToolStripMenuItem.Name = "简单题ToolStripMenuItem";
+            this.简单题ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.简单题ToolStripMenuItem.Text = "简答题";
+            this.简单题ToolStripMenuItem.Click += new System.EventHandler(this.简单题ToolStripMenuItem_Click);
+            // 
+            // 分析题ToolStripMenuItem
+            // 
+            this.分析题ToolStripMenuItem.Name = "分析题ToolStripMenuItem";
+            this.分析题ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.分析题ToolStripMenuItem.Text = "分析题";
+            this.分析题ToolStripMenuItem.Click += new System.EventHandler(this.分析题ToolStripMenuItem_Click);
+            // 
+            // 修改土木ToolStripMenuItem
+            // 
+            this.修改土木ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.选择题ToolStripMenuItem1,
+            this.判断题ToolStripMenuItem1,
+            this.填空题ToolStripMenuItem1,
+            this.简单题ToolStripMenuItem1,
+            this.分析题ToolStripMenuItem1});
+            this.修改土木ToolStripMenuItem.Name = "修改土木ToolStripMenuItem";
+            this.修改土木ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.修改土木ToolStripMenuItem.Text = "修改题目";
             // 
             // 选择题ToolStripMenuItem1
             // 
             this.选择题ToolStripMenuItem1.Name = "选择题ToolStripMenuItem1";
-            this.选择题ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.选择题ToolStripMenuItem1.Size = new System.Drawing.Size(112, 22);
             this.选择题ToolStripMenuItem1.Text = "选择题";
             // 
             // 判断题ToolStripMenuItem1
             // 
             this.判断题ToolStripMenuItem1.Name = "判断题ToolStripMenuItem1";
-            this.判断题ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.判断题ToolStripMenuItem1.Size = new System.Drawing.Size(112, 22);
             this.判断题ToolStripMenuItem1.Text = "判断题";
             // 
             // 填空题ToolStripMenuItem1
             // 
             this.填空题ToolStripMenuItem1.Name = "填空题ToolStripMenuItem1";
-            this.填空题ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.填空题ToolStripMenuItem1.Size = new System.Drawing.Size(112, 22);
             this.填空题ToolStripMenuItem1.Text = "填空题";
             // 
             // 简单题ToolStripMenuItem1
             // 
             this.简单题ToolStripMenuItem1.Name = "简单题ToolStripMenuItem1";
-            this.简单题ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.简单题ToolStripMenuItem1.Size = new System.Drawing.Size(112, 22);
             this.简单题ToolStripMenuItem1.Text = "简单题";
             // 
             // 分析题ToolStripMenuItem1
             // 
             this.分析题ToolStripMenuItem1.Name = "分析题ToolStripMenuItem1";
-            this.分析题ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.分析题ToolStripMenuItem1.Size = new System.Drawing.Size(112, 22);
             this.分析题ToolStripMenuItem1.Text = "分析题";
+            // 
+            // 习题管理ToolStripMenuItem
+            // 
+            this.习题管理ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.习题生成ToolStripMenuItem,
+            this.批改习题ToolStripMenuItem});
+            this.习题管理ToolStripMenuItem.Name = "习题管理ToolStripMenuItem";
+            this.习题管理ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
+            this.习题管理ToolStripMenuItem.Text = "习题管理";
+            // 
+            // 习题生成ToolStripMenuItem
+            // 
+            this.习题生成ToolStripMenuItem.Name = "习题生成ToolStripMenuItem";
+            this.习题生成ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.习题生成ToolStripMenuItem.Text = "习题生成";
+            this.习题生成ToolStripMenuItem.Click += new System.EventHandler(this.习题生成ToolStripMenuItem_Click);
+            // 
+            // 批改习题ToolStripMenuItem
+            // 
+            this.批改习题ToolStripMenuItem.Name = "批改习题ToolStripMenuItem";
+            this.批改习题ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.批改习题ToolStripMenuItem.Text = "批改习题";
+            this.批改习题ToolStripMenuItem.Click += new System.EventHandler(this.批改习题ToolStripMenuItem_Click);
             // 
             // 试卷管理ToolStripMenuItem
             // 
