@@ -250,6 +250,12 @@
     <Compile Include="TaskList.Designer.cs">
       <DependentUpon>TaskList.cs</DependentUpon>
     </Compile>
+    <Compile Include="testlayout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="testlayout.Designer.cs">
+      <DependentUpon>testlayout.cs</DependentUpon>
+    </Compile>
     <Compile Include="UPmq.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -325,6 +331,9 @@
     </Compile>
     <EmbeddedResource Include="TaskList.resx">
       <DependentUpon>TaskList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="testlayout.resx">
+      <DependentUpon>testlayout.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UPmq.resx">
       <DependentUpon>UPmq.cs</DependentUpon>

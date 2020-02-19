@@ -180,14 +180,15 @@
             this.简单题ToolStripMenuItem1,
             this.分析题ToolStripMenuItem1});
             this.修改土木ToolStripMenuItem.Name = "修改土木ToolStripMenuItem";
-            this.修改土木ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.修改土木ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.修改土木ToolStripMenuItem.Text = "修改题目";
             // 
             // 选择题ToolStripMenuItem1
             // 
             this.选择题ToolStripMenuItem1.Name = "选择题ToolStripMenuItem1";
-            this.选择题ToolStripMenuItem1.Size = new System.Drawing.Size(112, 22);
+            this.选择题ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.选择题ToolStripMenuItem1.Text = "选择题";
+            this.选择题ToolStripMenuItem1.Click += new System.EventHandler(this.选择题ToolStripMenuItem1_Click);
             // 
             // 判断题ToolStripMenuItem1
             // 

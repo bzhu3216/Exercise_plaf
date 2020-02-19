@@ -216,5 +216,25 @@ namespace Exercise_form
                 mq.WindowState = FormWindowState.Normal;
             }
         }
+
+        private void 选择题ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+            UPmq  mq = null;
+            if (mq == null || mq.IsDisposed)
+            {
+                mq = new UPmq(pp,-1);
+                // mq.MdiParent = this;
+                mq.Show();
+            }
+            else
+            {
+                mq.Activate();
+                mq.WindowState = FormWindowState.Normal;
+            }
+
+
+
+        }
     }
 }
