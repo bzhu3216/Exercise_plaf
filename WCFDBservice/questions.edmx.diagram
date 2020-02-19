@@ -21,7 +21,7 @@
         <EntityTypeShape EntityType="db_exerciseModel.studAnsw" Width="1.5" PointX="7.375" PointY="4.75" />
         <EntityTypeShape EntityType="db_exerciseModel.View_student" Width="1.5" PointX="9.375" PointY="4.75" />
         <EntityTypeShape EntityType="db_exerciseModel.View_detai_exerL" Width="1.5" PointX="9.375" PointY="7.75" />
-        <EntityTypeShape EntityType="db_exerciseModel.V_tea_course" Width="1.5" PointX="12.375" PointY="8.875" />
+        <EntityTypeShape EntityType="db_exerciseModel.V_tea_course" Width="1.5" PointX="12.25" PointY="7" />
         <EntityTypeShape EntityType="db_exerciseModel.tech_course" Width="1.5" PointX="3.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>

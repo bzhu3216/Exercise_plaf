@@ -4,284 +4,249 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="db_exerciseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="AQues">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="teacherid" Type="nchar" MaxLength="4" />
-          <Property Name="courseid" Type="int" />
-          <Property Name="con" Type="int" />
-          <Property Name="objective" Type="int" />
-          <Property Name="diff" Type="int" />
-          <Property Name="usenum" Type="int" />
-          <Property Name="errornum" Type="int" />
-          <Property Name="question" Type="varbinary(max)" />
-          <Property Name="answ" Type="varbinary(max)" />
-        </EntityType>
-        <EntityType Name="class_student">
-          <Key>
-            <PropertyRef Name="classid" />
-            <PropertyRef Name="studentid" />
-          </Key>
-          <Property Name="classid" Type="int" Nullable="false" />
-          <Property Name="studentid" Type="varchar" MaxLength="11" Nullable="false" />
-          <Property Name="classno" Type="int" />
-        </EntityType>
-        <EntityType Name="classExer">
-          <Key>
-            <PropertyRef Name="cid" />
-            <PropertyRef Name="eid" />
-          </Key>
-          <Property Name="cid" Type="int" Nullable="false" />
-          <Property Name="eid" Type="int" Nullable="false" />
-          <Property Name="starttime" Type="date" />
-          <Property Name="endtime" Type="date" />
-          <Property Name="dispaly" Type="int" />
-        </EntityType>
-        <EntityType Name="classinfo">
-          <Key>
-            <PropertyRef Name="classid" />
-          </Key>
-          <Property Name="classid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="classinfo" Type="varchar" MaxLength="100" />
-          <Property Name="courseid" Type="int" />
-          <Property Name="teacher" Type="nchar" MaxLength="4" />
-          <Property Name="addtime" Type="date" />
-          <Property Name="finish" Type="int" />
-        </EntityType>
-        <EntityType Name="Course">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CourseName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Courseid" Type="varchar" MaxLength="50" />
-          <Property Name="numobjective" Type="int" Nullable="false" />
-          <Property Name="numcontent" Type="int" Nullable="false" />
-          <Property Name="diff" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="exerDetail">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="typeq" Type="int" Nullable="false" />
-          <Property Name="qid" Type="int" Nullable="false" />
-          <Property Name="lid" Type="int" Nullable="false" />
-          <Property Name="score" Type="int" />
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-        </EntityType>
-        <EntityType Name="exerL">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="teacherid" Type="nchar" MaxLength="4" Nullable="false" />
-          <Property Name="pub" Type="bit" Nullable="false" />
-          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="courseid" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="mchoiceQues">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="teacherid" Type="nchar" MaxLength="4" />
-          <Property Name="courseid" Type="int" />
-          <Property Name="con" Type="int" />
-          <Property Name="objective" Type="int" />
-          <Property Name="diff" Type="int" />
-          <Property Name="usenum" Type="int" />
-          <Property Name="errornum" Type="int" />
-          <Property Name="question" Type="varbinary(max)" />
-          <Property Name="answ" Type="int" />
-        </EntityType>
-        <EntityType Name="SQues">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="teacherid" Type="nchar" MaxLength="4" />
-          <Property Name="courseid" Type="int" />
-          <Property Name="con" Type="int" />
-          <Property Name="objective" Type="int" />
-          <Property Name="diff" Type="int" />
-          <Property Name="usenum" Type="int" />
-          <Property Name="errornum" Type="int" />
-          <Property Name="question" Type="varbinary(max)" />
-          <Property Name="answ" Type="varbinary(max)" />
-        </EntityType>
-        <EntityType Name="studAnsw">
-          <Key>
-            <PropertyRef Name="stid" />
-            <PropertyRef Name="did" />
-            <PropertyRef Name="lid" />
-          </Key>
-          <Property Name="stid" Type="nchar" MaxLength="11" Nullable="false" />
-          <Property Name="did" Type="int" Nullable="false" />
-          <Property Name="answ1" Type="int" />
-          <Property Name="answ2" Type="bit" />
-          <Property Name="answ3" Type="varbinary(max)" />
-          <Property Name="mark" Type="int" Nullable="false" />
-          <Property Name="lid" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="StudInfo">
-          <Key>
-            <PropertyRef Name="studentid" />
-          </Key>
-          <Property Name="studentid" Type="nvarchar" MaxLength="11" Nullable="false" />
-          <Property Name="name" Type="varchar" MaxLength="50" />
-          <Property Name="pd" Type="varchar" MaxLength="8" />
-        </EntityType>
-        <EntityType Name="teacherinfo">
-          <Key>
-            <PropertyRef Name="teacherid" />
-          </Key>
-          <Property Name="teacherid" Type="nchar" MaxLength="4" Nullable="false" />
-          <Property Name="name" Type="nchar" MaxLength="10" />
-          <Property Name="pd" Type="nchar" MaxLength="10" />
-        </EntityType>
-        <EntityType Name="tech_course">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="tid" Type="nchar" MaxLength="4" Nullable="false" />
-          <Property Name="couseid" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="TFQues">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="teacherid" Type="nchar" MaxLength="4" />
-          <Property Name="courseid" Type="int" />
-          <Property Name="con" Type="int" />
-          <Property Name="objective" Type="int" />
-          <Property Name="diff" Type="int" />
-          <Property Name="usenum" Type="int" />
-          <Property Name="errornum" Type="int" />
-          <Property Name="question" Type="varbinary(max)" />
-          <Property Name="answ" Type="bit" />
-        </EntityType>
-        <!--生成过程中发现错误:
-警告 6002: 表/视图“db_exercise.dbo.V_tea_course”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
-        <EntityType Name="V_tea_course">
-          <Key>
-            <PropertyRef Name="teacherid" />
-            <PropertyRef Name="couseid" />
-            <PropertyRef Name="CourseName" />
-            <PropertyRef Name="numobjective" />
-            <PropertyRef Name="numcontent" />
-            <PropertyRef Name="diff" />
-            <PropertyRef Name="relid" />
-          </Key>
-          <Property Name="teacherid" Type="nchar" MaxLength="4" Nullable="false" />
-          <Property Name="name" Type="nchar" MaxLength="10" />
-          <Property Name="pd" Type="nchar" MaxLength="10" />
-          <Property Name="couseid" Type="int" Nullable="false" />
-          <Property Name="CourseName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="numobjective" Type="int" Nullable="false" />
-          <Property Name="numcontent" Type="int" Nullable="false" />
-          <Property Name="diff" Type="int" Nullable="false" />
-          <Property Name="relid" Type="int" Nullable="false" />
-        </EntityType>
-        <!--生成过程中发现错误:
-警告 6002: 表/视图“db_exercise.dbo.View_detai_exerL”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
-        <EntityType Name="View_detai_exerL">
-          <Key>
-            <PropertyRef Name="id" />
-            <PropertyRef Name="typeq" />
-            <PropertyRef Name="qid" />
-            <PropertyRef Name="Expr1" />
-            <PropertyRef Name="lid" />
-          </Key>
-          <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="typeq" Type="int" Nullable="false" />
-          <Property Name="qid" Type="int" Nullable="false" />
-          <Property Name="Expr1" Type="int" Nullable="false" />
-          <Property Name="score" Type="int" />
-          <Property Name="lid" Type="int" Nullable="false" />
-        </EntityType>
-        <!--生成过程中发现错误:
-警告 6002: 表/视图“db_exercise.dbo.View_student”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
-        <EntityType Name="View_student">
-          <Key>
-            <PropertyRef Name="stid" />
-            <PropertyRef Name="cid" />
-          </Key>
-          <Property Name="stid" Type="nvarchar" MaxLength="11" Nullable="false" />
-          <Property Name="stname" Type="varchar" MaxLength="50" />
-          <Property Name="cno" Type="int" />
-          <Property Name="cfinish" Type="int" />
-          <Property Name="cid" Type="int" Nullable="false" />
-        </EntityType>
-        <Association Name="FK_exerL_Course">
-          <End Role="Course" Type="Self.Course" Multiplicity="1" />
-          <End Role="exerL" Type="Self.exerL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Course">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="exerL">
-              <PropertyRef Name="courseid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="db_exerciseModelStoreContainer">
-          <EntitySet Name="AQues" EntityType="Self.AQues" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="class_student" EntityType="Self.class_student" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="classExer" EntityType="Self.classExer" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="classinfo" EntityType="Self.classinfo" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="exerDetail" EntityType="Self.exerDetail" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="exerL" EntityType="Self.exerL" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="mchoiceQues" EntityType="Self.mchoiceQues" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SQues" EntityType="Self.SQues" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="studAnsw" EntityType="Self.studAnsw" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="StudInfo" EntityType="Self.StudInfo" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="teacherinfo" EntityType="Self.teacherinfo" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tech_course" EntityType="Self.tech_course" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TFQues" EntityType="Self.TFQues" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="V_tea_course" EntityType="Self.V_tea_course" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-[V_tea_course].[teacherid] AS [teacherid], 
-[V_tea_course].[name] AS [name], 
-[V_tea_course].[pd] AS [pd], 
-[V_tea_course].[couseid] AS [couseid], 
-[V_tea_course].[CourseName] AS [CourseName], 
-[V_tea_course].[numobjective] AS [numobjective], 
-[V_tea_course].[numcontent] AS [numcontent], 
-[V_tea_course].[diff] AS [diff], 
-[V_tea_course].[relid] AS [relid]
-FROM [dbo].[V_tea_course] AS [V_tea_course]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="View_detai_exerL" EntityType="Self.View_detai_exerL" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-[View_detai_exerL].[id] AS [id], 
-[View_detai_exerL].[typeq] AS [typeq], 
-[View_detai_exerL].[qid] AS [qid], 
-[View_detai_exerL].[Expr1] AS [Expr1], 
-[View_detai_exerL].[score] AS [score], 
-[View_detai_exerL].[lid] AS [lid]
-FROM [dbo].[View_detai_exerL] AS [View_detai_exerL]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="View_student" EntityType="Self.View_student" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-[View_student].[stid] AS [stid], 
-[View_student].[stname] AS [stname], 
-[View_student].[cno] AS [cno], 
-[View_student].[cfinish] AS [cfinish], 
-[View_student].[cid] AS [cid]
-FROM [dbo].[View_student] AS [View_student]</DefiningQuery>
-          </EntitySet>
-          <AssociationSet Name="FK_exerL_Course" Association="Self.FK_exerL_Course">
-            <End Role="Course" EntitySet="Course" />
-            <End Role="exerL" EntitySet="exerL" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema></edmx:StorageModels>
+    <Schema Namespace="db_exerciseModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="db_exerciseModelStoreContainer">
+    <EntitySet Name="mchoiceQues" EntityType="db_exerciseModel.Store.mchoiceQues" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="classinfo" EntityType="db_exerciseModel.Store.classinfo" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Course" EntityType="db_exerciseModel.Store.Course" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="teacherinfo" EntityType="db_exerciseModel.Store.teacherinfo" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TFQues" EntityType="db_exerciseModel.Store.TFQues" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SQues" EntityType="db_exerciseModel.Store.SQues" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AQues" EntityType="db_exerciseModel.Store.AQues" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="classExer" EntityType="db_exerciseModel.Store.classExer" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="exerL" EntityType="db_exerciseModel.Store.exerL" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="class_student" EntityType="db_exerciseModel.Store.class_student" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="StudInfoes" EntityType="db_exerciseModel.Store.StudInfoes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="exerDetail" EntityType="db_exerciseModel.Store.exerDetail" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="studAnsw" EntityType="db_exerciseModel.Store.studAnsw" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="View_student" EntityType="db_exerciseModel.Store.View_student" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="View_detai_exerL" EntityType="db_exerciseModel.Store.View_detai_exerL" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="V_tea_course" EntityType="db_exerciseModel.Store.V_tea_course" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tech_course" EntityType="db_exerciseModel.Store.tech_course" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_exerL_Course" Association="db_exerciseModel.Store.FK_exerL_Course">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="exerL" EntitySet="exerL" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="mchoiceQues">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="con" Type="int" Nullable="true" />
+    <Property Name="objective" Type="int" Nullable="true" />
+    <Property Name="diff" Type="int" Nullable="true" />
+    <Property Name="usenum" Type="int" Nullable="true" />
+    <Property Name="errornum" Type="int" Nullable="true" />
+    <Property Name="question" Type="varbinary(max)" Nullable="true" />
+    <Property Name="courseid" Type="int" Nullable="true" />
+    <Property Name="answ" Type="int" Nullable="true" />
+    <Property Name="teacherid" Type="nchar" Nullable="true" MaxLength="4" />
+  </EntityType>
+  <EntityType Name="classinfo">
+    <Key>
+      <PropertyRef Name="classid" />
+    </Key>
+    <Property Name="classid" Type="int" Nullable="false" />
+    <Property Name="classinfo1" Type="varchar" Nullable="true" MaxLength="100" />
+    <Property Name="courseid" Type="int" Nullable="true" />
+    <Property Name="teacher" Type="nchar" Nullable="true" MaxLength="4" />
+    <Property Name="addtime" Type="datetime" Nullable="true" />
+    <Property Name="finish" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Course">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CourseName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Courseid" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="numobjective" Type="int" Nullable="false" />
+    <Property Name="numcontent" Type="int" Nullable="false" />
+    <Property Name="diff" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="teacherinfo">
+    <Key>
+      <PropertyRef Name="teacherid" />
+    </Key>
+    <Property Name="teacherid" Type="nchar" Nullable="false" MaxLength="4" />
+    <Property Name="name" Type="nchar" Nullable="true" MaxLength="10" />
+    <Property Name="pd" Type="nchar" Nullable="true" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="TFQues">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="teacherid" Type="nchar" Nullable="true" MaxLength="4" />
+    <Property Name="courseid" Type="int" Nullable="true" />
+    <Property Name="con" Type="int" Nullable="true" />
+    <Property Name="objective" Type="int" Nullable="true" />
+    <Property Name="diff" Type="int" Nullable="true" />
+    <Property Name="usenum" Type="int" Nullable="true" />
+    <Property Name="errornum" Type="int" Nullable="true" />
+    <Property Name="question" Type="varbinary(max)" Nullable="true" />
+    <Property Name="answ" Type="bit" Nullable="true" />
+  </EntityType>
+  <EntityType Name="SQues">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="teacherid" Type="nchar" Nullable="true" MaxLength="4" />
+    <Property Name="courseid" Type="int" Nullable="true" />
+    <Property Name="con" Type="int" Nullable="true" />
+    <Property Name="objective" Type="int" Nullable="true" />
+    <Property Name="diff" Type="int" Nullable="true" />
+    <Property Name="usenum" Type="int" Nullable="true" />
+    <Property Name="errornum" Type="int" Nullable="true" />
+    <Property Name="question" Type="varbinary(max)" Nullable="true" />
+    <Property Name="answ" Type="varbinary(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="AQues">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="teacherid" Type="nchar" Nullable="true" MaxLength="4" />
+    <Property Name="courseid" Type="int" Nullable="true" />
+    <Property Name="con" Type="int" Nullable="true" />
+    <Property Name="objective" Type="int" Nullable="true" />
+    <Property Name="diff" Type="int" Nullable="true" />
+    <Property Name="usenum" Type="int" Nullable="true" />
+    <Property Name="errornum" Type="int" Nullable="true" />
+    <Property Name="question" Type="varbinary(max)" Nullable="true" />
+    <Property Name="answ" Type="varbinary(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="classExer">
+    <Key>
+      <PropertyRef Name="cid" />
+      <PropertyRef Name="eid" />
+    </Key>
+    <Property Name="cid" Type="int" Nullable="false" />
+    <Property Name="eid" Type="int" Nullable="false" />
+    <Property Name="starttime" Type="datetime" Nullable="true" />
+    <Property Name="endtime" Type="datetime" Nullable="true" />
+    <Property Name="dispaly" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="exerL">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="teacherid" Type="nchar" Nullable="false" MaxLength="4" />
+    <Property Name="name" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="courseid" Type="int" Nullable="false" />
+    <Property Name="pub" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="class_student">
+    <Key>
+      <PropertyRef Name="classid" />
+      <PropertyRef Name="studentid" />
+    </Key>
+    <Property Name="classid" Type="int" Nullable="false" />
+    <Property Name="studentid" Type="varchar" Nullable="false" MaxLength="11" />
+    <Property Name="classno" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="StudInfoes">
+    <Key>
+      <PropertyRef Name="studentid" />
+    </Key>
+    <Property Name="studentid" Type="nvarchar" Nullable="false" MaxLength="11" />
+    <Property Name="name" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="pd" Type="varchar" Nullable="true" MaxLength="8" />
+  </EntityType>
+  <EntityType Name="exerDetail">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="typeq" Type="int" Nullable="false" />
+    <Property Name="qid" Type="int" Nullable="false" />
+    <Property Name="lid" Type="int" Nullable="false" />
+    <Property Name="score" Type="int" Nullable="true" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="studAnsw">
+    <Key>
+      <PropertyRef Name="stid" />
+      <PropertyRef Name="did" />
+      <PropertyRef Name="lid" />
+    </Key>
+    <Property Name="stid" Type="nchar" Nullable="false" MaxLength="11" />
+    <Property Name="did" Type="int" Nullable="false" />
+    <Property Name="answ1" Type="int" Nullable="true" />
+    <Property Name="answ2" Type="bit" Nullable="true" />
+    <Property Name="answ3" Type="varbinary(max)" Nullable="true" />
+    <Property Name="mark" Type="int" Nullable="false" />
+    <Property Name="lid" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="View_student">
+    <Key>
+      <PropertyRef Name="stid" />
+      <PropertyRef Name="cid" />
+    </Key>
+    <Property Name="stid" Type="nvarchar" Nullable="false" MaxLength="11" />
+    <Property Name="stname" Type="varchar" Nullable="true" MaxLength="50" />
+    <Property Name="cno" Type="int" Nullable="true" />
+    <Property Name="cfinish" Type="int" Nullable="true" />
+    <Property Name="cid" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="View_detai_exerL">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="typeq" />
+      <PropertyRef Name="qid" />
+      <PropertyRef Name="Expr1" />
+      <PropertyRef Name="lid" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="typeq" Type="int" Nullable="false" />
+    <Property Name="qid" Type="int" Nullable="false" />
+    <Property Name="Expr1" Type="int" Nullable="false" />
+    <Property Name="score" Type="int" Nullable="true" />
+    <Property Name="lid" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="V_tea_course">
+    <Key>
+      <PropertyRef Name="teacherid" />
+      <PropertyRef Name="couseid" />
+      <PropertyRef Name="relid" />
+      <PropertyRef Name="CourseName" />
+      <PropertyRef Name="numobjective" />
+      <PropertyRef Name="numcontent" />
+      <PropertyRef Name="diff" />
+    </Key>
+    <Property Name="teacherid" Type="nchar" Nullable="false" MaxLength="4" />
+    <Property Name="name" Type="nchar" Nullable="true" MaxLength="10" />
+    <Property Name="pd" Type="nchar" Nullable="true" MaxLength="10" />
+    <Property Name="couseid" Type="int" Nullable="false" />
+    <Property Name="relid" Type="int" Nullable="false" />
+    <Property Name="CourseName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="numobjective" Type="int" Nullable="false" />
+    <Property Name="numcontent" Type="int" Nullable="false" />
+    <Property Name="diff" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tech_course">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tid" Type="nchar" Nullable="false" MaxLength="4" />
+    <Property Name="couseid" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_exerL_Course">
+    <End Role="Course" Type="db_exerciseModel.Store.Course" Multiplicity="1" />
+    <End Role="exerL" Type="db_exerciseModel.Store.exerL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="exerL">
+        <PropertyRef Name="courseid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="db_exerciseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -532,219 +497,218 @@ FROM [dbo].[View_student] AS [View_student]</DefiningQuery>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="db_exerciseModelStoreContainer" CdmEntityContainer="db_exerciseEntities">
-          <EntitySetMapping Name="mchoiceQues">
-            <EntityTypeMapping TypeName="db_exerciseModel.mchoiceQues">
-              <MappingFragment StoreEntitySet="mchoiceQues">
-                <ScalarProperty Name="teacherid" ColumnName="teacherid" />
-                <ScalarProperty Name="answ" ColumnName="answ" />
-                <ScalarProperty Name="courseid" ColumnName="courseid" />
-                <ScalarProperty Name="question" ColumnName="question" />
-                <ScalarProperty Name="errornum" ColumnName="errornum" />
-                <ScalarProperty Name="usenum" ColumnName="usenum" />
-                <ScalarProperty Name="diff" ColumnName="diff" />
-                <ScalarProperty Name="objective" ColumnName="objective" />
-                <ScalarProperty Name="con" ColumnName="con" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="classinfo">
-            <EntityTypeMapping TypeName="db_exerciseModel.classinfo">
-              <MappingFragment StoreEntitySet="classinfo">
-                <ScalarProperty Name="finish" ColumnName="finish" />
-                <ScalarProperty Name="addtime" ColumnName="addtime" />
-                <ScalarProperty Name="teacher" ColumnName="teacher" />
-                <ScalarProperty Name="courseid" ColumnName="courseid" />
-                <ScalarProperty Name="classinfo1" ColumnName="classinfo" />
-                <ScalarProperty Name="classid" ColumnName="classid" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Course">
-            <EntityTypeMapping TypeName="db_exerciseModel.Course">
-              <MappingFragment StoreEntitySet="Course">
-                <ScalarProperty Name="diff" ColumnName="diff" />
-                <ScalarProperty Name="numcontent" ColumnName="numcontent" />
-                <ScalarProperty Name="numobjective" ColumnName="numobjective" />
-                <ScalarProperty Name="Courseid" ColumnName="Courseid" />
-                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="teacherinfo">
-            <EntityTypeMapping TypeName="db_exerciseModel.teacherinfo">
-              <MappingFragment StoreEntitySet="teacherinfo">
-                <ScalarProperty Name="pd" ColumnName="pd" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="teacherid" ColumnName="teacherid" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TFQues">
-            <EntityTypeMapping TypeName="db_exerciseModel.TFQues">
-              <MappingFragment StoreEntitySet="TFQues">
-                <ScalarProperty Name="answ" ColumnName="answ" />
-                <ScalarProperty Name="question" ColumnName="question" />
-                <ScalarProperty Name="errornum" ColumnName="errornum" />
-                <ScalarProperty Name="usenum" ColumnName="usenum" />
-                <ScalarProperty Name="diff" ColumnName="diff" />
-                <ScalarProperty Name="objective" ColumnName="objective" />
-                <ScalarProperty Name="con" ColumnName="con" />
-                <ScalarProperty Name="courseid" ColumnName="courseid" />
-                <ScalarProperty Name="teacherid" ColumnName="teacherid" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SQues">
-            <EntityTypeMapping TypeName="db_exerciseModel.SQues">
-              <MappingFragment StoreEntitySet="SQues">
-                <ScalarProperty Name="answ" ColumnName="answ" />
-                <ScalarProperty Name="question" ColumnName="question" />
-                <ScalarProperty Name="errornum" ColumnName="errornum" />
-                <ScalarProperty Name="usenum" ColumnName="usenum" />
-                <ScalarProperty Name="diff" ColumnName="diff" />
-                <ScalarProperty Name="objective" ColumnName="objective" />
-                <ScalarProperty Name="con" ColumnName="con" />
-                <ScalarProperty Name="courseid" ColumnName="courseid" />
-                <ScalarProperty Name="teacherid" ColumnName="teacherid" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AQues">
-            <EntityTypeMapping TypeName="db_exerciseModel.AQues">
-              <MappingFragment StoreEntitySet="AQues">
-                <ScalarProperty Name="answ" ColumnName="answ" />
-                <ScalarProperty Name="question" ColumnName="question" />
-                <ScalarProperty Name="errornum" ColumnName="errornum" />
-                <ScalarProperty Name="usenum" ColumnName="usenum" />
-                <ScalarProperty Name="diff" ColumnName="diff" />
-                <ScalarProperty Name="objective" ColumnName="objective" />
-                <ScalarProperty Name="con" ColumnName="con" />
-                <ScalarProperty Name="courseid" ColumnName="courseid" />
-                <ScalarProperty Name="teacherid" ColumnName="teacherid" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="classExer">
-            <EntityTypeMapping TypeName="db_exerciseModel.classExer">
-              <MappingFragment StoreEntitySet="classExer">
-                <ScalarProperty Name="dispaly" ColumnName="dispaly" />
-                <ScalarProperty Name="endtime" ColumnName="endtime" />
-                <ScalarProperty Name="starttime" ColumnName="starttime" />
-                <ScalarProperty Name="eid" ColumnName="eid" />
-                <ScalarProperty Name="cid" ColumnName="cid" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="exerL">
-            <EntityTypeMapping TypeName="db_exerciseModel.exerL">
-              <MappingFragment StoreEntitySet="exerL">
-                <ScalarProperty Name="pub" ColumnName="pub" />
-                <ScalarProperty Name="courseid" ColumnName="courseid" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="teacherid" ColumnName="teacherid" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="class_student">
-            <EntityTypeMapping TypeName="db_exerciseModel.class_student">
-              <MappingFragment StoreEntitySet="class_student">
-                <ScalarProperty Name="classno" ColumnName="classno" />
-                <ScalarProperty Name="studentid" ColumnName="studentid" />
-                <ScalarProperty Name="classid" ColumnName="classid" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="StudInfoes">
-            <EntityTypeMapping TypeName="db_exerciseModel.StudInfo">
-              <MappingFragment StoreEntitySet="StudInfo">
-                <ScalarProperty Name="pd" ColumnName="pd" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="studentid" ColumnName="studentid" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="exerDetail">
-            <EntityTypeMapping TypeName="db_exerciseModel.exerDetail">
-              <MappingFragment StoreEntitySet="exerDetail">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="score" ColumnName="score" />
-                <ScalarProperty Name="lid" ColumnName="lid" />
-                <ScalarProperty Name="qid" ColumnName="qid" />
-                <ScalarProperty Name="typeq" ColumnName="typeq" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="studAnsw">
-            <EntityTypeMapping TypeName="db_exerciseModel.studAnsw">
-              <MappingFragment StoreEntitySet="studAnsw">
-                <ScalarProperty Name="lid" ColumnName="lid" />
-                <ScalarProperty Name="mark" ColumnName="mark" />
-                <ScalarProperty Name="answ3" ColumnName="answ3" />
-                <ScalarProperty Name="answ2" ColumnName="answ2" />
-                <ScalarProperty Name="answ1" ColumnName="answ1" />
-                <ScalarProperty Name="did" ColumnName="did" />
-                <ScalarProperty Name="stid" ColumnName="stid" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="View_student">
-            <EntityTypeMapping TypeName="db_exerciseModel.View_student">
-              <MappingFragment StoreEntitySet="View_student">
-                <ScalarProperty Name="cid" ColumnName="cid" />
-                <ScalarProperty Name="cfinish" ColumnName="cfinish" />
-                <ScalarProperty Name="cno" ColumnName="cno" />
-                <ScalarProperty Name="stname" ColumnName="stname" />
-                <ScalarProperty Name="stid" ColumnName="stid" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="View_detai_exerL">
-            <EntityTypeMapping TypeName="db_exerciseModel.View_detai_exerL">
-              <MappingFragment StoreEntitySet="View_detai_exerL">
-                <ScalarProperty Name="lid" ColumnName="lid" />
-                <ScalarProperty Name="score" ColumnName="score" />
-                <ScalarProperty Name="Expr1" ColumnName="Expr1" />
-                <ScalarProperty Name="qid" ColumnName="qid" />
-                <ScalarProperty Name="typeq" ColumnName="typeq" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="V_tea_course">
-            <EntityTypeMapping TypeName="db_exerciseModel.V_tea_course">
-              <MappingFragment StoreEntitySet="V_tea_course">
-                <ScalarProperty Name="diff" ColumnName="diff" />
-                <ScalarProperty Name="numcontent" ColumnName="numcontent" />
-                <ScalarProperty Name="numobjective" ColumnName="numobjective" />
-                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
-                <ScalarProperty Name="relid" ColumnName="relid" />
-                <ScalarProperty Name="couseid" ColumnName="couseid" />
-                <ScalarProperty Name="pd" ColumnName="pd" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="teacherid" ColumnName="teacherid" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tech_course">
-            <EntityTypeMapping TypeName="db_exerciseModel.tech_course">
-              <MappingFragment StoreEntitySet="tech_course">
-                <ScalarProperty Name="couseid" ColumnName="couseid" />
-                <ScalarProperty Name="tid" ColumnName="tid" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-        </EntityContainerMapping>
-      </Mapping>
-    </edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="db_exerciseModelStoreContainer" CdmEntityContainer="db_exerciseEntities">
+    <EntitySetMapping Name="mchoiceQues">
+      <EntityTypeMapping TypeName="IsTypeOf(db_exerciseModel.mchoiceQues)">
+        <MappingFragment StoreEntitySet="mchoiceQues">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="con" ColumnName="con" />
+          <ScalarProperty Name="objective" ColumnName="objective" />
+          <ScalarProperty Name="diff" ColumnName="diff" />
+          <ScalarProperty Name="usenum" ColumnName="usenum" />
+          <ScalarProperty Name="errornum" ColumnName="errornum" />
+          <ScalarProperty Name="question" ColumnName="question" />
+          <ScalarProperty Name="courseid" ColumnName="courseid" />
+          <ScalarProperty Name="answ" ColumnName="answ" />
+          <ScalarProperty Name="teacherid" ColumnName="teacherid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="classinfo">
+      <EntityTypeMapping TypeName="IsTypeOf(db_exerciseModel.classinfo)">
+        <MappingFragment StoreEntitySet="classinfo">
+          <ScalarProperty Name="classid" ColumnName="classid" />
+          <ScalarProperty Name="classinfo1" ColumnName="classinfo1" />
+          <ScalarProperty Name="courseid" ColumnName="courseid" />
+          <ScalarProperty Name="teacher" ColumnName="teacher" />
+          <ScalarProperty Name="addtime" ColumnName="addtime" />
+          <ScalarProperty Name="finish" ColumnName="finish" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Course">
+      <EntityTypeMapping TypeName="IsTypeOf(db_exerciseModel.Course)">
+        <MappingFragment StoreEntitySet="Course">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+          <ScalarProperty Name="Courseid" ColumnName="Courseid" />
+          <ScalarProperty Name="numobjective" ColumnName="numobjective" />
+          <ScalarProperty Name="numcontent" ColumnName="numcontent" />
+          <ScalarProperty Name="diff" ColumnName="diff" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="teacherinfo">
+      <EntityTypeMapping TypeName="IsTypeOf(db_exerciseModel.teacherinfo)">
+        <MappingFragment StoreEntitySet="teacherinfo">
+          <ScalarProperty Name="teacherid" ColumnName="teacherid" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="pd" ColumnName="pd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TFQues">
+      <EntityTypeMapping TypeName="IsTypeOf(db_exerciseModel.TFQues)">
+        <MappingFragment StoreEntitySet="TFQues">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="teacherid" ColumnName="teacherid" />
+          <ScalarProperty Name="courseid" ColumnName="courseid" />
+          <ScalarProperty Name="con" ColumnName="con" />
+          <ScalarProperty Name="objective" ColumnName="objective" />
+          <ScalarProperty Name="diff" ColumnName="diff" />
+          <ScalarProperty Name="usenum" ColumnName="usenum" />
+          <ScalarProperty Name="errornum" ColumnName="errornum" />
+          <ScalarProperty Name="question" ColumnName="question" />
+          <ScalarProperty Name="answ" ColumnName="answ" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SQues">
+      <EntityTypeMapping TypeName="IsTypeOf(db_exerciseModel.SQues)">
+        <MappingFragment StoreEntitySet="SQues">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="teacherid" ColumnName="teacherid" />
+          <ScalarProperty Name="courseid" ColumnName="courseid" />
+          <ScalarProperty Name="con" ColumnName="con" />
+          <ScalarProperty Name="objective" ColumnName="objective" />
+          <ScalarProperty Name="diff" ColumnName="diff" />
+          <ScalarProperty Name="usenum" ColumnName="usenum" />
+          <ScalarProperty Name="errornum" ColumnName="errornum" />
+          <ScalarProperty Name="question" ColumnName="question" />
+          <ScalarProperty Name="answ" ColumnName="answ" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AQues">
+      <EntityTypeMapping TypeName="IsTypeOf(db_exerciseModel.AQues)">
+        <MappingFragment StoreEntitySet="AQues">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="teacherid" ColumnName="teacherid" />
+          <ScalarProperty Name="courseid" ColumnName="courseid" />
+          <ScalarProperty Name="con" ColumnName="con" />
+          <ScalarProperty Name="objective" ColumnName="objective" />
+          <ScalarProperty Name="diff" ColumnName="diff" />
+          <ScalarProperty Name="usenum" ColumnName="usenum" />
+          <ScalarProperty Name="errornum" ColumnName="errornum" />
+          <ScalarProperty Name="question" ColumnName="question" />
+          <ScalarProperty Name="answ" ColumnName="answ" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="classExer">
+      <EntityTypeMapping TypeName="IsTypeOf(db_exerciseModel.classExer)">
+        <MappingFragment StoreEntitySet="classExer">
+          <ScalarProperty Name="cid" ColumnName="cid" />
+          <ScalarProperty Name="eid" ColumnName="eid" />
+          <ScalarProperty Name="starttime" ColumnName="starttime" />
+          <ScalarProperty Name="endtime" ColumnName="endtime" />
+          <ScalarProperty Name="dispaly" ColumnName="dispaly" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="exerL">
+      <EntityTypeMapping TypeName="IsTypeOf(db_exerciseModel.exerL)">
+        <MappingFragment StoreEntitySet="exerL">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="teacherid" ColumnName="teacherid" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="courseid" ColumnName="courseid" />
+          <ScalarProperty Name="pub" ColumnName="pub" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="class_student">
+      <EntityTypeMapping TypeName="IsTypeOf(db_exerciseModel.class_student)">
+        <MappingFragment StoreEntitySet="class_student">
+          <ScalarProperty Name="classid" ColumnName="classid" />
+          <ScalarProperty Name="studentid" ColumnName="studentid" />
+          <ScalarProperty Name="classno" ColumnName="classno" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StudInfoes">
+      <EntityTypeMapping TypeName="IsTypeOf(db_exerciseModel.StudInfo)">
+        <MappingFragment StoreEntitySet="StudInfoes">
+          <ScalarProperty Name="studentid" ColumnName="studentid" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="pd" ColumnName="pd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="exerDetail">
+      <EntityTypeMapping TypeName="IsTypeOf(db_exerciseModel.exerDetail)">
+        <MappingFragment StoreEntitySet="exerDetail">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="typeq" ColumnName="typeq" />
+          <ScalarProperty Name="qid" ColumnName="qid" />
+          <ScalarProperty Name="lid" ColumnName="lid" />
+          <ScalarProperty Name="score" ColumnName="score" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="studAnsw">
+      <EntityTypeMapping TypeName="IsTypeOf(db_exerciseModel.studAnsw)">
+        <MappingFragment StoreEntitySet="studAnsw">
+          <ScalarProperty Name="stid" ColumnName="stid" />
+          <ScalarProperty Name="did" ColumnName="did" />
+          <ScalarProperty Name="lid" ColumnName="lid" />
+          <ScalarProperty Name="answ1" ColumnName="answ1" />
+          <ScalarProperty Name="answ2" ColumnName="answ2" />
+          <ScalarProperty Name="answ3" ColumnName="answ3" />
+          <ScalarProperty Name="mark" ColumnName="mark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_student">
+      <EntityTypeMapping TypeName="IsTypeOf(db_exerciseModel.View_student)">
+        <MappingFragment StoreEntitySet="View_student">
+          <ScalarProperty Name="stid" ColumnName="stid" />
+          <ScalarProperty Name="cid" ColumnName="cid" />
+          <ScalarProperty Name="stname" ColumnName="stname" />
+          <ScalarProperty Name="cno" ColumnName="cno" />
+          <ScalarProperty Name="cfinish" ColumnName="cfinish" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_detai_exerL">
+      <EntityTypeMapping TypeName="IsTypeOf(db_exerciseModel.View_detai_exerL)">
+        <MappingFragment StoreEntitySet="View_detai_exerL">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="typeq" ColumnName="typeq" />
+          <ScalarProperty Name="qid" ColumnName="qid" />
+          <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+          <ScalarProperty Name="lid" ColumnName="lid" />
+          <ScalarProperty Name="score" ColumnName="score" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="V_tea_course">
+      <EntityTypeMapping TypeName="IsTypeOf(db_exerciseModel.V_tea_course)">
+        <MappingFragment StoreEntitySet="V_tea_course">
+          <ScalarProperty Name="teacherid" ColumnName="teacherid" />
+          <ScalarProperty Name="couseid" ColumnName="couseid" />
+          <ScalarProperty Name="relid" ColumnName="relid" />
+          <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+          <ScalarProperty Name="numobjective" ColumnName="numobjective" />
+          <ScalarProperty Name="numcontent" ColumnName="numcontent" />
+          <ScalarProperty Name="diff" ColumnName="diff" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="pd" ColumnName="pd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tech_course">
+      <EntityTypeMapping TypeName="IsTypeOf(db_exerciseModel.tech_course)">
+        <MappingFragment StoreEntitySet="tech_course">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="tid" ColumnName="tid" />
+          <ScalarProperty Name="couseid" ColumnName="couseid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
@@ -758,7 +722,7 @@ FROM [dbo].[View_student] AS [View_student]</DefiningQuery>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="False" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
       </DesignerInfoPropertySet>
     </Options>

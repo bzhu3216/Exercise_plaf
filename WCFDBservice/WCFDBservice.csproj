@@ -116,6 +116,7 @@
       <DependentUpon>questions.edmx</DependentUpon>
       <LastGenOutput>questions.Context.cs</LastGenOutput>
     </Content>
+    <Content Include="questions.edmx.sql" />
     <Content Include="questions.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>questions.edmx</DependentUpon>
