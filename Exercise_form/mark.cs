@@ -693,9 +693,10 @@ namespace Exercise_form
                 studAnsw stA = null;
                 int qid = -1;
                 qid = (int)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
+                string stid = lstv[dataGridView2.CurrentRow.Index].stid;
                 //  var q2 = ltvdl.Where(o => o.Expr1 == qid && o.typeq == 3);
                 var q3 = from o in pp.context.studAnsw
-                         where o.did == qid
+                         where o.did == qid &&o.stid== stid
                          select o;
                 if (q3.Count<studAnsw>() > 0)
                 {
@@ -714,10 +715,11 @@ namespace Exercise_form
             {
                 studAnsw stA = null;
                 int qid = -1;
+                string stid = lstv[dataGridView2.CurrentRow.Index].stid;
                 qid = (int)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
                 //  var q2 = ltvdl.Where(o => o.Expr1 == qid && o.typeq == 3);
                 var q3 = from o in pp.context.studAnsw
-                         where o.did == qid
+                         where o.did == qid && o.stid == stid
                          select o;
                 if (q3.Count<studAnsw>() > 0)
                 {
