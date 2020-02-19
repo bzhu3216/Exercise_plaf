@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.toppanel = new System.Windows.Forms.Panel();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -47,15 +48,23 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new DataGridViewRichTextBox.DataGridViewRichTextBoxColumn();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.dataGridViewRichTextBoxColumn1 = new DataGridViewRichTextBox.DataGridViewRichTextBoxColumn();
             this.toppanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // toppanel
             // 
+            this.toppanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.toppanel.Controls.Add(this.richTextBox1);
             this.toppanel.Controls.Add(this.button4);
             this.toppanel.Controls.Add(this.button3);
             this.toppanel.Controls.Add(this.button2);
@@ -77,6 +86,15 @@
             this.toppanel.TabIndex = 1;
             this.toppanel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(439, 59);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(32, 27);
+            this.richTextBox1.TabIndex = 14;
+            this.richTextBox1.Text = "";
+            this.richTextBox1.Visible = false;
+            // 
             // button4
             // 
             this.button4.Location = new System.Drawing.Point(825, 4);
@@ -85,6 +103,7 @@
             this.button4.TabIndex = 13;
             this.button4.Text = "查询问题";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 
@@ -94,6 +113,7 @@
             this.button3.TabIndex = 12;
             this.button3.Text = "前一页";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -103,6 +123,7 @@
             this.button2.TabIndex = 11;
             this.button2.Text = "下一页";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label5
             // 
@@ -139,6 +160,7 @@
             this.button1.TabIndex = 7;
             this.button1.Text = "保存修改";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // comboBox4
             // 
@@ -207,38 +229,100 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.dataGridView1);
-            this.splitContainer1.Size = new System.Drawing.Size(953, 688);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.label7);
+            this.splitContainer1.Panel2.Controls.Add(this.label6);
+            this.splitContainer1.Panel2.Controls.Add(this.comboBox5);
+            this.splitContainer1.Panel2.Controls.Add(this.richTextBox2);
+            this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint_1);
+            this.splitContainer1.Size = new System.Drawing.Size(953, 566);
             this.splitContainer1.SplitterDistance = 317;
             this.splitContainer1.TabIndex = 2;
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            this.dataGridView1.RowHeadersWidth = 30;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(317, 688);
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(317, 566);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView1.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_RowEnter);
+            this.dataGridView1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridView1_RowPostPaint);
             // 
             // Column1
             // 
             this.Column1.HeaderText = "序号";
             this.Column1.Name = "Column1";
+            this.Column1.Width = 30;
             // 
             // Column2
             // 
             this.Column2.HeaderText = "问题";
             this.Column2.Name = "Column2";
+            this.Column2.Width = 300;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(48, 304);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(29, 12);
+            this.label7.TabIndex = 3;
+            this.label7.Text = "答案";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(48, 22);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(29, 12);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "问题";
+            // 
+            // comboBox5
+            // 
+            this.comboBox5.FormattingEnabled = true;
+            this.comboBox5.Items.AddRange(new object[] {
+            "A",
+            "B",
+            "C",
+            "D"});
+            this.comboBox5.Location = new System.Drawing.Point(43, 329);
+            this.comboBox5.Name = "comboBox5";
+            this.comboBox5.Size = new System.Drawing.Size(121, 20);
+            this.comboBox5.TabIndex = 1;
+            // 
+            // richTextBox2
+            // 
+            this.richTextBox2.Location = new System.Drawing.Point(20, 47);
+            this.richTextBox2.Name = "richTextBox2";
+            this.richTextBox2.Size = new System.Drawing.Size(600, 244);
+            this.richTextBox2.TabIndex = 0;
+            this.richTextBox2.Text = "";
+            // 
+            // dataGridViewRichTextBoxColumn1
+            // 
+            this.dataGridViewRichTextBoxColumn1.HeaderText = "问题";
+            this.dataGridViewRichTextBoxColumn1.Name = "dataGridViewRichTextBoxColumn1";
             // 
             // UPmq
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(953, 763);
+            this.ClientSize = new System.Drawing.Size(953, 641);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.toppanel);
             this.Name = "UPmq";
@@ -247,6 +331,8 @@
             this.toppanel.ResumeLayout(false);
             this.toppanel.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -273,7 +359,13 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private DataGridViewRichTextBox.DataGridViewRichTextBoxColumn dataGridViewRichTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private DataGridViewRichTextBox.DataGridViewRichTextBoxColumn Column2;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox comboBox5;
+        private System.Windows.Forms.RichTextBox richTextBox2;
     }
 }

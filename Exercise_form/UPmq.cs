@@ -17,6 +17,10 @@ namespace Exercise_form
         int qid = -1;
         int pagesize = 20;
         int pageNum = 0;
+        mchoiceQues cmq = null;
+        List<mchoiceQues> lmq = null;
+
+
         public UPmq(param p,int qid)
         {
             InitializeComponent();
@@ -85,6 +89,7 @@ namespace Exercise_form
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            pageNum = 1;
             loadcom();
         }
         /////////////////////
@@ -130,16 +135,17 @@ namespace Exercise_form
                 }
                 if (a == 0)
                 {
-                    // comboBox1.Text = comboBox1.Items[a].ToString();
-                    comboBox5.Text = "1";
-
-                    var questionQuery3 = (from o in pp.context.mchoiceQues
+                  lmq = null;
+                cmq = null;
+                 var questionQuery3 = (from o in pp.context.mchoiceQues
                                           where (b1 || o.objective == c1)
                                        && (b2 || o.con == c2)
                                        && (b3 || o.diff == c3)
                                        && (o.courseid == lvtc[comboBox1.SelectedIndex].couseid )
                                           select o).Skip(pageNum * pagesize).Take(pagesize);
-                    List<mchoiceQues> lmq = questionQuery3.ToList<mchoiceQues>();
+                if (questionQuery3.Count<mchoiceQues>() > 0)
+                {      
+                       lmq = questionQuery3.ToList<mchoiceQues>();
 
 
                     foreach (mchoiceQues mcq in lmq)
@@ -160,17 +166,27 @@ namespace Exercise_form
                         dgvr.Height = hh;
                         this.dataGridView1.Rows.Add(dgvr);
 
+                        //////////////////////////////
+                        /////////////////////////////////////////////
+
                     }
-
-
                 }
+
+                else
+                {
+                    pageNum--;
+                    MessageBox.Show("没有了啊！"); 
+                }
+
+
+            }
 
 
                 /////end mq
                 if (a == 1)
                 {
                     // comboBox1.Text = comboBox1.Items[a].ToString();
-                    comboBox5.Text = "1";
+                   
                     var questionQuery3 = (from o in pp.context.TFQues
                                           where (b1 || o.objective == c1)
                                        && (b2 || o.con == c2)
@@ -207,7 +223,7 @@ namespace Exercise_form
                 if (a == 3)
                 {
                     // comboBox1.Text = comboBox1.Items[a].ToString();
-                    comboBox5.Text = "5";
+                 
                     var questionQuery3 = (from o in pp.context.SQues
                                           where (b1 || o.objective == c1)
                                        && (b2 || o.con == c2)
@@ -245,7 +261,7 @@ namespace Exercise_form
                 if (a == 4)
                 {
                     // comboBox1.Text = comboBox1.Items[a].ToString();
-                    comboBox5.Text = "10";
+                 
                     var questionQuery3 = (from o in pp.context.AQues
                                           where (b1 || o.objective == c1)
                                        && (b2 || o.con == c2)
@@ -284,14 +300,117 @@ namespace Exercise_form
 
             }
 
-
-
-
-            ///endloadw
-
-
-
-
-            //////////////////////////////////////endclass
+        private void button2_Click(object sender, EventArgs e)
+        {
+            pageNum++;
+            display(0, true);
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            pageNum = 0;         
+            if (comboBox1.SelectedIndex > 0)
+                display(0, true);
+            else
+                MessageBox.Show("请选择课程！");
+        }
+
+        private void dataGridView1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            Rectangle rectangle = new Rectangle(e.RowBounds.Location.X,
+                                  e.RowBounds.Location.Y,
+                                  dataGridView1.RowHeadersWidth,
+                                  e.RowBounds.Height);
+
+            TextRenderer.DrawText(e.Graphics, (e.RowIndex + 1).ToString(),
+                dataGridView1.RowHeadersDefaultCellStyle.Font,
+                rectangle,
+                dataGridView1.RowHeadersDefaultCellStyle.ForeColor,
+                TextFormatFlags.VerticalCenter | TextFormatFlags.Right);
+        }
+
+        private void splitContainer1_Panel2_Paint_1(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+            if (pageNum > 0)
+            {
+                pageNum--;
+                display(0, true);
+            }
+            else
+            { MessageBox.Show("已经到最前"); }
+
+
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            /*
+           
+           // MessageBox.Show("sdfds");
+            cmq = lmq[e.RowIndex];
+            System.IO.MemoryStream mstream = new System.IO.MemoryStream(cmq.question, false);
+            this.richTextBox2.LoadFile(mstream, RichTextBoxStreamType.RichText);
+            string key = "";
+            if (cmq.answ == 1) key = "A";
+            if (cmq.answ == 2) key = "B";
+            if (cmq.answ == 3) key = "C";
+            if (cmq.answ == 4) key = "D";
+            comboBox5.Text = key;
+            */
+
+        }
+
+        private void dataGridView1_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            //
+            // MessageBox.Show("sdfds");
+            cmq = lmq[e.RowIndex];
+            System.IO.MemoryStream mstream = new System.IO.MemoryStream(cmq.question, false);
+            this.richTextBox2.LoadFile(mstream, RichTextBoxStreamType.RichText);
+            string key = "";
+            if (cmq.answ == 1) key = "A";
+            if (cmq.answ == 2) key = "B";
+            if (cmq.answ == 3) key = "C";
+            if (cmq.answ == 4) key = "D";
+            comboBox5.Text = key;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            if (cmq != null)
+            {
+                cmq.answ = comboBox5.SelectedIndex + 1;
+                System.IO.MemoryStream mstream = new System.IO.MemoryStream();
+                richTextBox2 .SaveFile(mstream, RichTextBoxStreamType.RichText);
+                //将流转换成数组
+                //  byte[] bWrite = mstream.ToArray();
+                cmq.question = mstream.ToArray();
+                pp.context.UpdateObject(cmq);
+                pp.context.SaveChanges();
+              
+                int irow = dataGridView1.CurrentRow.Index;               
+                dataGridView1.Rows.Clear();
+                display(0, false);
+                dataGridView1.CurrentCell = dataGridView1.Rows[irow].Cells[0]; 
+
+
+            }
+
+
+        }
+
+        ///endloadw
+
+
+
+
+        //////////////////////////////////////endclass
+    }
 }
