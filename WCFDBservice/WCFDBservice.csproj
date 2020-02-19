@@ -177,6 +177,9 @@
     <Compile Include="teacherinfo.cs">
       <DependentUpon>questions.tt</DependentUpon>
     </Compile>
+    <Compile Include="tech_course.cs">
+      <DependentUpon>questions.tt</DependentUpon>
+    </Compile>
     <Compile Include="testfind.cs" />
     <Compile Include="TFQues.cs">
       <DependentUpon>questions.tt</DependentUpon>
@@ -185,6 +188,9 @@
       <DependentUpon>questions.tt</DependentUpon>
     </Compile>
     <Compile Include="View_student.cs">
+      <DependentUpon>questions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_tea_course.cs">
       <DependentUpon>questions.tt</DependentUpon>
     </Compile>
     <Compile Include="WcfDataServicequestion.svc.cs">

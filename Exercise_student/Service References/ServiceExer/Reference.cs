@@ -9,7 +9,7 @@
 //------------------------------------------------------------------------------
 
 // 原始文件名:
-// 生成日期: 2020/2/18 22:12:55
+// 生成日期: 2020/2/19 13:13:35
 namespace Exercise_student.ServiceExer
 {
     
@@ -316,6 +316,40 @@ namespace Exercise_student.ServiceExer
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         private global::System.Data.Services.Client.DataServiceQuery<View_detai_exerL> _View_detai_exerL;
         /// <summary>
+        /// 架构中不存在 tech_course 的注释。
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Data.Services.Client.DataServiceQuery<tech_course> tech_course
+        {
+            get
+            {
+                if ((this._tech_course == null))
+                {
+                    this._tech_course = base.CreateQuery<tech_course>("tech_course");
+                }
+                return this._tech_course;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Data.Services.Client.DataServiceQuery<tech_course> _tech_course;
+        /// <summary>
+        /// 架构中不存在 V_tea_course 的注释。
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Data.Services.Client.DataServiceQuery<V_tea_course> V_tea_course
+        {
+            get
+            {
+                if ((this._V_tea_course == null))
+                {
+                    this._V_tea_course = base.CreateQuery<V_tea_course>("V_tea_course");
+                }
+                return this._V_tea_course;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Data.Services.Client.DataServiceQuery<V_tea_course> _V_tea_course;
+        /// <summary>
         /// 架构中不存在 mchoiceQues 的注释。
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -435,6 +469,22 @@ namespace Exercise_student.ServiceExer
         {
             base.AddObject("View_detai_exerL", view_detai_exerL);
         }
+        /// <summary>
+        /// 架构中不存在 tech_course 的注释。
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public void AddTotech_course(tech_course tech_course)
+        {
+            base.AddObject("tech_course", tech_course);
+        }
+        /// <summary>
+        /// 架构中不存在 V_tea_course 的注释。
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public void AddToV_tea_course(V_tea_course v_tea_course)
+        {
+            base.AddObject("V_tea_course", v_tea_course);
+        }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         private abstract class GeneratedEdmModel
         {
@@ -550,31 +600,50 @@ namespace Exercise_student.ServiceExer
                 "\" /><Property Name=\"typeq\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"q" +
                 "id\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"Expr1\" Type=\"Edm.Int32\" " +
                 "Nullable=\"false\" /><Property Name=\"score\" Type=\"Edm.Int32\" /><Property Name=\"lid" +
-                "\" Type=\"Edm.Int32\" Nullable=\"false\" /></EntityType><Association Name=\"FK_exerL_C" +
-                "ourse\"><End Type=\"db_exerciseModel.Course\" Role=\"Course\" Multiplicity=\"1\" /><End" +
-                " Type=\"db_exerciseModel.exerL\" Role=\"exerL\" Multiplicity=\"*\" /><ReferentialConst" +
-                "raint><Principal Role=\"Course\"><PropertyRef Name=\"id\" /></Principal><Dependent R" +
-                "ole=\"exerL\"><PropertyRef Name=\"courseid\" /></Dependent></ReferentialConstraint><" +
-                "/Association></Schema><Schema Namespace=\"WCFDBservice\" xmlns=\"http://schemas.mic" +
-                "rosoft.com/ado/2009/11/edm\"><EntityContainer Name=\"db_exerciseEntities\" m:IsDefa" +
-                "ultEntityContainer=\"true\" p6:LazyLoadingEnabled=\"true\" xmlns:p6=\"http://schemas." +
-                "microsoft.com/ado/2009/02/edm/annotation\"><EntitySet Name=\"mchoiceQues\" EntityTy" +
-                "pe=\"db_exerciseModel.mchoiceQues\" /><EntitySet Name=\"classinfo\" EntityType=\"db_e" +
-                "xerciseModel.classinfo\" /><EntitySet Name=\"Course\" EntityType=\"db_exerciseModel." +
-                "Course\" /><EntitySet Name=\"teacherinfo\" EntityType=\"db_exerciseModel.teacherinfo" +
-                "\" /><EntitySet Name=\"TFQues\" EntityType=\"db_exerciseModel.TFQues\" /><EntitySet N" +
-                "ame=\"SQues\" EntityType=\"db_exerciseModel.SQues\" /><EntitySet Name=\"AQues\" Entity" +
-                "Type=\"db_exerciseModel.AQues\" /><EntitySet Name=\"classExer\" EntityType=\"db_exerc" +
-                "iseModel.classExer\" /><EntitySet Name=\"exerL\" EntityType=\"db_exerciseModel.exerL" +
-                "\" /><EntitySet Name=\"class_student\" EntityType=\"db_exerciseModel.class_student\" " +
-                "/><EntitySet Name=\"StudInfoes\" EntityType=\"db_exerciseModel.StudInfo\" /><EntityS" +
-                "et Name=\"exerDetail\" EntityType=\"db_exerciseModel.exerDetail\" /><EntitySet Name=" +
-                "\"studAnsw\" EntityType=\"db_exerciseModel.studAnsw\" /><EntitySet Name=\"View_studen" +
-                "t\" EntityType=\"db_exerciseModel.View_student\" /><EntitySet Name=\"View_detai_exer" +
-                "L\" EntityType=\"db_exerciseModel.View_detai_exerL\" /><AssociationSet Name=\"FK_exe" +
-                "rL_Course\" Association=\"db_exerciseModel.FK_exerL_Course\"><End Role=\"Course\" Ent" +
-                "itySet=\"Course\" /><End Role=\"exerL\" EntitySet=\"exerL\" /></AssociationSet></Entit" +
-                "yContainer></Schema></edmx:DataServices></edmx:Edmx>";
+                "\" Type=\"Edm.Int32\" Nullable=\"false\" /></EntityType><EntityType Name=\"tech_course" +
+                "\"><Key><PropertyRef Name=\"id\" /></Key><Property Name=\"id\" Type=\"Edm.Int32\" Nulla" +
+                "ble=\"false\" p6:StoreGeneratedPattern=\"Identity\" xmlns:p6=\"http://schemas.microso" +
+                "ft.com/ado/2009/02/edm/annotation\" /><Property Name=\"tid\" Type=\"Edm.Int32\" Nulla" +
+                "ble=\"false\" /><Property Name=\"couseid\" Type=\"Edm.Int32\" Nullable=\"false\" /></Ent" +
+                "ityType><EntityType Name=\"V_tea_course\"><Key><PropertyRef Name=\"CourseName\" /><P" +
+                "ropertyRef Name=\"couseid\" /><PropertyRef Name=\"diff\" /><PropertyRef Name=\"numcon" +
+                "tent\" /><PropertyRef Name=\"numobjective\" /><PropertyRef Name=\"relid\" /><Property" +
+                "Ref Name=\"teacherid\" /></Key><Property Name=\"teacherid\" Type=\"Edm.String\" Nullab" +
+                "le=\"false\" MaxLength=\"4\" FixedLength=\"true\" Unicode=\"true\" /><Property Name=\"nam" +
+                "e\" Type=\"Edm.String\" MaxLength=\"10\" FixedLength=\"true\" Unicode=\"true\" /><Propert" +
+                "y Name=\"pd\" Type=\"Edm.String\" MaxLength=\"10\" FixedLength=\"true\" Unicode=\"true\" /" +
+                "><Property Name=\"couseid\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"re" +
+                "lid\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"CourseName\" Type=\"Edm.S" +
+                "tring\" Nullable=\"false\" MaxLength=\"50\" FixedLength=\"false\" Unicode=\"false\" /><Pr" +
+                "operty Name=\"numobjective\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"n" +
+                "umcontent\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"diff\" Type=\"Edm.I" +
+                "nt32\" Nullable=\"false\" /></EntityType><Association Name=\"FK_exerL_Course\"><End T" +
+                "ype=\"db_exerciseModel.Course\" Role=\"Course\" Multiplicity=\"1\" /><End Type=\"db_exe" +
+                "rciseModel.exerL\" Role=\"exerL\" Multiplicity=\"*\" /><ReferentialConstraint><Princi" +
+                "pal Role=\"Course\"><PropertyRef Name=\"id\" /></Principal><Dependent Role=\"exerL\"><" +
+                "PropertyRef Name=\"courseid\" /></Dependent></ReferentialConstraint></Association>" +
+                "</Schema><Schema Namespace=\"WCFDBservice\" xmlns=\"http://schemas.microsoft.com/ad" +
+                "o/2009/11/edm\"><EntityContainer Name=\"db_exerciseEntities\" m:IsDefaultEntityCont" +
+                "ainer=\"true\" p6:LazyLoadingEnabled=\"true\" xmlns:p6=\"http://schemas.microsoft.com" +
+                "/ado/2009/02/edm/annotation\"><EntitySet Name=\"mchoiceQues\" EntityType=\"db_exerci" +
+                "seModel.mchoiceQues\" /><EntitySet Name=\"classinfo\" EntityType=\"db_exerciseModel." +
+                "classinfo\" /><EntitySet Name=\"Course\" EntityType=\"db_exerciseModel.Course\" /><En" +
+                "titySet Name=\"teacherinfo\" EntityType=\"db_exerciseModel.teacherinfo\" /><EntitySe" +
+                "t Name=\"TFQues\" EntityType=\"db_exerciseModel.TFQues\" /><EntitySet Name=\"SQues\" E" +
+                "ntityType=\"db_exerciseModel.SQues\" /><EntitySet Name=\"AQues\" EntityType=\"db_exer" +
+                "ciseModel.AQues\" /><EntitySet Name=\"classExer\" EntityType=\"db_exerciseModel.clas" +
+                "sExer\" /><EntitySet Name=\"exerL\" EntityType=\"db_exerciseModel.exerL\" /><EntitySe" +
+                "t Name=\"class_student\" EntityType=\"db_exerciseModel.class_student\" /><EntitySet " +
+                "Name=\"StudInfoes\" EntityType=\"db_exerciseModel.StudInfo\" /><EntitySet Name=\"exer" +
+                "Detail\" EntityType=\"db_exerciseModel.exerDetail\" /><EntitySet Name=\"studAnsw\" En" +
+                "tityType=\"db_exerciseModel.studAnsw\" /><EntitySet Name=\"View_student\" EntityType" +
+                "=\"db_exerciseModel.View_student\" /><EntitySet Name=\"View_detai_exerL\" EntityType" +
+                "=\"db_exerciseModel.View_detai_exerL\" /><EntitySet Name=\"tech_course\" EntityType=" +
+                "\"db_exerciseModel.tech_course\" /><EntitySet Name=\"V_tea_course\" EntityType=\"db_e" +
+                "xerciseModel.V_tea_course\" /><AssociationSet Name=\"FK_exerL_Course\" Association=" +
+                "\"db_exerciseModel.FK_exerL_Course\"><End Role=\"Course\" EntitySet=\"Course\" /><End " +
+                "Role=\"exerL\" EntitySet=\"exerL\" /></AssociationSet></EntityContainer></Schema></e" +
+                "dmx:DataServices></edmx:Edmx>";
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
             private static string GetConcatenatedEdmxString()
             {
@@ -3279,6 +3348,356 @@ namespace Exercise_student.ServiceExer
         private int _lid;
         partial void OnlidChanging(int value);
         partial void OnlidChanged();
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        protected virtual void OnPropertyChanged(string property)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new global::System.ComponentModel.PropertyChangedEventArgs(property));
+            }
+        }
+    }
+    /// <summary>
+    /// 架构中不存在 db_exerciseModel.tech_course 的注释。
+    /// </summary>
+    /// <KeyProperties>
+    /// id
+    /// </KeyProperties>
+    [global::System.Data.Services.Common.EntitySetAttribute("tech_course")]
+    [global::System.Data.Services.Common.DataServiceKeyAttribute("id")]
+    public partial class tech_course : global::System.ComponentModel.INotifyPropertyChanged
+    {
+        /// <summary>
+        /// 创建新的 tech_course 对象。
+        /// </summary>
+        /// <param name="ID">id 的初始值。</param>
+        /// <param name="tid">tid 的初始值。</param>
+        /// <param name="couseid">couseid 的初始值。</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public static tech_course Createtech_course(int ID, int tid, int couseid)
+        {
+            tech_course tech_course = new tech_course();
+            tech_course.id = ID;
+            tech_course.tid = tid;
+            tech_course.couseid = couseid;
+            return tech_course;
+        }
+        /// <summary>
+        /// 架构中不存在属性 id 的注释。
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public int id
+        {
+            get
+            {
+                return this._id;
+            }
+            set
+            {
+                this.OnidChanging(value);
+                this._id = value;
+                this.OnidChanged();
+                this.OnPropertyChanged("id");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private int _id;
+        partial void OnidChanging(int value);
+        partial void OnidChanged();
+        /// <summary>
+        /// 架构中不存在属性 tid 的注释。
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public int tid
+        {
+            get
+            {
+                return this._tid;
+            }
+            set
+            {
+                this.OntidChanging(value);
+                this._tid = value;
+                this.OntidChanged();
+                this.OnPropertyChanged("tid");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private int _tid;
+        partial void OntidChanging(int value);
+        partial void OntidChanged();
+        /// <summary>
+        /// 架构中不存在属性 couseid 的注释。
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public int couseid
+        {
+            get
+            {
+                return this._couseid;
+            }
+            set
+            {
+                this.OncouseidChanging(value);
+                this._couseid = value;
+                this.OncouseidChanged();
+                this.OnPropertyChanged("couseid");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private int _couseid;
+        partial void OncouseidChanging(int value);
+        partial void OncouseidChanged();
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        protected virtual void OnPropertyChanged(string property)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new global::System.ComponentModel.PropertyChangedEventArgs(property));
+            }
+        }
+    }
+    /// <summary>
+    /// 架构中不存在 db_exerciseModel.V_tea_course 的注释。
+    /// </summary>
+    /// <KeyProperties>
+    /// CourseName
+    /// couseid
+    /// diff
+    /// numcontent
+    /// numobjective
+    /// relid
+    /// teacherid
+    /// </KeyProperties>
+    [global::System.Data.Services.Common.EntitySetAttribute("V_tea_course")]
+    [global::System.Data.Services.Common.DataServiceKeyAttribute("CourseName", "couseid", "diff", "numcontent", "numobjective", "relid", "teacherid")]
+    public partial class V_tea_course : global::System.ComponentModel.INotifyPropertyChanged
+    {
+        /// <summary>
+        /// 创建新的 V_tea_course 对象。
+        /// </summary>
+        /// <param name="teacherid">teacherid 的初始值。</param>
+        /// <param name="couseid">couseid 的初始值。</param>
+        /// <param name="relid">relid 的初始值。</param>
+        /// <param name="courseName">CourseName 的初始值。</param>
+        /// <param name="numobjective">numobjective 的初始值。</param>
+        /// <param name="numcontent">numcontent 的初始值。</param>
+        /// <param name="diff">diff 的初始值。</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public static V_tea_course CreateV_tea_course(string teacherid, int couseid, int relid, string courseName, int numobjective, int numcontent, int diff)
+        {
+            V_tea_course v_tea_course = new V_tea_course();
+            v_tea_course.teacherid = teacherid;
+            v_tea_course.couseid = couseid;
+            v_tea_course.relid = relid;
+            v_tea_course.CourseName = courseName;
+            v_tea_course.numobjective = numobjective;
+            v_tea_course.numcontent = numcontent;
+            v_tea_course.diff = diff;
+            return v_tea_course;
+        }
+        /// <summary>
+        /// 架构中不存在属性 teacherid 的注释。
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public string teacherid
+        {
+            get
+            {
+                return this._teacherid;
+            }
+            set
+            {
+                this.OnteacheridChanging(value);
+                this._teacherid = value;
+                this.OnteacheridChanged();
+                this.OnPropertyChanged("teacherid");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private string _teacherid;
+        partial void OnteacheridChanging(string value);
+        partial void OnteacheridChanged();
+        /// <summary>
+        /// 架构中不存在属性 name 的注释。
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public string name
+        {
+            get
+            {
+                return this._name;
+            }
+            set
+            {
+                this.OnnameChanging(value);
+                this._name = value;
+                this.OnnameChanged();
+                this.OnPropertyChanged("name");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private string _name;
+        partial void OnnameChanging(string value);
+        partial void OnnameChanged();
+        /// <summary>
+        /// 架构中不存在属性 pd 的注释。
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public string pd
+        {
+            get
+            {
+                return this._pd;
+            }
+            set
+            {
+                this.OnpdChanging(value);
+                this._pd = value;
+                this.OnpdChanged();
+                this.OnPropertyChanged("pd");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private string _pd;
+        partial void OnpdChanging(string value);
+        partial void OnpdChanged();
+        /// <summary>
+        /// 架构中不存在属性 couseid 的注释。
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public int couseid
+        {
+            get
+            {
+                return this._couseid;
+            }
+            set
+            {
+                this.OncouseidChanging(value);
+                this._couseid = value;
+                this.OncouseidChanged();
+                this.OnPropertyChanged("couseid");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private int _couseid;
+        partial void OncouseidChanging(int value);
+        partial void OncouseidChanged();
+        /// <summary>
+        /// 架构中不存在属性 relid 的注释。
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public int relid
+        {
+            get
+            {
+                return this._relid;
+            }
+            set
+            {
+                this.OnrelidChanging(value);
+                this._relid = value;
+                this.OnrelidChanged();
+                this.OnPropertyChanged("relid");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private int _relid;
+        partial void OnrelidChanging(int value);
+        partial void OnrelidChanged();
+        /// <summary>
+        /// 架构中不存在属性 CourseName 的注释。
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public string CourseName
+        {
+            get
+            {
+                return this._CourseName;
+            }
+            set
+            {
+                this.OnCourseNameChanging(value);
+                this._CourseName = value;
+                this.OnCourseNameChanged();
+                this.OnPropertyChanged("CourseName");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private string _CourseName;
+        partial void OnCourseNameChanging(string value);
+        partial void OnCourseNameChanged();
+        /// <summary>
+        /// 架构中不存在属性 numobjective 的注释。
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public int numobjective
+        {
+            get
+            {
+                return this._numobjective;
+            }
+            set
+            {
+                this.OnnumobjectiveChanging(value);
+                this._numobjective = value;
+                this.OnnumobjectiveChanged();
+                this.OnPropertyChanged("numobjective");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private int _numobjective;
+        partial void OnnumobjectiveChanging(int value);
+        partial void OnnumobjectiveChanged();
+        /// <summary>
+        /// 架构中不存在属性 numcontent 的注释。
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public int numcontent
+        {
+            get
+            {
+                return this._numcontent;
+            }
+            set
+            {
+                this.OnnumcontentChanging(value);
+                this._numcontent = value;
+                this.OnnumcontentChanged();
+                this.OnPropertyChanged("numcontent");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private int _numcontent;
+        partial void OnnumcontentChanging(int value);
+        partial void OnnumcontentChanged();
+        /// <summary>
+        /// 架构中不存在属性 diff 的注释。
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public int diff
+        {
+            get
+            {
+                return this._diff;
+            }
+            set
+            {
+                this.OndiffChanging(value);
+                this._diff = value;
+                this.OndiffChanged();
+                this.OnPropertyChanged("diff");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private int _diff;
+        partial void OndiffChanging(int value);
+        partial void OndiffChanged();
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]

@@ -17,7 +17,7 @@ namespace Exercise_form
 
        private db_exerciseEntities context;
        // private Uri svcUri = new Uri("http://localhost:1800/WcfDataServicequestion.svc");
-        List<Course> lsc;
+        List<V_tea_course> lsc;
         List<classinfo> lsc2;
         int selindex = -1;
         param pp;
@@ -61,23 +61,31 @@ namespace Exercise_form
                 textBox1.Text = "";
                 lsc = null;
                 lsc2 = null;
+                /*
                var questionQuery1 = from o in context.Course 
                                     select o ;
               
-               lsc = questionQuery1.ToList();
-                foreach (Course cc in lsc)
-                {
-                    comboBox1.Items.Add(cc.CourseName);
-                }
+               lsc = questionQuery1.ToList();*/
+                lsc = pp.ltea_c;
+
+                comboBox1.DataSource = lsc;
+                comboBox1.ValueMember = "CourseName";
+
+
                 var questionQuery2 = from p in context.classinfo
                                      where p.teacher ==pp.teacher.teacherid 
                                      select p;
 
                 lsc2 = questionQuery2.ToList();
+                /*
                 foreach (classinfo  cc in lsc2)
                 {
                   listBox1.Items.Add(cc.classinfo1);
                 }
+                */
+                listBox1.DataSource = lsc2;              
+
+                listBox1.ValueMember = "classinfo1";
                 comboBox2.Text = "";
                 comboBox1.Text = "";
                
@@ -112,8 +120,8 @@ namespace Exercise_form
              textBox1.Text = lsc2[selindex].classinfo1;
             comboBox2.Text =comboBox2.Items[(int)(lsc2[selindex].finish)].ToString();
             int cid = (int)lsc2[selindex].courseid;
-             foreach (Course cc in lsc) {
-                if ((int)cc.id == cid) { comboBox1.Text = cc.CourseName;  }
+             foreach (V_tea_course  cc in lsc) {
+                if ((int)cc.couseid  == cid) { comboBox1.Text = cc.CourseName;  }
 
             }
 
@@ -131,9 +139,9 @@ namespace Exercise_form
                 }
             ci.teacher = pp.teacher.teacherid;
                 ci.finish = comboBox2.SelectedIndex;
-            foreach (Course cc in lsc)
+            foreach (V_tea_course  cc in lsc)
             {
-                if (comboBox1.Text == cc.CourseName) ci.courseid = cc.id;
+                if (comboBox1.Text == cc.CourseName) ci.courseid = cc.couseid ;
 
             }
                 ci.addtime = System.DateTime.Now;
@@ -141,9 +149,15 @@ namespace Exercise_form
                 context.SaveChanges();
 
             }
+            listBox1.DataSource = null;
+               var questionQuery2 = from p in context.classinfo
+                                 where p.teacher == pp.teacher.teacherid
+                                 select p;
 
-            classinfo_Load(sender, e);
-
+            lsc2 = questionQuery2.ToList();
+            // classinfo_Load(sender, e);
+            listBox1.DataSource = lsc2;
+            listBox1.ValueMember = "classinfo1";
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -162,9 +176,9 @@ namespace Exercise_form
               
                 ci.teacher = pp.teacher.teacherid;
                 ci.finish = comboBox2.SelectedIndex;
-                foreach (Course cc in lsc)
+                foreach (V_tea_course  cc in lsc)
                 {
-                    if (comboBox1.Text == cc.CourseName) ci.courseid = cc.id;
+                    if (comboBox1.Text == cc.CourseName) ci.courseid = cc.couseid ;
 
                 }
                 //  ci.addtime = System.DateTime.Now;
@@ -173,7 +187,7 @@ namespace Exercise_form
 
             }
 
-            classinfo_Load(sender, e);
+         
 
 
 
@@ -201,7 +215,7 @@ namespace Exercise_form
 
                     pp.context.DeleteObject(tcl);
                     pp.context.SaveChanges();
-                    classinfo_Load(sender, e);
+                    
                 }
             }
 

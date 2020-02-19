@@ -34,6 +34,17 @@ namespace Exercise_form
 
             {
                 pp.teacher = questionQuery.First<teacherinfo>();
+
+
+                var questionQuery2 = from o in pp.context.V_tea_course 
+                                    where o.teacherid == textBox1.Text
+                                    select o;
+                if (questionQuery2.Count<V_tea_course>() > 0) pp.ltea_c = questionQuery2.ToList<V_tea_course>(); 
+
+
+
+
+
                 this.Close();
             }
             else

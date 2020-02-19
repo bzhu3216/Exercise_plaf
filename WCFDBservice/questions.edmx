@@ -142,6 +142,14 @@
           <Property Name="name" Type="nchar" MaxLength="10" />
           <Property Name="pd" Type="nchar" MaxLength="10" />
         </EntityType>
+        <EntityType Name="tech_course">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tid" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="couseid" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="TFQues">
           <Key>
             <PropertyRef Name="id" />
@@ -156,6 +164,28 @@
           <Property Name="errornum" Type="int" />
           <Property Name="question" Type="varbinary(max)" />
           <Property Name="answ" Type="bit" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“db_exercise.dbo.V_tea_course”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="V_tea_course">
+          <Key>
+            <PropertyRef Name="teacherid" />
+            <PropertyRef Name="couseid" />
+            <PropertyRef Name="CourseName" />
+            <PropertyRef Name="numobjective" />
+            <PropertyRef Name="numcontent" />
+            <PropertyRef Name="diff" />
+            <PropertyRef Name="relid" />
+          </Key>
+          <Property Name="teacherid" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="name" Type="nchar" MaxLength="10" />
+          <Property Name="pd" Type="nchar" MaxLength="10" />
+          <Property Name="couseid" Type="int" Nullable="false" />
+          <Property Name="CourseName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="numobjective" Type="int" Nullable="false" />
+          <Property Name="numcontent" Type="int" Nullable="false" />
+          <Property Name="diff" Type="int" Nullable="false" />
+          <Property Name="relid" Type="int" Nullable="false" />
         </EntityType>
         <!--生成过程中发现错误:
 警告 6002: 表/视图“db_exercise.dbo.View_detai_exerL”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
@@ -212,7 +242,21 @@
           <EntitySet Name="studAnsw" EntityType="Self.studAnsw" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StudInfo" EntityType="Self.StudInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="teacherinfo" EntityType="Self.teacherinfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tech_course" EntityType="Self.tech_course" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TFQues" EntityType="Self.TFQues" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="V_tea_course" EntityType="Self.V_tea_course" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[V_tea_course].[teacherid] AS [teacherid], 
+[V_tea_course].[name] AS [name], 
+[V_tea_course].[pd] AS [pd], 
+[V_tea_course].[couseid] AS [couseid], 
+[V_tea_course].[CourseName] AS [CourseName], 
+[V_tea_course].[numobjective] AS [numobjective], 
+[V_tea_course].[numcontent] AS [numcontent], 
+[V_tea_course].[diff] AS [diff], 
+[V_tea_course].[relid] AS [relid]
+FROM [dbo].[V_tea_course] AS [V_tea_course]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="View_detai_exerL" EntityType="Self.View_detai_exerL" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
 [View_detai_exerL].[id] AS [id], 
@@ -261,6 +305,8 @@ FROM [dbo].[View_student] AS [View_student]</DefiningQuery>
           <EntitySet Name="studAnsw" EntityType="db_exerciseModel.studAnsw" />
           <EntitySet Name="View_student" EntityType="db_exerciseModel.View_student" />
           <EntitySet Name="View_detai_exerL" EntityType="db_exerciseModel.View_detai_exerL" />
+          <EntitySet Name="V_tea_course" EntityType="db_exerciseModel.V_tea_course" />
+          <EntitySet Name="tech_course" EntityType="db_exerciseModel.tech_course" />
         </EntityContainer>
         <EntityType Name="mchoiceQues">
           <Key>
@@ -454,6 +500,34 @@ FROM [dbo].[View_student] AS [View_student]</DefiningQuery>
           <Property Name="score" Type="Int32" />
           <Property Name="lid" Type="Int32" Nullable="false" />
         </EntityType>
+        <EntityType Name="V_tea_course">
+          <Key>
+            <PropertyRef Name="teacherid" />
+            <PropertyRef Name="couseid" />
+            <PropertyRef Name="relid" />
+            <PropertyRef Name="CourseName" />
+            <PropertyRef Name="numobjective" />
+            <PropertyRef Name="numcontent" />
+            <PropertyRef Name="diff" />
+          </Key>
+          <Property Name="teacherid" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="pd" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="couseid" Type="Int32" Nullable="false" />
+          <Property Name="relid" Type="Int32" Nullable="false" />
+          <Property Name="CourseName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="numobjective" Type="Int32" Nullable="false" />
+          <Property Name="numcontent" Type="Int32" Nullable="false" />
+          <Property Name="diff" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tech_course">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tid" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="true" />
+          <Property Name="couseid" Type="Int32" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -640,6 +714,30 @@ FROM [dbo].[View_student] AS [View_student]</DefiningQuery>
                 <ScalarProperty Name="Expr1" ColumnName="Expr1" />
                 <ScalarProperty Name="qid" ColumnName="qid" />
                 <ScalarProperty Name="typeq" ColumnName="typeq" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_tea_course">
+            <EntityTypeMapping TypeName="db_exerciseModel.V_tea_course">
+              <MappingFragment StoreEntitySet="V_tea_course">
+                <ScalarProperty Name="diff" ColumnName="diff" />
+                <ScalarProperty Name="numcontent" ColumnName="numcontent" />
+                <ScalarProperty Name="numobjective" ColumnName="numobjective" />
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="relid" ColumnName="relid" />
+                <ScalarProperty Name="couseid" ColumnName="couseid" />
+                <ScalarProperty Name="pd" ColumnName="pd" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="teacherid" ColumnName="teacherid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tech_course">
+            <EntityTypeMapping TypeName="db_exerciseModel.tech_course">
+              <MappingFragment StoreEntitySet="tech_course">
+                <ScalarProperty Name="couseid" ColumnName="couseid" />
+                <ScalarProperty Name="tid" ColumnName="tid" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
