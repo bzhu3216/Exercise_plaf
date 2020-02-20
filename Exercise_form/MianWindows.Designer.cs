@@ -216,6 +216,7 @@
             this.分析题ToolStripMenuItem1.Name = "分析题ToolStripMenuItem1";
             this.分析题ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.分析题ToolStripMenuItem1.Text = "分析题";
+            this.分析题ToolStripMenuItem1.Click += new System.EventHandler(this.分析题ToolStripMenuItem1_Click);
             // 
             // 习题管理ToolStripMenuItem
             // 

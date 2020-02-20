@@ -10,17 +10,17 @@ using System.Windows.Forms;
 using Exercise_form.ServiceReference1;
 namespace Exercise_form
 {
-    public partial class UPS : Form
+    public partial class UPA : Form
     {
         param pp;
         List<V_tea_course> lvtc = null;
         int qid = -1;
-        int pagesize = 15;
+        int pagesize = 10;
         int pageNum = 0;
      
         List<SQues> lTF = null;
         SQues ctf = null;
-        public UPS(param p,int qid)
+        public UPA(param p,int qid)
         {
             InitializeComponent();
             pp = p;
@@ -28,7 +28,7 @@ namespace Exercise_form
 
         }
 
-        private void UPS_Load(object sender, EventArgs e)
+        private void UPA_Load(object sender, EventArgs e)
         {
 
             comboBox1.DataSource = lvtc;

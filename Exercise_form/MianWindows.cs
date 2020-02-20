@@ -282,5 +282,27 @@ namespace Exercise_form
 
 
         }
+
+        private void 分析题ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+            UPA mq = null;
+            if (mq == null || mq.IsDisposed)
+            {
+                mq = new UPA(pp, -1);
+                // mq.MdiParent = this;
+                mq.Show();
+            }
+            else
+            {
+                mq.Activate();
+                mq.WindowState = FormWindowState.Normal;
+            }
+
+
+
+
+
+        }
     }
 }
