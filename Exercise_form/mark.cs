@@ -74,7 +74,7 @@ namespace Exercise_form
             foreach (class_student cs in temp_cs)
             {
                 StudInfo st = null;
-                var q1 = from o in pp.context.StudInfoes
+                var q1 = from o in pp.context.StudInfo 
                          where o.studentid == cs.studentid
                          select o;
                 if (q1.Count<StudInfo>() > 0) st = q1.First<StudInfo>();
