@@ -33,22 +33,8 @@ namespace Exercise_form
 
         private void Edit_cal_exerL_Load(object sender, EventArgs e)
         {
-              dateTimePicker1.Value= System.DateTime.Now;
-              dateTimePicker2.Value = dateTimePicker1.Value.AddDays(9);
-               el = getexerL(lid);
-               Lcs = getclasslist(el);            
-             
-            Lcs2 = getclasslin2(el);
-            listBox2.DataSource = Lcs2;
-            listBox2.ValueMember = "classinfo1";
-            var qq = Lcs.Except(Lcs2);
-            Lcs3 = qq.ToList();
-            listBox1.DataSource = Lcs3;
-            listBox1.ValueMember = "classinfo1";
 
-
-
-
+            dispalylist();
         }
 
 
@@ -76,7 +62,7 @@ namespace Exercise_form
 
             }
 
-            Edit_cal_exerL_Load(sender, e);
+            dispalylist();
 
 
 
@@ -166,7 +152,7 @@ namespace Exercise_form
 
             }
 
-            Edit_cal_exerL_Load(sender, e);
+            dispalylist();
 
 
 
@@ -181,6 +167,105 @@ namespace Exercise_form
         private void Edit_cal_exerL_Shown(object sender, EventArgs e)
         {
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (listBox2.SelectedIndex >= 0)
+            {                   
+                classExer ce=null;
+                var q1 = from o in pp.context.classExer
+                         where o.cid == Lcs2[listBox2.SelectedIndex].classid && o.eid == lid
+                         select o;
+                ce = q1.First<classExer>();
+
+                ce.cid = Lcs2[listBox2.SelectedIndex].classid;
+                ce.eid = lid;
+                ce.starttime = dateTimePicker1.Value;
+                ce.endtime = dateTimePicker2.Value;
+                pp.context.UpdateObject(ce) ;
+                pp.context.SaveChanges();
+
+                dispalylist();
+            }
+
+           
+
+        
+            else
+            {
+
+                MessageBox.Show("please select a list");
+            }
+
+
+
+
+        }
+
+        private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            /*
+            if (listBox2.SelectedIndex >= 0)
+            {
+                classExer ce = null;
+                var q1 = from o in pp.context.classExer
+                         where o.cid == Lcs2[listBox2.SelectedIndex].classid && o.eid == lid
+                         select o;
+                ce = q1.First<classExer>();
+                dateTimePicker1.Value = (System.DateTime )ce.starttime ;
+                dateTimePicker2.Value = (System.DateTime)ce.endtime ;
+                sel2 = listBox2.SelectedIndex;
+
+
+            }
+
+    */
+
+
+
+
+        }
+        ///////////////////////////////////////
+
+
+        private void dispalylist()
+        {
+
+            dateTimePicker1.Value = System.DateTime.Now;
+            dateTimePicker2.Value = dateTimePicker1.Value.AddDays(9);
+            el = getexerL(lid);
+            Lcs = getclasslist(el);
+
+            Lcs2 = getclasslin2(el);
+            listBox2.DataSource = Lcs2;
+            listBox2.ValueMember = "classinfo1";
+            var qq = Lcs.Except(Lcs2);
+            Lcs3 = qq.ToList();
+            listBox1.DataSource = Lcs3;
+            listBox1.ValueMember = "classinfo1";
+
+           if (sel1 >= 0) listBox1.SelectedIndex = sel1;
+            if (sel2 >= 0) listBox2.SelectedIndex = sel2;
+
+        }
+
+        private void listBox2_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (listBox2.SelectedIndex >= 0)
+            {
+                classExer ce = null;
+                var q1 = from o in pp.context.classExer
+                         where o.cid == Lcs2[listBox2.SelectedIndex].classid && o.eid == lid
+                         select o;
+                ce = q1.First<classExer>();
+                dateTimePicker1.Value = (System.DateTime)ce.starttime;
+                dateTimePicker2.Value = (System.DateTime)ce.endtime;
+                sel2 = listBox2.SelectedIndex;
+
+
+            }
+        }
+
 
         ///////////////////////////////
 
