@@ -343,14 +343,16 @@ namespace Exercise_form
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            if (pageNum == 0) { display(2, true); MessageBox.Show("已经到最前"); }
             if (pageNum > 0)
             {
                 pageNum--;
                 display(0, true);
             }
             else
-            { MessageBox.Show("已经到最前"); }
+            {
+               // MessageBox.Show("已经到最前");
+            }
 
 
         }

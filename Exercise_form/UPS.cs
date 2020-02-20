@@ -18,8 +18,8 @@ namespace Exercise_form
         int pagesize = 20;
         int pageNum = 0;
      
-        List<AQues> lTF = null;
-        AQues ctf = null;
+        List<SQues> lTF = null;
+        SQues ctf = null;
         public UPS(param p,int qid)
         {
             InitializeComponent();
@@ -141,19 +141,19 @@ namespace Exercise_form
                 {
                   lTF = null;
                 ctf = null;
-                 var questionQuery3 = (from o in pp.context.AQues
+                 var questionQuery3 = (from o in pp.context.SQues 
                                        where (b1 || o.objective == c1)
                                        && (b2 || o.con == c2)
                                        && (b3 || o.diff == c3)
                                        && (b0 || o.id == c0)
                                        && (o.courseid == lvtc[comboBox1.SelectedIndex].couseid )
                                           select o).Skip(pageNum * pagesize).Take(pagesize);
-                if (questionQuery3.Count<AQues>() > 0)
+                if (questionQuery3.Count<SQues>() > 0)
                 {      
-                       lTF = questionQuery3.ToList<AQues>();
+                       lTF = questionQuery3.ToList<SQues>();
 
 
-                    foreach (AQues mcq in lTF)
+                    foreach (SQues mcq in lTF)
                     {
 
                         System.IO.MemoryStream mstream = new System.IO.MemoryStream(mcq.question, false);
@@ -234,14 +234,16 @@ namespace Exercise_form
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            if (pageNum == 0) { display(2, true); MessageBox.Show("已经到最前"); }
             if (pageNum > 0)
             {
                 pageNum--;
                 display(2, true);
             }
             else
-            { MessageBox.Show("已经到最前"); }
+            {
+                //MessageBox.Show("已经到最前");
+            }
 
 
         }

@@ -261,5 +261,26 @@ namespace Exercise_form
 
 
         }
+
+        private void 简单题ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+            UPS mq = null;
+            if (mq == null || mq.IsDisposed)
+            {
+                mq = new UPS(pp, -1);
+                // mq.MdiParent = this;
+                mq.Show();
+            }
+            else
+            {
+                mq.Activate();
+                mq.WindowState = FormWindowState.Normal;
+            }
+
+
+
+
+        }
     }
 }
