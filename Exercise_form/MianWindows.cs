@@ -53,7 +53,7 @@ namespace Exercise_form
             if (fm2 == null || fm2.IsDisposed)
             {
                 fm2 = new Login(pp);
-                fm2.MdiParent = this;
+               // fm2.MdiParent = this;
                 fm2.Show();
             }
             else
@@ -72,7 +72,7 @@ namespace Exercise_form
             if (fm2 == null || fm2.IsDisposed)
             {
                 fm2 = new NameList(pp);
-               fm2.MdiParent = this;
+             //  fm2.MdiParent = this;
                 fm2.Show(); 
             }
             else
@@ -173,7 +173,7 @@ namespace Exercise_form
             if (mq == null || mq.IsDisposed)
             {
                 mq = new exerList(pp);
-                mq.MdiParent = this;
+               // mq.MdiParent = this;
                 mq.Show();
             }
             else
@@ -190,7 +190,7 @@ namespace Exercise_form
             if (mq == null || mq.IsDisposed)
             {
                 mq = new TaskList(pp);
-                mq.MdiParent = this;
+               // mq.MdiParent = this;
                 mq.Show();
             }
             else

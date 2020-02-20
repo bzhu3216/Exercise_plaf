@@ -98,16 +98,22 @@ namespace Exercise_form
 
         private void display(int a, bool bb)
         {
-           
-                        
-           
+
+
+            int c0 = -1;
                 int c1 = -1;
                 int c2 = -1;
                 int c3 = -1;
-                bool b1 = false;
+               bool b0 = false;
+               bool b1 = false;
                 bool b2 = false;
                 bool b3 = false;
-                if (comboBox2.Text != "")
+            if (textBox1.Text != "")
+                c0 = int.Parse(textBox1.Text);
+            else
+                b0 = true;
+
+            if (comboBox2.Text != "")
                     c1 = int.Parse(comboBox2.Text);
                 else
                     b1 = true;
@@ -142,7 +148,8 @@ namespace Exercise_form
                                        && (b2 || o.con == c2)
                                        && (b3 || o.diff == c3)
                                        && (o.courseid == lvtc[comboBox1.SelectedIndex].couseid )
-                                          select o).Skip(pageNum * pagesize).Take(pagesize);
+                                       && (b0 || o.id==c0)
+                                       select o).Skip(pageNum * pagesize).Take(pagesize);
                 if (questionQuery3.Count<mchoiceQues>() > 0)
                 {      
                        lmq = questionQuery3.ToList<mchoiceQues>();

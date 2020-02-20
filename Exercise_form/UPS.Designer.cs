@@ -1,6 +1,6 @@
 ﻿namespace Exercise_form
 {
-    partial class UPTF
+    partial class UPS
     {
         /// <summary>
         /// Required designer variable.
@@ -48,9 +48,9 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new DataGridViewRichTextBox.DataGridViewRichTextBoxColumn();
+            this.richTextBox3 = new System.Windows.Forms.RichTextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.dataGridViewRichTextBoxColumn1 = new DataGridViewRichTextBox.DataGridViewRichTextBoxColumn();
             this.toppanel.SuspendLayout();
@@ -232,9 +232,9 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.richTextBox3);
             this.splitContainer1.Panel2.Controls.Add(this.label7);
             this.splitContainer1.Panel2.Controls.Add(this.label6);
-            this.splitContainer1.Panel2.Controls.Add(this.comboBox5);
             this.splitContainer1.Panel2.Controls.Add(this.richTextBox2);
             this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint_1);
             this.splitContainer1.Size = new System.Drawing.Size(953, 566);
@@ -274,6 +274,14 @@
             this.Column2.Name = "Column2";
             this.Column2.Width = 300;
             // 
+            // richTextBox3
+            // 
+            this.richTextBox3.Location = new System.Drawing.Point(30, 343);
+            this.richTextBox3.Name = "richTextBox3";
+            this.richTextBox3.Size = new System.Drawing.Size(589, 123);
+            this.richTextBox3.TabIndex = 4;
+            this.richTextBox3.Text = "";
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -292,17 +300,6 @@
             this.label6.TabIndex = 2;
             this.label6.Text = "问题";
             // 
-            // comboBox5
-            // 
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Items.AddRange(new object[] {
-            "True",
-            "False"});
-            this.comboBox5.Location = new System.Drawing.Point(43, 329);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(121, 20);
-            this.comboBox5.TabIndex = 1;
-            // 
             // richTextBox2
             // 
             this.richTextBox2.Location = new System.Drawing.Point(20, 47);
@@ -316,16 +313,16 @@
             this.dataGridViewRichTextBoxColumn1.HeaderText = "问题";
             this.dataGridViewRichTextBoxColumn1.Name = "dataGridViewRichTextBoxColumn1";
             // 
-            // UPTF
+            // UPS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(953, 641);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.toppanel);
-            this.Name = "UPTF";
-            this.Text = "UPTF";
-            this.Load += new System.EventHandler(this.UPTF_Load);
+            this.Name = "UPS";
+            this.Text = "UPS";
+            this.Load += new System.EventHandler(this.UPS_Load);
             this.toppanel.ResumeLayout(false);
             this.toppanel.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -363,7 +360,7 @@
         private DataGridViewRichTextBox.DataGridViewRichTextBoxColumn Column2;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox comboBox5;
         private System.Windows.Forms.RichTextBox richTextBox2;
+        private System.Windows.Forms.RichTextBox richTextBox3;
     }
 }

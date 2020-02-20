@@ -256,6 +256,12 @@
     <Compile Include="testlayout.Designer.cs">
       <DependentUpon>testlayout.cs</DependentUpon>
     </Compile>
+    <Compile Include="UPS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UPS.Designer.cs">
+      <DependentUpon>UPS.cs</DependentUpon>
+    </Compile>
     <Compile Include="UPTF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -340,6 +346,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="testlayout.resx">
       <DependentUpon>testlayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UPS.resx">
+      <DependentUpon>UPS.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UPTF.resx">
       <DependentUpon>UPTF.cs</DependentUpon>

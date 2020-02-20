@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using Exercise_form.ServiceReference1;
 namespace Exercise_form
 {
-    public partial class UPTF : Form
+    public partial class UPS : Form
     {
         param pp;
         List<V_tea_course> lvtc = null;
@@ -18,9 +18,9 @@ namespace Exercise_form
         int pagesize = 20;
         int pageNum = 0;
      
-        List<TFQues> lTF = null;
-        TFQues ctf = null;
-        public UPTF(param p,int qid)
+        List<AQues> lTF = null;
+        AQues ctf = null;
+        public UPS(param p,int qid)
         {
             InitializeComponent();
             pp = p;
@@ -28,7 +28,7 @@ namespace Exercise_form
 
         }
 
-        private void UPTF_Load(object sender, EventArgs e)
+        private void UPS_Load(object sender, EventArgs e)
         {
 
             comboBox1.DataSource = lvtc;
@@ -137,23 +137,23 @@ namespace Exercise_form
                     dataGridView1.Rows.Clear();
 
                 }
-                if (a == 1)
+                if (a == 2)
                 {
                   lTF = null;
                 ctf = null;
-                 var questionQuery3 = (from o in pp.context.TFQues 
-                                          where (b1 || o.objective == c1)
+                 var questionQuery3 = (from o in pp.context.AQues
+                                       where (b1 || o.objective == c1)
                                        && (b2 || o.con == c2)
                                        && (b3 || o.diff == c3)
                                        && (b0 || o.id == c0)
                                        && (o.courseid == lvtc[comboBox1.SelectedIndex].couseid )
                                           select o).Skip(pageNum * pagesize).Take(pagesize);
-                if (questionQuery3.Count<TFQues>() > 0)
+                if (questionQuery3.Count<AQues>() > 0)
                 {      
-                       lTF = questionQuery3.ToList<TFQues>();
+                       lTF = questionQuery3.ToList<AQues>();
 
 
-                    foreach (TFQues mcq in lTF)
+                    foreach (AQues mcq in lTF)
                     {
 
                         System.IO.MemoryStream mstream = new System.IO.MemoryStream(mcq.question, false);
@@ -201,14 +201,14 @@ namespace Exercise_form
         private void button2_Click(object sender, EventArgs e)
         {
             pageNum++;
-            display(1, true);
+            display(2, true);
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             pageNum = 0;         
             if (comboBox1.SelectedIndex > 0)
-                display(1, true);
+                display(2, true);
             else
                 MessageBox.Show("请选择课程！");
         }
@@ -238,7 +238,7 @@ namespace Exercise_form
             if (pageNum > 0)
             {
                 pageNum--;
-                display(1, true);
+                display(2, true);
             }
             else
             { MessageBox.Show("已经到最前"); }
@@ -271,11 +271,10 @@ namespace Exercise_form
             ctf = lTF[e.RowIndex];
             System.IO.MemoryStream mstream = new System.IO.MemoryStream(ctf.question, false);
             this.richTextBox2.LoadFile(mstream, RichTextBoxStreamType.RichText);
-            string key = "";
-            if (ctf.answ == true) key = "True";
-            if (ctf.answ == false) key = "False";
-           
-            comboBox5.Text = key;
+            System.IO.MemoryStream mstream2 = new System.IO.MemoryStream(ctf.answ , false);
+            this.richTextBox3.LoadFile(mstream2, RichTextBoxStreamType.RichText);
+
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -283,9 +282,12 @@ namespace Exercise_form
 
             if (ctf != null)
             {
-                if (comboBox5.Text=="True")ctf.answ=true;
-                if (comboBox5.Text == "False") ctf.answ = false ;
-               
+                System.IO.MemoryStream mstream2 = new System.IO.MemoryStream();
+                richTextBox3.SaveFile(mstream2, RichTextBoxStreamType.RichText);
+                //将流转换成数组
+                //  byte[] bWrite = mstream.ToArray();
+                ctf.answ = mstream2.ToArray();
+
                 System.IO.MemoryStream mstream = new System.IO.MemoryStream();
                 richTextBox2 .SaveFile(mstream, RichTextBoxStreamType.RichText);
                 //将流转换成数组
@@ -296,7 +298,7 @@ namespace Exercise_form
               
                 int irow = dataGridView1.CurrentRow.Index;               
                 dataGridView1.Rows.Clear();
-                display(1, false);
+                display(2, false);
                 dataGridView1.CurrentCell = dataGridView1.Rows[irow].Cells[0]; 
 
 
