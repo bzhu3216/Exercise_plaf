@@ -276,16 +276,16 @@
             // 
             // richTextBox3
             // 
-            this.richTextBox3.Location = new System.Drawing.Point(30, 343);
+            this.richTextBox3.Location = new System.Drawing.Point(20, 297);
             this.richTextBox3.Name = "richTextBox3";
-            this.richTextBox3.Size = new System.Drawing.Size(589, 123);
+            this.richTextBox3.Size = new System.Drawing.Size(600, 259);
             this.richTextBox3.TabIndex = 4;
             this.richTextBox3.Text = "";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(48, 304);
+            this.label7.Location = new System.Drawing.Point(48, 277);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(29, 12);
             this.label7.TabIndex = 3;
@@ -294,7 +294,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(48, 22);
+            this.label6.Location = new System.Drawing.Point(39, 3);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(29, 12);
             this.label6.TabIndex = 2;
@@ -302,7 +302,7 @@
             // 
             // richTextBox2
             // 
-            this.richTextBox2.Location = new System.Drawing.Point(20, 47);
+            this.richTextBox2.Location = new System.Drawing.Point(20, 22);
             this.richTextBox2.Name = "richTextBox2";
             this.richTextBox2.Size = new System.Drawing.Size(600, 244);
             this.richTextBox2.TabIndex = 0;

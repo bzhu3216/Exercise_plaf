@@ -181,14 +181,6 @@
         <Property Name="score" Type="Edm.Int32" />
         <Property Name="lid" Type="Edm.Int32" Nullable="false" />
       </EntityType>
-      <EntityType Name="tech_course">
-        <Key>
-          <PropertyRef Name="id" />
-        </Key>
-        <Property Name="id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
-        <Property Name="tid" Type="Edm.Int32" Nullable="false" />
-        <Property Name="couseid" Type="Edm.Int32" Nullable="false" />
-      </EntityType>
       <EntityType Name="V_tea_course">
         <Key>
           <PropertyRef Name="CourseName" />
@@ -208,6 +200,14 @@
         <Property Name="numobjective" Type="Edm.Int32" Nullable="false" />
         <Property Name="numcontent" Type="Edm.Int32" Nullable="false" />
         <Property Name="diff" Type="Edm.Int32" Nullable="false" />
+      </EntityType>
+      <EntityType Name="tech_course">
+        <Key>
+          <PropertyRef Name="id" />
+        </Key>
+        <Property Name="id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="tid" Type="Edm.String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="true" />
+        <Property Name="couseid" Type="Edm.Int32" Nullable="false" />
       </EntityType>
       <Association Name="FK_exerL_Course">
         <End Type="db_exerciseModel.Course" Role="Course" Multiplicity="1" />
@@ -239,8 +239,8 @@
         <EntitySet Name="studAnsw" EntityType="db_exerciseModel.studAnsw" />
         <EntitySet Name="View_student" EntityType="db_exerciseModel.View_student" />
         <EntitySet Name="View_detai_exerL" EntityType="db_exerciseModel.View_detai_exerL" />
-        <EntitySet Name="tech_course" EntityType="db_exerciseModel.tech_course" />
         <EntitySet Name="V_tea_course" EntityType="db_exerciseModel.V_tea_course" />
+        <EntitySet Name="tech_course" EntityType="db_exerciseModel.tech_course" />
         <AssociationSet Name="FK_exerL_Course" Association="db_exerciseModel.FK_exerL_Course">
           <End Role="Course" EntitySet="Course" />
           <End Role="exerL" EntitySet="exerL" />

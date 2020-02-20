@@ -26,7 +26,6 @@ namespace WCFDBservice
         }
     
         public DbSet<mchoiceQues> mchoiceQues { get; set; }
-        public DbSet<classinfo> classinfo { get; set; }
         public DbSet<Course> Course { get; set; }
         public DbSet<teacherinfo> teacherinfo { get; set; }
         public DbSet<TFQues> TFQues { get; set; }
@@ -35,12 +34,12 @@ namespace WCFDBservice
         public DbSet<classExer> classExer { get; set; }
         public DbSet<exerL> exerL { get; set; }
         public DbSet<class_student> class_student { get; set; }
-        public DbSet<StudInfo> StudInfoes { get; set; }
         public DbSet<exerDetail> exerDetail { get; set; }
         public DbSet<studAnsw> studAnsw { get; set; }
-        public DbSet<View_student> View_student { get; set; }
-        public DbSet<View_detai_exerL> View_detai_exerL { get; set; }
-        public DbSet<V_tea_course> V_tea_course { get; set; }
         public DbSet<tech_course> tech_course { get; set; }
+        public DbSet<classinfo> classinfo { get; set; }
+        public DbSet<StudInfo> StudInfo { get; set; }
+        public DbSet<View_detai_exerL> View_detai_exerL { get; set; }
+        public DbSet<View_student> View_student { get; set; }
     }
 }

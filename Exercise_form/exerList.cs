@@ -179,6 +179,10 @@ namespace Exercise_form
                     mq.WindowState = FormWindowState.Normal;
                 }
             }
+            else
+            {
+                MessageBox.Show("请选择练习！");
+            }
 
 
 
@@ -193,7 +197,7 @@ namespace Exercise_form
                 Edit_cal_exerL mq = null;
                 if (mq == null || mq.IsDisposed)
                 {
-                    mq = new Edit_cal_exerL(el[listBox2.SelectedIndex].id,pp);
+                    mq = new Edit_cal_exerL(el[listBox2.SelectedIndex].id, pp);
                     mq.ShowDialog();
                     // mq.Show();
                 }
@@ -202,6 +206,10 @@ namespace Exercise_form
                     mq.Activate();
                     mq.WindowState = FormWindowState.Normal;
                 }
+            }
+            else
+            {
+                MessageBox.Show("请选择练习");
             }
 
 

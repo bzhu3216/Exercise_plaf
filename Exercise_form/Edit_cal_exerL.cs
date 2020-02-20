@@ -98,7 +98,8 @@ namespace Exercise_form
             var q1 = from o in pp.context .classinfo
                      where o.courseid == cid && o.teacher == pp.teacher.teacherid
                      select o;
-            lcl = q1.ToList<classinfo>();
+            if (q1.Count<classinfo>()>0) lcl = q1.ToList<classinfo>();
+
             return lcl;
         }
         public List<classinfo> getclasslin2(exerL el)

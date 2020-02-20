@@ -18,8 +18,8 @@ namespace Exercise_form
         int pagesize = 10;
         int pageNum = 0;
      
-        List<SQues> lTF = null;
-        SQues ctf = null;
+        List<AQues> lTF = null;
+        AQues ctf = null;
         public UPA(param p,int qid)
         {
             InitializeComponent();
@@ -141,19 +141,19 @@ namespace Exercise_form
                 {
                   lTF = null;
                 ctf = null;
-                 var questionQuery3 = (from o in pp.context.SQues 
+                 var questionQuery3 = (from o in pp.context.AQues
                                        where (b1 || o.objective == c1)
                                        && (b2 || o.con == c2)
                                        && (b3 || o.diff == c3)
                                        && (b0 || o.id == c0)
                                        && (o.courseid == lvtc[comboBox1.SelectedIndex].couseid )
                                           select o).Skip(pageNum * pagesize).Take(pagesize);
-                if (questionQuery3.Count<SQues>() > 0)
+                if (questionQuery3.Count<AQues>() > 0)
                 {      
-                       lTF = questionQuery3.ToList<SQues>();
+                       lTF = questionQuery3.ToList<AQues>();
 
 
-                    foreach (SQues mcq in lTF)
+                    foreach (AQues mcq in lTF)
                     {
 
                         System.IO.MemoryStream mstream = new System.IO.MemoryStream(mcq.question, false);

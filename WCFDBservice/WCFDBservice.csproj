@@ -191,9 +191,6 @@
     <Compile Include="View_student.cs">
       <DependentUpon>questions.tt</DependentUpon>
     </Compile>
-    <Compile Include="V_tea_course.cs">
-      <DependentUpon>questions.tt</DependentUpon>
-    </Compile>
     <Compile Include="WcfDataServicequestion.svc.cs">
       <DependentUpon>WcfDataServicequestion.svc</DependentUpon>
     </Compile>
