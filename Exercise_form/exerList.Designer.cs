@@ -56,7 +56,7 @@
             // 
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 14;
-            this.listBox1.Location = new System.Drawing.Point(520, 106);
+            this.listBox1.Location = new System.Drawing.Point(39, 92);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(310, 522);
             this.listBox1.TabIndex = 1;
@@ -65,9 +65,9 @@
             // 
             this.listBox2.FormattingEnabled = true;
             this.listBox2.ItemHeight = 14;
-            this.listBox2.Location = new System.Drawing.Point(64, 106);
+            this.listBox2.Location = new System.Drawing.Point(521, 92);
             this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(272, 508);
+            this.listBox2.Size = new System.Drawing.Size(294, 522);
             this.listBox2.TabIndex = 2;
             // 
             // comboBox1
@@ -161,6 +161,7 @@
             this.button5.TabIndex = 14;
             this.button5.Text = "《《私有";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // exerList
             // 

@@ -9,7 +9,7 @@
 //------------------------------------------------------------------------------
 
 // 原始文件名:
-// 生成日期: 2020/2/21 11:10:39
+// 生成日期: 2020/2/21 11:33:32
 namespace Exercise_form.ServiceReference1
 {
     
@@ -595,57 +595,62 @@ namespace Exercise_form.ServiceReference1
                 "h=\"false\" Unicode=\"true\" /><Property Name=\"name\" Type=\"Edm.String\" MaxLength=\"50" +
                 "\" FixedLength=\"false\" Unicode=\"false\" /><Property Name=\"pd\" Type=\"Edm.String\" Ma" +
                 "xLength=\"8\" FixedLength=\"false\" Unicode=\"false\" /></EntityType><EntityType Name=" +
-                "\"View_detai_exerL\"><Key><PropertyRef Name=\"Expr1\" /><PropertyRef Name=\"id\" /><Pr" +
-                "opertyRef Name=\"lid\" /><PropertyRef Name=\"qid\" /><PropertyRef Name=\"typeq\" /></K" +
-                "ey><Property Name=\"id\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"typeq" +
-                "\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"qid\" Type=\"Edm.Int32\" Null" +
-                "able=\"false\" /><Property Name=\"Expr1\" Type=\"Edm.Int32\" Nullable=\"false\" /><Prope" +
-                "rty Name=\"score\" Type=\"Edm.Int32\" /><Property Name=\"lid\" Type=\"Edm.Int32\" Nullab" +
-                "le=\"false\" /></EntityType><EntityType Name=\"View_student\"><Key><PropertyRef Name" +
-                "=\"cid\" /><PropertyRef Name=\"stid\" /></Key><Property Name=\"stid\" Type=\"Edm.String" +
-                "\" Nullable=\"false\" MaxLength=\"11\" FixedLength=\"false\" Unicode=\"true\" /><Property" +
-                " Name=\"stname\" Type=\"Edm.String\" MaxLength=\"50\" FixedLength=\"false\" Unicode=\"fal" +
-                "se\" /><Property Name=\"cno\" Type=\"Edm.Int32\" /><Property Name=\"cfinish\" Type=\"Edm" +
-                ".Int32\" /><Property Name=\"cid\" Type=\"Edm.Int32\" Nullable=\"false\" /></EntityType>" +
-                "<EntityType Name=\"V_tea_course\"><Key><PropertyRef Name=\"CourseName\" /><PropertyR" +
-                "ef Name=\"couseid\" /><PropertyRef Name=\"diff\" /><PropertyRef Name=\"numcontent\" />" +
-                "<PropertyRef Name=\"numobjective\" /><PropertyRef Name=\"relid\" /><PropertyRef Name" +
-                "=\"teacherid\" /></Key><Property Name=\"teacherid\" Type=\"Edm.String\" Nullable=\"fals" +
-                "e\" MaxLength=\"4\" FixedLength=\"true\" Unicode=\"true\" /><Property Name=\"name\" Type=" +
-                "\"Edm.String\" MaxLength=\"10\" FixedLength=\"true\" Unicode=\"true\" /><Property Name=\"" +
-                "pd\" Type=\"Edm.String\" MaxLength=\"10\" FixedLength=\"true\" Unicode=\"true\" /><Proper" +
-                "ty Name=\"couseid\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"CourseName" +
-                "\" Type=\"Edm.String\" Nullable=\"false\" MaxLength=\"50\" FixedLength=\"false\" Unicode=" +
-                "\"false\" /><Property Name=\"numobjective\" Type=\"Edm.Int32\" Nullable=\"false\" /><Pro" +
-                "perty Name=\"numcontent\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"diff" +
-                "\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"relid\" Type=\"Edm.Int32\" Nu" +
-                "llable=\"false\" /></EntityType><Association Name=\"FK_exerL_Course\"><End Type=\"db_" +
-                "exerciseModel.Course\" Role=\"Course\" Multiplicity=\"1\" /><End Type=\"db_exerciseMod" +
-                "el.exerL\" Role=\"exerL\" Multiplicity=\"*\" /><ReferentialConstraint><Principal Role" +
-                "=\"Course\"><PropertyRef Name=\"id\" /></Principal><Dependent Role=\"exerL\"><Property" +
-                "Ref Name=\"courseid\" /></Dependent></ReferentialConstraint></Association></Schema" +
-                "><Schema Namespace=\"WCFDBservice\" xmlns=\"http://schemas.microsoft.com/ado/2009/1" +
-                "1/edm\"><EntityContainer Name=\"db_exerciseEntities\" m:IsDefaultEntityContainer=\"t" +
-                "rue\" p6:LazyLoadingEnabled=\"true\" xmlns:p6=\"http://schemas.microsoft.com/ado/200" +
-                "9/02/edm/annotation\"><EntitySet Name=\"mchoiceQues\" EntityType=\"db_exerciseModel." +
-                "mchoiceQues\" /><EntitySet Name=\"Course\" EntityType=\"db_exerciseModel.Course\" /><" +
-                "EntitySet Name=\"teacherinfo\" EntityType=\"db_exerciseModel.teacherinfo\" /><Entity" +
-                "Set Name=\"TFQues\" EntityType=\"db_exerciseModel.TFQues\" /><EntitySet Name=\"SQues\"" +
-                " EntityType=\"db_exerciseModel.SQues\" /><EntitySet Name=\"AQues\" EntityType=\"db_ex" +
-                "erciseModel.AQues\" /><EntitySet Name=\"classExer\" EntityType=\"db_exerciseModel.cl" +
-                "assExer\" /><EntitySet Name=\"exerL\" EntityType=\"db_exerciseModel.exerL\" /><Entity" +
-                "Set Name=\"class_student\" EntityType=\"db_exerciseModel.class_student\" /><EntitySe" +
-                "t Name=\"exerDetail\" EntityType=\"db_exerciseModel.exerDetail\" /><EntitySet Name=\"" +
-                "studAnsw\" EntityType=\"db_exerciseModel.studAnsw\" /><EntitySet Name=\"tech_course\"" +
-                " EntityType=\"db_exerciseModel.tech_course\" /><EntitySet Name=\"classinfo\" EntityT" +
-                "ype=\"db_exerciseModel.classinfo\" /><EntitySet Name=\"StudInfo\" EntityType=\"db_exe" +
-                "rciseModel.StudInfo\" /><EntitySet Name=\"View_detai_exerL\" EntityType=\"db_exercis" +
-                "eModel.View_detai_exerL\" /><EntitySet Name=\"View_student\" EntityType=\"db_exercis" +
-                "eModel.View_student\" /><EntitySet Name=\"V_tea_course\" EntityType=\"db_exerciseMod" +
-                "el.V_tea_course\" /><AssociationSet Name=\"FK_exerL_Course\" Association=\"db_exerci" +
-                "seModel.FK_exerL_Course\"><End Role=\"Course\" EntitySet=\"Course\" /><End Role=\"exer" +
-                "L\" EntitySet=\"exerL\" /></AssociationSet></EntityContainer></Schema></edmx:DataSe" +
-                "rvices></edmx:Edmx>";
+                "\"View_detai_exerL\"><Key><PropertyRef Name=\"courseid\" /><PropertyRef Name=\"Expr1\"" +
+                " /><PropertyRef Name=\"id\" /><PropertyRef Name=\"lid\" /><PropertyRef Name=\"name\" /" +
+                "><PropertyRef Name=\"pub\" /><PropertyRef Name=\"qid\" /><PropertyRef Name=\"teacheri" +
+                "d\" /><PropertyRef Name=\"typeq\" /></Key><Property Name=\"id\" Type=\"Edm.Int32\" Null" +
+                "able=\"false\" /><Property Name=\"typeq\" Type=\"Edm.Int32\" Nullable=\"false\" /><Prope" +
+                "rty Name=\"qid\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"Expr1\" Type=\"" +
+                "Edm.Int32\" Nullable=\"false\" /><Property Name=\"score\" Type=\"Edm.Int32\" /><Propert" +
+                "y Name=\"lid\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"pub\" Type=\"Edm." +
+                "Boolean\" Nullable=\"false\" /><Property Name=\"name\" Type=\"Edm.String\" Nullable=\"fa" +
+                "lse\" MaxLength=\"50\" FixedLength=\"false\" Unicode=\"false\" /><Property Name=\"teache" +
+                "rid\" Type=\"Edm.String\" Nullable=\"false\" MaxLength=\"4\" FixedLength=\"true\" Unicode" +
+                "=\"true\" /><Property Name=\"courseid\" Type=\"Edm.Int32\" Nullable=\"false\" /></Entity" +
+                "Type><EntityType Name=\"View_student\"><Key><PropertyRef Name=\"cid\" /><PropertyRef" +
+                " Name=\"stid\" /></Key><Property Name=\"stid\" Type=\"Edm.String\" Nullable=\"false\" Ma" +
+                "xLength=\"11\" FixedLength=\"false\" Unicode=\"true\" /><Property Name=\"stname\" Type=\"" +
+                "Edm.String\" MaxLength=\"50\" FixedLength=\"false\" Unicode=\"false\" /><Property Name=" +
+                "\"cno\" Type=\"Edm.Int32\" /><Property Name=\"cfinish\" Type=\"Edm.Int32\" /><Property N" +
+                "ame=\"cid\" Type=\"Edm.Int32\" Nullable=\"false\" /></EntityType><EntityType Name=\"V_t" +
+                "ea_course\"><Key><PropertyRef Name=\"CourseName\" /><PropertyRef Name=\"couseid\" /><" +
+                "PropertyRef Name=\"diff\" /><PropertyRef Name=\"numcontent\" /><PropertyRef Name=\"nu" +
+                "mobjective\" /><PropertyRef Name=\"relid\" /><PropertyRef Name=\"teacherid\" /></Key>" +
+                "<Property Name=\"teacherid\" Type=\"Edm.String\" Nullable=\"false\" MaxLength=\"4\" Fixe" +
+                "dLength=\"true\" Unicode=\"true\" /><Property Name=\"name\" Type=\"Edm.String\" MaxLengt" +
+                "h=\"10\" FixedLength=\"true\" Unicode=\"true\" /><Property Name=\"pd\" Type=\"Edm.String\"" +
+                " MaxLength=\"10\" FixedLength=\"true\" Unicode=\"true\" /><Property Name=\"couseid\" Typ" +
+                "e=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"CourseName\" Type=\"Edm.String\" N" +
+                "ullable=\"false\" MaxLength=\"50\" FixedLength=\"false\" Unicode=\"false\" /><Property N" +
+                "ame=\"numobjective\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"numconten" +
+                "t\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"diff\" Type=\"Edm.Int32\" Nu" +
+                "llable=\"false\" /><Property Name=\"relid\" Type=\"Edm.Int32\" Nullable=\"false\" /></En" +
+                "tityType><Association Name=\"FK_exerL_Course\"><End Type=\"db_exerciseModel.Course\"" +
+                " Role=\"Course\" Multiplicity=\"1\" /><End Type=\"db_exerciseModel.exerL\" Role=\"exerL" +
+                "\" Multiplicity=\"*\" /><ReferentialConstraint><Principal Role=\"Course\"><PropertyRe" +
+                "f Name=\"id\" /></Principal><Dependent Role=\"exerL\"><PropertyRef Name=\"courseid\" /" +
+                "></Dependent></ReferentialConstraint></Association></Schema><Schema Namespace=\"W" +
+                "CFDBservice\" xmlns=\"http://schemas.microsoft.com/ado/2009/11/edm\"><EntityContain" +
+                "er Name=\"db_exerciseEntities\" m:IsDefaultEntityContainer=\"true\" p6:LazyLoadingEn" +
+                "abled=\"true\" xmlns:p6=\"http://schemas.microsoft.com/ado/2009/02/edm/annotation\">" +
+                "<EntitySet Name=\"mchoiceQues\" EntityType=\"db_exerciseModel.mchoiceQues\" /><Entit" +
+                "ySet Name=\"Course\" EntityType=\"db_exerciseModel.Course\" /><EntitySet Name=\"teach" +
+                "erinfo\" EntityType=\"db_exerciseModel.teacherinfo\" /><EntitySet Name=\"TFQues\" Ent" +
+                "ityType=\"db_exerciseModel.TFQues\" /><EntitySet Name=\"SQues\" EntityType=\"db_exerc" +
+                "iseModel.SQues\" /><EntitySet Name=\"AQues\" EntityType=\"db_exerciseModel.AQues\" />" +
+                "<EntitySet Name=\"classExer\" EntityType=\"db_exerciseModel.classExer\" /><EntitySet" +
+                " Name=\"exerL\" EntityType=\"db_exerciseModel.exerL\" /><EntitySet Name=\"class_stude" +
+                "nt\" EntityType=\"db_exerciseModel.class_student\" /><EntitySet Name=\"exerDetail\" E" +
+                "ntityType=\"db_exerciseModel.exerDetail\" /><EntitySet Name=\"studAnsw\" EntityType=" +
+                "\"db_exerciseModel.studAnsw\" /><EntitySet Name=\"tech_course\" EntityType=\"db_exerc" +
+                "iseModel.tech_course\" /><EntitySet Name=\"classinfo\" EntityType=\"db_exerciseModel" +
+                ".classinfo\" /><EntitySet Name=\"StudInfo\" EntityType=\"db_exerciseModel.StudInfo\" " +
+                "/><EntitySet Name=\"View_detai_exerL\" EntityType=\"db_exerciseModel.View_detai_exe" +
+                "rL\" /><EntitySet Name=\"View_student\" EntityType=\"db_exerciseModel.View_student\" " +
+                "/><EntitySet Name=\"V_tea_course\" EntityType=\"db_exerciseModel.V_tea_course\" /><A" +
+                "ssociationSet Name=\"FK_exerL_Course\" Association=\"db_exerciseModel.FK_exerL_Cour" +
+                "se\"><End Role=\"Course\" EntitySet=\"Course\" /><End Role=\"exerL\" EntitySet=\"exerL\" " +
+                "/></AssociationSet></EntityContainer></Schema></edmx:DataServices></edmx:Edmx>";
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
             private static string GetConcatenatedEdmxString()
             {
@@ -3146,14 +3151,18 @@ namespace Exercise_form.ServiceReference1
     /// 架构中不存在 db_exerciseModel.View_detai_exerL 的注释。
     /// </summary>
     /// <KeyProperties>
+    /// courseid
     /// Expr1
     /// id
     /// lid
+    /// name
+    /// pub
     /// qid
+    /// teacherid
     /// typeq
     /// </KeyProperties>
     [global::System.Data.Services.Common.EntitySetAttribute("View_detai_exerL")]
-    [global::System.Data.Services.Common.DataServiceKeyAttribute("Expr1", "id", "lid", "qid", "typeq")]
+    [global::System.Data.Services.Common.DataServiceKeyAttribute("courseid", "Expr1", "id", "lid", "name", "pub", "qid", "teacherid", "typeq")]
     public partial class View_detai_exerL : global::System.ComponentModel.INotifyPropertyChanged
     {
         /// <summary>
@@ -3164,8 +3173,12 @@ namespace Exercise_form.ServiceReference1
         /// <param name="qid">qid 的初始值。</param>
         /// <param name="expr1">Expr1 的初始值。</param>
         /// <param name="lid">lid 的初始值。</param>
+        /// <param name="pub">pub 的初始值。</param>
+        /// <param name="name">name 的初始值。</param>
+        /// <param name="teacherid">teacherid 的初始值。</param>
+        /// <param name="courseid">courseid 的初始值。</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public static View_detai_exerL CreateView_detai_exerL(int ID, int typeq, int qid, int expr1, int lid)
+        public static View_detai_exerL CreateView_detai_exerL(int ID, int typeq, int qid, int expr1, int lid, bool pub, string name, string teacherid, int courseid)
         {
             View_detai_exerL view_detai_exerL = new View_detai_exerL();
             view_detai_exerL.id = ID;
@@ -3173,6 +3186,10 @@ namespace Exercise_form.ServiceReference1
             view_detai_exerL.qid = qid;
             view_detai_exerL.Expr1 = expr1;
             view_detai_exerL.lid = lid;
+            view_detai_exerL.pub = pub;
+            view_detai_exerL.name = name;
+            view_detai_exerL.teacherid = teacherid;
+            view_detai_exerL.courseid = courseid;
             return view_detai_exerL;
         }
         /// <summary>
@@ -3307,6 +3324,94 @@ namespace Exercise_form.ServiceReference1
         private int _lid;
         partial void OnlidChanging(int value);
         partial void OnlidChanged();
+        /// <summary>
+        /// 架构中不存在属性 pub 的注释。
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public bool pub
+        {
+            get
+            {
+                return this._pub;
+            }
+            set
+            {
+                this.OnpubChanging(value);
+                this._pub = value;
+                this.OnpubChanged();
+                this.OnPropertyChanged("pub");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private bool _pub;
+        partial void OnpubChanging(bool value);
+        partial void OnpubChanged();
+        /// <summary>
+        /// 架构中不存在属性 name 的注释。
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public string name
+        {
+            get
+            {
+                return this._name;
+            }
+            set
+            {
+                this.OnnameChanging(value);
+                this._name = value;
+                this.OnnameChanged();
+                this.OnPropertyChanged("name");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private string _name;
+        partial void OnnameChanging(string value);
+        partial void OnnameChanged();
+        /// <summary>
+        /// 架构中不存在属性 teacherid 的注释。
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public string teacherid
+        {
+            get
+            {
+                return this._teacherid;
+            }
+            set
+            {
+                this.OnteacheridChanging(value);
+                this._teacherid = value;
+                this.OnteacheridChanged();
+                this.OnPropertyChanged("teacherid");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private string _teacherid;
+        partial void OnteacheridChanging(string value);
+        partial void OnteacheridChanged();
+        /// <summary>
+        /// 架构中不存在属性 courseid 的注释。
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public int courseid
+        {
+            get
+            {
+                return this._courseid;
+            }
+            set
+            {
+                this.OncourseidChanging(value);
+                this._courseid = value;
+                this.OncourseidChanged();
+                this.OnPropertyChanged("courseid");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private int _courseid;
+        partial void OncourseidChanging(int value);
+        partial void OncourseidChanged();
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]

@@ -199,6 +199,7 @@
             <PropertyRef Name="pub" />
             <PropertyRef Name="name" />
             <PropertyRef Name="teacherid" />
+            <PropertyRef Name="courseid" />
           </Key>
           <Property Name="id" Type="int" Nullable="false" />
           <Property Name="typeq" Type="int" Nullable="false" />
@@ -209,6 +210,7 @@
           <Property Name="pub" Type="bit" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="teacherid" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="courseid" Type="int" Nullable="false" />
         </EntityType>
         <!--生成过程中发现错误:
 警告 6002: 表/视图“db_exercise.dbo.View_student”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
@@ -273,7 +275,8 @@ FROM [dbo].[V_tea_course] AS [V_tea_course]</DefiningQuery>
 [View_detai_exerL].[lid] AS [lid], 
 [View_detai_exerL].[pub] AS [pub], 
 [View_detai_exerL].[name] AS [name], 
-[View_detai_exerL].[teacherid] AS [teacherid]
+[View_detai_exerL].[teacherid] AS [teacherid], 
+[View_detai_exerL].[courseid] AS [courseid]
 FROM [dbo].[View_detai_exerL] AS [View_detai_exerL]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="View_student" EntityType="Self.View_student" store:Type="Views" store:Schema="dbo">
@@ -501,6 +504,7 @@ FROM [dbo].[View_student] AS [View_student]</DefiningQuery>
             <PropertyRef Name="pub" />
             <PropertyRef Name="name" />
             <PropertyRef Name="teacherid" />
+            <PropertyRef Name="courseid" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="typeq" Type="Int32" Nullable="false" />
@@ -511,6 +515,7 @@ FROM [dbo].[View_student] AS [View_student]</DefiningQuery>
           <Property Name="pub" Type="Boolean" Nullable="false" />
           <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="teacherid" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="true" />
+          <Property Name="courseid" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="View_student">
           <Key>
@@ -722,6 +727,7 @@ FROM [dbo].[View_student] AS [View_student]</DefiningQuery>
           <EntitySetMapping Name="View_detai_exerL">
             <EntityTypeMapping TypeName="db_exerciseModel.View_detai_exerL">
               <MappingFragment StoreEntitySet="View_detai_exerL">
+                <ScalarProperty Name="courseid" ColumnName="courseid" />
                 <ScalarProperty Name="teacherid" ColumnName="teacherid" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="pub" ColumnName="pub" />

@@ -18,7 +18,9 @@ namespace Exercise_form
         param pp;
         List<V_tea_course> lcs = null;
         List<exerL> el = null;
-        List<View_detai_exerL> lved = null;
+        List<exerL> l1 = null;
+        List<exerL> l2 = null;
+        // List<exerL> lved= null;
         int cid = -1;
         public exerList(param p)
         {
@@ -40,27 +42,53 @@ namespace Exercise_form
            
             comboBox1.DataSource = lcs;
             comboBox1.ValueMember = "CourseName";
-            listBox1.Items.Clear();
-            listBox2.Items.Clear();
-            comboBox1.Text = "";
+           // listBox1.Items.Clear();
+           // listBox2.Items.Clear();
+           // comboBox1.Text = "";
 
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-
-            EditererList  mq = null;
-            if (mq == null || mq.IsDisposed)
+            /*
+                        EditererList  mq = null;
+                        if (mq == null || mq.IsDisposed)
+                        {
+                            mq = new EditererList(pp);
+                            mq.ShowDialog();
+                           // mq.Show();
+                        }
+                        else
+                        {
+                            mq.Activate();
+                            mq.WindowState = FormWindowState.Normal;
+                        }
+            */
+            if (listBox1.SelectedIndex >= 0)
             {
-                mq = new EditererList(pp);
-                mq.ShowDialog();
-               // mq.Show();
+
+                exerL yex = l1[listBox1.SelectedIndex];
+                exerL pex = new exerL();
+                pex.courseid = yex.courseid;
+                pex.name = yex.name + pp.teacher.teacherid;
+                pex.teacherid = pp.teacher.teacherid;
+                pex.pub = true;
+                pp.context.AddToexerL(pex);
+                pp.context.SaveChanges();
+                updatalist();
+
+
+
             }
             else
             {
-                mq.Activate();
-                mq.WindowState = FormWindowState.Normal;
+
+                MessageBox.Show("请选择私有练习");
             }
+
+
+
+
 
 
 
@@ -130,32 +158,53 @@ namespace Exercise_form
                     cid = (int)cc.couseid ;
                 }
             updatalist();
+          //  el = searchall(cid);
+          // if (el != null)
+          // updatalist();
 
         }
 
         /////////////////////////////////my function
         private void  updatalist()
         {
-            listBox1.Items.Clear();
-            listBox2.Items.Clear();
-            context = pp.context;
-            var questionQuery = from o in context.exerL 
-                                where o.courseid ==cid 
-                                select o;
-            el = questionQuery.ToList<exerL>();
+            el = searchall(cid);
+            if (el != null) {
+                listBox1.ValueMember = null; ;
+            listBox2.ValueMember = null; ;
+            listBox1.DataSource = null;
+            listBox2.DataSource = null;
 
-            foreach (exerL obel in el) {
-                if (obel.pub == true)
-                    listBox1.Items.Add(obel.name);
-                if (obel.teacherid  == pp.teacher.teacherid )
-                  listBox2.Items.Add(obel.name);
+            l1 = null;
+            l2 = null;
+            
+            var q1 = el.Where(o => o.pub == true);
+            if(q1.Count<exerL>()>0 )
+                l2 = q1.ToList<exerL>(); 
+                       
+            var q2 = el.Where(o => o.pub == false );
+            if (q2.Count<exerL>() > 0)
+                l1 = q2.ToList<exerL>();
 
+            listBox1.DataSource = l1;
+            listBox2.DataSource = l2;
+            listBox1.ValueMember = "name";
+            listBox2.ValueMember = "name";
+                /*
+                context = pp.context;
+                var questionQuery = from o in context.exerL 
+                                    where o.courseid ==cid 
+                                    select o;
+                el = questionQuery.ToList<exerL>();
+
+                foreach (exerL obel in el) {
+                    if (obel.pub == true)
+                        listBox1.Items.Add(obel.name);
+                    if (obel.teacherid  == pp.teacher.teacherid )
+                      listBox2.Items.Add(obel.name);
+                }*/
 
 
             }
-
-
-
 
 
 
@@ -164,9 +213,9 @@ namespace Exercise_form
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (listBox2.SelectedIndex >= 0)
+            if (listBox1.SelectedIndex >= 0)
             {
-                pp.exerl1 = el[listBox2.SelectedIndex].id;
+                pp.exerl1 = l1[listBox1.SelectedIndex].id;
                 EditererList mq = null;
                 if (mq == null || mq.IsDisposed)
                 {
@@ -192,13 +241,13 @@ namespace Exercise_form
         private void button4_Click(object sender, EventArgs e)
         {
 
-            if (listBox2.SelectedIndex >= 0)
+            if (listBox1.SelectedIndex >= 0)
             {
-                pp.exerl1 = el[listBox2.SelectedIndex].id;
+                pp.exerl1 = l1[listBox1.SelectedIndex].id;
                 Edit_cal_exerL mq = null;
                 if (mq == null || mq.IsDisposed)
                 {
-                    mq = new Edit_cal_exerL(el[listBox2.SelectedIndex].id, pp);
+                    mq = new Edit_cal_exerL(l1[listBox1.SelectedIndex].id, pp);
                     mq.ShowDialog();
                     // mq.Show();
                 }
@@ -219,15 +268,27 @@ namespace Exercise_form
         }
 
         /////////////////////////////////////////
-        private List<View_detai_exerL> searchpub(int courseid)
+        private List<exerL> searchall(int courseid)
         {
-            List<View_detai_exerL> tlved = null;
+            List<exerL> tlvedp = null;
+            var q1 = from o in pp.context.exerL
+                     where o.courseid == courseid && (o.pub|| o.teacherid==pp.teacher.teacherid )
+                     select o;
+            if (q1.Count<exerL>() > 0) tlvedp = q1.ToList<exerL>();
+            return tlvedp;
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
 
 
 
 
 
-            return tlved;
+
+
+
         }
 
 

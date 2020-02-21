@@ -165,10 +165,14 @@
       </EntityType>
       <EntityType Name="View_detai_exerL">
         <Key>
+          <PropertyRef Name="courseid" />
           <PropertyRef Name="Expr1" />
           <PropertyRef Name="id" />
           <PropertyRef Name="lid" />
+          <PropertyRef Name="name" />
+          <PropertyRef Name="pub" />
           <PropertyRef Name="qid" />
+          <PropertyRef Name="teacherid" />
           <PropertyRef Name="typeq" />
         </Key>
         <Property Name="id" Type="Edm.Int32" Nullable="false" />
@@ -177,6 +181,10 @@
         <Property Name="Expr1" Type="Edm.Int32" Nullable="false" />
         <Property Name="score" Type="Edm.Int32" />
         <Property Name="lid" Type="Edm.Int32" Nullable="false" />
+        <Property Name="pub" Type="Edm.Boolean" Nullable="false" />
+        <Property Name="name" Type="Edm.String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        <Property Name="teacherid" Type="Edm.String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="true" />
+        <Property Name="courseid" Type="Edm.Int32" Nullable="false" />
       </EntityType>
       <EntityType Name="View_student">
         <Key>
