@@ -184,6 +184,12 @@
     <Compile Include="Edit_cal_exerL.Designer.cs">
       <DependentUpon>Edit_cal_exerL.cs</DependentUpon>
     </Compile>
+    <Compile Include="Exercise Summary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Exercise Summary.Designer.cs">
+      <DependentUpon>Exercise Summary.cs</DependentUpon>
+    </Compile>
     <Compile Include="exerList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -315,6 +321,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Edit_cal_exerL.resx">
       <DependentUpon>Edit_cal_exerL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Exercise Summary.resx">
+      <DependentUpon>Exercise Summary.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="exerList.resx">
       <DependentUpon>exerList.cs</DependentUpon>

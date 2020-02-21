@@ -39,12 +39,12 @@ namespace Exercise_form
             
             */
             lcs = pp.ltea_c;
-           
+
             comboBox1.DataSource = lcs;
             comboBox1.ValueMember = "CourseName";
-           // listBox1.Items.Clear();
-           // listBox2.Items.Clear();
-           // comboBox1.Text = "";
+            // listBox1.Items.Clear();
+            // listBox2.Items.Clear();
+            // comboBox1.Text = "";
 
         }
 
@@ -106,20 +106,20 @@ namespace Exercise_form
             // Instantiate the DataServiceContext.
 
 
-            exerL  mcq = new exerL();
+            exerL mcq = new exerL();
             // mcq.answ = comboBox4.SelectedIndex + 1;
-            
-            mcq.courseid  = cid;
+
+            mcq.courseid = cid;
             mcq.teacherid = pp.teacher.teacherid;
             mcq.name = textBox1.Text;
-            mcq.pub  = false;
+            mcq.pub = false;
             ////////////write richtext
 
 
-            if (comboBox1.Text != ""&& textBox1.Text != "")
+            if (comboBox1.Text != "" && textBox1.Text != "")
             {
                 context.AddToexerL(mcq);
-               
+
                 context.SaveChanges();
                 textBox1.Text = "";
                 updatalist();
@@ -151,46 +151,47 @@ namespace Exercise_form
             int con = 0;
             int diff = 0;
 
-            foreach (V_tea_course  cc in lcs)
+            foreach (V_tea_course cc in lcs)
                 if (comboBox1.Text == cc.CourseName)
                 {
                     numobjective = (int)cc.numobjective;
                     con = (int)cc.numcontent;
                     diff = (int)cc.diff;
-                    cid = (int)cc.couseid ;
+                    cid = (int)cc.couseid;
                 }
             updatalist();
-          //  el = searchall(cid);
-          // if (el != null)
-          // updatalist();
+            //  el = searchall(cid);
+            // if (el != null)
+            // updatalist();
 
         }
 
         /////////////////////////////////my function
-        private void  updatalist()
+        private void updatalist()
         {
             el = searchall(cid);
-            if (el != null) {
+            if (el != null)
+            {
                 listBox1.ValueMember = null; ;
-            listBox2.ValueMember = null; ;
-            listBox1.DataSource = null;
-            listBox2.DataSource = null;
+                listBox2.ValueMember = null; ;
+                listBox1.DataSource = null;
+                listBox2.DataSource = null;
 
-            l1 = null;
-            l2 = null;
-            
-            var q1 = el.Where(o => o.pub == true);
-            if(q1.Count<exerL>()>0 )
-                l2 = q1.ToList<exerL>(); 
-                       
-            var q2 = el.Where(o => o.pub == false );
-            if (q2.Count<exerL>() > 0)
-                l1 = q2.ToList<exerL>();
+                l1 = null;
+                l2 = null;
 
-            listBox1.DataSource = l1;
-            listBox2.DataSource = l2;
-            listBox1.ValueMember = "name";
-            listBox2.ValueMember = "name";
+                var q1 = el.Where(o => o.pub == true);
+                if (q1.Count<exerL>() > 0)
+                    l2 = q1.ToList<exerL>();
+
+                var q2 = el.Where(o => o.pub == false);
+                if (q2.Count<exerL>() > 0)
+                    l1 = q2.ToList<exerL>();
+
+                listBox1.DataSource = l1;
+                listBox2.DataSource = l2;
+                listBox1.ValueMember = "name";
+                listBox2.ValueMember = "name";
                 /*
                 context = pp.context;
                 var questionQuery = from o in context.exerL 
@@ -274,7 +275,7 @@ namespace Exercise_form
         {
             List<exerL> tlvedp = null;
             var q1 = from o in pp.context.exerL
-                     where o.courseid == courseid && (o.pub|| o.teacherid==pp.teacher.teacherid )
+                     where o.courseid == courseid && (o.pub || o.teacherid == pp.teacher.teacherid)
                      select o;
             if (q1.Count<exerL>() > 0) tlvedp = q1.ToList<exerL>();
             return tlvedp;
@@ -306,7 +307,7 @@ namespace Exercise_form
 
                 MessageBox.Show("请选择公有练习");
             }
-            
+
         }
 
 
@@ -320,17 +321,17 @@ namespace Exercise_form
             {
                 List<exerDetail> tlerd = q1.ToList<exerDetail>();
                 foreach (exerDetail iexd in tlerd)
-                      {
+                {
                     exerDetail new_ed = new exerDetail();
                     new_ed.lid = target.id;
                     new_ed.score = iexd.score;
                     new_ed.typeq = iexd.typeq;
                     new_ed.qid = iexd.qid;
-                    pp.context.AddToexerDetail(new_ed); 
+                    pp.context.AddToexerDetail(new_ed);
 
-                      }
+                }
 
-                pp.context.SaveChanges(); 
+                pp.context.SaveChanges();
 
             }
 
@@ -352,15 +353,15 @@ namespace Exercise_form
                 if (textBox1.Text != "")
                 {
                     yex.name = textBox1.Text;
-                    pp.context.UpdateObject(yex);                    
-                    pp.context.SaveChanges();                  
+                    pp.context.UpdateObject(yex);
+                    pp.context.SaveChanges();
                     updatalist();
-                    textBox1.Text="";
+                    textBox1.Text = "";
                 }
                 else
                 {
                     MessageBox.Show("请文本框中输入新名称");
-                }      
+                }
 
 
             }
@@ -378,6 +379,55 @@ namespace Exercise_form
 
         }
 
+        private void button8_Click(object sender, EventArgs e)
+        {
+
+
+            if (listBox2.SelectedIndex >= 0)
+            {
+                if (MessageBox.Show("确认删除？", "此删除不可恢复", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                { }
+                exerL yex = l2[listBox2.SelectedIndex];
+                pp.context.DeleteObject(yex);
+                pp.context.SaveChanges();
+                //deteldell
+                deldetail(yex);
+                updatalist();
+
+
+
+            }
+            else
+            {
+
+                MessageBox.Show("请选择公有练习");
+            }
+
+
+
+        }
+
+
+        ///////////////////////////////////////////////////
+
+
+        private void deldetail(exerL s)
+        {
+            var q1 = from o in pp.context.exerDetail
+                     where o.lid == s.id
+                     select o;
+            if (q1.Count<exerDetail>() > 0)
+            {
+                List<exerDetail> tlerd = q1.ToList<exerDetail>();
+                foreach (exerDetail iexd in tlerd)
+                {
+                    pp.context.DeleteObject(iexd);
+
+                }
+
+                pp.context.SaveChanges();
+
+            }
 
 
 
@@ -387,11 +437,35 @@ namespace Exercise_form
 
 
 
+            ///////////////////////////////////end my function
+
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedIndex >= 0)
+            {
+                if (MessageBox.Show("确认删除？已有同学用不建议删除哦", "此删除不可恢复", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    exerL yex = l1[listBox1.SelectedIndex];
+                    pp.context.DeleteObject(yex);
+                    pp.context.SaveChanges();
+                    //deteldell
+                    deldetail(yex);
+                    updatalist();
 
 
 
-        ///////////////////////////////////end my function
+                }
+                else
+                {
 
+                    MessageBox.Show("请选择公有练习");
+                }
+            }
+        }
 
+       ///////endclass
     }
-}
+    }
