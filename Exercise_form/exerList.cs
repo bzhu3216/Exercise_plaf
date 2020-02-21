@@ -75,6 +75,8 @@ namespace Exercise_form
                 pex.pub = true;
                 pp.context.AddToexerL(pex);
                 pp.context.SaveChanges();
+                copyedetail(yex, pex);
+                /////copydetail
                 updatalist();
 
 
@@ -281,7 +283,56 @@ namespace Exercise_form
 
         private void button5_Click(object sender, EventArgs e)
         {
+            if (listBox2.SelectedIndex >= 0)
+            {
 
+                exerL yex = l2[listBox2.SelectedIndex];
+                exerL pex = new exerL();
+                pex.courseid = yex.courseid;
+                pex.name = yex.name + "请重命名";
+                pex.teacherid = pp.teacher.teacherid;
+                pex.pub = false;
+                pp.context.AddToexerL(pex);
+                pp.context.SaveChanges();
+                /////copydetail
+                copyedetail(yex, pex);
+                updatalist();
+
+
+
+            }
+            else
+            {
+
+                MessageBox.Show("请选择公有练习");
+            }
+            
+        }
+
+
+
+        private void copyedetail(exerL s, exerL target)
+        {
+            var q1 = from o in pp.context.exerDetail
+                     where o.lid == s.id
+                     select o;
+            if (q1.Count<exerDetail>() > 0)
+            {
+                List<exerDetail> tlerd = q1.ToList<exerDetail>();
+                foreach (exerDetail iexd in tlerd)
+                      {
+                    exerDetail new_ed = new exerDetail();
+                    new_ed.lid = target.id;
+                    new_ed.score = iexd.score;
+                    new_ed.typeq = iexd.typeq;
+                    new_ed.qid = iexd.qid;
+                    pp.context.AddToexerDetail(new_ed); 
+
+                      }
+
+                pp.context.SaveChanges(); 
+
+            }
 
 
 
@@ -290,6 +341,49 @@ namespace Exercise_form
 
 
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+            if (listBox1.SelectedIndex >= 0)
+            {
+
+                exerL yex = l1[listBox1.SelectedIndex];
+                if (textBox1.Text != "")
+                {
+                    yex.name = textBox1.Text;
+                    pp.context.UpdateObject(yex);                    
+                    pp.context.SaveChanges();                  
+                    updatalist();
+                    textBox1.Text="";
+                }
+                else
+                {
+                    MessageBox.Show("请文本框中输入新名称");
+                }      
+
+
+            }
+            else
+            {
+
+                MessageBox.Show("请选择私有练习");
+            }
+
+
+
+
+
+
+
+        }
+
+
+
+
+
+
+
 
 
 
