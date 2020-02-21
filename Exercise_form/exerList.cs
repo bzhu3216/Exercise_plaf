@@ -18,6 +18,7 @@ namespace Exercise_form
         param pp;
         List<V_tea_course> lcs = null;
         List<exerL> el = null;
+        List<View_detai_exerL> lved = null;
         int cid = -1;
         public exerList(param p)
         {
@@ -217,7 +218,17 @@ namespace Exercise_form
 
         }
 
+        /////////////////////////////////////////
+        private List<View_detai_exerL> searchpub(int courseid)
+        {
+            List<View_detai_exerL> tlved = null;
 
+
+
+
+
+            return tlved;
+        }
 
 
 
