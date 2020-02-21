@@ -69,6 +69,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Exercise_Summary";
             this.Text = "Exercise_Summary";
+            this.Load += new System.EventHandler(this.Exercise_Summary_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -77,7 +78,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        public System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button1;
     }
 }

@@ -16,5 +16,10 @@ namespace Exercise_form
         {
             InitializeComponent();
         }
+
+        private void Exercise_Summary_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -466,6 +466,37 @@ namespace Exercise_form
             }
         }
 
-       ///////endclass
+        private void button9_Click(object sender, EventArgs e)
+        {
+            Exercise_Summary mq = null;
+            if (listBox1.SelectedIndex >= 0)
+            {
+
+               
+
+            if (mq == null || mq.IsDisposed)
+                {
+                    mq = new Exercise_Summary();
+                    mq.textBox1.Text = EXtools.toSummary(l1[listBox1.SelectedIndex], lcs[comboBox1.SelectedIndex], pp);
+                    mq.ShowDialog();
+                    // mq.Show();
+                }
+                else
+                {
+                    mq.Activate();
+                    mq.WindowState = FormWindowState.Normal;
+                }
+            }
+            else
+            {
+
+                MessageBox.Show("请选择私有练习");
+            }
+            
+
+
+        }
+
+        ///////endclass
     }
     }

@@ -205,6 +205,7 @@
             this.button9.TabIndex = 18;
             this.button9.Text = "习题概况";
             this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // exerList
             // 
