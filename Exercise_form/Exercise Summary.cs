@@ -25,8 +25,14 @@ namespace Exercise_form
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {
-            
+        {  if (checkBox1.Checked) pp.keyneed = true;
+            EXtools tool = new EXtools();
+            tool.toword(pp);
+
+
+
+
+
         }
     }
 }

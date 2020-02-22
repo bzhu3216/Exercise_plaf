@@ -20,6 +20,8 @@ using System.Data;
 using Spire.Doc.Documents;
 using Spire.Doc.Fields;
 using Spire.Doc;
+using System.Drawing;
+
 namespace Exercise_form
 {
     class EXtools
@@ -466,7 +468,7 @@ namespace Exercise_form
                 st.AppendLine("选择题（" + numofquestion[0] + ")个     共（" + totalscoreofques[0] + ")分");
                 st.AppendLine("判断题（" + numofquestion[1] + ")个     共（" + totalscoreofques[1] + ")分");
                 st.AppendLine("填空题（" + numofquestion[2] + ")个     共（" + totalscoreofques[2] + ")分");
-                st.AppendLine("简单题（" + numofquestion[3] + ")个     共（" + totalscoreofques[3] + ")分");
+                st.AppendLine("简答题（" + numofquestion[3] + ")个     共（" + totalscoreofques[3] + ")分");
                 st.AppendLine("分析题（" + numofquestion[4] + ")个     共（" + totalscoreofques[4] + ")分");
                 //////////////////////////
                 st.AppendLine("_________________________________________________");
@@ -531,8 +533,9 @@ namespace Exercise_form
             exerL tel1 = pp.elword ;
             bool needkey = pp.keyneed;
             V_tea_course cc = pp.vdlword;
-
-
+            List<int> numofquestion = new List<int>(5);
+            for (int i = 0; i < 5; i++) numofquestion.Add(0);
+            
 
             List<exerDetail> led = null;
             var q11 = from o in pp.context.exerDetail
@@ -546,206 +549,233 @@ namespace Exercise_form
                 {
                     string localFilePath = saveFileDialog1.FileName.ToString();
                     dirsave = localFilePath;
-                   led = q11.ToList<exerDetail>();
-                       Spire.Doc.Document doc = new Document();
-                        Section s = doc.AddSection();
-                        led = q11.ToList<exerDetail>();
-                        foreach (exerDetail ed1 in led)
+                    led = q11.ToList<exerDetail>();
+                    Spire.Doc.Document doc = new Document();
+                    ParagraphStyle style1 = new ParagraphStyle(doc);
+                    style1.Name = "titleStyle";
+                    style1.CharacterFormat.Bold = true;
+                    style1.CharacterFormat.TextColor = Color.Purple;
+                    style1.CharacterFormat.FontName = "宋体";
+                    style1.CharacterFormat.FontSize = 24f;
+                    doc.Styles.Add(style1);
+                    Section s = doc.AddSection();
+                    Paragraph para2 = s.AddParagraph();
+                    para2.AppendText(tel1.name);
+                    para2.ApplyStyle("titleStyle");
+                    led = q11.ToList<exerDetail>();
+                    foreach (exerDetail ed1 in led)
+                    {
+                        if (ed1.typeq == 0)
                         {
-                            if (ed1.typeq == 0)
+
+                            var q12 = from o in pp.context.mchoiceQues
+                                      where o.id == ed1.qid
+                                      select o;
+                            mchoiceQues mcq = q12.First<mchoiceQues>();
+                            string keya = "";
+                            if (mcq.answ == 1) keya = "A";
+                            if (mcq.answ == 2) keya = "B";
+                            if (mcq.answ == 3) keya = "C";
+                            if (mcq.answ == 4) keya = "D";
+                            System.IO.MemoryStream mstream = new System.IO.MemoryStream(mcq.question, false);
+                            byte[] a = mstream.ToArray();
+                            // string sb = System.text.encoding.default.getstring(a);
+                            string sb = System.Text.Encoding.Default.GetString(a);
+                            var q13 = from o in pp.context.studAnsw
+                                      where o.did == ed1.id
+                                      select o;
+                            string keystr = "";
+                            DataObject myDataObject = new DataObject();
+                            if (needkey)
                             {
-                               
-                                var q12 = from o in pp.context.mchoiceQues
-                                          where o.id == ed1.qid
-                                          select o;
-                                mchoiceQues mcq = q12.First<mchoiceQues>();
-                                System.IO.MemoryStream mstream = new System.IO.MemoryStream(mcq.question, false);
-                            StringBuilder sb = new StringBuilder();
-                            sb.Append(mstream); 
-                          
-                                var q13 = from o in pp.context.studAnsw
-                                          where  o.did == ed1.id
-                                          select o;
-                               
-
-                                Paragraph para1 = s.AddParagraph();
-                                para1.AppendRTF(sb.ToString() );
-
-
+                                keystr = "答案(" + keya + ")题号(" + mcq.id + ")章节(" + mcq.con + ")目标(" + mcq.objective + ")\n";
+                                myDataObject.SetData(DataFormats.Rtf, keystr);
+                                myDataObject.GetData(DataFormats.Rtf);
                             }
-                            /*
-                            if (ed1.typeq == 1)
+                            Paragraph para1 = s.AddParagraph();
+                            if (numofquestion[0] == 0)
                             {
-                                this.richTextBox2.Rtf = null;
-                                var q12 = from o in pp.context.TFQues
-                                          where o.id == ed1.qid
-                                          select o;
-                                TFQues mcq = q12.First<TFQues>();
-                                System.IO.MemoryStream mstream = new System.IO.MemoryStream(mcq.question, false);
-                                richTextBox1.Text = "";
-                                this.richTextBox2.LoadFile(mstream, RichTextBoxStreamType.RichText);
-                                // this.richTextBox2.AppendText(richTextBox1.Rtf);
-                                //get student answervar
-
-
-                                var q13 = from o in pp.context.studAnsw
-                                          where o.stid == vst.stid && o.did == ed1.id
-                                          select o;
-
-                                studAnsw tsa = null;
-                                String key1 = "Question not being attemped"; ;
-                                if (q13.Count<studAnsw>() > 0)
-                                {
-                                    tsa = q13.First<studAnsw>();
-                                    if (tsa.answ2 == true) key1 = "True";
-                                    if (tsa.answ2 == false) key1 = "False";
-                                }
-                                this.richTextBox2.AppendText("\n(" + key1 + ")_____________________________\n");
-                                // this.richTextBox2.AppendText("\n_____________________________\n");
-                                // Section s = doc.AddSection();
-                                Paragraph para1 = s.AddParagraph();
-                                para1.AppendRTF(richTextBox2.Rtf);
-
+                                Paragraph para3 = s.AddParagraph();
+                                para3.AppendText("一.选择题");
                             }
-
-                            if (ed1.typeq == 2)
+                            numofquestion[0] = numofquestion[0] + 1;
+                            sb = numofquestion[0] + ". " + sb;
+                            para1.AppendRTF(sb);
+                            para1.AppendRTF(myDataObject.GetData(DataFormats.Rtf).ToString());
+                            TextSelection[] selections = doc.FindAllPattern(new System.Text.RegularExpressions.Regex("."));
+                            TextRange range = null;
+                            foreach (TextSelection selection in selections)
                             {
-
-
-
+                                range = selection.GetAsOneRange();
+                                Font ft = range.CharacterFormat.Font;
+                                Font newft = new Font(ft.SystemFontName, 10f, ft.Style);
+                                range.CharacterFormat.Font = newft;
                             }
-
-                            if (ed1.typeq == 3)
-                            {
-                                this.richTextBox2.Rtf = null;
-
-                                var q12 = from o in pp.context.SQues
-                                          where o.id == ed1.qid
-                                          select o;
-                                SQues mcq = q12.First<SQues>();
-                                System.IO.MemoryStream mstream = new System.IO.MemoryStream(mcq.question, false);
-                                this.richTextBox2.AppendText("\n_____________________________\n");
-                                this.richTextBox2.LoadFile(mstream, RichTextBoxStreamType.RichText);
-                                //this.richTextBox2.AppendText(richTextBox1.Rtf );
-                                //get student answervar
-                                var q13 = from o in pp.context.studAnsw
-                                          where o.stid == vst.stid && o.did == ed1.id
-                                          select o;
-                                if (q13.Count<studAnsw>() > 0)
-                                {
-                                    studAnsw tsa = q13.First<studAnsw>();
-                                    //  String key1 = null;
-                                    // System.IO.MemoryStream mstream2 = new System.IO.MemoryStream(tsa.answ3 , false);
-                                    //this.richTextBox1.LoadFile(mstream2, RichTextBoxStreamType.RichText);
-                                    Byte[] mybyte = tsa.answ3;
-                                    // MessageBox.Show(mybyte.Length.ToString());
-                                    System.IO.MemoryStream ms = null;
-                                    if (mybyte != null)
-                                        ms = new System.IO.MemoryStream(mybyte);
-                                    Image im = Image.FromStream(ms);
-                                    int w = im.Size.Width;
-                                    int h = im.Size.Height;
-                                    //Section s = doc.AddSection();
-                                    Paragraph para1 = s.AddParagraph();
-                                    para1.AppendRTF(richTextBox2.Rtf);
-                                    //  para1.AppendPicture(im); 
-                                    Paragraph para2 = s.AddParagraph();
-                                    DocPicture picture = para2.AppendPicture(im);
-                                    //设置图片大小         
-
-                                    if (w < 450)
-                                    {
-                                        picture.Width = w;
-                                        picture.Height = h;
-                                    }
-                                    else
-                                    {
-                                        picture.Width = 450;
-                                        picture.Height = h * 450 / w;
-                                        if (h * 450 / w > 450) picture.Height = 450;
-
-                                    }
-                                }
-                                else
-                                {
-                                    this.richTextBox2.AppendText("\n(" + "Question not being attemped" + ")");
-                                    this.richTextBox2.AppendText("\n_____________________________\n");
-                                    Paragraph para1 = s.AddParagraph();
-                                    para1.AppendRTF(richTextBox2.Rtf);
-
-                                }
-
-                            }
-                            //////////////////////////////////////end3
-                            if (ed1.typeq == 4)
-                            {
-                                this.richTextBox2.Rtf = null;
-
-                                var q12 = from o in pp.context.AQues
-                                          where o.id == ed1.qid
-                                          select o;
-                                AQues mcq = q12.First<AQues>();
-                                System.IO.MemoryStream mstream = new System.IO.MemoryStream(mcq.question, false);
-                                this.richTextBox2.AppendText("\n_____________________________\n");
-                                this.richTextBox2.LoadFile(mstream, RichTextBoxStreamType.RichText);
-                                //this.richTextBox2.AppendText(richTextBox1.Rtf );
-                                //get student answervar
-                                var q13 = from o in pp.context.studAnsw
-                                          where o.stid == vst.stid && o.did == ed1.id
-                                          select o;
-                                if (q13.Count<studAnsw>() > 0)
-                                {
-                                    studAnsw tsa = q13.First<studAnsw>();
-                                    //  String key1 = null;
-                                    // System.IO.MemoryStream mstream2 = new System.IO.MemoryStream(tsa.answ3 , false);
-                                    //this.richTextBox1.LoadFile(mstream2, RichTextBoxStreamType.RichText);
-                                    Byte[] mybyte = tsa.answ3;
-                                    // MessageBox.Show(mybyte.Length.ToString());
-                                    System.IO.MemoryStream ms = null;
-                                    if (mybyte != null)
-                                        ms = new System.IO.MemoryStream(mybyte);
-                                    Image im = Image.FromStream(ms);
-                                    int w = im.Size.Width;
-                                    int h = im.Size.Height;
-                                    //Section s = doc.AddSection();
-                                    Paragraph para1 = s.AddParagraph();
-                                    para1.AppendRTF(richTextBox2.Rtf);
-                                    //  para1.AppendPicture(im); 
-                                    Paragraph para2 = s.AddParagraph();
-                                    DocPicture picture = para2.AppendPicture(im);
-                                    //设置图片大小         
-
-                                    if (w < 450)
-                                    {
-                                        picture.Width = w;
-                                        picture.Height = h;
-                                    }
-                                    else
-                                    {
-                                        picture.Width = 450;
-                                        picture.Height = h * 450 / w;
-                                        if (h * 450 / w > 450) picture.Height = 450;
-
-                                    }
-                                }
-                                else
-                                {
-                                    this.richTextBox2.AppendText("\n(" + "Question not being attemped" + ")");
-                                    this.richTextBox2.AppendText("\n_____________________________\n");
-                                    Paragraph para1 = s.AddParagraph();
-                                    para1.AppendRTF(richTextBox2.Rtf);
-
-                                }
-
-                            }
-
-                            ////end4
 
                         }
-                        */
+                        if (ed1.typeq == 1)
+                        {
+                            var q12 = from o in pp.context.TFQues
+                                      where o.id == ed1.qid
+                                      select o;
+                            TFQues mcq = q12.First<TFQues>();
+                            string keya = "";
+                            if ((bool)mcq.answ) keya = "True";
+                            if (!(bool)mcq.answ) keya = "False";
+                            System.IO.MemoryStream mstream = new System.IO.MemoryStream(mcq.question, false);
+                            byte[] a = mstream.ToArray();
+                            string sb = System.Text.Encoding.Default.GetString(a);
+                            var q13 = from o in pp.context.studAnsw
+                                      where o.did == ed1.id
+                                      select o;
+                            string keystr = "";
+                            DataObject myDataObject = new DataObject();
+                            if (needkey)
+                            {
+                                keystr = "答案(" + keya + ")题号(" + mcq.id + ")章节(" + mcq.con + ")目标(" + mcq.objective + ")\n";
+                                myDataObject.SetData(DataFormats.Rtf, keystr);
+                                myDataObject.GetData(DataFormats.Rtf);
+                            }
+                            Paragraph para1 = s.AddParagraph();
+                            if (numofquestion[1] == 0)
+                            {
+                                Paragraph para3 = s.AddParagraph();
+                                para3.AppendText("二.判断题");
+                            }
+                            numofquestion[1] = numofquestion[1] + 1;
+                            sb = numofquestion[1] + ". " + sb;
+                            para1.AppendRTF(sb);
+                            para1.AppendRTF(myDataObject.GetData(DataFormats.Rtf).ToString());
+                            TextSelection[] selections = doc.FindAllPattern(new System.Text.RegularExpressions.Regex("."));
+                            TextRange range = null;
+                            foreach (TextSelection selection in selections)
+                            {
+                                range = selection.GetAsOneRange();
+                                Font ft = range.CharacterFormat.Font;
+                                Font newft = new Font(ft.SystemFontName, 10f, ft.Style);
+                                range.CharacterFormat.Font = newft;
+                            }
+
+                        }
+
+                        if (ed1.typeq == 2)
+                        {
+
+
+
+                        }
+
+                        if (ed1.typeq == 3)
+                        {
+                            var q12 = from o in pp.context.SQues
+                                      where o.id == ed1.qid
+                                      select o;
+                            SQues mcq = q12.First<SQues>();
+                            string keya = "";
+
+                            System.IO.MemoryStream mstream = new System.IO.MemoryStream(mcq.question, false);
+                            byte[] a = mstream.ToArray();
+                            string sb = System.Text.Encoding.Default.GetString(a);
+                            System.IO.MemoryStream mstream2 = new System.IO.MemoryStream(mcq.answ, false);
+                            byte[] b = mstream2.ToArray();
+                            keya = System.Text.Encoding.Default.GetString(b);
+                            var q13 = from o in pp.context.studAnsw
+                                      where o.did == ed1.id
+                                      select o;
+                            string keystr = "";
+                            DataObject myDataObject = new DataObject();
+                            if (needkey)
+                            {
+                                keystr = "题号(" + mcq.id + ")章节(" + mcq.con + ")目标(" + mcq.objective + ")\n";
+                                myDataObject.SetData(DataFormats.Rtf, keystr);
+                                myDataObject.GetData(DataFormats.Rtf);
+                            }
+                            Paragraph para1 = s.AddParagraph();
+                            if (numofquestion[3] == 0)
+                            {
+                                Paragraph para3 = s.AddParagraph();
+                                para3.AppendText("三.简答题");
+                            }
+                            numofquestion[3] = numofquestion[3] + 1;
+                            sb = numofquestion[3] + ". " + sb;
+                            para1.AppendRTF(sb);
+                            if (needkey)
+                            {
+                                para1.AppendRTF(keya);
+                                para1.AppendRTF(myDataObject.GetData(DataFormats.Rtf).ToString());
+                            }
+                            TextSelection[] selections = doc.FindAllPattern(new System.Text.RegularExpressions.Regex("."));
+                            TextRange range = null;
+                            foreach (TextSelection selection in selections)
+                            {
+                                range = selection.GetAsOneRange();
+                                Font ft = range.CharacterFormat.Font;
+                                Font newft = new Font(ft.SystemFontName, 10f, ft.Style);
+                                range.CharacterFormat.Font = newft;
+                            }
+
+                        }
+                        //////////////////////////////////////end3
+
+                        if (ed1.typeq == 4)
+                        {
+                            var q12 = from o in pp.context.AQues
+                                      where o.id == ed1.qid
+                                      select o;
+                            AQues mcq = q12.First<AQues>();
+                            string keya = "";
+
+                            System.IO.MemoryStream mstream = new System.IO.MemoryStream(mcq.question, false);
+                            byte[] a = mstream.ToArray();
+                            string sb = System.Text.Encoding.Default.GetString(a);
+                            System.IO.MemoryStream mstream2 = new System.IO.MemoryStream(mcq.answ, false);
+                            byte[] b = mstream2.ToArray();
+                            keya = System.Text.Encoding.Default.GetString(b);
+                            var q13 = from o in pp.context.studAnsw
+                                      where o.did == ed1.id
+                                      select o;
+                            string keystr = "";
+                            DataObject myDataObject = new DataObject();
+                            if (needkey)
+                            {
+                                keystr = "题号(" + mcq.id + ")章节(" + mcq.con + ")目标(" + mcq.objective + ")\n";
+                                myDataObject.SetData(DataFormats.Rtf, keystr);
+                                myDataObject.GetData(DataFormats.Rtf);
+                            }
+                            Paragraph para1 = s.AddParagraph();
+                            if (numofquestion[4] == 0)
+                            {
+                                Paragraph para3 = s.AddParagraph();
+                                para3.AppendText("三.简答题");
+                            }
+                            numofquestion[4] = numofquestion[4] + 1;
+                            sb = numofquestion[4] + ". " + sb;
+                            para1.AppendRTF(sb);
+                            if (needkey)
+                            {
+                                para1.AppendRTF(keya);
+                                para1.AppendRTF(myDataObject.GetData(DataFormats.Rtf).ToString());
+                            }
+                            TextSelection[] selections = doc.FindAllPattern(new System.Text.RegularExpressions.Regex("."));
+                            TextRange range = null;
+                            foreach (TextSelection selection in selections)
+                            {
+                                range = selection.GetAsOneRange();
+                                Font ft = range.CharacterFormat.Font;
+                                Font newft = new Font(ft.SystemFontName, 10f, ft.Style);
+                                range.CharacterFormat.Font = newft;
+                            }
+
+
+                        }
+               
+                       ////end4
+
+                   
+                  
                         //////////////////savedoc//////////////////////
 
-                     
+
                         // richTextBox2.SaveFile(saveFileDialog1.FileName);
                         try
                         {
