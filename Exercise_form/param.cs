@@ -13,7 +13,10 @@ namespace Exercise_form
         public teacherinfo teacher=new teacherinfo();
         public List<V_tea_course> ltea_c = null;
         public int exerl1 = -1;
-       
+        public V_tea_course  vdlword = null;//用户生成word参数传递
+        public exerL elword = null;//用户生成word参数传递
+        public bool keyneed = false;
+
         public param()
         {
             context = new db_exerciseEntities(svcUri);

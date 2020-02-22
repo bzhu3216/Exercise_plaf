@@ -12,14 +12,21 @@ namespace Exercise_form
 {
     public partial class Exercise_Summary : Form
     {
-        public Exercise_Summary()
+        param pp;
+        public Exercise_Summary(param p)
         {
             InitializeComponent();
+            pp = p;
         }
 
         private void Exercise_Summary_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

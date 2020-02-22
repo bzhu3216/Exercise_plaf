@@ -476,7 +476,11 @@ namespace Exercise_form
 
             if (mq == null || mq.IsDisposed)
                 {
-                    mq = new Exercise_Summary();
+                    pp.vdlword = null;
+                    pp.elword = null;
+                    pp.elword = l1[listBox1.SelectedIndex];
+                    pp.vdlword = lcs[comboBox1.SelectedIndex];
+                    mq = new Exercise_Summary(pp);
                     mq.textBox1.Text = EXtools.toSummary(l1[listBox1.SelectedIndex], lcs[comboBox1.SelectedIndex], pp);
                     mq.ShowDialog();
                     // mq.Show();

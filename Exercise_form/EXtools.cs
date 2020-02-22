@@ -19,12 +19,12 @@ using Exercise_form.ServiceReference1;
 using System.Data;
 using Spire.Doc.Documents;
 using Spire.Doc.Fields;
-
+using Spire.Doc;
 namespace Exercise_form
 {
     class EXtools
     {
-
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1 = new SaveFileDialog();
 
         ///////////////start score
 
@@ -518,21 +518,22 @@ namespace Exercise_form
 
         ///exerl to word
         ///
-        public static void toword(exerL tel)
-        {/*
+        public  void toword(param p)
+        {
+            param pp = null;
+            pp = p;
 
 
             saveFileDialog1.DefaultExt = ".docx";
             saveFileDialog1.Filter = "Word file|*.docx";
             String dirsave = null;
-            List<View_student> tlvst = null;
-            exerL tel1 = tel;
+         
+            exerL tel1 = pp.elword ;
+            bool needkey = pp.keyneed;
+            V_tea_course cc = pp.vdlword;
 
-            var q5 = from o in pp.context.View_student
-                     where o.cid == tci.classid
-                     select o;
 
-            if (q5.Count<View_student>() > 0) tlvst = q5.ToList<View_student>();
+
             List<exerDetail> led = null;
             var q11 = from o in pp.context.exerDetail
                       where o.lid == tel1.id
@@ -544,50 +545,35 @@ namespace Exercise_form
                 if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
                     string localFilePath = saveFileDialog1.FileName.ToString();
-                    dirsave = localFilePath.Substring(0, localFilePath.LastIndexOf("\\"));
-
-                    foreach (View_student vst in tlvst)
-                    {
-
-                        richTextBox1.Text = "";
-                        this.richTextBox2.Text = "";
-                        led = q11.ToList<exerDetail>();
-                        Document doc = new Document();
+                    dirsave = localFilePath;
+                   led = q11.ToList<exerDetail>();
+                       Spire.Doc.Document doc = new Document();
                         Section s = doc.AddSection();
                         led = q11.ToList<exerDetail>();
                         foreach (exerDetail ed1 in led)
                         {
                             if (ed1.typeq == 0)
                             {
-                                this.richTextBox2.Rtf = null;
+                               
                                 var q12 = from o in pp.context.mchoiceQues
                                           where o.id == ed1.qid
                                           select o;
                                 mchoiceQues mcq = q12.First<mchoiceQues>();
                                 System.IO.MemoryStream mstream = new System.IO.MemoryStream(mcq.question, false);
-                                richTextBox1.Text = "";
-                                this.richTextBox2.LoadFile(mstream, RichTextBoxStreamType.RichText);
+                            StringBuilder sb = new StringBuilder();
+                            sb.Append(mstream); 
+                          
                                 var q13 = from o in pp.context.studAnsw
-                                          where o.stid == vst.stid && o.did == ed1.id
+                                          where  o.did == ed1.id
                                           select o;
-                                studAnsw tsa = null;
-                                String key1 = "Question not being attemped"; ;
-                                if (q13.Count<studAnsw>() > 0)
-                                {
-                                    tsa = q13.First<studAnsw>();
-                                    if (tsa.answ1 == 0) key1 = "A";
-                                    if (tsa.answ1 == 1) key1 = "B";
-                                    if (tsa.answ1 == 2) key1 = "C";
-                                    if (tsa.answ1 == 3) key1 = "D";
-                                }
-                                this.richTextBox2.AppendText("\n(" + key1 + ")_____________________________\n");
-                                // this.richTextBox2.AppendText("_____________________________\n");
+                               
 
                                 Paragraph para1 = s.AddParagraph();
-                                para1.AppendRTF(richTextBox2.Rtf);
+                                para1.AppendRTF(sb.ToString() );
 
 
                             }
+                            /*
                             if (ed1.typeq == 1)
                             {
                                 this.richTextBox2.Rtf = null;
@@ -756,17 +742,15 @@ namespace Exercise_form
                             ////end4
 
                         }
-
+                        */
                         //////////////////savedoc//////////////////////
 
-                        String stsavepath = null;
-                        stsavepath = dirsave + @"/" + vst.stid + vst.stname + ".docx";
-
+                     
                         // richTextBox2.SaveFile(saveFileDialog1.FileName);
                         try
                         {
 
-                            doc.SaveToFile(stsavepath, FileFormat.Docx2013);
+                            doc.SaveToFile(dirsave, Spire.Doc.FileFormat.Docx2013);
                         }
                         catch (Exception Err)
                         {
@@ -783,7 +767,7 @@ namespace Exercise_form
                 }
             }
 
-*/
+
         }
 
         
