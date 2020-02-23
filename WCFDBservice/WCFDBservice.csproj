@@ -141,6 +141,9 @@
     <Compile Include="Course.cs">
       <DependentUpon>questions.tt</DependentUpon>
     </Compile>
+    <Compile Include="eQues.cs">
+      <DependentUpon>questions.tt</DependentUpon>
+    </Compile>
     <Compile Include="exerDetail.cs">
       <DependentUpon>questions.tt</DependentUpon>
     </Compile>

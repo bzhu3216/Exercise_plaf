@@ -137,6 +137,12 @@
     <Compile Include="addA.Designer.cs">
       <DependentUpon>addA.cs</DependentUpon>
     </Compile>
+    <Compile Include="adde.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="adde.Designer.cs">
+      <DependentUpon>adde.cs</DependentUpon>
+    </Compile>
     <Compile Include="addexeritem.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -300,6 +306,9 @@
     </Compile>
     <EmbeddedResource Include="addA.resx">
       <DependentUpon>addA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="adde.resx">
+      <DependentUpon>adde.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="addexeritem.resx">
       <DependentUpon>addexeritem.cs</DependentUpon>

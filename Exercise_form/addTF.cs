@@ -77,44 +77,49 @@ namespace Exercise_form
             // try
             // {
             // Instantiate the DataServiceContext.
-
-
-            TFQues mcq = new TFQues();
-            Boolean tf;
-            if (comboBox4.Text == "T")
-                tf = true;
-            else
-                tf = false;
-            mcq.answ = tf;
-            mcq.con = Convert.ToInt16(comboBox2.Text);
-            mcq.diff = Convert.ToInt16(comboBox3.Text);
-            mcq.objective = Convert.ToInt16(comboBox1.Text);
-            mcq.courseid = cid;
-            mcq.teacherid = pp.teacher.teacherid;
-            ////////////write richtext
-
-            System.IO.MemoryStream mstream = new System.IO.MemoryStream();
-            this.rquestion.SaveFile(mstream, RichTextBoxStreamType.RichText);
-            //将流转换成数组
-            //  byte[] bWrite = mstream.ToArray();
-            mcq.question = mstream.ToArray();
-
-            if (comboBox5.Text != "")
+            if (checkem())
             {
-                context.AddToTFQues(mcq);
-                //////end write richtext
 
-                context.SaveChanges();
-                rquestion.Text = "";
-                comboBox4.Text = "";
+                TFQues mcq = new TFQues();
+                Boolean tf;
+                if (comboBox4.Text == "T")
+                    tf = true;
+                else
+                    tf = false;
+                mcq.answ = tf;
+                mcq.con = Convert.ToInt16(comboBox2.Text);
+                mcq.diff = Convert.ToInt16(comboBox3.Text);
+                mcq.objective = Convert.ToInt16(comboBox1.Text);
+                mcq.courseid = cid;
+                mcq.teacherid = pp.teacher.teacherid;
+                ////////////write richtext
+
+                System.IO.MemoryStream mstream = new System.IO.MemoryStream();
+                this.rquestion.SaveFile(mstream, RichTextBoxStreamType.RichText);
+                //将流转换成数组
+                //  byte[] bWrite = mstream.ToArray();
+                mcq.question = mstream.ToArray();
+
+                if (comboBox5.Text != "")
+                {
+                    context.AddToTFQues(mcq);
+                    //////end write richtext
+
+                    context.SaveChanges();
+                    rquestion.Text = "";
+                    comboBox4.Text = "";
+                }
+                // Make the DataServiceCollection<T> the binding source for the Grid.
+                //  }
+                //  catch (Exception ex)
+                // {
+                //     MessageBox.Show(ex.ToString());
+                // }
             }
-            // Make the DataServiceCollection<T> the binding source for the Grid.
-            //  }
-            //  catch (Exception ex)
-            // {
-            //     MessageBox.Show(ex.ToString());
-            // }
-
+            else
+            {
+                MessageBox.Show("请把数据填完整");
+            }
 
 
 
@@ -122,5 +127,18 @@ namespace Exercise_form
 
             //////end
         }
+
+        private bool checkem()
+        {
+            bool vv = true;
+            if (comboBox1.Text == "") vv = false;
+            if (comboBox2.Text == "") vv = false;
+            if (comboBox3.Text == "") vv = false;
+            if (comboBox4.Text == "") vv = false;
+            if (comboBox2.Text == "") vv = false;
+            return vv;
+        }
+
+
     }
 }

@@ -62,6 +62,22 @@
           <Property Name="numcontent" Type="int" Nullable="false" />
           <Property Name="diff" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="eQues">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="teacherid" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="courseid" Type="int" Nullable="false" />
+          <Property Name="con" Type="int" Nullable="false" />
+          <Property Name="objective" Type="int" Nullable="false" />
+          <Property Name="diff" Type="int" Nullable="false" />
+          <Property Name="usenum" Type="int" />
+          <Property Name="errornum" Type="int" />
+          <Property Name="answ" Type="varchar(max)" Nullable="false" />
+          <Property Name="question" Type="varbinary(max)" />
+          <Property Name="emnum" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="exerDetail">
           <Key>
             <PropertyRef Name="id" />
@@ -243,6 +259,7 @@
           <EntitySet Name="classExer" EntityType="Self.classExer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="classinfo" EntityType="Self.classinfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="eQues" EntityType="Self.eQues" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="exerDetail" EntityType="Self.exerDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="exerL" EntityType="Self.exerL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="mchoiceQues" EntityType="Self.mchoiceQues" Schema="dbo" store:Type="Tables" />
@@ -319,6 +336,7 @@ FROM [dbo].[View_student] AS [View_student]</DefiningQuery>
           <EntitySet Name="View_detai_exerL" EntityType="db_exerciseModel.View_detai_exerL" />
           <EntitySet Name="View_student" EntityType="db_exerciseModel.View_student" />
           <EntitySet Name="V_tea_course" EntityType="db_exerciseModel.V_tea_course" />
+          <EntitySet Name="eQues" EntityType="db_exerciseModel.eQues" />
         </EntityContainer>
         <EntityType Name="mchoiceQues">
           <Key>
@@ -548,6 +566,22 @@ FROM [dbo].[View_student] AS [View_student]</DefiningQuery>
           <Property Name="diff" Type="Int32" Nullable="false" />
           <Property Name="relid" Type="Int32" Nullable="false" />
         </EntityType>
+        <EntityType Name="eQues">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="teacherid" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="true" />
+          <Property Name="courseid" Type="Int32" Nullable="false" />
+          <Property Name="con" Type="Int32" Nullable="false" />
+          <Property Name="objective" Type="Int32" Nullable="false" />
+          <Property Name="diff" Type="Int32" Nullable="false" />
+          <Property Name="usenum" Type="Int32" />
+          <Property Name="errornum" Type="Int32" />
+          <Property Name="answ" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="question" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="emnum" Type="Int32" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -763,6 +797,23 @@ FROM [dbo].[View_student] AS [View_student]</DefiningQuery>
                 <ScalarProperty Name="pd" ColumnName="pd" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="teacherid" ColumnName="teacherid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="eQues">
+            <EntityTypeMapping TypeName="db_exerciseModel.eQues">
+              <MappingFragment StoreEntitySet="eQues">
+                <ScalarProperty Name="emnum" ColumnName="emnum" />
+                <ScalarProperty Name="question" ColumnName="question" />
+                <ScalarProperty Name="answ" ColumnName="answ" />
+                <ScalarProperty Name="errornum" ColumnName="errornum" />
+                <ScalarProperty Name="usenum" ColumnName="usenum" />
+                <ScalarProperty Name="diff" ColumnName="diff" />
+                <ScalarProperty Name="objective" ColumnName="objective" />
+                <ScalarProperty Name="con" ColumnName="con" />
+                <ScalarProperty Name="courseid" ColumnName="courseid" />
+                <ScalarProperty Name="teacherid" ColumnName="teacherid" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

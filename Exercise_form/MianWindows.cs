@@ -304,5 +304,26 @@ namespace Exercise_form
 
 
         }
+
+        private void 填空题ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            adde mq = null;
+            if (mq == null || mq.IsDisposed)
+            {
+                mq = new adde(pp);
+                // mq.MdiParent = this;
+                mq.Show();
+            }
+            else
+            {
+                mq.Activate();
+                mq.WindowState = FormWindowState.Normal;
+            }
+
+
+
+
+        }
     }
 }

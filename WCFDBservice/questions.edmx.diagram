@@ -23,6 +23,7 @@
         <EntityTypeShape EntityType="db_exerciseModel.View_detai_exerL" Width="1.5" PointX="10.75" PointY="0.75" />
         <EntityTypeShape EntityType="db_exerciseModel.View_student" Width="1.5" PointX="12.25" PointY="8.625" />
         <EntityTypeShape EntityType="db_exerciseModel.V_tea_course" Width="1.5" PointX="0.75" PointY="11.75" />
+        <EntityTypeShape EntityType="db_exerciseModel.eQues" Width="1.5" PointX="5.375" PointY="11.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

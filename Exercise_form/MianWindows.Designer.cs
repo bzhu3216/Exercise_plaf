@@ -140,34 +140,35 @@
             // 选择题ToolStripMenuItem
             // 
             this.选择题ToolStripMenuItem.Name = "选择题ToolStripMenuItem";
-            this.选择题ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.选择题ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.选择题ToolStripMenuItem.Text = "选择题";
             this.选择题ToolStripMenuItem.Click += new System.EventHandler(this.选择题ToolStripMenuItem_Click);
             // 
             // 填空题ToolStripMenuItem
             // 
             this.填空题ToolStripMenuItem.Name = "填空题ToolStripMenuItem";
-            this.填空题ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.填空题ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.填空题ToolStripMenuItem.Text = "填空题";
+            this.填空题ToolStripMenuItem.Click += new System.EventHandler(this.填空题ToolStripMenuItem_Click);
             // 
             // 判断题ToolStripMenuItem
             // 
             this.判断题ToolStripMenuItem.Name = "判断题ToolStripMenuItem";
-            this.判断题ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.判断题ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.判断题ToolStripMenuItem.Text = "判断题";
             this.判断题ToolStripMenuItem.Click += new System.EventHandler(this.判断题ToolStripMenuItem_Click);
             // 
             // 简单题ToolStripMenuItem
             // 
             this.简单题ToolStripMenuItem.Name = "简单题ToolStripMenuItem";
-            this.简单题ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.简单题ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.简单题ToolStripMenuItem.Text = "简答题";
             this.简单题ToolStripMenuItem.Click += new System.EventHandler(this.简单题ToolStripMenuItem_Click);
             // 
             // 分析题ToolStripMenuItem
             // 
             this.分析题ToolStripMenuItem.Name = "分析题ToolStripMenuItem";
-            this.分析题ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.分析题ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.分析题ToolStripMenuItem.Text = "分析题";
             this.分析题ToolStripMenuItem.Click += new System.EventHandler(this.分析题ToolStripMenuItem_Click);
             // 
@@ -186,35 +187,35 @@
             // 选择题ToolStripMenuItem1
             // 
             this.选择题ToolStripMenuItem1.Name = "选择题ToolStripMenuItem1";
-            this.选择题ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.选择题ToolStripMenuItem1.Size = new System.Drawing.Size(112, 22);
             this.选择题ToolStripMenuItem1.Text = "选择题";
             this.选择题ToolStripMenuItem1.Click += new System.EventHandler(this.选择题ToolStripMenuItem1_Click);
             // 
             // 填空题ToolStripMenuItem1
             // 
             this.填空题ToolStripMenuItem1.Name = "填空题ToolStripMenuItem1";
-            this.填空题ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.填空题ToolStripMenuItem1.Size = new System.Drawing.Size(112, 22);
             this.填空题ToolStripMenuItem1.Text = "填空题";
             this.填空题ToolStripMenuItem1.Click += new System.EventHandler(this.填空题ToolStripMenuItem1_Click);
             // 
             // 判断题ToolStripMenuItem1
             // 
             this.判断题ToolStripMenuItem1.Name = "判断题ToolStripMenuItem1";
-            this.判断题ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.判断题ToolStripMenuItem1.Size = new System.Drawing.Size(112, 22);
             this.判断题ToolStripMenuItem1.Text = "判断题";
             this.判断题ToolStripMenuItem1.Click += new System.EventHandler(this.判断题ToolStripMenuItem1_Click);
             // 
             // 简单题ToolStripMenuItem1
             // 
             this.简单题ToolStripMenuItem1.Name = "简单题ToolStripMenuItem1";
-            this.简单题ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.简单题ToolStripMenuItem1.Size = new System.Drawing.Size(112, 22);
             this.简单题ToolStripMenuItem1.Text = "简答题";
             this.简单题ToolStripMenuItem1.Click += new System.EventHandler(this.简单题ToolStripMenuItem1_Click);
             // 
             // 分析题ToolStripMenuItem1
             // 
             this.分析题ToolStripMenuItem1.Name = "分析题ToolStripMenuItem1";
-            this.分析题ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.分析题ToolStripMenuItem1.Size = new System.Drawing.Size(112, 22);
             this.分析题ToolStripMenuItem1.Text = "分析题";
             this.分析题ToolStripMenuItem1.Click += new System.EventHandler(this.分析题ToolStripMenuItem1_Click);
             // 
