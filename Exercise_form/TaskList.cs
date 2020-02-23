@@ -763,6 +763,7 @@ namespace Exercise_form
 
         private void listBox1_Click(object sender, EventArgs e)
         {
+            if (sel1 >= 0) {
             sel2 = -1;
             dataGridView1.DataSource = null;
             dataGridView1.Rows.Clear();
@@ -771,7 +772,7 @@ namespace Exercise_form
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.DataSource = ler;
             pp.updataccid = (int)lclinfo[sel1].courseid;
-
+            }
 
         }
 
