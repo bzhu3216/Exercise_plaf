@@ -16,6 +16,7 @@ namespace Exercise_form
         public V_tea_course  vdlword = null;//用户生成word参数传递
         public exerL elword = null;//用户生成word参数传递
         public bool keyneed = false;
+        public int updataccid=-1;
 
         public param()
         {

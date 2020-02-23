@@ -111,6 +111,7 @@ namespace Exercise_form
             //    dt.Rows.Clear();
             //     dataGridView1.DataSource = dt;
             //  }
+            /*
             sel2 = -1;
             dataGridView1.DataSource = null;
             dataGridView1.Rows.Clear();
@@ -118,12 +119,14 @@ namespace Exercise_form
             tlel(lclinfo[sel1]);
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.DataSource = ler;
-          
+            pp.updataccid =(int) lclinfo[sel1].courseid;
+
+    */
 
 
 
 
-          
+
 
 
 
@@ -754,6 +757,20 @@ namespace Exercise_form
                 }
 
             }
+
+
+        }
+
+        private void listBox1_Click(object sender, EventArgs e)
+        {
+            sel2 = -1;
+            dataGridView1.DataSource = null;
+            dataGridView1.Rows.Clear();
+            sel1 = listBox1.SelectedIndex;
+            tlel(lclinfo[sel1]);
+            dataGridView1.AutoGenerateColumns = false;
+            dataGridView1.DataSource = ler;
+            pp.updataccid = (int)lclinfo[sel1].courseid;
 
 
         }

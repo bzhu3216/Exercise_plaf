@@ -206,7 +206,7 @@ namespace Exercise_form
 
                                 dgvr.Cells.Add(c.CellTemplate.Clone() as DataGridViewCell);
                             }
-                            dgvr.Cells[0].Value = stA.did;
+                            dgvr.Cells[0].Value = vel.qid ;
                             String an = "";
                             if (stA.answ1 == 0) an = "A";
                             if (stA.answ1 == 1) an = "B";
@@ -228,7 +228,7 @@ namespace Exercise_form
 
                                 dgvr.Cells.Add(c.CellTemplate.Clone() as DataGridViewCell);
                             }
-                            dgvr.Cells[0].Value = vel.Expr1;
+                            dgvr.Cells[0].Value = vel.qid;
                             dgvr.Cells[1].Value = null;
                             dgvr.Cells[2].Value = 0;
                             this.dataGridView1.Rows.Add(dgvr);
@@ -265,7 +265,7 @@ namespace Exercise_form
 
                                 dgvr.Cells.Add(c.CellTemplate.Clone() as DataGridViewCell);
                             }
-                            dgvr.Cells[0].Value = stA.did;
+                            dgvr.Cells[0].Value = vel.qid;
                             dgvr.Cells[1].Value = stA.answ2;
                             dgvr.Cells[2].Value = stA.mark;
                             this.dataGridView1.Rows.Add(dgvr);
@@ -282,7 +282,7 @@ namespace Exercise_form
 
                                 dgvr.Cells.Add(c.CellTemplate.Clone() as DataGridViewCell);
                             }
-                            dgvr.Cells[0].Value = vel.Expr1;
+                            dgvr.Cells[0].Value = vel.qid;
                             dgvr.Cells[1].Value = null;
                             dgvr.Cells[2].Value = 0;
                             this.dataGridView1.Rows.Add(dgvr);
@@ -333,7 +333,7 @@ namespace Exercise_form
                             {
                                 dc.Items.Add(i.ToString());
                             }
-                            dgvr.Cells[0].Value = stA.did;
+                            dgvr.Cells[0].Value = vel.qid;
                             //  dgvr.Cells[1].Value = stA.answ2;
                             //  dgvr.Cells[2].Value = stA.mark;
                             System.IO.MemoryStream ms = null;
@@ -375,7 +375,7 @@ namespace Exercise_form
                             {
                                 dc.Items.Add(i.ToString());
                             }
-                            dgvr.Cells[0].Value = vel.Expr1;
+                            dgvr.Cells[0].Value = vel.qid;
                             //  dgvr.Cells[3].Value = null;
                            // ((System.Windows.Forms.DataGridViewComboBoxColumn)dataGridView1.Columns[4]).Items.Clear();
                            // List<int>  a = new List<int>();
@@ -437,7 +437,7 @@ namespace Exercise_form
                             {
                                 dc.Items.Add(i.ToString());
                             }
-                            dgvr.Cells[0].Value = stA.did;
+                            dgvr.Cells[0].Value = vel.qid;
                             //  dgvr.Cells[1].Value = stA.answ2;
                             //  dgvr.Cells[2].Value = stA.mark;
                             System.IO.MemoryStream ms = null;
@@ -479,7 +479,7 @@ namespace Exercise_form
                             {
                                 dc.Items.Add(i.ToString());
                             }
-                            dgvr.Cells[0].Value = vel.Expr1;
+                            dgvr.Cells[0].Value = vel.qid;
                             //  dgvr.Cells[3].Value = null;
                            // 
                             // List<int>  a = new List<int>();
@@ -735,27 +735,6 @@ namespace Exercise_form
             ///////////////////////////////////////////////updata form show
 
 
-            if (e.ColumnIndex == 1)
-            {
-                if (listBox1.SelectedIndex == 0)
-                {
-
-
-
-
-
-                }
-
-
-
-
-
-
-
-
-            }
-
-
 
 
 
@@ -794,6 +773,94 @@ namespace Exercise_form
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            if (e.ColumnIndex == 0)
+            {
+                if (listBox1.SelectedIndex == 0)
+                {
+
+                    UPmq mq = null;
+                    if (mq == null || mq.IsDisposed)
+                    {
+                        // pp.showupcc  = 0;
+                        mq = new UPmq(pp, int.Parse(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString()));
+                        // mq.MdiParent = this;
+                        mq.Show();
+                    }
+                    else
+                    {
+                        mq.Activate();
+                        mq.WindowState = FormWindowState.Normal;
+                    }
+                }
+
+                //////////////////////////////////////////
+
+                if (listBox1.SelectedIndex == 1)
+                {
+
+                    UPTF mq = null;
+                    if (mq == null || mq.IsDisposed)
+                    {
+                        // pp.showupcc  = 0;
+                        mq = new UPTF(pp, int.Parse(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString()));
+                        // mq.MdiParent = this;
+                        mq.Show();
+                    }
+                    else
+                    {
+                        mq.Activate();
+                        mq.WindowState = FormWindowState.Normal;
+                    }
+                }
+                ///////////////////////////////////////////////////
+
+                if (listBox1.SelectedIndex == 3)
+                {
+
+                    UPS mq = null;
+                    if (mq == null || mq.IsDisposed)
+                    {
+                        // pp.showupcc  = 0;
+                        mq = new UPS(pp, int.Parse(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString()));
+                        // mq.MdiParent = this;
+                        mq.Show();
+                    }
+                    else
+                    {
+                        mq.Activate();
+                        mq.WindowState = FormWindowState.Normal;
+                    }
+                }
+                ///////////////////////////////////////////////////
+
+                if (listBox1.SelectedIndex == 4)
+                {
+
+                    UPA mq = null;
+                    if (mq == null || mq.IsDisposed)
+                    {
+                        // pp.showupcc  = 0;
+                        mq = new UPA(pp, int.Parse(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString()));
+                        // mq.MdiParent = this;
+                        mq.Show();
+                    }
+                    else
+                    {
+                        mq.Activate();
+                        mq.WindowState = FormWindowState.Normal;
+                    }
+                }
+
+
+
+            }//end col
+
 
         }
 

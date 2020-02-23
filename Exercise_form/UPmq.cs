@@ -21,30 +21,46 @@ namespace Exercise_form
         List<mchoiceQues> lmq = null;
 
 
-        public UPmq(param p,int qid)
+        public UPmq(param p,int qqid)
         {
             InitializeComponent();
             pp = p;
             lvtc = pp.ltea_c;
+            qid = qqid;
 
         }
 
         private void UPmq_Load(object sender, EventArgs e)
         {
-
+           
             comboBox1.DataSource = lvtc;
             comboBox1.ValueMember = "CourseName";
             comboBox1.Text = "";
             comboBox2.Items.Clear();
             comboBox3.Items.Clear();
             comboBox4.Items.Clear();
-            if (qid != -1 && !(pp.teacher.teacherid.Equals("1536")))
+
+            if (qid != -1)
             {
                 button1.Enabled = false;
                 button2.Enabled = false;
                 button3.Enabled = false;
+                textBox1.Text = qid.ToString();
+                int countvc = lvtc.Count;
+
+                for (int kk = 0; kk < countvc; kk++)
+                {
+
+                    if (lvtc[kk].couseid == pp.updataccid) { comboBox1.SelectedIndex = kk; comboBox1.Text = lvtc[kk].CourseName ; }
+                }
+
+                pageNum = 0;
+                display(0, true);
+
             }
-          //  loadcom();
+
+
+            //  loadcom();
 
 
         }

@@ -26,6 +26,9 @@ namespace Exercise_form
             pp = p;
             lvtc = pp.ltea_c;
 
+            this.qid = qid;
+      
+
         }
 
         private void UPTF_Load(object sender, EventArgs e)
@@ -37,13 +40,25 @@ namespace Exercise_form
             comboBox2.Items.Clear();
             comboBox3.Items.Clear();
             comboBox4.Items.Clear();
-            if (qid != -1 && !(pp.teacher.teacherid.Equals("1536")))
+            if (qid != -1)
             {
                 button1.Enabled = false;
                 button2.Enabled = false;
                 button3.Enabled = false;
+                textBox1.Text = qid.ToString();
+                int countvc = lvtc.Count;
+
+                for (int kk = 0; kk < countvc; kk++)
+                {
+
+                    if (lvtc[kk].couseid == pp.updataccid) { comboBox1.SelectedIndex = kk; comboBox1.Text = lvtc[kk].CourseName; }
+                }
+
+                pageNum = 0;
+                display(1, true);
+
             }
-          //  loadcom();
+            //  loadcom();
 
 
         }
