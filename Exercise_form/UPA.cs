@@ -275,6 +275,10 @@ namespace Exercise_form
             this.richTextBox2.LoadFile(mstream, RichTextBoxStreamType.RichText);
             System.IO.MemoryStream mstream2 = new System.IO.MemoryStream(ctf.answ , false);
             this.richTextBox3.LoadFile(mstream2, RichTextBoxStreamType.RichText);
+            loadcom2();
+            comboBox8.Text = ctf.con.ToString();
+            comboBox7.Text = ctf.objective.ToString();
+            comboBox6.Text = ctf.diff.ToString();
 
 
         }
@@ -284,6 +288,9 @@ namespace Exercise_form
 
             if (ctf != null)
             {
+                ctf.diff = int.Parse(comboBox6.Text);
+                ctf.con = int.Parse(comboBox8.Text);
+                ctf.objective = int.Parse(comboBox7.Text);
                 System.IO.MemoryStream mstream2 = new System.IO.MemoryStream();
                 richTextBox3.SaveFile(mstream2, RichTextBoxStreamType.RichText);
                 //将流转换成数组
@@ -310,6 +317,26 @@ namespace Exercise_form
         }
 
         ///endloadw
+        private void loadcom2()
+        {
+            int numobjective = 0;
+            int con = 0;
+            int diff = 0;
+
+            foreach (V_tea_course cc in lvtc)
+                if (comboBox1.Text == cc.CourseName)
+                {
+                    numobjective = (int)cc.numobjective;
+                    con = (int)cc.numcontent;
+                    diff = (int)cc.diff;
+                    // cid = (int)cc.couseid;
+                }
+            comboBox7.Items.Clear(); comboBox8.Items.Clear(); comboBox6.Items.Clear();
+            for (int i = 0; i < numobjective; i++) comboBox7.Items.Add(i + 1);
+            for (int i = 0; i < con; i++) comboBox8.Items.Add(i + 1);
+            for (int i = 0; i < diff; i++) comboBox6.Items.Add(i + 1);
+
+        }
 
 
 
