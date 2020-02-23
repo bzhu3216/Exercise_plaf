@@ -388,6 +388,10 @@ namespace Exercise_form
             if (cmq.answ == 3) key = "C";
             if (cmq.answ == 4) key = "D";
             comboBox5.Text = key;
+            loadcom2();
+            comboBox8.Text = cmq.con.ToString();
+            comboBox7.Text = cmq.objective.ToString();
+            comboBox6.Text = cmq.diff.ToString();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -395,6 +399,9 @@ namespace Exercise_form
 
             if (cmq != null)
             {
+                cmq.diff = int.Parse(comboBox6.Text);
+                cmq.con = int.Parse(comboBox8.Text);
+                cmq.objective = int.Parse(comboBox7.Text);
                 cmq.answ = comboBox5.SelectedIndex + 1;
                 System.IO.MemoryStream mstream = new System.IO.MemoryStream();
                 richTextBox2 .SaveFile(mstream, RichTextBoxStreamType.RichText);
@@ -417,6 +424,26 @@ namespace Exercise_form
 
         ///endloadw
 
+        private void loadcom2()
+        {
+            int numobjective = 0;
+            int con = 0;
+            int diff = 0;
+
+            foreach (V_tea_course cc in lvtc)
+                if (comboBox1.Text == cc.CourseName)
+                {
+                    numobjective = (int)cc.numobjective;
+                    con = (int)cc.numcontent;
+                    diff = (int)cc.diff;
+                    // cid = (int)cc.couseid;
+                }
+            comboBox7.Items.Clear(); comboBox8.Items.Clear(); comboBox6.Items.Clear();
+            for (int i = 0; i < numobjective; i++) comboBox7.Items.Add(i + 1);
+            for (int i = 0; i < con; i++) comboBox8.Items.Add(i + 1);
+            for (int i = 0; i < diff; i++) comboBox6.Items.Add(i + 1);
+
+        }
 
 
 
