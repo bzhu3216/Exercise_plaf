@@ -16,9 +16,9 @@ namespace WCFDBservice
     {
         public int id { get; set; }
         public string teacherid { get; set; }
+        public int pub { get; set; }
         public string name { get; set; }
         public int courseid { get; set; }
-        public bool pub { get; set; }
     
         public virtual Course Course { get; set; }
     }

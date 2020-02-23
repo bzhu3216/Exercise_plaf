@@ -72,7 +72,7 @@ namespace Exercise_form
                 pex.courseid = yex.courseid;
                 pex.name = yex.name + pp.teacher.teacherid;
                 pex.teacherid = pp.teacher.teacherid;
-                pex.pub = true;
+                pex.pub = 1;
                 pp.context.AddToexerL(pex);
                 pp.context.SaveChanges();
                 copyedetail(yex, pex);
@@ -112,7 +112,7 @@ namespace Exercise_form
             mcq.courseid = cid;
             mcq.teacherid = pp.teacher.teacherid;
             mcq.name = textBox1.Text;
-            mcq.pub = false;
+            mcq.pub = 0;
             ////////////write richtext
 
 
@@ -180,11 +180,11 @@ namespace Exercise_form
                 l1 = null;
                 l2 = null;
 
-                var q1 = el.Where(o => o.pub == true);
+                var q1 = el.Where(o => o.pub == 1);
                 if (q1.Count<exerL>() > 0)
                     l2 = q1.ToList<exerL>();
 
-                var q2 = el.Where(o => o.pub == false);
+                var q2 = el.Where(o => o.pub == 0);
                 if (q2.Count<exerL>() > 0)
                     l1 = q2.ToList<exerL>();
 
@@ -275,7 +275,7 @@ namespace Exercise_form
         {
             List<exerL> tlvedp = null;
             var q1 = from o in pp.context.exerL
-                     where o.courseid == courseid && (o.pub || o.teacherid == pp.teacher.teacherid)
+                     where o.courseid == courseid && (o.pub==1 || o.teacherid == pp.teacher.teacherid)
                      select o;
             if (q1.Count<exerL>() > 0) tlvedp = q1.ToList<exerL>();
             return tlvedp;
@@ -292,7 +292,7 @@ namespace Exercise_form
                 pex.courseid = yex.courseid;
                 pex.name = yex.name + "请重命名";
                 pex.teacherid = pp.teacher.teacherid;
-                pex.pub = false;
+                pex.pub =0;
                 pp.context.AddToexerL(pex);
                 pp.context.SaveChanges();
                 /////copydetail

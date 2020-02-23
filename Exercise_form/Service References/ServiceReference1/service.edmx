@@ -92,17 +92,6 @@
         <Property Name="endtime" Type="Edm.DateTime" Precision="0" />
         <Property Name="dispaly" Type="Edm.Int32" />
       </EntityType>
-      <EntityType Name="exerL">
-        <Key>
-          <PropertyRef Name="id" />
-        </Key>
-        <Property Name="id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
-        <Property Name="teacherid" Type="Edm.String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="true" />
-        <Property Name="name" Type="Edm.String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-        <Property Name="courseid" Type="Edm.Int32" Nullable="false" />
-        <Property Name="pub" Type="Edm.Boolean" Nullable="false" />
-        <NavigationProperty Name="Course" Relationship="db_exerciseModel.FK_exerL_Course" ToRole="Course" FromRole="exerL" />
-      </EntityType>
       <EntityType Name="class_student">
         <Key>
           <PropertyRef Name="classid" />
@@ -163,29 +152,6 @@
         <Property Name="name" Type="Edm.String" MaxLength="50" FixedLength="false" Unicode="false" />
         <Property Name="pd" Type="Edm.String" MaxLength="8" FixedLength="false" Unicode="false" />
       </EntityType>
-      <EntityType Name="View_detai_exerL">
-        <Key>
-          <PropertyRef Name="courseid" />
-          <PropertyRef Name="Expr1" />
-          <PropertyRef Name="id" />
-          <PropertyRef Name="lid" />
-          <PropertyRef Name="name" />
-          <PropertyRef Name="pub" />
-          <PropertyRef Name="qid" />
-          <PropertyRef Name="teacherid" />
-          <PropertyRef Name="typeq" />
-        </Key>
-        <Property Name="id" Type="Edm.Int32" Nullable="false" />
-        <Property Name="typeq" Type="Edm.Int32" Nullable="false" />
-        <Property Name="qid" Type="Edm.Int32" Nullable="false" />
-        <Property Name="Expr1" Type="Edm.Int32" Nullable="false" />
-        <Property Name="score" Type="Edm.Int32" />
-        <Property Name="lid" Type="Edm.Int32" Nullable="false" />
-        <Property Name="pub" Type="Edm.Boolean" Nullable="false" />
-        <Property Name="name" Type="Edm.String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-        <Property Name="teacherid" Type="Edm.String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="true" />
-        <Property Name="courseid" Type="Edm.Int32" Nullable="false" />
-      </EntityType>
       <EntityType Name="View_student">
         <Key>
           <PropertyRef Name="cid" />
@@ -219,7 +185,6 @@
       </EntityType>
       <EntityType Name="eQues">
         <Key>
-          <PropertyRef Name="answ" />
           <PropertyRef Name="id" />
         </Key>
         <Property Name="id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
@@ -233,6 +198,40 @@
         <Property Name="answ" Type="Edm.String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
         <Property Name="question" Type="Edm.Binary" MaxLength="Max" FixedLength="false" />
         <Property Name="emnum" Type="Edm.Int32" Nullable="false" />
+      </EntityType>
+      <EntityType Name="exerL">
+        <Key>
+          <PropertyRef Name="id" />
+        </Key>
+        <Property Name="id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="teacherid" Type="Edm.String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="true" />
+        <Property Name="pub" Type="Edm.Int32" Nullable="false" />
+        <Property Name="name" Type="Edm.String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        <Property Name="courseid" Type="Edm.Int32" Nullable="false" />
+        <NavigationProperty Name="Course" Relationship="db_exerciseModel.FK_exerL_Course" ToRole="Course" FromRole="exerL" />
+      </EntityType>
+      <EntityType Name="View_detai_exerL">
+        <Key>
+          <PropertyRef Name="courseid" />
+          <PropertyRef Name="Expr1" />
+          <PropertyRef Name="id" />
+          <PropertyRef Name="lid" />
+          <PropertyRef Name="name" />
+          <PropertyRef Name="pub" />
+          <PropertyRef Name="qid" />
+          <PropertyRef Name="teacherid" />
+          <PropertyRef Name="typeq" />
+        </Key>
+        <Property Name="id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="typeq" Type="Edm.Int32" Nullable="false" />
+        <Property Name="qid" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Expr1" Type="Edm.Int32" Nullable="false" />
+        <Property Name="score" Type="Edm.Int32" />
+        <Property Name="lid" Type="Edm.Int32" Nullable="false" />
+        <Property Name="pub" Type="Edm.Int32" Nullable="false" />
+        <Property Name="name" Type="Edm.String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        <Property Name="teacherid" Type="Edm.String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="true" />
+        <Property Name="courseid" Type="Edm.Int32" Nullable="false" />
       </EntityType>
       <Association Name="FK_exerL_Course">
         <End Type="db_exerciseModel.Course" Role="Course" Multiplicity="1" />
@@ -256,17 +255,17 @@
         <EntitySet Name="SQues" EntityType="db_exerciseModel.SQues" />
         <EntitySet Name="AQues" EntityType="db_exerciseModel.AQues" />
         <EntitySet Name="classExer" EntityType="db_exerciseModel.classExer" />
-        <EntitySet Name="exerL" EntityType="db_exerciseModel.exerL" />
         <EntitySet Name="class_student" EntityType="db_exerciseModel.class_student" />
         <EntitySet Name="exerDetail" EntityType="db_exerciseModel.exerDetail" />
         <EntitySet Name="studAnsw" EntityType="db_exerciseModel.studAnsw" />
         <EntitySet Name="tech_course" EntityType="db_exerciseModel.tech_course" />
         <EntitySet Name="classinfo" EntityType="db_exerciseModel.classinfo" />
         <EntitySet Name="StudInfo" EntityType="db_exerciseModel.StudInfo" />
-        <EntitySet Name="View_detai_exerL" EntityType="db_exerciseModel.View_detai_exerL" />
         <EntitySet Name="View_student" EntityType="db_exerciseModel.View_student" />
         <EntitySet Name="V_tea_course" EntityType="db_exerciseModel.V_tea_course" />
         <EntitySet Name="eQues" EntityType="db_exerciseModel.eQues" />
+        <EntitySet Name="exerL" EntityType="db_exerciseModel.exerL" />
+        <EntitySet Name="View_detai_exerL" EntityType="db_exerciseModel.View_detai_exerL" />
         <AssociationSet Name="FK_exerL_Course" Association="db_exerciseModel.FK_exerL_Course">
           <End Role="Course" EntitySet="Course" />
           <End Role="exerL" EntitySet="exerL" />

@@ -94,7 +94,7 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="teacherid" Type="nchar" MaxLength="4" Nullable="false" />
-          <Property Name="pub" Type="bit" Nullable="false" />
+          <Property Name="pub" Type="int" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="courseid" Type="int" Nullable="false" />
         </EntityType>
@@ -223,7 +223,7 @@
           <Property Name="Expr1" Type="int" Nullable="false" />
           <Property Name="score" Type="int" />
           <Property Name="lid" Type="int" Nullable="false" />
-          <Property Name="pub" Type="bit" Nullable="false" />
+          <Property Name="pub" Type="int" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="teacherid" Type="nchar" MaxLength="4" Nullable="false" />
           <Property Name="courseid" Type="int" Nullable="false" />
@@ -322,21 +322,21 @@ FROM [dbo].[View_student] AS [View_student]</DefiningQuery>
           <EntitySet Name="SQues" EntityType="db_exerciseModel.SQues" />
           <EntitySet Name="AQues" EntityType="db_exerciseModel.AQues" />
           <EntitySet Name="classExer" EntityType="db_exerciseModel.classExer" />
-          <EntitySet Name="exerL" EntityType="db_exerciseModel.exerL" />
-          <AssociationSet Name="FK_exerL_Course" Association="db_exerciseModel.FK_exerL_Course">
-            <End Role="Course" EntitySet="Course" />
-            <End Role="exerL" EntitySet="exerL" />
-          </AssociationSet>
           <EntitySet Name="class_student" EntityType="db_exerciseModel.class_student" />
           <EntitySet Name="exerDetail" EntityType="db_exerciseModel.exerDetail" />
           <EntitySet Name="studAnsw" EntityType="db_exerciseModel.studAnsw" />
           <EntitySet Name="tech_course" EntityType="db_exerciseModel.tech_course" />
           <EntitySet Name="classinfo" EntityType="db_exerciseModel.classinfo" />
           <EntitySet Name="StudInfo" EntityType="db_exerciseModel.StudInfo" />
-          <EntitySet Name="View_detai_exerL" EntityType="db_exerciseModel.View_detai_exerL" />
           <EntitySet Name="View_student" EntityType="db_exerciseModel.View_student" />
           <EntitySet Name="V_tea_course" EntityType="db_exerciseModel.V_tea_course" />
           <EntitySet Name="eQues" EntityType="db_exerciseModel.eQues" />
+          <EntitySet Name="exerL" EntityType="db_exerciseModel.exerL" />
+          <AssociationSet Name="FK_exerL_Course" Association="db_exerciseModel.FK_exerL_Course">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="exerL" EntitySet="exerL" />
+          </AssociationSet>
+          <EntitySet Name="View_detai_exerL" EntityType="db_exerciseModel.View_detai_exerL" />
         </EntityContainer>
         <EntityType Name="mchoiceQues">
           <Key>
@@ -429,29 +429,6 @@ FROM [dbo].[View_student] AS [View_student]</DefiningQuery>
           <Property Name="endtime" Type="DateTime" Precision="0" />
           <Property Name="dispaly" Type="Int32" />
         </EntityType>
-        <EntityType Name="exerL">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="teacherid" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="courseid" Type="Int32" Nullable="false" />
-          <Property Name="pub" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Course" Relationship="db_exerciseModel.FK_exerL_Course" FromRole="exerL" ToRole="Course" />
-          </EntityType>
-        <Association Name="FK_exerL_Course">
-          <End Type="db_exerciseModel.Course" Role="Course" Multiplicity="1" />
-          <End Type="db_exerciseModel.exerL" Role="exerL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Course">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="exerL">
-              <PropertyRef Name="courseid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="class_student">
           <Key>
             <PropertyRef Name="classid" />
@@ -512,29 +489,6 @@ FROM [dbo].[View_student] AS [View_student]</DefiningQuery>
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="pd" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="View_detai_exerL">
-          <Key>
-            <PropertyRef Name="id" />
-            <PropertyRef Name="typeq" />
-            <PropertyRef Name="qid" />
-            <PropertyRef Name="Expr1" />
-            <PropertyRef Name="lid" />
-            <PropertyRef Name="pub" />
-            <PropertyRef Name="name" />
-            <PropertyRef Name="teacherid" />
-            <PropertyRef Name="courseid" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="typeq" Type="Int32" Nullable="false" />
-          <Property Name="qid" Type="Int32" Nullable="false" />
-          <Property Name="Expr1" Type="Int32" Nullable="false" />
-          <Property Name="score" Type="Int32" />
-          <Property Name="lid" Type="Int32" Nullable="false" />
-          <Property Name="pub" Type="Boolean" Nullable="false" />
-          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="teacherid" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="true" />
-          <Property Name="courseid" Type="Int32" Nullable="false" />
-        </EntityType>
         <EntityType Name="View_student">
           <Key>
             <PropertyRef Name="stid" />
@@ -581,6 +535,52 @@ FROM [dbo].[View_student] AS [View_student]</DefiningQuery>
           <Property Name="answ" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="question" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="emnum" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="exerL">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="teacherid" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="true" />
+          <Property Name="pub" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="courseid" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Course" Relationship="db_exerciseModel.FK_exerL_Course" FromRole="exerL" ToRole="Course" />
+        </EntityType>
+        <Association Name="FK_exerL_Course">
+          <End Type="db_exerciseModel.Course" Role="Course" Multiplicity="1" />
+          <End Type="db_exerciseModel.exerL" Role="exerL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="exerL">
+              <PropertyRef Name="courseid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="View_detai_exerL">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="typeq" />
+            <PropertyRef Name="qid" />
+            <PropertyRef Name="Expr1" />
+            <PropertyRef Name="lid" />
+            <PropertyRef Name="pub" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="teacherid" />
+            <PropertyRef Name="courseid" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="typeq" Type="Int32" Nullable="false" />
+          <Property Name="qid" Type="Int32" Nullable="false" />
+          <Property Name="Expr1" Type="Int32" Nullable="false" />
+          <Property Name="score" Type="Int32" />
+          <Property Name="lid" Type="Int32" Nullable="false" />
+          <Property Name="pub" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="teacherid" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="true" />
+          <Property Name="courseid" Type="Int32" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -684,17 +684,6 @@ FROM [dbo].[View_student] AS [View_student]</DefiningQuery>
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="exerL">
-      <EntityTypeMapping TypeName="IsTypeOf(db_exerciseModel.exerL)">
-        <MappingFragment StoreEntitySet="exerL">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="teacherid" ColumnName="teacherid" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="courseid" ColumnName="courseid" />
-          <ScalarProperty Name="pub" ColumnName="pub" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="class_student">
       <EntityTypeMapping TypeName="IsTypeOf(db_exerciseModel.class_student)">
         <MappingFragment StoreEntitySet="class_student">
@@ -758,22 +747,6 @@ FROM [dbo].[View_student] AS [View_student]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="View_detai_exerL">
-            <EntityTypeMapping TypeName="db_exerciseModel.View_detai_exerL">
-              <MappingFragment StoreEntitySet="View_detai_exerL">
-                <ScalarProperty Name="courseid" ColumnName="courseid" />
-                <ScalarProperty Name="teacherid" ColumnName="teacherid" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="pub" ColumnName="pub" />
-                <ScalarProperty Name="lid" ColumnName="lid" />
-                <ScalarProperty Name="score" ColumnName="score" />
-                <ScalarProperty Name="Expr1" ColumnName="Expr1" />
-                <ScalarProperty Name="qid" ColumnName="qid" />
-                <ScalarProperty Name="typeq" ColumnName="typeq" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="View_student">
             <EntityTypeMapping TypeName="db_exerciseModel.View_student">
               <MappingFragment StoreEntitySet="View_student">
@@ -813,6 +786,33 @@ FROM [dbo].[View_student] AS [View_student]</DefiningQuery>
                 <ScalarProperty Name="con" ColumnName="con" />
                 <ScalarProperty Name="courseid" ColumnName="courseid" />
                 <ScalarProperty Name="teacherid" ColumnName="teacherid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="exerL">
+            <EntityTypeMapping TypeName="db_exerciseModel.exerL">
+              <MappingFragment StoreEntitySet="exerL">
+                <ScalarProperty Name="courseid" ColumnName="courseid" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="pub" ColumnName="pub" />
+                <ScalarProperty Name="teacherid" ColumnName="teacherid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_detai_exerL">
+            <EntityTypeMapping TypeName="db_exerciseModel.View_detai_exerL">
+              <MappingFragment StoreEntitySet="View_detai_exerL">
+                <ScalarProperty Name="courseid" ColumnName="courseid" />
+                <ScalarProperty Name="teacherid" ColumnName="teacherid" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="pub" ColumnName="pub" />
+                <ScalarProperty Name="lid" ColumnName="lid" />
+                <ScalarProperty Name="score" ColumnName="score" />
+                <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+                <ScalarProperty Name="qid" ColumnName="qid" />
+                <ScalarProperty Name="typeq" ColumnName="typeq" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

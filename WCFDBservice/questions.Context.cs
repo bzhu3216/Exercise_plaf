@@ -32,16 +32,16 @@ namespace WCFDBservice
         public DbSet<SQues> SQues { get; set; }
         public DbSet<AQues> AQues { get; set; }
         public DbSet<classExer> classExer { get; set; }
-        public DbSet<exerL> exerL { get; set; }
         public DbSet<class_student> class_student { get; set; }
         public DbSet<exerDetail> exerDetail { get; set; }
         public DbSet<studAnsw> studAnsw { get; set; }
         public DbSet<tech_course> tech_course { get; set; }
         public DbSet<classinfo> classinfo { get; set; }
         public DbSet<StudInfo> StudInfo { get; set; }
-        public DbSet<View_detai_exerL> View_detai_exerL { get; set; }
         public DbSet<View_student> View_student { get; set; }
         public DbSet<V_tea_course> V_tea_course { get; set; }
         public DbSet<eQues> eQues { get; set; }
+        public DbSet<exerL> exerL { get; set; }
+        public DbSet<View_detai_exerL> View_detai_exerL { get; set; }
     }
 }
