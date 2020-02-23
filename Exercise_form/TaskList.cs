@@ -733,8 +733,18 @@ namespace Exercise_form
                 int iobj = 0;
                 if (q2.Count<Course>() > 0)
                 {
-                    iobj = q2.First<Course>().numobjective;
-                    EXtools.toScore(lclinfo[sel1], ler[sel2], @"D:\testexce.xlsx", pp, iobj);
+                        //
+
+                        saveFileDialog2.DefaultExt = ".xlsx";
+                        saveFileDialog2.Filter = "EXCEL file|*.xlsx";
+
+                        if (saveFileDialog2.ShowDialog() == DialogResult.OK)
+                        {
+                            //
+
+                            iobj = q2.First<Course>().numobjective;
+                            EXtools.toScore(lclinfo[sel1], ler[sel2], saveFileDialog2.FileName , pp, iobj);
+                        }
                 }
                 else
                 {

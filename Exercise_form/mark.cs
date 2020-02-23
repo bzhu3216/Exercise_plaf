@@ -732,6 +732,36 @@ namespace Exercise_form
                 //  MessageBox.Show("ok");
 
             }
+            ///////////////////////////////////////////////updata form show
+
+
+            if (e.ColumnIndex == 1)
+            {
+                if (listBox1.SelectedIndex == 0)
+                {
+
+
+
+
+
+                }
+
+
+
+
+
+
+
+
+            }
+
+
+
+
+
+
+            ///////////////////////////////////////////////////////////////////
+
 
 
 
