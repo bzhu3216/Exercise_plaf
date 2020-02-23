@@ -27,7 +27,7 @@ namespace Exercise_form
         private void button1_Click(object sender, EventArgs e)
         {
             var questionQuery = from o in pp.context.teacherinfo
-                                where (o.teacherid==textBox1.Text) &&  (o.pd== textBox2.Text)
+                                where (o.teacherid==textBox1.Text) &&  (o.pd== maskedTextBox1.Text)
                                 select o;
 
             if (questionQuery.Count<teacherinfo>() != 0)

@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Exercise_form.ServiceReference1;
+using System.Configuration;
 namespace Exercise_form
 {
    public class param
     {
         public db_exerciseEntities context;
-        private Uri svcUri = new Uri("http://localhost:1800/WcfDataServicequestion.svc");
+       // private Uri svcUri = new Uri("http://localhost:1800/WcfDataServicequestion.svc");
         public teacherinfo teacher=new teacherinfo();
         public List<V_tea_course> ltea_c = null;
         public int exerl1 = -1;
@@ -20,7 +21,9 @@ namespace Exercise_form
 
         public param()
         {
-            context = new db_exerciseEntities(svcUri);
+            String WCFIPstr = ConfigurationManager.AppSettings["WCFIP"].ToString();
+            context = new db_exerciseEntities(new Uri(WCFIPstr));
+
           
             
         }
