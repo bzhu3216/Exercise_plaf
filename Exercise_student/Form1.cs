@@ -173,7 +173,7 @@ namespace Exercise_student
 
               var q1=  lce.Join(erl, p => p.eid, c =>c.id , (p, c) => new { eid = p.eid , ename = c.name ,stime=p.starttime ,etime=p.endtime });
 
-                ltemp =q1.ToList<Object>();
+                ltemp =q1.OrderBy(s=>s.stime).ToList<Object>() ;
                 dataGridView1.DataSource = ltemp;
 
               

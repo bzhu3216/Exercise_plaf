@@ -76,7 +76,7 @@ namespace Exercise_form
             // try
             // {
             // Instantiate the DataServiceContext.
-
+           // MessageBox.Show((richTextBox1.Rtf.Length).ToString());
             if (checkem())
             {
                 AQues mcq = new AQues();
@@ -120,6 +120,7 @@ namespace Exercise_form
             if (comboBox3.Text == "") vv = false;
            // if (comboBox4.Text == "") vv = false;
             if (comboBox2.Text == "") vv = false;
+            
             return vv;
         }
 
