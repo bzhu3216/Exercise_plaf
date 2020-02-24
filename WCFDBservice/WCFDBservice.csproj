@@ -103,6 +103,7 @@
     <Content Include="questions.edmx.diagram">
       <DependentUpon>questions.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\testwebdeploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -221,8 +222,7 @@
           <IISUrl>http://localhost:1800/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
+          <CustomServerUrl>http://192.168.131.219/WCFDBservice</CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
