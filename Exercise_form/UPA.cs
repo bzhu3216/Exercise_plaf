@@ -314,10 +314,16 @@ namespace Exercise_form
                 //将流转换成数组
                 //  byte[] bWrite = mstream.ToArray();
                 ctf.question = mstream.ToArray();
+               if(ctf.answ.Length + ctf.question.Length<pp.maxsize ) { 
+               // MessageBox.Show((ctf.answ.Length + ctf.question.Length).ToString());
                 pp.context.UpdateObject(ctf);
                 pp.context.SaveChanges();
-              
-                int irow = dataGridView1.CurrentRow.Index;               
+               }
+            else
+            {
+                MessageBox.Show("请使用小一点的图片，建议不使用");
+            }
+            int irow = dataGridView1.CurrentRow.Index;               
                 dataGridView1.Rows.Clear();
                 display(2, false);
                 dataGridView1.CurrentCell = dataGridView1.Rows[irow].Cells[0]; 

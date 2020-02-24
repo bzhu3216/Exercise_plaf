@@ -79,12 +79,19 @@ namespace Exercise_form
                 System.IO.MemoryStream mstream = new System.IO.MemoryStream();
                 this.rquestion.SaveFile(mstream, RichTextBoxStreamType.RichText);
                 mcq.question = mstream.ToArray();
-                mcq.answ = textBox1.Text;              
+                mcq.answ = textBox1.Text;        
+                if(mcq.answ.Length<pp.maxsize )
+                {   
                     context.AddToeQues(mcq);
                     context.SaveChanges();
                     rquestion.Text = "";
+                }
+                else
+                {
+                    MessageBox.Show("请使用小一点的图片，建议不使用");
+                }
 
-                
+
             }
             else
             {
@@ -102,7 +109,7 @@ namespace Exercise_form
             if (comboBox2.Text == "") vv = false;
             if (comboBox3.Text == "") vv = false;
             if (comboBox4.Text == "") vv = false;
-            if (comboBox2.Text == "") vv = false;
+            if (comboBox5.Text == "") vv = false;
             return vv;
         }
 

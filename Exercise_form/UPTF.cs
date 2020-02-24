@@ -316,9 +316,16 @@ namespace Exercise_form
                 //将流转换成数组
                 //  byte[] bWrite = mstream.ToArray();
                 ctf.question = mstream.ToArray();
-                pp.context.UpdateObject(ctf);
-                pp.context.SaveChanges();
-              
+                if (ctf.question.Length < pp.maxsize)
+                {
+                    pp.context.UpdateObject(ctf);
+                    pp.context.SaveChanges();
+                }
+                else
+                {
+                    MessageBox.Show("请使用小一点的图片，建议不使用");
+                }
+
                 int irow = dataGridView1.CurrentRow.Index;               
                 dataGridView1.Rows.Clear();
                 display(1, false);

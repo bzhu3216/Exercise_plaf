@@ -89,23 +89,27 @@ namespace Exercise_form
                 mcq.question = mstream.ToArray();
                 mcq.answ = mstream2.ToArray(); ;
 
-                if (comboBox5.Text != "")
-                {
+               if((mcq.question.Length+mcq.answ.Length )<pp.maxsize) { 
                     context.AddToSQues(mcq);
                     //////end write richtext
 
                     context.SaveChanges();
                     rquestion.Text = "";
                     richTextBox1.Text = "";
-                }
-                // Make the DataServiceCollection<T> the binding source for the Grid.
-                //  }
-                //  catch (Exception ex)
-                // {
-                //     MessageBox.Show(ex.ToString());
-                // }
-
             }
+            else
+            {
+                MessageBox.Show("请使用小一点的图片，建议不使用");
+            }
+
+            // Make the DataServiceCollection<T> the binding source for the Grid.
+            //  }
+            //  catch (Exception ex)
+            // {
+            //     MessageBox.Show(ex.ToString());
+            // }
+
+        }
             else
             {
 
@@ -124,7 +128,7 @@ namespace Exercise_form
             if (comboBox2.Text == "") vv = false;
             if (comboBox3.Text == "") vv = false;
           //  if (comboBox4.Text == "") vv = false;
-            if (comboBox2.Text == "") vv = false;
+            if (comboBox5.Text == "") vv = false;
             return vv;
         }
     }

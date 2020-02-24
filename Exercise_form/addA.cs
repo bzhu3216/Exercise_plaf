@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Exercise_form.ServiceReference1;
 using System.Data.Services.Client;
-
+using System.Configuration;
 namespace Exercise_form
 {
    
@@ -19,6 +19,7 @@ namespace Exercise_form
         param pp;
         List<V_tea_course > lcs = null;
         int cid = -1;
+       // long maxsize = 0;
         public addA(param p)
         {
             InitializeComponent();
@@ -39,6 +40,8 @@ namespace Exercise_form
             comboBox5.ValueMember = "CourseName";
 
             comboBox5.Text = "";
+           // String maxstr = ConfigurationManager.AppSettings["maxsize"].ToString();
+           // maxsize = long.Parse(maxstr);
 
 
         }
@@ -96,12 +99,19 @@ namespace Exercise_form
                 //  byte[] bWrite = mstream.ToArray();
                 mcq.question = mstream.ToArray();
                 mcq.answ = mstream2.ToArray(); ;
+                if ((mcq.question.Length+mcq.answ.Length ) < pp.maxsize)
+                {
                     context.AddToAQues(mcq);
                     //////end write richtext
                     context.SaveChanges();
                     rquestion.Text = "";
-                    richTextBox1.Text = "";               
-               
+                    richTextBox1.Text = "";
+                }
+                else
+                {
+                    MessageBox.Show("请使用小一点的图片，建议不使用");
+                }
+
             }
             else
             {

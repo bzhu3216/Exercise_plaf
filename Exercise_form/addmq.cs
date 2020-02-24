@@ -51,8 +51,8 @@ namespace Exercise_form
                 //  byte[] bWrite = mstream.ToArray();
                 mcq.question = mstream.ToArray();
 
-                if (comboBox5.Text != "")
-                {
+               if(mcq.question.Length  <pp.maxsize )
+                { 
                     context.AddTomchoiceQues(mcq);
                     //////end write richtext
 
@@ -60,6 +60,13 @@ namespace Exercise_form
                     rquestion.Text = "";
                     comboBox4.Text = "";
                 }
+                else
+                {
+                    MessageBox.Show("请使用小一点的图片，建议不使用");
+                }
+
+
+
             }
             else
             {
@@ -187,7 +194,7 @@ namespace Exercise_form
             if (comboBox2.Text == "") vv = false;
             if (comboBox3.Text == "") vv = false;
             if (comboBox4.Text == "") vv = false;
-            if (comboBox2.Text == "") vv = false;
+            if (comboBox5.Text == "") vv = false;
             return vv;
         }
     }

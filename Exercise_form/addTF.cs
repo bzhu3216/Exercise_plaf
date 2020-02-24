@@ -100,7 +100,7 @@ namespace Exercise_form
                 //  byte[] bWrite = mstream.ToArray();
                 mcq.question = mstream.ToArray();
 
-                if (comboBox5.Text != "")
+                if (mcq.question.Length <pp.maxsize )
                 {
                     context.AddToTFQues(mcq);
                     //////end write richtext
@@ -108,13 +108,12 @@ namespace Exercise_form
                     context.SaveChanges();
                     rquestion.Text = "";
                     comboBox4.Text = "";
+                  //  richTextBox1.Text = "";
                 }
-                // Make the DataServiceCollection<T> the binding source for the Grid.
-                //  }
-                //  catch (Exception ex)
-                // {
-                //     MessageBox.Show(ex.ToString());
-                // }
+                else
+                {
+                    MessageBox.Show("请使用小一点的图片，建议不使用");
+                }
             }
             else
             {
@@ -135,7 +134,7 @@ namespace Exercise_form
             if (comboBox2.Text == "") vv = false;
             if (comboBox3.Text == "") vv = false;
             if (comboBox4.Text == "") vv = false;
-            if (comboBox2.Text == "") vv = false;
+            if (comboBox5.Text == "") vv = false;
             return vv;
         }
 

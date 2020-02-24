@@ -18,14 +18,15 @@ namespace Exercise_form
         public exerL elword = null;//用户生成word参数传递
         public bool keyneed = false;
         public int updataccid=-1;
-
+        public long maxsize=0;
         public param()
         {
             String WCFIPstr = ConfigurationManager.AppSettings["WCFIP"].ToString();
             context = new db_exerciseEntities(new Uri(WCFIPstr));
+            String maxstr = ConfigurationManager.AppSettings["maxsize"].ToString();
+            maxsize = long.Parse(maxstr);
 
-          
-            
+
         }
 
     }
