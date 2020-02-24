@@ -74,7 +74,7 @@ namespace Exercise_student
             try
             {
                 var q1 = from o in pp.context.classinfo
-                         where o.finish !=1 ||o.finish==null
+                         where o.finish ==0
                          select o;
                 tcsl2 = q1.ToList<classinfo>();
                 var qtcsl = tcsl2.Where(p => tlcs.Any(c => c.classid == p.classid));

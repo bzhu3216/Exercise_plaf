@@ -84,7 +84,9 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\PublishProfiles\localhostWCF.pubxml" />
     <None Include="Properties\PublishProfiles\testDB1.pubxml" />
+    <None Include="Properties\PublishProfiles\WCF2.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

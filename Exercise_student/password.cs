@@ -30,7 +30,7 @@ namespace Exercise_student
 
             if (maskedTextBox1.Text == maskedTextBox2.Text  && maskedTextBox2.Text.Length<9 && maskedTextBox2.Text.Length >3)
             {
-                var questionQuery = from o in pp.context.StudInfoes
+                var questionQuery = from o in pp.context.StudInfo 
                                     where o.studentid == pp.st.studentid 
                                     select o;
 

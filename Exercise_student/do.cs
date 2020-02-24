@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Exercise_student.ServiceExer;
 using System.IO;
+using System.Configuration;
 
 namespace Exercise_student
 {
@@ -550,18 +551,19 @@ namespace Exercise_student
 
                 if (dirup != null) {
                     System.IO.FileStream fs = null;
+                    String strpsize = ConfigurationManager.AppSettings["Psize"].ToString();
+                    int psize = Int32.Parse(strpsize);
 
-
-                   Piczip.CompressImage(dirup, @"c:\temp.jpg", 90, 120, true);
-                    FileInfo ff = new FileInfo(@"c:\temp.jpg");
+                    Piczip.CompressImage(dirup, @"temp.jpg", 90, psize, true);
+                    FileInfo ff = new FileInfo(@"temp.jpg");
                     if (ff.Exists )
                     {
 
-                       fs = new System.IO.FileStream(@"c:\temp.jpg", FileMode.Open, FileAccess.Read);
+                       fs = new System.IO.FileStream(@"temp.jpg", FileMode.Open, FileAccess.Read);
                     }
                     else
                     {
-                        Piczip.CompressImage(dirup, @"d:\temp.jpg", 90, 120, true);
+                        Piczip.CompressImage(dirup, @"d:\temp.jpg", 90, psize, true);
                         fs = new System.IO.FileStream(@"d:\temp.jpg", FileMode.Open, FileAccess.Read);
                     }
                   

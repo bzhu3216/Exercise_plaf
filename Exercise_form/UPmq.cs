@@ -129,13 +129,13 @@ namespace Exercise_form
             else
                 b0 = true;
 
-            if (comboBox2.Text != "")
-                    c1 = int.Parse(comboBox2.Text);
+            if (comboBox3.Text != "")
+                    c1 = int.Parse(comboBox3.Text);
                 else
                     b1 = true;
 
-                if (comboBox3.Text != "")
-                    c2 = int.Parse(comboBox3.Text);
+                if (comboBox2.Text != "")
+                    c2 = int.Parse(comboBox2.Text);
                 else
                     b2 = true;
 

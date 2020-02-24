@@ -475,6 +475,7 @@ namespace Exercise_form
                     var questionQuery2 = from o in context.SQues
                                          where o.id == el.qid
                                          select o;
+                    if (questionQuery2.Count() > 0) { 
                     SQues mcq = questionQuery2.First<SQues>();
                     System.IO.MemoryStream mstream = new System.IO.MemoryStream(mcq.question, false);
                     this.richTextBox1.LoadFile(mstream, RichTextBoxStreamType.RichText);
@@ -494,6 +495,7 @@ namespace Exercise_form
                     if (hh > 300) hh = 300;
                     dgvr.Height = hh;
                     this.dataGridView2.Rows.Add(dgvr);
+                    }
                 }
             }
             if (a == 4)
@@ -599,6 +601,34 @@ namespace Exercise_form
 
 
 
+        }
+
+        private void dataGridView1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            Rectangle rectangle = new Rectangle(e.RowBounds.Location.X,
+                                  e.RowBounds.Location.Y,
+                                  dataGridView1.RowHeadersWidth,
+                                  e.RowBounds.Height);
+
+            TextRenderer.DrawText(e.Graphics, (e.RowIndex + 1).ToString(),
+                dataGridView1.RowHeadersDefaultCellStyle.Font,
+                rectangle,
+                dataGridView1.RowHeadersDefaultCellStyle.ForeColor,
+                TextFormatFlags.VerticalCenter | TextFormatFlags.Right);
+        }
+
+        private void dataGridView2_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            Rectangle rectangle = new Rectangle(e.RowBounds.Location.X,
+                                  e.RowBounds.Location.Y,
+                                  dataGridView1.RowHeadersWidth,
+                                  e.RowBounds.Height);
+
+            TextRenderer.DrawText(e.Graphics, (e.RowIndex + 1).ToString(),
+                dataGridView1.RowHeadersDefaultCellStyle.Font,
+                rectangle,
+                dataGridView1.RowHeadersDefaultCellStyle.ForeColor,
+                TextFormatFlags.VerticalCenter | TextFormatFlags.Right);
         }
         ////////////////////endexerdetail
 

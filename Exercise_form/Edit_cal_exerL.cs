@@ -244,8 +244,8 @@ namespace Exercise_form
             listBox1.DataSource = Lcs3;
             listBox1.ValueMember = "classinfo1";
 
-           if (sel1 >= 0) listBox1.SelectedIndex = sel1;
-            if (sel2 >= 0) listBox2.SelectedIndex = sel2;
+          // if (sel1 >= 0) listBox1.SelectedIndex = sel1;
+          //  if (sel2 >= 0) listBox2.SelectedIndex = sel2;
 
         }
 

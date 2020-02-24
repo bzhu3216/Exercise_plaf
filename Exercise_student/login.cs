@@ -22,7 +22,7 @@ namespace Exercise_student
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var questionQuery = from o in pp.context.StudInfoes 
+            var questionQuery = from o in pp.context.StudInfo 
                                 where (o.studentid  == textBox1.Text) && (o.pd == maskedTextBox1.Text)
                                 select o;
 
