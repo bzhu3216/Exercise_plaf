@@ -33,7 +33,8 @@ namespace Exercise_form
             lclinfo=tlcin();
             listBox1.DataSource = lclinfo;
             listBox1.ValueMember = "classinfo1";
-         //   dataGridView1.AutoGenerateColumns = false;
+            //   dataGridView1.AutoGenerateColumns = false;
+            listBox1.SelectedIndex = -1;
 
 
 
@@ -763,11 +764,11 @@ namespace Exercise_form
 
         private void listBox1_Click(object sender, EventArgs e)
         {
+            sel1 = listBox1.SelectedIndex;
             if (sel1 >= 0) {
             sel2 = -1;
             dataGridView1.DataSource = null;
-            dataGridView1.Rows.Clear();
-            sel1 = listBox1.SelectedIndex;
+            dataGridView1.Rows.Clear();           
             tlel(lclinfo[sel1]);
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.DataSource = ler;

@@ -88,7 +88,7 @@ namespace Exercise_form
                 listBox1.ValueMember = "classinfo1";
                 comboBox2.Text = "";
                 comboBox1.Text = "";
-               
+                listBox1.SelectedIndex = -1;
                 // Make the DataServiceCollection<T> the binding source for the Grid.
             }
             catch (Exception ex)

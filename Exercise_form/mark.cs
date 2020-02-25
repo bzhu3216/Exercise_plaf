@@ -692,7 +692,8 @@ namespace Exercise_form
             {
                 studAnsw stA = null;
                 int qid = -1;
-                qid = (int)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
+               int  qid2 = (int)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
+                qid = getidinansw(3,qid2);
                 string stid = lstv[dataGridView2.CurrentRow.Index].stid;
                 //  var q2 = ltvdl.Where(o => o.Expr1 == qid && o.typeq == 3);
                 var q3 = from o in pp.context.studAnsw
@@ -716,8 +717,8 @@ namespace Exercise_form
                 studAnsw stA = null;
                 int qid = -1;
                 string stid = lstv[dataGridView2.CurrentRow.Index].stid;
-                qid = (int)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
-                //  var q2 = ltvdl.Where(o => o.Expr1 == qid && o.typeq == 3);
+                int qid2 = (int)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
+                qid = getidinansw(4, qid2);
                 var q3 = from o in pp.context.studAnsw
                          where o.did == qid && o.stid == stid
                          select o;
@@ -864,7 +865,25 @@ namespace Exercise_form
 
         }
 
+        private int getidinansw(int etype,int idinques)
+        {
+            int idinansw2 = -1;
+            if (ltvdl != null) ;
+            {
+                var q1 = ltvdl.Where(o => o.typeq == etype && o.qid ==idinques);
+                if (q1.Count() > 0)
+                {
+                    idinansw2 = q1.First().Expr1; 
+                }
 
+
+            }
+
+
+            return idinansw2;
+
+
+        }
 
 
         //////        ////////////////////////////////////////
