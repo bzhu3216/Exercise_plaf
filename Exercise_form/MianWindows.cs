@@ -339,5 +339,28 @@ namespace Exercise_form
 
 
         }
+
+        private void checkToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            Check mq = null;
+            if (mq == null || mq.IsDisposed)
+            {  if (pp.teacher.teacherid == "1536")
+                {
+                    mq = new Check(pp);
+                    // mq.MdiParent = this;
+                    mq.Show();
+                }
+            }
+            else
+            {
+                mq.Activate();
+                mq.WindowState = FormWindowState.Normal;
+            }
+
+
+
+
+        }
     }
 }

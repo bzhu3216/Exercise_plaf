@@ -219,6 +219,7 @@ namespace Exercise_form
             if (listBox1.SelectedIndex >= 0)
             {
                 pp.exerl1 = l1[listBox1.SelectedIndex].id;
+                pp.cc1 = l1[listBox1.SelectedIndex].courseid;
                 EditererList mq = null;
                 if (mq == null || mq.IsDisposed)
                 {

@@ -38,6 +38,9 @@
     <StartupObject>Exercise_form.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DataGridViewRichTextBox">
+      <HintPath>..\DataGridViewRichTextBox\bin\Debug\DataGridViewRichTextBox.exe</HintPath>
+    </Reference>
     <Reference Include="Exercise_DAL">
       <HintPath>..\Exercise_DAL\bin\Debug\Exercise_DAL.dll</HintPath>
     </Reference>
@@ -167,6 +170,12 @@
     </Compile>
     <Compile Include="addTF.Designer.cs">
       <DependentUpon>addTF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Check.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Check.Designer.cs">
+      <DependentUpon>Check.cs</DependentUpon>
     </Compile>
     <Compile Include="classinfo.cs">
       <SubType>Form</SubType>
@@ -328,6 +337,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="addTF.resx">
       <DependentUpon>addTF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Check.resx">
+      <DependentUpon>Check.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="classinfo.resx">
       <DependentUpon>classinfo.cs</DependentUpon>

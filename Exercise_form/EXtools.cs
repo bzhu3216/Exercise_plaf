@@ -601,6 +601,7 @@ namespace Exercise_form
                             numofquestion[0] = numofquestion[0] + 1;
                             sb = numofquestion[0] + ". " + sb;
                             para1.AppendRTF(sb);
+                            if(needkey)
                             para1.AppendRTF(myDataObject.GetData(DataFormats.Rtf).ToString());
                             TextSelection[] selections = doc.FindAllPattern(new System.Text.RegularExpressions.Regex("."));
                             TextRange range = null;
@@ -645,7 +646,8 @@ namespace Exercise_form
                             numofquestion[1] = numofquestion[1] + 1;
                             sb = numofquestion[1] + ". " + sb;
                             para1.AppendRTF(sb);
-                            para1.AppendRTF(myDataObject.GetData(DataFormats.Rtf).ToString());
+                            if (needkey)
+                                para1.AppendRTF(myDataObject.GetData(DataFormats.Rtf).ToString());
                             TextSelection[] selections = doc.FindAllPattern(new System.Text.RegularExpressions.Regex("."));
                             TextRange range = null;
                             foreach (TextSelection selection in selections)
@@ -800,9 +802,29 @@ namespace Exercise_form
 
         }
 
-        
 
 
+        /////////////////////////////////////////////
+        public List<featurehelp>  checkfeature(int type, param p)
+        {
+            List<featurehelp> result = new List<featurehelp>();
+            var q1 = from o in p.context.featurehelp
+                     where  o.type1 == type
+                     select o;
+            if (q1.Count() >0) result = q1.ToList<featurehelp>() ;
+
+
+                    return result;
+
+        }
+
+  
+
+
+
+
+
+////////////////////////////////////////////
 
 
 

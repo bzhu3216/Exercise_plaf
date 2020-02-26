@@ -98,6 +98,15 @@
           <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="courseid" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="featurehelp">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="type1" Type="int" Nullable="false" />
+          <Property Name="qid" Type="int" Nullable="false" />
+          <Property Name="featurestr" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
         <EntityType Name="mchoiceQues">
           <Key>
             <PropertyRef Name="id" />
@@ -262,6 +271,7 @@
           <EntitySet Name="eQues" EntityType="Self.eQues" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="exerDetail" EntityType="Self.exerDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="exerL" EntityType="Self.exerL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="featurehelp" EntityType="Self.featurehelp" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="mchoiceQues" EntityType="Self.mchoiceQues" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SQues" EntityType="Self.SQues" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="studAnsw" EntityType="Self.studAnsw" Schema="dbo" store:Type="Tables" />
@@ -337,6 +347,7 @@ FROM [dbo].[View_student] AS [View_student]</DefiningQuery>
             <End Role="exerL" EntitySet="exerL" />
           </AssociationSet>
           <EntitySet Name="View_detai_exerL" EntityType="db_exerciseModel.View_detai_exerL" />
+          <EntitySet Name="featurehelp" EntityType="db_exerciseModel.featurehelp" />
         </EntityContainer>
         <EntityType Name="mchoiceQues">
           <Key>
@@ -582,6 +593,15 @@ FROM [dbo].[View_student] AS [View_student]</DefiningQuery>
           <Property Name="teacherid" Type="String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="true" />
           <Property Name="courseid" Type="Int32" Nullable="false" />
         </EntityType>
+        <EntityType Name="featurehelp">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="type1" Type="Int32" Nullable="false" />
+          <Property Name="qid" Type="Int32" Nullable="false" />
+          <Property Name="featurestr" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -813,6 +833,16 @@ FROM [dbo].[View_student] AS [View_student]</DefiningQuery>
                 <ScalarProperty Name="Expr1" ColumnName="Expr1" />
                 <ScalarProperty Name="qid" ColumnName="qid" />
                 <ScalarProperty Name="typeq" ColumnName="typeq" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="featurehelp">
+            <EntityTypeMapping TypeName="db_exerciseModel.featurehelp">
+              <MappingFragment StoreEntitySet="featurehelp">
+                <ScalarProperty Name="featurestr" ColumnName="featurestr" />
+                <ScalarProperty Name="qid" ColumnName="qid" />
+                <ScalarProperty Name="type1" ColumnName="type1" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

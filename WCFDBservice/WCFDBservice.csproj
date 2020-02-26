@@ -151,6 +151,9 @@
     <Compile Include="exerL.cs">
       <DependentUpon>questions.tt</DependentUpon>
     </Compile>
+    <Compile Include="featurehelp.cs">
+      <DependentUpon>questions.tt</DependentUpon>
+    </Compile>
     <Compile Include="mchoiceQues.cs">
       <DependentUpon>questions.tt</DependentUpon>
     </Compile>

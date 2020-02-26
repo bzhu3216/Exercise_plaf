@@ -114,6 +114,7 @@ namespace Exercise_form
                                          where (b1  || o.objective  == c1)
                                       && (b2 || o.con  == c2)
                                       && (b3 || o.diff  == c3)
+                                      &&(o.courseid==pp.cc1)
                                        select o).Skip(pageNum * pagesize).Take(pagesize); 
                     List<mchoiceQues> lmq = questionQuery3.ToList<mchoiceQues>();
 
@@ -151,7 +152,8 @@ namespace Exercise_form
                                          where (b1 || o.objective == c1)
                                       && (b2 || o.con == c2)
                                       && (b3 || o.diff == c3)
-                                         select o).Skip(pageNum * pagesize).Take(pagesize); 
+                                      && (o.courseid == pp.cc1)
+                                          select o).Skip(pageNum * pagesize).Take(pagesize); 
                     List<TFQues> lmq = questionQuery3.ToList<TFQues>();
                     this.dataGridView1.RowTemplate.Height = 100;                   
                     foreach (TFQues mcq in lmq)
@@ -187,6 +189,7 @@ namespace Exercise_form
                                           where (b1 || o.objective == c1)
                                        && (b2 || o.con == c2)
                                        && (b3 || o.diff == c3)
+                                       && (o.courseid == pp.cc1)
                                           select o).Skip(pageNum * pagesize).Take(pagesize);
                     List<SQues> lmq = questionQuery3.ToList<SQues>();
                     this.dataGridView1.RowTemplate.Height = 100;
@@ -224,6 +227,7 @@ namespace Exercise_form
                                           where (b1 || o.objective == c1)
                                        && (b2 || o.con == c2)
                                        && (b3 || o.diff == c3)
+                                       && (o.courseid == pp.cc1)
                                           select o).Skip(pageNum * pagesize).Take(pagesize);
                     List<AQues> lmq = questionQuery3.ToList<AQues>();
                     this.dataGridView1.RowTemplate.Height = 100;

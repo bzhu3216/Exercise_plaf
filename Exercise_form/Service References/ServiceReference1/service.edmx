@@ -233,6 +233,15 @@
         <Property Name="teacherid" Type="Edm.String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="true" />
         <Property Name="courseid" Type="Edm.Int32" Nullable="false" />
       </EntityType>
+      <EntityType Name="featurehelp">
+        <Key>
+          <PropertyRef Name="id" />
+        </Key>
+        <Property Name="id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="type1" Type="Edm.Int32" Nullable="false" />
+        <Property Name="qid" Type="Edm.Int32" Nullable="false" />
+        <Property Name="featurestr" Type="Edm.String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+      </EntityType>
       <Association Name="FK_exerL_Course">
         <End Type="db_exerciseModel.Course" Role="Course" Multiplicity="1" />
         <End Type="db_exerciseModel.exerL" Role="exerL" Multiplicity="*" />
@@ -266,6 +275,7 @@
         <EntitySet Name="eQues" EntityType="db_exerciseModel.eQues" />
         <EntitySet Name="exerL" EntityType="db_exerciseModel.exerL" />
         <EntitySet Name="View_detai_exerL" EntityType="db_exerciseModel.View_detai_exerL" />
+        <EntitySet Name="featurehelp" EntityType="db_exerciseModel.featurehelp" />
         <AssociationSet Name="FK_exerL_Course" Association="db_exerciseModel.FK_exerL_Course">
           <End Role="Course" EntitySet="Course" />
           <End Role="exerL" EntitySet="exerL" />
