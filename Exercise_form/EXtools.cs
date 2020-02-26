@@ -818,17 +818,37 @@ namespace Exercise_form
 
         }
 
-  
+        ////////////////////////////////////////////
+
+        public float degreeofsimilarity(string a,string b)
+        {
+            string cstr = null;
+            string dstr = null;
+            if (a.Length < b.Length)
+            { cstr = a;dstr = b; }
+            else
+            { cstr = b; dstr = a; }
+             float result=0;
+            int la = cstr.Length;
+            int lb = cstr.Length;
+            int sum = 0;
+            for (int i = 0; i < la; i++)
+            {
+
+                if (dstr.Contains(cstr[i])) sum = sum + 1;
+
+            }
+
+            result = sum / la;
+            return result;
+
+        }
 
 
 
 
 
-////////////////////////////////////////////
-
-
-
-
+        ///////////////////////////////////////////
 
 
 
