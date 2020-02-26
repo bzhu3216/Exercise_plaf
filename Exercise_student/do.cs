@@ -28,7 +28,7 @@ namespace Exercise_student
             pp = f.pp;
             foreach (exerL tel in f.erl)
             {
-                if (tel.id == f.sel2)
+                if (tel.id == f.selid)
                     el = tel; 
 
             }

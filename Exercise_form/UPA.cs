@@ -219,7 +219,7 @@ namespace Exercise_form
         private void button4_Click(object sender, EventArgs e)
         {
             pageNum = 0;         
-            if (comboBox1.SelectedIndex > 0)
+            if (comboBox1.SelectedIndex >= 0)
                 display(2, true);
             else
                 MessageBox.Show("请选择课程！");
@@ -326,7 +326,8 @@ namespace Exercise_form
             int irow = dataGridView1.CurrentRow.Index;               
                 dataGridView1.Rows.Clear();
                 display(2, false);
-                dataGridView1.CurrentCell = dataGridView1.Rows[irow].Cells[0]; 
+                if (irow < dataGridView1.RowCount)
+                    dataGridView1.CurrentCell = dataGridView1.Rows[irow].Cells[0];
 
 
             }

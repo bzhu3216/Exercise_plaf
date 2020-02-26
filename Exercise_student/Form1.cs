@@ -23,6 +23,7 @@ namespace Exercise_student
         public List<exerL> erl = null;
         int sel1 = -1;
         public int sel2 = -1;
+        public int selid = -1;
         public int c_l = 0;
         List<Object> ltemp = null;
         public Form1(paramst p)
@@ -132,10 +133,11 @@ namespace Exercise_student
             {
                 if (dataGridView1.Rows[i].Selected == true)
                 {
-                    sel2 = int.Parse(dataGridView1.Rows[i].Cells[0].Value.ToString());
+                    selid = int.Parse(dataGridView1.Rows[i].Cells[0].Value.ToString());
+                    sel2 = i;
                 }
             }
-            if (sel2 != -1)
+            if (sel2 >=0)
             {
                 fdo mq = null;
                 if (mq == null || mq.IsDisposed)
@@ -232,8 +234,10 @@ namespace Exercise_student
                 //  persons.Join(cities, p => p.CityID, c => c.ID, (p, c) => new { PersonName = p.Name, CityName = c.Name });
                 // var q1 = lce.Join(erl, p => p.eid, c => c.id, (p, c) => new { eid = p.eid, ename = c.name, stime = p.starttime, etime = p.endtime });
                 richTextBox2.Text = "";
-                
-                exerL tel1 = erl[sel2];
+                int selid3 = int.Parse(dataGridView1.Rows[sel2].Cells[0].Value.ToString());
+                exerL  tel1 = null;
+                tel1 = erl.Where(o => o.id  == selid3).First();
+                //exerL tel1 = erl[sel2];
                 List<exerDetail> led = null;
                 var q11 = from o in pp.context.exerDetail
                           where o.lid == tel1.id
@@ -515,8 +519,11 @@ namespace Exercise_student
         {
             c_l = 2;
             DateTime now1=System.DateTime.Now;
-            if (now1 < lce[e.RowIndex].starttime) c_l = 1;
-            if (now1 > lce[e.RowIndex].endtime ) c_l = 3;
+           int selid3 = int.Parse(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
+            classExer ext = null;
+            ext = lce.Where(o => o.eid == selid3).First();  
+            if (now1 < ext.starttime) c_l = 1;
+            if (now1 > ext.endtime ) c_l = 3;
             // MessageBox.Show(e.RowIndex.ToString());
             //   MessageBox.Show(lce[e.RowIndex].starttime.ToString());
             sel2 = e.RowIndex;
