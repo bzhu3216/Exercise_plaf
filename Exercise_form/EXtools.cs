@@ -346,7 +346,25 @@ namespace Exercise_form
             for (int i = 0; i < cc.numobjective; i++) objectiveofcon.Add(0);
             List<int> objectivescoreofofcon = new List<int>(cc.numobjective);
             for (int i = 0; i < cc.numobjective; i++) objectivescoreofofcon.Add(0);
-            //
+            //objective detail////
+            List<object> objectiveofeach = new List<object> (cc.numobjective);
+            for (int i = 0; i < cc.numobjective; i++)
+            {
+                List<int> l1 = new List<int>(5);
+                    for (int ii = 0; ii < 5; ii++) { l1.Add(0); }
+                objectiveofeach.Add(l1);
+            }
+            List<object> objectivescoreofofeach = new List<object>(cc.numobjective);
+            for (int i = 0; i < cc.numobjective; i++)
+            {
+                List<int> l1 = new List<int>(5);
+                for (int ii = 0; ii < 5; ii++) { l1.Add(0); }
+                objectivescoreofofeach.Add(l1);
+            }
+
+
+
+            ////
             List<int> diffof = new List<int>(cc.diff);
             for (int i = 0; i < cc.diff; i++) diffof.Add(0);
             List<int> diffscore = new List<int>(cc.diff);
@@ -381,8 +399,13 @@ namespace Exercise_form
                         totalscoreofcon[(int)mcq.con - 1] = totalscoreofcon[(int)mcq.con - 1] + (int)ed1.score;
                         objectiveofcon[(int)mcq.objective - 1] = objectiveofcon[(int)mcq.objective - 1] + 1;
                         objectivescoreofofcon[(int)mcq.objective - 1] = objectivescoreofofcon[(int)mcq.objective - 1] + (int)ed1.score;
-                        diffof[(int)mcq.objective - 1] = diffof[(int)mcq.objective - 1] + 1;
-                        diffscore[(int)mcq.objective - 1]= diffscore[(int)mcq.objective - 1] + (int)ed1.score;
+                        diffof[(int)mcq.diff  - 1] = diffof[(int)mcq.diff - 1] + 1;
+                        diffscore[(int)mcq.diff - 1]= diffscore[(int)mcq.diff - 1] + (int)ed1.score;
+                        ///////////////////each
+                        ((List<int>)objectiveofeach[(int)mcq.objective - 1])[0] = ((List<int>)objectiveofeach[(int)mcq.objective - 1])[0] + 1;
+                        ((List<int>)objectivescoreofofeach[(int)mcq.objective - 1])[0] = ((List<int>)objectivescoreofofeach[(int)mcq.objective - 1])[0] + (int)ed1.score;
+
+                        /////////////////endeach
 
 
                     }
@@ -403,13 +426,17 @@ namespace Exercise_form
                         totalscoreofcon[(int)mcq.con - 1] = totalscoreofcon[(int)mcq.con - 1] + (int)ed1.score;
                         objectiveofcon[(int)mcq.objective - 1] = objectiveofcon[(int)mcq.objective - 1] + 1;
                         objectivescoreofofcon[(int)mcq.objective - 1] = objectivescoreofofcon[(int)mcq.objective - 1] + (int)ed1.score;
-                        diffof[(int)mcq.objective - 1] = diffof[(int)mcq.objective - 1] + 1;
-                        diffscore[(int)mcq.objective - 1] = diffscore[(int)mcq.objective - 1] + (int)ed1.score;
+                        diffof[(int)mcq.diff - 1] = diffof[(int)mcq.diff - 1] + 1;
+                        diffscore[(int)mcq.diff - 1] = diffscore[(int)mcq.diff - 1] + (int)ed1.score;
+                        ///////////////////each
+                        ((List<int>)objectiveofeach[(int)mcq.objective - 1])[1] = ((List<int>)objectiveofeach[(int)mcq.objective - 1])[1] + 1;
+                        ((List<int>)objectivescoreofofeach[(int)mcq.objective - 1])[1] = ((List<int>)objectivescoreofofeach[(int)mcq.objective - 1])[1] + (int)ed1.score;
 
+                        /////////////////endeach
 
                     }
 
-                            if (ed1.typeq == 2)
+                    if (ed1.typeq == 2)
                             {
 
 
@@ -432,14 +459,18 @@ namespace Exercise_form
                         totalscoreofcon[(int)mcq.con - 1] = totalscoreofcon[(int)mcq.con - 1] + (int)ed1.score;
                         objectiveofcon[(int)mcq.objective - 1] = objectiveofcon[(int)mcq.objective - 1] + 1;
                         objectivescoreofofcon[(int)mcq.objective - 1] = objectivescoreofofcon[(int)mcq.objective - 1] + (int)ed1.score;
-                        diffof[(int)mcq.objective - 1] = diffof[(int)mcq.objective - 1] + 1;
-                        diffscore[(int)mcq.objective - 1] = diffscore[(int)mcq.objective - 1] + (int)ed1.score;
+                        diffof[(int)mcq.diff - 1] = diffof[(int)mcq.diff - 1] + 1;
+                        diffscore[(int)mcq.diff - 1] = diffscore[(int)mcq.diff - 1] + (int)ed1.score;
+                        ///////////////////each
+                        ((List<int>)objectiveofeach[(int)mcq.objective - 1])[3] = ((List<int>)objectiveofeach[(int)mcq.objective - 1])[3] + 1;
+                        ((List<int>)objectivescoreofofeach[(int)mcq.objective - 1])[3] = ((List<int>)objectivescoreofofeach[(int)mcq.objective - 1])[3] + (int)ed1.score;
 
+                        /////////////////endeach
 
 
                     }
-                            //////////////////////////////////////end3
-                            if (ed1.typeq == 4)
+                    //////////////////////////////////////end3
+                    if (ed1.typeq == 4)
                             {
                                 
 
@@ -453,14 +484,19 @@ namespace Exercise_form
                         totalscoreofcon[(int)mcq.con - 1] = totalscoreofcon[(int)mcq.con - 1] + (int)ed1.score;
                         objectiveofcon[(int)mcq.objective - 1] = objectiveofcon[(int)mcq.objective - 1] + 1;
                         objectivescoreofofcon[(int)mcq.objective - 1] = objectivescoreofofcon[(int)mcq.objective - 1] + (int)ed1.score;
-                        diffof[(int)mcq.objective - 1] = diffof[(int)mcq.objective - 1] + 1;
-                        diffscore[(int)mcq.objective - 1] = diffscore[(int)mcq.objective - 1] + (int)ed1.score;
+                        diffof[(int)mcq.diff - 1] = diffof[(int)mcq.diff - 1] + 1;
+                        diffscore[(int)mcq.diff - 1] = diffscore[(int)mcq.diff - 1] + (int)ed1.score;
+                        ///////////////////each
+                        ((List<int>)objectiveofeach[(int)mcq.objective - 1])[4] = ((List<int>)objectiveofeach[(int)mcq.objective - 1])[4] + 1;
+                        ((List<int>)objectivescoreofofeach[(int)mcq.objective - 1])[4] = ((List<int>)objectivescoreofofeach[(int)mcq.objective - 1])[4] + (int)ed1.score;
+
+                        /////////////////endeach
 
                     }
 
-                            ////end4
+                    ////end4
 
-                        }
+                }
 
                 //////////////////tostring//////////////////////
 
@@ -483,18 +519,37 @@ namespace Exercise_form
                 int i = 0;
                 foreach (int jll in objectiveofcon)
                 {
-                    st.AppendLine("目标（" + (i + 1) + ")有（" + objectiveofcon[i] + ")个题目共（" + objectivescoreofofcon[i] + "）分");
+                    st.AppendLine("目标（" + (i + 1) + ")有选择题" + ((List<int>)objectiveofeach[i])[0] + @"/" + ((List<int>)objectivescoreofofeach[i])[0] + @"(个/分) 判断题"
+                                                               + ((List<int>)objectiveofeach[i])[1] + @"/" + ((List<int>)objectivescoreofofeach[i])[1] + @"(个/分)填空题"
+                                                               + ((List<int>)objectiveofeach[i])[2] + @"/" + ((List<int>)objectivescoreofofeach[i])[2] + @"(个/分)简答题"
+                                                               + ((List<int>)objectiveofeach[i])[3] + @"/" + ((List<int>)objectivescoreofofeach[i])[3] + @"(个/分)分析题"
+                                                                + ((List<int>)objectiveofeach[i])[4] + @"/" + ((List<int>)objectivescoreofofeach[i])[4] + @"(个/分)");
                     i++;
                 }
+
+                ///////////////////////////////////////////////
+
+                i = 0;j = 0;
+                foreach (List<int> ll in objectiveofeach)
+                {
+                    st.AppendLine("目标（" + (i + 1) + ")有（" + objectiveofcon[i] + ")个题目共（" + objectivescoreofofcon[i] + "）分");
+                    i++;
+
+                }
+
+
+
                 //////////////////////////
                 st.AppendLine("_________________________________________________");
                 i = 0;
+                int sum = 0;
                 foreach (int kk in diffof)
                 {
                     st.AppendLine("难度（" + (i + 1) + ")有（" + diffof[i] + ")个题目共（" + diffscore[i] + "）分");
+                    sum = sum + diffscore[i];
                     i++;
                 }
-                st.AppendLine("_________________________________________________");
+                st.AppendLine("_____________"+ sum + "分____________________________________");
 
 
 
@@ -775,22 +830,29 @@ namespace Exercise_form
 
                    
                   
-                        //////////////////savedoc//////////////////////
+                       
 
 
                         // richTextBox2.SaveFile(saveFileDialog1.FileName);
-                        try
-                        {
-
-                            doc.SaveToFile(dirsave, Spire.Doc.FileFormat.Docx2013);
-                        }
-                        catch (Exception Err)
-                        {
-                            MessageBox.Show("WORD文件保存操作失败！" + Err.Message, "信息提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
+                       
 
                     }//end eachstudent
+                    try
+                    {
+                        if (needkey)
+                        {
+                            string sumstr = toSummary(tel1, cc, pp);
+                            Paragraph para1 = s.AddParagraph();
+                            para1.AppendText(sumstr);
 
+                        }
+                        //////////////////savedoc//////////////////////
+                        doc.SaveToFile(dirsave, Spire.Doc.FileFormat.Docx2013);
+                    }
+                    catch (Exception Err)
+                    {
+                        MessageBox.Show("WORD文件保存操作失败！" + Err.Message, "信息提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                     MessageBox.Show("文档生成结束！");
 
 

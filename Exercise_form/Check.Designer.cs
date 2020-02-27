@@ -77,7 +77,7 @@
             // 
             this.button1.Location = new System.Drawing.Point(37, 56);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(86, 31);
+            this.button1.Size = new System.Drawing.Size(85, 30);
             this.button1.TabIndex = 0;
             this.button1.Text = "抽取特征";
             this.button1.UseVisualStyleBackColor = true;
@@ -104,9 +104,9 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(3, 112);
+            this.button2.Location = new System.Drawing.Point(38, 112);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(85, 29);
+            this.button2.Size = new System.Drawing.Size(85, 30);
             this.button2.TabIndex = 2;
             this.button2.Text = "检查选择";
             this.button2.UseVisualStyleBackColor = true;
@@ -114,9 +114,9 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(3, 169);
+            this.button3.Location = new System.Drawing.Point(37, 166);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(85, 29);
+            this.button3.Size = new System.Drawing.Size(85, 30);
             this.button3.TabIndex = 3;
             this.button3.Text = "检查判断";
             this.button3.UseVisualStyleBackColor = true;
@@ -124,9 +124,9 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(3, 219);
+            this.button4.Location = new System.Drawing.Point(37, 220);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(85, 29);
+            this.button4.Size = new System.Drawing.Size(85, 30);
             this.button4.TabIndex = 4;
             this.button4.Text = "检查填空";
             this.button4.UseVisualStyleBackColor = true;
@@ -134,9 +134,9 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(3, 269);
+            this.button5.Location = new System.Drawing.Point(37, 274);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(85, 29);
+            this.button5.Size = new System.Drawing.Size(85, 30);
             this.button5.TabIndex = 5;
             this.button5.Text = "检查简答";
             this.button5.UseVisualStyleBackColor = true;
@@ -144,9 +144,9 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(2, 320);
+            this.button6.Location = new System.Drawing.Point(37, 328);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(85, 29);
+            this.button6.Size = new System.Drawing.Size(85, 30);
             this.button6.TabIndex = 6;
             this.button6.Text = "检查分析";
             this.button6.UseVisualStyleBackColor = true;
@@ -154,7 +154,7 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(3, 368);
+            this.button7.Location = new System.Drawing.Point(37, 382);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(85, 30);
             this.button7.TabIndex = 7;

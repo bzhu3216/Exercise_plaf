@@ -281,6 +281,7 @@ namespace Exercise_form
                 hs.qid = fp.qid;
                 hs.sim = -1;
                 hs.str = fp.featurestr;
+                hs.type1 = fp.type1;
                 hsl.Add(hs);
 
             }
@@ -315,6 +316,7 @@ namespace Exercise_form
                 hs.qid = fp.qid;
                 hs.sim = -1;
                 hs.str = fp.featurestr;
+                hs.type1 = fp.type1;
                 hsl.Add(hs);
 
             }
@@ -344,6 +346,7 @@ namespace Exercise_form
                 hs.qid = fp.qid;
                 hs.sim = -1;
                 hs.str = fp.featurestr;
+                hs.type1 = fp.type1;
                 hsl.Add(hs);
 
             }
@@ -373,6 +376,7 @@ namespace Exercise_form
                 hs.qid = fp.qid;
                 hs.sim = -1;
                 hs.str = fp.featurestr;
+                hs.type1 = fp.type1;
                 hsl.Add(hs);
 
             }
@@ -402,6 +406,7 @@ namespace Exercise_form
                 hs.qid = fp.qid;
                 hs.sim = -1;
                 hs.str = fp.featurestr;
+                hs.type1 = fp.type1;
                 hsl.Add(hs);
 
             }
