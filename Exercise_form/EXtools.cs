@@ -820,7 +820,7 @@ namespace Exercise_form
 
         ////////////////////////////////////////////
 
-        public float degreeofsimilarity(string a,string b)
+        public static float degreeofsimilarity(string a,string b)
         {
             string cstr = null;
             string dstr = null;

@@ -219,6 +219,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="helpsimilar.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>

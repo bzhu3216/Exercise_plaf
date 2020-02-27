@@ -260,6 +260,146 @@ namespace Exercise_form
 
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            EXtools etool = new Exercise_form.EXtools();
+            List<featurehelp> lfea = null;
+            List<helpsimilar> hsl = new List<Exercise_form.helpsimilar>();
+            lfea = etool.checkfeature(0, pp);
+            foreach (featurehelp fp in lfea)
+            {
+                helpsimilar hs = new Exercise_form.helpsimilar();
+                hs.id = fp.id;
+                hs.qid = fp.qid;
+                hs.sim = -1;
+                hs.str = fp.featurestr;
+                hsl.Add(hs);
+
+            }
+            for (int i = 0; i < hsl.Count()-1; i++)
+                for (int j = i+1; j < hsl.Count(); j++)
+                {  if(hsl[j].sim==-1)
+                    if (EXtools.degreeofsimilarity(hsl[i].str , hsl[j].str) > 0.9) { hsl[j].sim = hsl[i].qid;     }
+
+                }
+
+            dataGridView1.DataSource = hsl;
+            //dataGridView1.DataSource = hsl;
+
+
+
+
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            EXtools etool = new Exercise_form.EXtools();
+            List<featurehelp> lfea = null;
+            List<helpsimilar> hsl = new List<Exercise_form.helpsimilar>();
+            lfea = etool.checkfeature(1, pp);
+            foreach (featurehelp fp in lfea)
+            {
+                helpsimilar hs = new Exercise_form.helpsimilar();
+                hs.id = fp.id;
+                hs.qid = fp.qid;
+                hs.sim = -1;
+                hs.str = fp.featurestr;
+                hsl.Add(hs);
+
+            }
+            for (int i = 0; i < hsl.Count() - 1; i++)
+                for (int j = i + 1; j < hsl.Count(); j++)
+                {
+                    if (hsl[j].sim == -1)
+                        if (EXtools.degreeofsimilarity(hsl[i].str, hsl[j].str) > 0.9) { hsl[j].sim = hsl[i].qid; }
+
+                }
+
+            dataGridView1.DataSource = hsl;
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            EXtools etool = new Exercise_form.EXtools();
+            List<featurehelp> lfea = null;
+            List<helpsimilar> hsl = new List<Exercise_form.helpsimilar>();
+            lfea = etool.checkfeature(2, pp);
+            foreach (featurehelp fp in lfea)
+            {
+                helpsimilar hs = new Exercise_form.helpsimilar();
+                hs.id = fp.id;
+                hs.qid = fp.qid;
+                hs.sim = -1;
+                hs.str = fp.featurestr;
+                hsl.Add(hs);
+
+            }
+            for (int i = 0; i < hsl.Count() - 1; i++)
+                for (int j = i + 1; j < hsl.Count(); j++)
+                {
+                    if (hsl[j].sim == -1)
+                        if (EXtools.degreeofsimilarity(hsl[i].str, hsl[j].str) > 0.9) { hsl[j].sim = hsl[i].qid; }
+
+                }
+
+            dataGridView1.DataSource = hsl;
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            EXtools etool = new Exercise_form.EXtools();
+            List<featurehelp> lfea = null;
+            List<helpsimilar> hsl = new List<Exercise_form.helpsimilar>();
+            lfea = etool.checkfeature(3, pp);
+            foreach (featurehelp fp in lfea)
+            {
+                helpsimilar hs = new Exercise_form.helpsimilar();
+                hs.id = fp.id;
+                hs.qid = fp.qid;
+                hs.sim = -1;
+                hs.str = fp.featurestr;
+                hsl.Add(hs);
+
+            }
+            for (int i = 0; i < hsl.Count() - 1; i++)
+                for (int j = i + 1; j < hsl.Count(); j++)
+                {
+                    if (hsl[j].sim == -1)
+                        if (EXtools.degreeofsimilarity(hsl[i].str, hsl[j].str) > 0.9) { hsl[j].sim = hsl[i].qid; }
+
+                }
+
+            dataGridView1.DataSource = hsl;
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            EXtools etool = new Exercise_form.EXtools();
+            List<featurehelp> lfea = null;
+            List<helpsimilar> hsl = new List<Exercise_form.helpsimilar>();
+            lfea = etool.checkfeature(4, pp);
+            foreach (featurehelp fp in lfea)
+            {
+                helpsimilar hs = new Exercise_form.helpsimilar();
+                hs.id = fp.id;
+                hs.qid = fp.qid;
+                hs.sim = -1;
+                hs.str = fp.featurestr;
+                hsl.Add(hs);
+
+            }
+            for (int i = 0; i < hsl.Count() - 1; i++)
+                for (int j = i + 1; j < hsl.Count(); j++)
+                {
+                    if (hsl[j].sim == -1)
+                        if (EXtools.degreeofsimilarity(hsl[i].str, hsl[j].str) > 0.9) { hsl[j].sim = hsl[i].qid; }
+
+                }
+
+            dataGridView1.DataSource = hsl;
+        }
         //////////////////////////////////////////
 
     }
