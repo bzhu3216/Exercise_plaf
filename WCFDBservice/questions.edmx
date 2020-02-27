@@ -105,7 +105,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="type1" Type="int" Nullable="false" />
           <Property Name="qid" Type="int" Nullable="false" />
-          <Property Name="featurestr" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="featurestr" Type="varchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="mchoiceQues">
           <Key>
@@ -600,7 +600,7 @@ FROM [dbo].[View_student] AS [View_student]</DefiningQuery>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="type1" Type="Int32" Nullable="false" />
           <Property Name="qid" Type="Int32" Nullable="false" />
-          <Property Name="featurestr" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="featurestr" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>

@@ -14,6 +14,7 @@ namespace Exercise_form
     public partial class Check : Form
     {
         param pp;
+        List<helpsimilar> hsl = new List<helpsimilar>();
         public Check(param p)
         {
             InitializeComponent();
@@ -194,10 +195,10 @@ namespace Exercise_form
                     if (fexist)
                     {
 
-                        if (strq.Length < 21)
+                        if (strq.Length < 31)
                             fstr = strq;
                         else
-                            fstr = strq.Substring(0, 20).Trim();
+                            fstr = strq.Substring(0, 30).Trim();
 
                         featurehelp fhelp = new featurehelp();
                         fhelp.qid = mq.id;
@@ -238,12 +239,16 @@ namespace Exercise_form
                     string fstr = null;
                     if (fexist)
                     {
-
-                        if (strq.Length < 21)
-                            fstr = strq;
+                        int ll = strq.Length;
+                        if (ll < 21)
+                            fstr = strq.Trim();
                         else
-                            fstr = strq.Substring(0, 20).Trim();
-
+                        { 
+                        if (ll < 41)
+                            fstr = strq.Substring(10, 20).Trim();
+                        else
+                            fstr = strq.Substring(10, 20).Trim();
+                        }
                         featurehelp fhelp = new featurehelp();
                         fhelp.qid = mq.id;
                         fhelp.type1 =4;
@@ -254,7 +259,7 @@ namespace Exercise_form
                 pp.context.SaveChanges();
             }
 
-
+            MessageBox.Show("ok"); 
 
 
 
@@ -263,10 +268,12 @@ namespace Exercise_form
 
         private void button2_Click(object sender, EventArgs e)
         {
+            dataGridView1.DataSource = null;
             EXtools etool = new Exercise_form.EXtools();
             List<featurehelp> lfea = null;
-            List<helpsimilar> hsl = new List<Exercise_form.helpsimilar>();
-            lfea = etool.checkfeature(0, pp);
+            // List<helpsimilar> hsl = new List<Exercise_form.helpsimilar>();
+            hsl.Clear();
+             lfea = etool.checkfeature(0, pp);
             foreach (featurehelp fp in lfea)
             {
                 helpsimilar hs = new Exercise_form.helpsimilar();
@@ -295,9 +302,11 @@ namespace Exercise_form
 
         private void button3_Click(object sender, EventArgs e)
         {
+            dataGridView1.DataSource = null;
             EXtools etool = new Exercise_form.EXtools();
             List<featurehelp> lfea = null;
-            List<helpsimilar> hsl = new List<Exercise_form.helpsimilar>();
+            // List<helpsimilar> hsl = new List<Exercise_form.helpsimilar>();
+            hsl.Clear();
             lfea = etool.checkfeature(1, pp);
             foreach (featurehelp fp in lfea)
             {
@@ -322,9 +331,11 @@ namespace Exercise_form
 
         private void button4_Click(object sender, EventArgs e)
         {
+            dataGridView1.DataSource = null;
             EXtools etool = new Exercise_form.EXtools();
             List<featurehelp> lfea = null;
-            List<helpsimilar> hsl = new List<Exercise_form.helpsimilar>();
+            // List<helpsimilar> hsl = new List<Exercise_form.helpsimilar>();
+            hsl.Clear();
             lfea = etool.checkfeature(2, pp);
             foreach (featurehelp fp in lfea)
             {
@@ -349,9 +360,11 @@ namespace Exercise_form
 
         private void button5_Click(object sender, EventArgs e)
         {
+            dataGridView1.DataSource = null;
             EXtools etool = new Exercise_form.EXtools();
             List<featurehelp> lfea = null;
-            List<helpsimilar> hsl = new List<Exercise_form.helpsimilar>();
+            // List<helpsimilar> hsl = new List<Exercise_form.helpsimilar>();
+            hsl.Clear();
             lfea = etool.checkfeature(3, pp);
             foreach (featurehelp fp in lfea)
             {
@@ -376,9 +389,11 @@ namespace Exercise_form
 
         private void button6_Click(object sender, EventArgs e)
         {
+            dataGridView1.DataSource = null;
             EXtools etool = new Exercise_form.EXtools();
             List<featurehelp> lfea = null;
-            List<helpsimilar> hsl = new List<Exercise_form.helpsimilar>();
+            // List<helpsimilar> hsl = new List<Exercise_form.helpsimilar>();
+            hsl.Clear();
             lfea = etool.checkfeature(4, pp);
             foreach (featurehelp fp in lfea)
             {
@@ -399,6 +414,158 @@ namespace Exercise_form
                 }
 
             dataGridView1.DataSource = hsl;
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            int irow = -1;
+            if (dataGridView1.CurrentCell!=null)
+                irow = dataGridView1.CurrentCell.RowIndex;
+            DialogResult result =MessageBox.Show("确定删除吗？", "删除", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes&&irow >=0)
+            {  helpsimilar ths = hsl[irow];
+                if (ths.sim != -1)
+                {
+                    if (ths.type1 == 0)
+                    {
+                        var q1 = from o in pp.context.mchoiceQues
+                                 where o.id == ths.qid
+                                 select o;
+                        mchoiceQues m1 = q1.First();
+                        pp.context.DeleteObject(m1);
+                        var q2 = from o in pp.context.exerDetail
+                                 where o.qid == ths.qid &&o.typeq==0
+                                 select o;
+                        List < exerDetail > tl= null;
+                        if (q2.Count() > 0)
+                        {
+                            tl = q2.ToList();
+                            foreach (exerDetail ed in tl)
+                            {
+                                ed.qid = ths.sim;
+                                pp.context.UpdateObject(ed);
+                                MessageBox.Show("updata:" + ed.id);
+                            }             
+
+                        }
+
+
+                    }
+                    if (ths.type1 == 1)
+                    {
+                        var q1 = from o in pp.context.TFQues 
+                                 where o.id == ths.qid
+                                 select o;
+                        TFQues m1 = q1.First();
+                        pp.context.DeleteObject(m1);
+                        var q2 = from o in pp.context.exerDetail
+                                 where o.qid == ths.qid && o.typeq == 1
+                                 select o;
+                        List<exerDetail> tl = null;
+                        if (q2.Count() > 0)
+                        {
+                            tl = q2.ToList();
+                            foreach (exerDetail ed in tl)
+                            {
+                                ed.qid = ths.sim;
+                                pp.context.UpdateObject(ed);
+                                MessageBox.Show("updata:" + ed.id);
+                            }
+
+                        }
+                    }
+                    if (ths.type1 == 2)
+                    {
+                        var q1 = from o in pp.context.eQues 
+                                 where o.id == ths.qid
+                                 select o;
+                        eQues m1 = q1.First();
+                        pp.context.DeleteObject(m1);
+                        var q2 = from o in pp.context.exerDetail
+                                 where o.qid == ths.qid && o.typeq == 2
+                                 select o;
+                        List<exerDetail> tl = null;
+                        if (q2.Count() > 0)
+                        {
+                            tl = q2.ToList();
+                            foreach (exerDetail ed in tl)
+                            {
+                                ed.qid = ths.sim;
+                                pp.context.UpdateObject(ed);
+                                MessageBox.Show("updata:" + ed.id);
+                            }
+
+                        }
+                    }
+                    if (ths.type1 == 3)
+                    {
+                        var q1 = from o in pp.context.SQues 
+                                 where o.id == ths.qid
+                                 select o;
+                        SQues m1 = q1.First();
+                        pp.context.DeleteObject(m1);
+                        var q2 = from o in pp.context.exerDetail
+                                 where o.qid == ths.qid && o.typeq == 3
+                                 select o;
+                        List<exerDetail> tl = null;
+                        if (q2.Count() > 0)
+                        {
+                            tl = q2.ToList();
+                            foreach (exerDetail ed in tl)
+                            {
+                                ed.qid = ths.sim;
+                                pp.context.UpdateObject(ed);
+                                MessageBox.Show("updata:" + ed.id);
+                            }
+
+                        }
+                    }
+                    if (ths.type1 == 4)
+                    {
+                        var q1 = from o in pp.context.AQues 
+                                 where o.id == ths.qid
+                                 select o;
+                        AQues m1 = q1.First();
+                        pp.context.DeleteObject(m1);
+                        var q2 = from o in pp.context.exerDetail
+                                 where o.qid == ths.qid && o.typeq == 4
+                                 select o;
+                        List<exerDetail> tl = null;
+                        if (q2.Count() > 0)
+                        {
+                            tl = q2.ToList();
+                            foreach (exerDetail ed in tl)
+                            {
+                                ed.qid = ths.sim;
+                                pp.context.UpdateObject(ed);
+                                MessageBox.Show("updata:" + ed.id);
+                            }
+
+                        }
+                    }
+                    //del question over updata over
+                    //del theinformation
+                    var q3 = from o in pp.context.featurehelp 
+                             where o.id==ths.id 
+                             select o;
+                    featurehelp fp2 = q3.First();
+                    pp.context.DeleteObject(fp2);
+                    pp.context.SaveChanges();
+                    dataGridView1.DataSource = null;
+                    hsl.Remove(ths);
+                    dataGridView1.DataSource = hsl;
+                    
+                   
+                }
+                else
+                {
+
+                    MessageBox.Show("Can not be deleted"); 
+                }
+
+           }
+
+
         }
         //////////////////////////////////////////
 

@@ -240,7 +240,7 @@
         <Property Name="id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
         <Property Name="type1" Type="Edm.Int32" Nullable="false" />
         <Property Name="qid" Type="Edm.Int32" Nullable="false" />
-        <Property Name="featurestr" Type="Edm.String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+        <Property Name="featurestr" Type="Edm.String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
       </EntityType>
       <Association Name="FK_exerL_Course">
         <End Type="db_exerciseModel.Course" Role="Course" Multiplicity="1" />
