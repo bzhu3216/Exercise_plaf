@@ -55,6 +55,7 @@
             this.dataGridViewRichTextBoxColumn1 = new DataGridViewRichTextBox.DataGridViewRichTextBoxColumn();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -336,11 +337,22 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(502, 457);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(64, 28);
+            this.button5.TabIndex = 20;
+            this.button5.Text = "修改分";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // EditererList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1029, 800);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.richTextBox1);
@@ -398,5 +410,6 @@
         private DataGridViewRichTextBox.DataGridViewRichTextBoxColumn qu;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private DataGridViewRichTextBox.DataGridViewRichTextBoxColumn question;
+        private System.Windows.Forms.Button button5;
     }
 }

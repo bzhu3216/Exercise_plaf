@@ -245,7 +245,7 @@ namespace Exercise_form
                         else
                         { 
                         if (ll < 41)
-                            fstr = strq.Substring(10, 20).Trim();
+                            fstr = strq.Substring(ll-21, 20).Trim();
                         else
                             fstr = strq.Substring(10, 20).Trim();
                         }

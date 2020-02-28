@@ -634,6 +634,36 @@ namespace Exercise_form
                 dataGridView1.RowHeadersDefaultCellStyle.ForeColor,
                 TextFormatFlags.VerticalCenter | TextFormatFlags.Right);
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+
+            int selid = -1;
+            for (int i = 0; i < dataGridView2.Rows.Count; i++)
+            {
+                if (dataGridView2.Rows[i].Selected == true)
+                {
+                    selid = int.Parse(dataGridView2.Rows[i].Cells[1].Value.ToString());
+                }
+            }
+            if (selid != -1)
+            {
+
+                exerDetail eed = ell.Find(x => x.qid == selid);
+                eed.score = int.Parse(comboBox5.Text);
+                pp.context.UpdateObject(eed);
+                pp.context.SaveChanges(); 
+
+
+
+
+            }
+
+
+
+
+        }
         ////////////////////endexerdetail
 
 
