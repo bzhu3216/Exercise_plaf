@@ -217,7 +217,12 @@ namespace Exercise_form
         private void button2_Click(object sender, EventArgs e)
         {
             if (listBox1.SelectedIndex >= 0)
-            {
+            {   //summary
+                pp.vdlword = null;
+                pp.elword = null;
+                pp.elword = l1[listBox1.SelectedIndex];
+                pp.vdlword = lcs[comboBox1.SelectedIndex];
+                //summary
                 pp.exerl1 = l1[listBox1.SelectedIndex].id;
                 pp.cc1 = l1[listBox1.SelectedIndex].courseid;
                 EditererList mq = null;

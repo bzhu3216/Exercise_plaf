@@ -60,6 +60,8 @@ namespace Exercise_form
                                 where o.id == ell.courseid 
                                 select o;
             Course  cc = questionQuery2.First<Course>();
+           // pp.elword = l1[listBox1.SelectedIndex];
+           // pp.vdlword = lcs[comboBox1.SelectedIndex];
             if (cc != null)
             { 
             numobjective = (int)cc.numobjective;
@@ -662,6 +664,35 @@ namespace Exercise_form
 
 
 
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+
+
+            Exercise_Summary mq = null;
+           
+
+
+                if (mq == null || mq.IsDisposed)
+                {
+                 //   pp.vdlword = null;
+                  //  pp.elword = null;
+                  
+                    mq = new Exercise_Summary(pp);
+                    mq.textBox1.Text = EXtools.toSummary(pp.elword, pp.vdlword, pp);
+                    mq.ShowDialog();
+                    // mq.Show();
+                }
+                else
+                {
+                    mq.Activate();
+                    mq.WindowState = FormWindowState.Normal;
+                }
+           
+            
 
         }
         ////////////////////endexerdetail

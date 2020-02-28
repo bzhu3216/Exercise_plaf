@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.cc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,6 +56,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -158,9 +159,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(512, 116);
+            this.button1.Location = new System.Drawing.Point(502, 116);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(54, 28);
+            this.button1.Size = new System.Drawing.Size(64, 28);
             this.button1.TabIndex = 9;
             this.button1.Text = "》》";
             this.button1.UseVisualStyleBackColor = true;
@@ -168,9 +169,9 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(512, 171);
+            this.button2.Location = new System.Drawing.Point(502, 162);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(54, 28);
+            this.button2.Size = new System.Drawing.Size(64, 28);
             this.button2.TabIndex = 10;
             this.button2.Text = "《《";
             this.button2.UseVisualStyleBackColor = true;
@@ -272,20 +273,20 @@
             this.dataGridView1.Location = new System.Drawing.Point(43, 85);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.Format = "N0";
-            dataGridViewCellStyle3.NullValue = null;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.Format = "N0";
+            dataGridViewCellStyle5.NullValue = null;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.RowHeadersWidth = 20;
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView1.RowTemplate.Height = 80;
             this.dataGridView1.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.Size = new System.Drawing.Size(450, 593);
@@ -319,7 +320,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(512, 268);
+            this.button3.Location = new System.Drawing.Point(502, 208);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(64, 28);
             this.button3.TabIndex = 18;
@@ -329,7 +330,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(512, 325);
+            this.button4.Location = new System.Drawing.Point(502, 254);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(64, 28);
             this.button4.TabIndex = 19;
@@ -339,7 +340,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(502, 457);
+            this.button5.Location = new System.Drawing.Point(502, 300);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(64, 28);
             this.button5.TabIndex = 20;
@@ -347,11 +348,22 @@
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(502, 347);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(64, 28);
+            this.button6.TabIndex = 21;
+            this.button6.Text = "看详情";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
             // EditererList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1029, 800);
+            this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
@@ -411,5 +423,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private DataGridViewRichTextBox.DataGridViewRichTextBoxColumn question;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
     }
 }
