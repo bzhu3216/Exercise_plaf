@@ -31,15 +31,15 @@
             this.components = new System.ComponentModel.Container();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.button1 = new System.Windows.Forms.Button();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -73,74 +73,15 @@
             this.splitContainer1.SplitterDistance = 192;
             this.splitContainer1.TabIndex = 0;
             // 
-            // button1
+            // button7
             // 
-            this.button1.Location = new System.Drawing.Point(37, 56);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(85, 30);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "抽取特征";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(70, 479);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(52, 54);
-            this.richTextBox1.TabIndex = 1;
-            this.richTextBox1.Text = "dfsgfdgdfsgfdgfdgfdg";
-            this.richTextBox1.Visible = false;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(641, 592);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(38, 112);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(85, 30);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "检查选择";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(37, 166);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(85, 30);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "检查判断";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(37, 220);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(85, 30);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "检查填空";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(37, 274);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(85, 30);
-            this.button5.TabIndex = 5;
-            this.button5.Text = "检查简答";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.button7.Location = new System.Drawing.Point(37, 382);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(85, 30);
+            this.button7.TabIndex = 7;
+            this.button7.Text = "删除重复";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button6
             // 
@@ -152,15 +93,74 @@
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
-            // button7
+            // button5
             // 
-            this.button7.Location = new System.Drawing.Point(37, 382);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(85, 30);
-            this.button7.TabIndex = 7;
-            this.button7.Text = "删除重复";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.button5.Location = new System.Drawing.Point(37, 274);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(85, 30);
+            this.button5.TabIndex = 5;
+            this.button5.Text = "检查简答";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(37, 220);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(85, 30);
+            this.button4.TabIndex = 4;
+            this.button4.Text = "检查填空";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(37, 166);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(85, 30);
+            this.button3.TabIndex = 3;
+            this.button3.Text = "检查判断";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(38, 112);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(85, 30);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "检查选择";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(53, 461);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(52, 54);
+            this.richTextBox1.TabIndex = 1;
+            this.richTextBox1.Text = "dfsgfdgdfsgfdgfdgfdg";
+            this.richTextBox1.Visible = false;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(37, 56);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(85, 30);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "抽取特征";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 23;
+            this.dataGridView1.Size = new System.Drawing.Size(641, 592);
+            this.dataGridView1.TabIndex = 0;
             // 
             // Check
             // 

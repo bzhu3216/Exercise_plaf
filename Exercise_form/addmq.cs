@@ -195,6 +195,7 @@ namespace Exercise_form
             if (comboBox3.Text == "") vv = false;
             if (comboBox4.Text == "") vv = false;
             if (comboBox5.Text == "") vv = false;
+            if (rquestion.Text == "") vv = false;
             return vv;
         }
     }

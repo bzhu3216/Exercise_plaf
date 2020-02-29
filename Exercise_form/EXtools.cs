@@ -848,6 +848,7 @@ namespace Exercise_form
                         }
                         //////////////////savedoc//////////////////////
                         doc.SaveToFile(dirsave, Spire.Doc.FileFormat.Docx2013);
+                        MessageBox.Show("文档已经生成"); 
                     }
                     catch (Exception Err)
                     {
@@ -892,7 +893,7 @@ namespace Exercise_form
             { cstr = b; dstr = a; }
              float result=0;
             int la = cstr.Length;
-            int lb = cstr.Length;
+            int lb = dstr.Length;
             int sum = 0;
             for (int i = 0; i < la; i++)
             {
@@ -900,8 +901,11 @@ namespace Exercise_form
                 if (dstr.Contains(cstr[i])) sum = sum + 1;
 
             }
-
+            if (la != 0)  
             result = sum / la;
+                else
+                { MessageBox.Show("怎么可能");  }
+                
             return result;
 
         }

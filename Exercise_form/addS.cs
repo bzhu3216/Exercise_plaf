@@ -68,7 +68,7 @@ namespace Exercise_form
             // try
             // {
             // Instantiate the DataServiceContext.
-            if (checkem())
+            if (checkem() )
             {
 
                 SQues mcq = new SQues();
@@ -124,6 +124,7 @@ namespace Exercise_form
         private bool checkem()
         {
             bool vv = true;
+            if(rquestion.Text =="") vv = false;
             if (comboBox1.Text == "") vv = false;
             if (comboBox2.Text == "") vv = false;
             if (comboBox3.Text == "") vv = false;
