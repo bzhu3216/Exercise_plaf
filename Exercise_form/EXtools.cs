@@ -848,7 +848,7 @@ namespace Exercise_form
                         }
                         //////////////////savedoc//////////////////////
                         doc.SaveToFile(dirsave, Spire.Doc.FileFormat.Docx2013);
-                        MessageBox.Show("文档已经生成"); 
+                       // MessageBox.Show("文档已经生成"); 
                     }
                     catch (Exception Err)
                     {
