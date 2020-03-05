@@ -362,5 +362,30 @@ namespace Exercise_form
 
 
         }
+
+        private void 生成试卷ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+
+
+            testlayout mq = null;
+            if (mq == null || mq.IsDisposed)
+            {
+                //if (pp.teacher.teacherid == "1536")
+                {
+                    mq = new testlayout(pp);
+                    // mq.MdiParent = this;
+                    mq.Show();
+                }
+            }
+            else
+            {
+                mq.Activate();
+                mq.WindowState = FormWindowState.Normal;
+            }
+
+
+
+        }
     }
 }
