@@ -618,6 +618,7 @@ namespace Exercise_form
                     para2.AppendText(tel1.name);
                     para2.ApplyStyle("titleStyle");
                     led = q11.ToList<exerDetail>();
+                    int biaoti = 1;
                     foreach (exerDetail ed1 in led)
                     {
                         if (ed1.typeq == 0)
@@ -651,7 +652,8 @@ namespace Exercise_form
                             if (numofquestion[0] == 0)
                             {
                                 Paragraph para3 = s.AddParagraph();
-                                para3.AppendText("一.选择题");
+                                para3.AppendText(biaoti+".选择题");
+                                biaoti++;
                             }
                             numofquestion[0] = numofquestion[0] + 1;
                             sb = numofquestion[0] + ". " + sb;
@@ -696,7 +698,8 @@ namespace Exercise_form
                             if (numofquestion[1] == 0)
                             {
                                 Paragraph para3 = s.AddParagraph();
-                                para3.AppendText("二.判断题");
+                                para3.AppendText(biaoti+".判断题");
+                                biaoti++;
                             }
                             numofquestion[1] = numofquestion[1] + 1;
                             sb = numofquestion[1] + ". " + sb;
@@ -751,7 +754,8 @@ namespace Exercise_form
                             if (numofquestion[3] == 0)
                             {
                                 Paragraph para3 = s.AddParagraph();
-                                para3.AppendText("三.简答题");
+                                para3.AppendText(biaoti+".简答题");
+                                biaoti++;
                             }
                             numofquestion[3] = numofquestion[3] + 1;
                             sb = numofquestion[3] + ". " + sb;
@@ -803,7 +807,8 @@ namespace Exercise_form
                             if (numofquestion[4] == 0)
                             {
                                 Paragraph para3 = s.AddParagraph();
-                                para3.AppendText("三.简答题");
+                                para3.AppendText(biaoti+".分析题");
+                                biaoti++;
                             }
                             numofquestion[4] = numofquestion[4] + 1;
                             sb = numofquestion[4] + ". " + sb;
