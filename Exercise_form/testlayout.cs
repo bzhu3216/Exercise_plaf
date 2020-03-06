@@ -202,6 +202,42 @@ namespace Exercise_form
 
         }
 
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+            int irow = dataGridView1.CurrentRow.Index;
+            if (irow >= 0) { 
+
+                exerL yex = tlvedp[irow];
+              if (dataGridView1.CurrentRow.Cells[2].Value .ToString() != "")
+                {   if (!EXtools.isexitel(dataGridView1.CurrentRow.Cells[2].Value.ToString(), yex.courseid , pp))
+                    { 
+                    yex.name = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                    pp.context.UpdateObject(yex);
+                    pp.context.SaveChanges();
+                    updatalist();
+                    }
+                    else
+                    {
+                        MessageBox.Show("名称已经存在");
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("请datagrid中输入新名称");
+                }
+
+
+            }
+            else
+            {
+
+                MessageBox.Show("请选择书卷");
+            }
+
+        }
+
 
         //////endcalsss
     }

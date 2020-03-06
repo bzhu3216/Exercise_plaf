@@ -921,8 +921,19 @@ namespace Exercise_form
 
         ///////////////////////////////////////////
 
+        public static  bool isexitel(String  strel,int cid,param pp)
+        {
+            bool result = false;
+            var q1 = from o in pp.context.exerL
+                     where o.name == strel&& o.courseid  ==cid && o.teacherid ==pp.teacher.teacherid 
+                     select o;
+            if (q1.Count() > 0) result = true;
+
+            return result;
+        }
 
 
+////////////////////
 
     }//endclass
 }
