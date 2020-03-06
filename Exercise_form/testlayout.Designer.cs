@@ -534,6 +534,7 @@
             this.comboBox7.Name = "comboBox7";
             this.comboBox7.Size = new System.Drawing.Size(143, 20);
             this.comboBox7.TabIndex = 6;
+            this.comboBox7.SelectedIndexChanged += new System.EventHandler(this.comboBox7_SelectedIndexChanged);
             // 
             // button2
             // 

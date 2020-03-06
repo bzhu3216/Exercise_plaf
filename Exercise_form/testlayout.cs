@@ -55,5 +55,49 @@ namespace Exercise_form
         {
 
         }
+
+        private void comboBox7_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DataGridViewRow dgvr = new DataGridViewRow();
+            // dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+
+            foreach (DataGridViewColumn c in this.dataGridView1.Columns)
+            {
+
+                dgvr.Cells.Add(c.CellTemplate.Clone() as DataGridViewCell);
+            }
+            DataGridViewComboBoxCell dc = (DataGridViewComboBoxCell)dgvr.Cells[4];
+            dc.Items.Clear();
+            for (int i = 0; i <= vel.score; i++)
+            {
+                dc.Items.Add(i.ToString());
+            }
+            dgvr.Cells[0].Value = vel.qid;
+            //  dgvr.Cells[1].Value = stA.answ2;
+            //  dgvr.Cells[2].Value = stA.mark;
+            System.IO.MemoryStream ms = null;
+            Byte[] mybyte = stA.answ3;
+            if (mybyte != null)
+                ms = new System.IO.MemoryStream(mybyte);
+            if (ms != null)
+                dgvr.Cells[3].Value = Image.FromStream(ms);
+            //   ((System.Windows.Forms.DataGridViewComboBoxColumn)dataGridView1.Columns[4]).Items.Clear();
+
+
+            if (stA.mark >= 0)
+                dgvr.Cells[4].Value = stA.mark.ToString();
+            // else
+            //   dgvr.Cells[4].Value = "0";
+            int hh = (int)ms.Length / 250;
+            //MessageBox.Show(hh.ToString()); 
+            if (hh > 350) hh = 350;
+            dgvr.Height = hh;
+            this.dataGridView1.Rows.Add(dgvr);
+
+
+
+
+
+        }
     }
 }
