@@ -152,12 +152,12 @@ namespace Exercise_form
         {
 
             int irow = dataGridView1.CurrentRow.Index;
-            if (irow>=0 )
+            if (irow>=0 && comboBox7.SelectedIndex>=0)
             {
                 EditTestPaper mq = null;
                 if (mq == null || mq.IsDisposed)
                 {
-                    mq = new EditTestPaper(pp, tlvedp[irow]);
+                    mq = new EditTestPaper(pp, tlvedp[irow], lcs[comboBox7.SelectedIndex]);
                     mq.ShowDialog();
                     // mq.Show();
                 }
@@ -169,7 +169,7 @@ namespace Exercise_form
             }
             else
             {
-                MessageBox.Show("请选择练习！");
+                MessageBox.Show("请选择练习！or 课程");
             }
 
         }
