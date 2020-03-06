@@ -194,6 +194,12 @@
     <Compile Include="EditererList.Designer.cs">
       <DependentUpon>EditererList.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditTestPaper.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditTestPaper.Designer.cs">
+      <DependentUpon>EditTestPaper.cs</DependentUpon>
+    </Compile>
     <Compile Include="Edit_cal_exerL.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -347,6 +353,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditererList.resx">
       <DependentUpon>EditererList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditTestPaper.resx">
+      <DependentUpon>EditTestPaper.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Edit_cal_exerL.resx">
       <DependentUpon>Edit_cal_exerL.cs</DependentUpon>

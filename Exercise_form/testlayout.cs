@@ -14,6 +14,7 @@ namespace Exercise_form
     {
         param pp;
         List<V_tea_course> lcs = null;
+        List<exerL> tlvedp = null;
         public testlayout(param p)
         {
             InitializeComponent();
@@ -58,46 +59,150 @@ namespace Exercise_form
 
         private void comboBox7_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DataGridViewRow dgvr = new DataGridViewRow();
-            // dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            if (comboBox7.SelectedIndex >= 0)
+            {
+                dataGridView2.Rows.Clear();
+                dataGridView3.Rows.Clear();
+                int numobjective = lcs[comboBox7.SelectedIndex].numobjective;
+                int numcon = lcs[comboBox7.SelectedIndex].numcontent;
+               
+                // dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+                for (int i = 0; i < numobjective; i++)
+                {
+                    DataGridViewRow dgvr = new DataGridViewRow();
+                    foreach (DataGridViewColumn c in this.dataGridView2.Columns)
+                    {
 
-            foreach (DataGridViewColumn c in this.dataGridView1.Columns)
+                        dgvr.Cells.Add(c.CellTemplate.Clone() as DataGridViewCell);
+                    }
+                    dgvr.Cells[0].Value = i+1;
+                    this.dataGridView2.Rows.Add(dgvr);
+                }
+                for (int i = 0; i < numcon; i++)
+                {
+                    DataGridViewRow dgvr = new DataGridViewRow();
+                    foreach (DataGridViewColumn c in this.dataGridView3.Columns)
+                    {
+
+                        dgvr.Cells.Add(c.CellTemplate.Clone() as DataGridViewCell);
+                    }
+                    dgvr.Cells[0].Value = i + 1;
+                    this.dataGridView3.Rows.Add(dgvr);
+                }
+                updatalist();
+            }
+            else
             {
 
-                dgvr.Cells.Add(c.CellTemplate.Clone() as DataGridViewCell);
+                MessageBox.Show("怎么没选择课程？");
             }
-            DataGridViewComboBoxCell dc = (DataGridViewComboBoxCell)dgvr.Cells[4];
-            dc.Items.Clear();
-            for (int i = 0; i <= vel.score; i++)
+            
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+            if (comboBox7.SelectedIndex >= 0 && textBox1.Text != "") 
             {
-                dc.Items.Add(i.ToString());
+                var q1 = from o in pp.context.exerL
+                         where (o.name == textBox1.Text) && o.teacherid == pp.teacher.teacherid && o.pub == 3 &&o.courseid == lcs[comboBox7.SelectedIndex].couseid
+                select 0;
+                if (q1.Count() <= 0)
+                {
+
+                    exerL mcq = new exerL();
+                    // mcq.answ = comboBox4.SelectedIndex + 1;
+
+                    mcq.courseid = lcs[comboBox7.SelectedIndex].couseid;
+                    mcq.teacherid = pp.teacher.teacherid;
+                    mcq.name = textBox1.Text;
+                    mcq.pub = 3;
+                    ////////////write richtext
+                    pp.context.AddToexerL(mcq);
+                    pp.context.SaveChanges();
+                    textBox1.Text = "";
+                    updatalist();
+
+                }
+                else
+                MessageBox.Show("同名试卷已经存在"); 
             }
-            dgvr.Cells[0].Value = vel.qid;
-            //  dgvr.Cells[1].Value = stA.answ2;
-            //  dgvr.Cells[2].Value = stA.mark;
-            System.IO.MemoryStream ms = null;
-            Byte[] mybyte = stA.answ3;
-            if (mybyte != null)
-                ms = new System.IO.MemoryStream(mybyte);
-            if (ms != null)
-                dgvr.Cells[3].Value = Image.FromStream(ms);
-            //   ((System.Windows.Forms.DataGridViewComboBoxColumn)dataGridView1.Columns[4]).Items.Clear();
+            else
+                
+                MessageBox.Show("怎么没选择课程？或没写名称");
+            
+        }
+
+       private void updatalist()
+            {
+
+           tlvedp = null;
+            dataGridView1.AutoGenerateColumns = false;
+            dataGridView1.DataSource = null;
+           var q1 = from o in pp.context.exerL
+                     where o.courseid == lcs[comboBox7.SelectedIndex].couseid && o.pub == 3 && o.teacherid == pp.teacher.teacherid
+                     select o;
+            if (q1.Count<exerL>() > 0) tlvedp = q1.ToList<exerL>();
+            dataGridView1.DataSource = tlvedp;
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            int irow = dataGridView1.CurrentRow.Index;
+            if (irow>=0 )
+            {
+                EditTestPaper mq = null;
+                if (mq == null || mq.IsDisposed)
+                {
+                    mq = new EditTestPaper(pp, tlvedp[irow]);
+                    mq.ShowDialog();
+                    // mq.Show();
+                }
+                else
+                {
+                    mq.Activate();
+                    mq.WindowState = FormWindowState.Normal;
+                }
+            }
+            else
+            {
+                MessageBox.Show("请选择练习！");
+            }
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            int irow = dataGridView1.CurrentRow.Index;
+            if (irow >= 0)
+            {
+                if (MessageBox.Show("确认删除？", "此删除不可恢复", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    exerL yex = tlvedp[irow];
+                    pp.context.DeleteObject(yex);
+                    pp.context.SaveChanges();
+                    //deteldell
+                   // deldetail(yex);
+                    updatalist();
 
 
-            if (stA.mark >= 0)
-                dgvr.Cells[4].Value = stA.mark.ToString();
-            // else
-            //   dgvr.Cells[4].Value = "0";
-            int hh = (int)ms.Length / 250;
-            //MessageBox.Show(hh.ToString()); 
-            if (hh > 350) hh = 350;
-            dgvr.Height = hh;
-            this.dataGridView1.Rows.Add(dgvr);
 
+                }
+                else
+                {
 
+                    MessageBox.Show("请选择删除的试卷");
+                }
+            }
 
 
 
         }
+
+
+        //////endcalsss
     }
 }
