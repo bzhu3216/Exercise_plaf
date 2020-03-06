@@ -30,5 +30,33 @@ namespace Exercise_form
 
 
         }
+
+        private void dataGridView2_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            Rectangle rectangle = new Rectangle(e.RowBounds.Location.X,
+                                  e.RowBounds.Location.Y,
+                                  dataGridView1.RowHeadersWidth,
+                                  e.RowBounds.Height);
+
+            TextRenderer.DrawText(e.Graphics, (e.RowIndex + 1).ToString(),
+                dataGridView1.RowHeadersDefaultCellStyle.Font,
+                rectangle,
+                dataGridView1.RowHeadersDefaultCellStyle.ForeColor,
+                TextFormatFlags.VerticalCenter | TextFormatFlags.Right);
+        }
+
+        private void dataGridView1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            Rectangle rectangle = new Rectangle(e.RowBounds.Location.X,
+                                  e.RowBounds.Location.Y,
+                                  dataGridView1.RowHeadersWidth,
+                                  e.RowBounds.Height);
+
+            TextRenderer.DrawText(e.Graphics, (e.RowIndex + 1).ToString(),
+                dataGridView1.RowHeadersDefaultCellStyle.Font,
+                rectangle,
+                dataGridView1.RowHeadersDefaultCellStyle.ForeColor,
+                TextFormatFlags.VerticalCenter | TextFormatFlags.Right);
+        }
     }
 }
