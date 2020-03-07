@@ -350,9 +350,9 @@ namespace Exercise_form
                 if (a == 4)
                 {
                     // comboBox1.Text = comboBox1.Items[a].ToString();
-                    comboBox5.Text = "5";
+                    comboBox5.Text = "10";
                     List<AQues> lmq = null;
-                    var questionQuery3 = (from o in pp.context.SQues
+                    var questionQuery3 = (from o in pp.context.AQues
                                           where (b1 || o.objective == c1)
                                        && (b2 || o.con == c2)
                                        && (b3 || o.diff == c3)
@@ -784,6 +784,30 @@ namespace Exercise_form
 
 
             }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Exercise_Summary mq = null;
+
+
+
+            if (mq == null || mq.IsDisposed)
+            {
+                //   pp.vdlword = null;
+                //  pp.elword = null;
+
+                mq = new Exercise_Summary(pp);
+                mq.textBox1.Text = EXtools.toSummary(el, vcc, pp);
+                mq.ShowDialog();
+                // mq.Show();
+            }
+            else
+            {
+                mq.Activate();
+                mq.WindowState = FormWindowState.Normal;
+            }
+
         }
 
 

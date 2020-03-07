@@ -150,11 +150,12 @@ namespace Exercise_form
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            
             int irow = dataGridView1.CurrentRow.Index;
             if (irow>=0 && comboBox7.SelectedIndex>=0)
             {
-                EditTestPaper mq = null;
+                //pp.vdlword=
+                 EditTestPaper mq = null;
                 if (mq == null || mq.IsDisposed)
                 {
                     mq = new EditTestPaper(pp, tlvedp[irow], lcs[comboBox7.SelectedIndex]);

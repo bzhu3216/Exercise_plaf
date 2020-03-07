@@ -439,12 +439,28 @@ namespace Exercise_form
                     if (ed1.typeq == 2)
                             {
 
+                        var q12 = from o in pp.context.eQues 
+                                  where o.id == ed1.qid
+                                  select o;
+                        eQues mcq = q12.First<eQues>();
+                        numofquestion[2] = numofquestion[2] + 1;
+                        totalscoreofques[2] = totalscoreofques[2] + (int)ed1.score;
+                        numofcon[(int)mcq.con - 1] = numofcon[(int)mcq.con - 1] + 1;
+                        totalscoreofcon[(int)mcq.con - 1] = totalscoreofcon[(int)mcq.con - 1] + (int)ed1.score;
+                        objectiveofcon[(int)mcq.objective - 1] = objectiveofcon[(int)mcq.objective - 1] + 1;
+                        objectivescoreofofcon[(int)mcq.objective - 1] = objectivescoreofofcon[(int)mcq.objective - 1] + (int)ed1.score;
+                        diffof[(int)mcq.diff - 1] = diffof[(int)mcq.diff - 1] + 1;
+                        diffscore[(int)mcq.diff - 1] = diffscore[(int)mcq.diff - 1] + (int)ed1.score;
+                        ///////////////////each
+                        ((List<int>)objectiveofeach[(int)mcq.objective - 1])[2] = ((List<int>)objectiveofeach[(int)mcq.objective - 1])[2] + 1;
+                        ((List<int>)objectivescoreofofeach[(int)mcq.objective - 1])[2] = ((List<int>)objectivescoreofofeach[(int)mcq.objective - 1])[2] + (int)ed1.score;
+
+                        /////////////////endeach
+
+                    }
 
 
-                            }
-
-
-                            if (ed1.typeq == 3)
+                    if (ed1.typeq == 3)
                             {
                                 
 
@@ -721,7 +737,47 @@ namespace Exercise_form
                         if (ed1.typeq == 2)
                         {
 
-
+                            var q12 = from o in pp.context.eQues 
+                                      where o.id == ed1.qid
+                                      select o;
+                            eQues mcq = q12.First<eQues>();
+                            string keya = "";
+                            keya = mcq.answ;
+                            System.IO.MemoryStream mstream = new System.IO.MemoryStream(mcq.question, false);
+                            byte[] a = mstream.ToArray();
+                            string sb = System.Text.Encoding.Default.GetString(a);
+                            var q13 = from o in pp.context.studAnsw
+                                      where o.did == ed1.id
+                                      select o;
+                            string keystr = "";
+                            DataObject myDataObject = new DataObject();
+                            if (needkey)
+                            {
+                                keystr = "答案(" + keya + ")题号(" + mcq.id + ")章节(" + mcq.con + ")目标(" + mcq.objective + ")\n";
+                                myDataObject.SetData(DataFormats.Rtf, keystr);
+                                myDataObject.GetData(DataFormats.Rtf);
+                            }
+                            Paragraph para1 = s.AddParagraph();
+                            if (numofquestion[2] == 0)
+                            {
+                                Paragraph para3 = s.AddParagraph();
+                                para3.AppendText(biaoti + ".填空题");
+                                biaoti++;
+                            }
+                            numofquestion[2] = numofquestion[2] + 1;
+                            sb = numofquestion[2] + ". " + sb;
+                            para1.AppendRTF(sb);
+                            if (needkey)
+                                para1.AppendRTF(myDataObject.GetData(DataFormats.Rtf).ToString());
+                            TextSelection[] selections = doc.FindAllPattern(new System.Text.RegularExpressions.Regex("."));
+                            TextRange range = null;
+                            foreach (TextSelection selection in selections)
+                            {
+                                range = selection.GetAsOneRange();
+                                Font ft = range.CharacterFormat.Font;
+                                Font newft = new Font(ft.SystemFontName, 10f, ft.Style);
+                                range.CharacterFormat.Font = newft;
+                            }
 
                         }
 
