@@ -66,6 +66,12 @@ namespace Exercise_form
                             fstr = strq.Substring(0, 20).Trim();
                         
                         featurehelp fhelp = new featurehelp();
+                        ///
+                        fhelp.con = mq.con;
+                        fhelp.objective = mq.objective;
+                        fhelp.diff = mq.diff;
+                        ////
+
                         fhelp.qid = mq.id;
                         fhelp.type1 = 0;
                         fhelp.featurestr = fstr.ToString();
@@ -112,6 +118,11 @@ namespace Exercise_form
                             fstr = strq.Substring(0, 20).Trim();
 
                         featurehelp fhelp = new featurehelp();
+                        ///
+                        fhelp.con = mq.con;
+                        fhelp.objective = mq.objective;
+                        fhelp.diff = mq.diff;
+                        ////
                         fhelp.qid = mq.id;
                         fhelp.type1 = 1;
                         fhelp.featurestr = fstr.ToString();
@@ -157,6 +168,11 @@ namespace Exercise_form
                             fstr = strq.Substring(0, 20).Trim();
 
                         featurehelp fhelp = new featurehelp();
+                        ///
+                        fhelp.con = mq.con;
+                        fhelp.objective = mq.objective;
+                        fhelp.diff = mq.diff;
+                        ////
                         fhelp.qid = mq.id;
                         fhelp.type1 = 2;
                         fhelp.featurestr = fstr.ToString();
@@ -201,6 +217,11 @@ namespace Exercise_form
                             fstr = strq.Substring(0, 30).Trim();
 
                         featurehelp fhelp = new featurehelp();
+                        ///
+                        fhelp.con = mq.con;
+                        fhelp.objective = mq.objective;
+                        fhelp.diff = mq.diff;
+                        ////
                         fhelp.qid = mq.id;
                         fhelp.type1 = 3;
                         fhelp.featurestr = fstr.ToString();
@@ -250,6 +271,11 @@ namespace Exercise_form
                             fstr = strq.Substring(10, 20).Trim();
                         }
                         featurehelp fhelp = new featurehelp();
+                        ///
+                        fhelp.con = mq.con;
+                        fhelp.objective = mq.objective;
+                        fhelp.diff = mq.diff;
+                        ////
                         fhelp.qid = mq.id;
                         fhelp.type1 =4;
                         fhelp.featurestr = fstr.ToString();

@@ -241,6 +241,9 @@
         <Property Name="type1" Type="Edm.Int32" Nullable="false" />
         <Property Name="qid" Type="Edm.Int32" Nullable="false" />
         <Property Name="featurestr" Type="Edm.String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+        <Property Name="con" Type="Edm.Int32" />
+        <Property Name="objective" Type="Edm.Int32" />
+        <Property Name="diff" Type="Edm.Int32" />
       </EntityType>
       <Association Name="FK_exerL_Course">
         <End Type="db_exerciseModel.Course" Role="Course" Multiplicity="1" />

@@ -491,7 +491,7 @@ namespace Exercise_form
                 else
                 {
 
-                    MessageBox.Show("请选择公有练习");
+                    MessageBox.Show("请选择私有练习");
                 }
             }
         }

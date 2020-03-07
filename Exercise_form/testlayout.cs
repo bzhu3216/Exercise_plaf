@@ -188,7 +188,7 @@ namespace Exercise_form
                     pp.context.DeleteObject(yex);
                     pp.context.SaveChanges();
                     //deteldell
-                   // deldetail(yex);
+                    deldetail(yex);
                     updatalist();
 
 
@@ -240,8 +240,26 @@ namespace Exercise_form
             }
 
         }
+        ////
+        private void deldetail(exerL s)
+        {
+            var q1 = from o in pp.context.exerDetail
+                     where o.lid == s.id
+                     select o;
+            if (q1.Count<exerDetail>() > 0)
+            {
+                List<exerDetail> tlerd = q1.ToList<exerDetail>();
+                foreach (exerDetail iexd in tlerd)
+                {
+                    pp.context.DeleteObject(iexd);
 
+                }
 
-        //////endcalsss
+                pp.context.SaveChanges();
+
+            }
+
+        }
+            //////endcalsss
+        }
     }
-}

@@ -18,5 +18,8 @@ namespace WCFDBservice
         public int type1 { get; set; }
         public int qid { get; set; }
         public string featurestr { get; set; }
+        public Nullable<int> con { get; set; }
+        public Nullable<int> objective { get; set; }
+        public Nullable<int> diff { get; set; }
     }
 }

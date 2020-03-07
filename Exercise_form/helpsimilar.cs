@@ -15,10 +15,10 @@ namespace Exercise_form
         public int qid  { get; set; }
     public string str  { get; set; }
 public int sim { get; set; }
+     //   public int con { get; set; }
 
-
-
-
+     //   public int objectiv { get; set; }
+     //   public int diff{ get; set; }
 
 
     }

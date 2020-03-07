@@ -48,7 +48,7 @@ namespace Exercise_form
             List<classinfo> tlcin2 = null;
 
             var q1 = from o in pp.context.classinfo
-                     where o.teacher == pp.teacher.teacherid
+                     where o.teacher == pp.teacher.teacherid && o.finish==0
                      orderby  o.addtime   descending 
                      select o;
             if (q1.Count<classinfo>() > 0)

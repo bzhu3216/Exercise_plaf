@@ -106,6 +106,9 @@
           <Property Name="type1" Type="int" Nullable="false" />
           <Property Name="qid" Type="int" Nullable="false" />
           <Property Name="featurestr" Type="varchar(max)" Nullable="false" />
+          <Property Name="con" Type="int" />
+          <Property Name="objective" Type="int" />
+          <Property Name="diff" Type="int" />
         </EntityType>
         <EntityType Name="mchoiceQues">
           <Key>
@@ -601,6 +604,9 @@ FROM [dbo].[View_student] AS [View_student]</DefiningQuery>
           <Property Name="type1" Type="Int32" Nullable="false" />
           <Property Name="qid" Type="Int32" Nullable="false" />
           <Property Name="featurestr" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="con" Type="Int32" />
+          <Property Name="objective" Type="Int32" />
+          <Property Name="diff" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -840,6 +846,9 @@ FROM [dbo].[View_student] AS [View_student]</DefiningQuery>
           <EntitySetMapping Name="featurehelp">
             <EntityTypeMapping TypeName="db_exerciseModel.featurehelp">
               <MappingFragment StoreEntitySet="featurehelp">
+                <ScalarProperty Name="diff" ColumnName="diff" />
+                <ScalarProperty Name="objective" ColumnName="objective" />
+                <ScalarProperty Name="con" ColumnName="con" />
                 <ScalarProperty Name="featurestr" ColumnName="featurestr" />
                 <ScalarProperty Name="qid" ColumnName="qid" />
                 <ScalarProperty Name="type1" ColumnName="type1" />
