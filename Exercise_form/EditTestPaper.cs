@@ -17,7 +17,8 @@ namespace Exercise_form
         V_tea_course vcc = null;
         int pagesize = 15;
         int pageNum = 0;
-        List<mchoiceQues> lmq = null;
+       // List<mchoiceQues> lmq = null;
+        List<exerDetail> ell = null;
         // V_tea_course vc = null;
         public EditTestPaper(param p,exerL el1, V_tea_course vcc1)
         {
@@ -162,17 +163,17 @@ namespace Exercise_form
                 {
                     // comboBox1.Text = comboBox1.Items[a].ToString();
                     comboBox5.Text = "1";
-                    lmq = null;
+                    List<mchoiceQues> lmq = null;
                     var questionQuery3 = (from o in pp.context.mchoiceQues
                                           where (b1 || o.objective == c1)
                                        && (b2 || o.con == c2)
                                        && (b3 || o.diff == c3)
-                                       && (o.courseid == vcc.couseid )
+                                       && (o.courseid == vcc.couseid)
                                           select o).Skip(pageNum * pagesize).Take(pagesize);
                     if (questionQuery3.Count() > 0)
                     {
                         lmq = questionQuery3.ToList<mchoiceQues>();
-                        dataGridView1.AutoGenerateColumns = false;                        
+                        dataGridView1.AutoGenerateColumns = false;
                         foreach (mchoiceQues mcq in lmq)
                         {
                             System.IO.MemoryStream mstream = new System.IO.MemoryStream(mcq.question, false);
@@ -184,17 +185,13 @@ namespace Exercise_form
                                 dgvr.Cells.Add(c.CellTemplate.Clone() as DataGridViewCell);
                             }
                             dgvr.Cells[1].Value = richTextBox1.Rtf;
-                            dgvr.Cells[0].Value = mcq.id;                            
-                           // dgvr.Cells[0].Style.BackColor = Color.Yellow;
+                            dgvr.Cells[0].Value = mcq.id;
+                            // dgvr.Cells[0].Style.BackColor = Color.Yellow;
                             int hh = (int)(richTextBox1.Rtf.Length / 6);
                             if (hh > 300) hh = 300;
                             dgvr.Height = hh;
                             this.dataGridView1.Rows.Add(dgvr);
                         }
-
-                        
-
-
 
                     }
 
@@ -202,34 +199,67 @@ namespace Exercise_form
                     {
                         MessageBox.Show("End of  Question List!");
                         pageNum--;
-                        display(comboBox1.SelectedIndex, false);
+                        if (pageNum < 0) pageNum = 0;
+                        else
+                            display(comboBox1.SelectedIndex, false);
+
+                    }
+                }
+                ///////////////////////////////end0
+                if (a == 1)
+                {
+                    // comboBox1.Text = comboBox1.Items[a].ToString();
+                    comboBox5.Text = "1";
+                    List<TFQues> lmq = null;
+                    var questionQuery3 = (from o in pp.context.TFQues
+                                          where (b1 || o.objective == c1)
+                                       && (b2 || o.con == c2)
+                                       && (b3 || o.diff == c3)
+                                       && (o.courseid == vcc.couseid)
+                                          select o).Skip(pageNum * pagesize).Take(pagesize);
+                    if (questionQuery3.Count() > 0)
+                    {
+                        lmq = questionQuery3.ToList<TFQues>();
+                        dataGridView1.AutoGenerateColumns = false;
+                        foreach (TFQues mcq in lmq)
+                        {
+                            System.IO.MemoryStream mstream = new System.IO.MemoryStream(mcq.question, false);
+                            this.richTextBox1.LoadFile(mstream, RichTextBoxStreamType.RichText);
+                            DataGridViewRow dgvr = new DataGridViewRow();
+                            dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+                            foreach (DataGridViewColumn c in this.dataGridView1.Columns)
+                            {
+                                dgvr.Cells.Add(c.CellTemplate.Clone() as DataGridViewCell);
+                            }
+                            dgvr.Cells[1].Value = richTextBox1.Rtf;
+                            dgvr.Cells[0].Value = mcq.id;
+                            // dgvr.Cells[0].Style.BackColor = Color.Yellow;
+                            int hh = (int)(richTextBox1.Rtf.Length / 6);
+                            if (hh > 300) hh = 300;
+                            dgvr.Height = hh;
+                            this.dataGridView1.Rows.Add(dgvr);
+                        }
 
                     }
 
-
-                  /*  foreach (mchoiceQues mcq in lmq)
+                    else
                     {
+                        MessageBox.Show("End of  Question List!");
+                        pageNum--;
+                        if (pageNum < 0) pageNum = 0;
+                        else
+                            display(comboBox1.SelectedIndex, false);
 
-                        System.IO.MemoryStream mstream = new System.IO.MemoryStream(mcq.question, false);
-                        this.richTextBox1.LoadFile(mstream, RichTextBoxStreamType.RichText);
-                        DataGridViewRow dgvr = new DataGridViewRow();
-                        dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-                        foreach (DataGridViewColumn c in this.dataGridView1.Columns)
-                        {
-                            dgvr.Cells.Add(c.CellTemplate.Clone() as DataGridViewCell);
-                        }
-                        dgvr.Cells[1].Value = richTextBox1.Rtf;
-                        dgvr.Cells[0].Value = mcq.id;
-                        int hh = (int)(richTextBox1.Rtf.Length / 6);
-                        if (hh > 300) hh = 300;
-                        dgvr.Height = hh;
-                        this.dataGridView1.Rows.Add(dgvr);
-
-                    }*/
+                    }
+                }
+            ////            ///////////////////////////////end1
 
 
-                }  
-  
+
+
+
+                    
+
             }
 
         }
@@ -237,6 +267,7 @@ namespace Exercise_form
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             display(comboBox1.SelectedIndex, true);
+            reload2(comboBox1.SelectedIndex);
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -269,24 +300,241 @@ namespace Exercise_form
             if (selid != -1)
             {
                 exerDetail edl = new exerDetail();
-                edl.lid = pp.exerl1;
+                edl.lid = el.id ;
                 edl.qid = selid;
                 edl.score = int.Parse(comboBox5.Text);
                 edl.typeq = comboBox1.SelectedIndex;
                 saveExerD(edl);
-                //reloadd2(comboBox1.SelectedIndex);
+                reload2(comboBox1.SelectedIndex);
+               
 
             }
 
         }
         ///////////////////////////////
 
+        private void reload2(int a)
+        {
+            if (dataGridView2.DataSource != null)
+            {
+                DataTable dt = (DataTable)dataGridView2.DataSource;
+                dt.Rows.Clear();
+                dataGridView2.DataSource = dt;
+            }
+            else
 
+            {
+                dataGridView2.Rows.Clear();
+
+            }
+            if (a == 0)
+            {
+                var questionQuery1 = from o in pp.context.exerDetail
+                                     where o.lid == el.id && o.typeq == 0
+                                     select o;
+                ell  = questionQuery1.ToList<exerDetail>();                
+                foreach (exerDetail tel in ell)
+                {
+                    var questionQuery2 = from o in pp.context.mchoiceQues
+                                         where o.id == tel.qid
+                                         select o;
+                    if (questionQuery2.Count() > 0)
+                    {
+                        mchoiceQues mcq = questionQuery2.First<mchoiceQues>();
+                        System.IO.MemoryStream mstream = new System.IO.MemoryStream(mcq.question, false);
+                        this.richTextBox1.LoadFile(mstream, RichTextBoxStreamType.RichText);
+                        //   rrtf.Add(richTextBox1.Rtf);
+                        DataGridViewRow dgvr = new DataGridViewRow();
+                       // dataGridView2.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+                        foreach (DataGridViewColumn c in this.dataGridView2.Columns)
+                        {
+
+                            dgvr.Cells.Add(c.CellTemplate.Clone() as DataGridViewCell);
+                        }
+                        dgvr.Cells[1].Value = richTextBox1.Rtf;
+                        dgvr.Cells[0].Value = mcq.id;                        
+                        int hh = (int)(richTextBox1.Rtf.Length / 8);
+                        if (hh > 300) hh = 300;
+                        dgvr.Height = hh;
+                        this.dataGridView2.Rows.Add(dgvr);
+                    }
+                    else
+                    {
+                        MessageBox.Show("有问题联系管理员"+ tel.qid.ToString());
+                     }
+
+                }
+            }//end0
+            if (a == 1)
+            {
+                var questionQuery1 = from o in pp.context.exerDetail
+                                     where o.lid == el.id && o.typeq == 1
+                                     select o;
+                ell = questionQuery1.ToList<exerDetail>();
+                foreach (exerDetail tel in ell)
+                {
+                    var questionQuery2 = from o in pp.context.TFQues 
+                                         where o.id == tel.qid
+                                         select o;
+                    if (questionQuery2.Count() > 0)
+                    {
+                        TFQues mcq = questionQuery2.First<TFQues>();
+                        System.IO.MemoryStream mstream = new System.IO.MemoryStream(mcq.question, false);
+                        this.richTextBox1.LoadFile(mstream, RichTextBoxStreamType.RichText);
+                        //   rrtf.Add(richTextBox1.Rtf);
+                        DataGridViewRow dgvr = new DataGridViewRow();
+                        // dataGridView2.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+                        foreach (DataGridViewColumn c in this.dataGridView2.Columns)
+                        {
+
+                            dgvr.Cells.Add(c.CellTemplate.Clone() as DataGridViewCell);
+                        }
+                        dgvr.Cells[1].Value = richTextBox1.Rtf;
+                        dgvr.Cells[0].Value = mcq.id;
+                        int hh = (int)(richTextBox1.Rtf.Length / 8);
+                        if (hh > 300) hh = 300;
+                        dgvr.Height = hh;
+                        this.dataGridView2.Rows.Add(dgvr);
+                    }
+                    else
+                    {
+                        MessageBox.Show("有问题联系管理员" + tel.qid.ToString());
+                    }
+
+                }
+            }
+            //end1
+
+
+
+
+
+            markselected();
+
+        }//end sub
 
         ////////////////////////////
 
+        private void markselected()
+        {
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            {
+                String tsid = dataGridView1.Rows[i].Cells[0].Value.ToString();
+                dataGridView1.Rows[i].Cells[0].Style.BackColor = Color.White;
+                for (int j = 0; j < dataGridView2.Rows.Count; j++)
+                {
+                    
+                    String tsid2=dataGridView2.Rows[j].Cells[0].Value.ToString();
+                    if (tsid == tsid2) { dataGridView1.Rows[i].Cells[0].Style.BackColor = Color.Red; break; }
+                }
+
+                //  if (dataGridView1.Rows[i].Selected == true)
+                //  {
+                //    selid = int.Parse(dataGridView1.Rows[i].Cells[0].Value.ToString());
+                //  }
+            }
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            int selid = -1;
+            for (int i = 0; i < dataGridView2.Rows.Count; i++)
+            {
+                if (dataGridView2.Rows[i].Selected == true)
+                {
+                    selid = int.Parse(dataGridView2.Rows[i].Cells[0].Value.ToString());
+                }
+            }
+            if (selid != -1)
+            {
+                exerDetail eed = ell.Find(x => x.qid == selid);
+                pp.context.DeleteObject(eed);
+                pp.context.SaveChanges();
+                reload2(comboBox1.SelectedIndex);
+            }
+
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedIndex >= 0)
+            {
+                display(comboBox1.SelectedIndex, false);
+                reload2(comboBox1.SelectedIndex);
+            }
+            else
+                MessageBox.Show("请先选择题型");
+        }
+
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            if (comboBox1.SelectedIndex >= 0)
+            {
+                display(comboBox1.SelectedIndex, false);
+                reload2(comboBox1.SelectedIndex);
+            }
+            else
+                MessageBox.Show("请先选择题型");
+        }
+
+        private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            if (comboBox1.SelectedIndex >= 0)
+            {
+                display(comboBox1.SelectedIndex, false);
+                reload2(comboBox1.SelectedIndex);
+            }
+            else
+                MessageBox.Show("请先选择题型");
+        }
+
+        private void dataGridView2_SelectionChanged(object sender, EventArgs e)
+        {
+            int selid = -1;
+            for (int i = 0; i < dataGridView2.Rows.Count; i++)
+            {
+                if (dataGridView2.Rows[i].Selected == true)
+                {
+                    selid = int.Parse(dataGridView2.Rows[i].Cells[0].Value.ToString());
+                }
+            }
+            if (selid != -1)
+            {
+
+                exerDetail eed = ell.Find(x => x.qid == selid);
+                comboBox5.Text = eed.score.ToString();
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            int selid = -1;
+            for (int i = 0; i < dataGridView2.Rows.Count; i++)
+            {
+                if (dataGridView2.Rows[i].Selected == true)
+                {
+                    selid = int.Parse(dataGridView2.Rows[i].Cells[0].Value.ToString());
+                }
+            }
+            if (selid != -1)
+            {
+
+                exerDetail eed = ell.Find(x => x.qid == selid);
+                eed.score = int.Parse(comboBox5.Text);
+                pp.context.UpdateObject(eed);
+                pp.context.SaveChanges();
 
 
+
+
+            }
+        }
+
+
+        //////////////////////////////////////////
 
     }
 }
