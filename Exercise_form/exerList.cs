@@ -220,11 +220,11 @@ namespace Exercise_form
             {   //summary
                 pp.vdlword = null;
                 pp.elword = null;
-                pp.elword = l1[listBox1.SelectedIndex];
-                pp.vdlword = lcs[comboBox1.SelectedIndex];
+
                 //summary
                 pp.exerl1 = l1[listBox1.SelectedIndex].id;
                 pp.cc1 = l1[listBox1.SelectedIndex].courseid;
+                /*
                 EditererList mq = null;
                 if (mq == null || mq.IsDisposed)
                 {
@@ -241,11 +241,35 @@ namespace Exercise_form
             else
             {
                 MessageBox.Show("请选择练习！");
+            }*/
+                int irow = listBox1.SelectedIndex;
+                if (irow >= 0 && comboBox1.SelectedIndex >= 0)
+                {
+                    //pp.vdlword=
+                    EditTestPaper mq = null;
+                    if (mq == null || mq.IsDisposed)
+                    {
+                        pp.elword = l1[listBox1.SelectedIndex];
+                        pp.vdlword = lcs[comboBox1.SelectedIndex];
+                        mq = new EditTestPaper(pp, l1[listBox1.SelectedIndex], lcs[comboBox1.SelectedIndex]);
+                        mq.ShowDialog();
+                        // mq.Show();
+                    }
+                    else
+                    {
+                        mq.Activate();
+                        mq.WindowState = FormWindowState.Normal;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("请选择练习！or 课程");
+                }
             }
+            
 
 
-
-        }
+            }
 
         private void button4_Click(object sender, EventArgs e)
         {
