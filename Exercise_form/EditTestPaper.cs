@@ -252,13 +252,151 @@ namespace Exercise_form
 
                     }
                 }
-            ////            ///////////////////////////////end1
+                ////            ///////////////////////////////end1
+                if (a == 2&& el.pub==3)
+                {
+                    // comboBox1.Text = comboBox1.Items[a].ToString();
+                    comboBox5.Text = "1";
+                    List<eQues> lmq = null;
+                    var questionQuery3 = (from o in pp.context.eQues 
+                                          where (b1 || o.objective == c1)
+                                       && (b2 || o.con == c2)
+                                       && (b3 || o.diff == c3)
+                                       && (o.courseid == vcc.couseid)
+                                          select o).Skip(pageNum * pagesize).Take(pagesize);
+                    if (questionQuery3.Count() > 0)
+                    {
+                        lmq = questionQuery3.ToList<eQues>();
+                        dataGridView1.AutoGenerateColumns = false;
+                        foreach (eQues mcq in lmq)
+                        {
+                            System.IO.MemoryStream mstream = new System.IO.MemoryStream(mcq.question, false);
+                            this.richTextBox1.LoadFile(mstream, RichTextBoxStreamType.RichText);
+                            DataGridViewRow dgvr = new DataGridViewRow();
+                            dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+                            foreach (DataGridViewColumn c in this.dataGridView1.Columns)
+                            {
+                                dgvr.Cells.Add(c.CellTemplate.Clone() as DataGridViewCell);
+                            }
+                            dgvr.Cells[1].Value = richTextBox1.Rtf;
+                            dgvr.Cells[0].Value = mcq.id;
+                            // dgvr.Cells[0].Style.BackColor = Color.Yellow;
+                            int hh = (int)(richTextBox1.Rtf.Length / 6);
+                            if (hh > 300) hh = 300;
+                            dgvr.Height = hh;
+                            this.dataGridView1.Rows.Add(dgvr);
+                        }
+
+                    }
+
+                    else
+                    {
+                        MessageBox.Show("End of  Question List!");
+                        pageNum--;
+                        if (pageNum < 0) pageNum = 0;
+                        else
+                            display(comboBox1.SelectedIndex, false);
+
+                    }
+                }
+                ////            ///////////////////////////////end2
+                if (a == 3)
+                {
+                    // comboBox1.Text = comboBox1.Items[a].ToString();
+                    comboBox5.Text = "5";
+                    List<SQues> lmq = null;
+                    var questionQuery3 = (from o in pp.context.SQues 
+                                          where (b1 || o.objective == c1)
+                                       && (b2 || o.con == c2)
+                                       && (b3 || o.diff == c3)
+                                       && (o.courseid == vcc.couseid)
+                                          select o).Skip(pageNum * pagesize).Take(pagesize);
+                    if (questionQuery3.Count() > 0)
+                    {
+                        lmq = questionQuery3.ToList<SQues>();
+                        dataGridView1.AutoGenerateColumns = false;
+                        foreach (SQues mcq in lmq)
+                        {
+                            System.IO.MemoryStream mstream = new System.IO.MemoryStream(mcq.question, false);
+                            this.richTextBox1.LoadFile(mstream, RichTextBoxStreamType.RichText);
+                            DataGridViewRow dgvr = new DataGridViewRow();
+                            dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+                            foreach (DataGridViewColumn c in this.dataGridView1.Columns)
+                            {
+                                dgvr.Cells.Add(c.CellTemplate.Clone() as DataGridViewCell);
+                            }
+                            dgvr.Cells[1].Value = richTextBox1.Rtf;
+                            dgvr.Cells[0].Value = mcq.id;
+                            // dgvr.Cells[0].Style.BackColor = Color.Yellow;
+                            int hh = (int)(richTextBox1.Rtf.Length / 6);
+                            if (hh > 300) hh = 300;
+                            dgvr.Height = hh;
+                            this.dataGridView1.Rows.Add(dgvr);
+                        }
+
+                    }
+
+                    else
+                    {
+                        MessageBox.Show("End of  Question List!");
+                        pageNum--;
+                        if (pageNum < 0) pageNum = 0;
+                        else
+                            display(comboBox1.SelectedIndex, false);
+
+                    }
+                }
+                ////            ///////////////////////////////end3
+                if (a == 4)
+                {
+                    // comboBox1.Text = comboBox1.Items[a].ToString();
+                    comboBox5.Text = "5";
+                    List<AQues> lmq = null;
+                    var questionQuery3 = (from o in pp.context.SQues
+                                          where (b1 || o.objective == c1)
+                                       && (b2 || o.con == c2)
+                                       && (b3 || o.diff == c3)
+                                       && (o.courseid == vcc.couseid)
+                                          select o).Skip(pageNum * pagesize).Take(pagesize);
+                    if (questionQuery3.Count() > 0)
+                    {
+                        lmq = questionQuery3.ToList<AQues>();
+                        dataGridView1.AutoGenerateColumns = false;
+                        foreach (AQues mcq in lmq)
+                        {
+                            System.IO.MemoryStream mstream = new System.IO.MemoryStream(mcq.question, false);
+                            this.richTextBox1.LoadFile(mstream, RichTextBoxStreamType.RichText);
+                            DataGridViewRow dgvr = new DataGridViewRow();
+                            dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+                            foreach (DataGridViewColumn c in this.dataGridView1.Columns)
+                            {
+                                dgvr.Cells.Add(c.CellTemplate.Clone() as DataGridViewCell);
+                            }
+                            dgvr.Cells[1].Value = richTextBox1.Rtf;
+                            dgvr.Cells[0].Value = mcq.id;
+                            // dgvr.Cells[0].Style.BackColor = Color.Yellow;
+                            int hh = (int)(richTextBox1.Rtf.Length / 6);
+                            if (hh > 300) hh = 300;
+                            dgvr.Height = hh;
+                            this.dataGridView1.Rows.Add(dgvr);
+                        }
+
+                    }
+
+                    else
+                    {
+                        MessageBox.Show("End of  Question List!");
+                        pageNum--;
+                        if (pageNum < 0) pageNum = 0;
+                        else
+                            display(comboBox1.SelectedIndex, false);
+
+                    }
+                }
+                ////            ///////////////////////////////end4
 
 
 
-
-
-                    
 
             }
 
@@ -404,9 +542,124 @@ namespace Exercise_form
                 }
             }
             //end1
+            if(a == 2&&el.pub==3)
+            {
+                var questionQuery1 = from o in pp.context.exerDetail
+                                     where o.lid == el.id && o.typeq == 2
+                                     select o;
+                ell = questionQuery1.ToList<exerDetail>();
+                foreach (exerDetail tel in ell)
+                {
+                    var questionQuery2 = from o in pp.context.eQues 
+                                         where o.id == tel.qid
+                                         select o;
+                    if (questionQuery2.Count() > 0)
+                    {
+                        eQues mcq = questionQuery2.First<eQues>();
+                        System.IO.MemoryStream mstream = new System.IO.MemoryStream(mcq.question, false);
+                        this.richTextBox1.LoadFile(mstream, RichTextBoxStreamType.RichText);
+                        //   rrtf.Add(richTextBox1.Rtf);
+                        DataGridViewRow dgvr = new DataGridViewRow();
+                        // dataGridView2.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+                        foreach (DataGridViewColumn c in this.dataGridView2.Columns)
+                        {
 
+                            dgvr.Cells.Add(c.CellTemplate.Clone() as DataGridViewCell);
+                        }
+                        dgvr.Cells[1].Value = richTextBox1.Rtf;
+                        dgvr.Cells[0].Value = mcq.id;
+                        int hh = (int)(richTextBox1.Rtf.Length / 8);
+                        if (hh > 300) hh = 300;
+                        dgvr.Height = hh;
+                        this.dataGridView2.Rows.Add(dgvr);
+                    }
+                    else
+                    {
+                        MessageBox.Show("有问题联系管理员" + tel.qid.ToString());
+                    }
 
+                }
+            }
+            //end2
+            if (a == 3)
+            {
+                var questionQuery1 = from o in pp.context.exerDetail
+                                     where o.lid == el.id && o.typeq == 3
+                                     select o;
+                ell = questionQuery1.ToList<exerDetail>();
+                foreach (exerDetail tel in ell)
+                {
+                    var questionQuery2 = from o in pp.context.SQues 
+                                         where o.id == tel.qid
+                                         select o;
+                    if (questionQuery2.Count() > 0)
+                    {
+                        SQues mcq = questionQuery2.First<SQues>();
+                        System.IO.MemoryStream mstream = new System.IO.MemoryStream(mcq.question, false);
+                        this.richTextBox1.LoadFile(mstream, RichTextBoxStreamType.RichText);
+                        //   rrtf.Add(richTextBox1.Rtf);
+                        DataGridViewRow dgvr = new DataGridViewRow();
+                        // dataGridView2.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+                        foreach (DataGridViewColumn c in this.dataGridView2.Columns)
+                        {
 
+                            dgvr.Cells.Add(c.CellTemplate.Clone() as DataGridViewCell);
+                        }
+                        dgvr.Cells[1].Value = richTextBox1.Rtf;
+                        dgvr.Cells[0].Value = mcq.id;
+                        int hh = (int)(richTextBox1.Rtf.Length / 8);
+                        if (hh > 300) hh = 300;
+                        dgvr.Height = hh;
+                        this.dataGridView2.Rows.Add(dgvr);
+                    }
+                    else
+                    {
+                        MessageBox.Show("有问题联系管理员" + tel.qid.ToString());
+                    }
+
+                }
+            }
+            //end3
+
+            if (a == 4)
+            {
+                var questionQuery1 = from o in pp.context.exerDetail
+                                     where o.lid == el.id && o.typeq == 4
+                                     select o;
+                ell = questionQuery1.ToList<exerDetail>();
+                foreach (exerDetail tel in ell)
+                {
+                    var questionQuery2 = from o in pp.context.AQues 
+                                         where o.id == tel.qid
+                                         select o;
+                    if (questionQuery2.Count() > 0)
+                    {
+                        AQues mcq = questionQuery2.First<AQues>();
+                        System.IO.MemoryStream mstream = new System.IO.MemoryStream(mcq.question, false);
+                        this.richTextBox1.LoadFile(mstream, RichTextBoxStreamType.RichText);
+                        //   rrtf.Add(richTextBox1.Rtf);
+                        DataGridViewRow dgvr = new DataGridViewRow();
+                        // dataGridView2.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+                        foreach (DataGridViewColumn c in this.dataGridView2.Columns)
+                        {
+
+                            dgvr.Cells.Add(c.CellTemplate.Clone() as DataGridViewCell);
+                        }
+                        dgvr.Cells[1].Value = richTextBox1.Rtf;
+                        dgvr.Cells[0].Value = mcq.id;
+                        int hh = (int)(richTextBox1.Rtf.Length / 8);
+                        if (hh > 300) hh = 300;
+                        dgvr.Height = hh;
+                        this.dataGridView2.Rows.Add(dgvr);
+                    }
+                    else
+                    {
+                        MessageBox.Show("有问题联系管理员" + tel.qid.ToString());
+                    }
+
+                }
+            }
+            //end4
 
 
             markselected();
