@@ -150,8 +150,9 @@ namespace Exercise_form
 
         private void button2_Click(object sender, EventArgs e)
         {
-           
-            int irow = dataGridView1.CurrentRow.Index;
+            int irow = -1;
+            if (dataGridView1.CurrentRow != null)
+                irow = dataGridView1.CurrentRow.Index;
             if (irow>=0 && comboBox7.SelectedIndex>=0)
             {
                 //pp.vdlword=
@@ -179,7 +180,9 @@ namespace Exercise_form
 
         private void button4_Click(object sender, EventArgs e)
         {
-            int irow = dataGridView1.CurrentRow.Index;
+            int irow = -1;
+            if (dataGridView1.CurrentRow != null)
+                irow = dataGridView1.CurrentRow.Index;
             if (irow >= 0)
             {
                 if (MessageBox.Show("确认删除？", "此删除不可恢复", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -207,7 +210,7 @@ namespace Exercise_form
 
         private void button5_Click(object sender, EventArgs e)
         {
-
+            if (dataGridView1.CurrentRow != null) { 
             int irow = dataGridView1.CurrentRow.Index;
             if (irow >= 0) { 
 
@@ -240,6 +243,7 @@ namespace Exercise_form
             }
 
         }
+        }
         ////
         private void deldetail(exerL s)
         {
@@ -260,6 +264,33 @@ namespace Exercise_form
             }
 
         }
-            //////endcalsss
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Exercise_Summary mq = null;
+            int irow = -1;
+            if (dataGridView1.CurrentRow!=null) 
+            irow = dataGridView1.CurrentRow.Index;
+            if (irow >= 0 && comboBox7.SelectedIndex >= 0)
+            {
+
+                if (mq == null || mq.IsDisposed)
+                {
+                    //   pp.vdlword = null;
+                    //  pp.elword = null;
+
+                    mq = new Exercise_Summary(pp);
+                    mq.textBox1.Text = EXtools.toSummary(tlvedp[irow], lcs[comboBox7.SelectedIndex], pp);
+                    mq.ShowDialog();
+                    // mq.Show();
+                }
+                else
+                {
+                    mq.Activate();
+                    mq.WindowState = FormWindowState.Normal;
+                }
+            }
         }
+        //////endcalsss
+    }
     }
