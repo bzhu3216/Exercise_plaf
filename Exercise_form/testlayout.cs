@@ -291,6 +291,43 @@ namespace Exercise_form
                 }
             }
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            List<exerL> comel = new List<ServiceReference1.exerL>(); 
+          
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            {
+                if (((bool?)(dataGridView1.Rows[i].Cells[0].Value)) == true)
+                {
+                    comel.Add(  tlvedp[i]);
+                }
+
+            }
+            if (comel.Count() > 8 || comel.Count() < 2)
+                MessageBox.Show("只支持选择2-8份");
+            else
+            { 
+           compare  mq = null;
+            if (mq == null || mq.IsDisposed)
+            {
+                //   pp.vdlword = null;
+                //  pp.elword = null;
+
+                mq = new compare(comel, lcs[comboBox7.SelectedIndex], pp);
+               
+                mq.ShowDialog();
+                // mq.Show();
+            }
+            else
+            {
+                mq.Activate();
+                mq.WindowState = FormWindowState.Normal;
+            }
+
+            }
+
+        }
         //////endcalsss
     }
     }
