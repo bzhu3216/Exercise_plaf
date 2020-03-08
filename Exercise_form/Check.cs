@@ -70,6 +70,7 @@ namespace Exercise_form
                         fhelp.con = mq.con;
                         fhelp.objective = mq.objective;
                         fhelp.diff = mq.diff;
+                        fhelp.courseid = mq.courseid;
                         ////
 
                         fhelp.qid = mq.id;
@@ -122,6 +123,7 @@ namespace Exercise_form
                         fhelp.con = mq.con;
                         fhelp.objective = mq.objective;
                         fhelp.diff = mq.diff;
+                        fhelp.courseid = mq.courseid;
                         ////
                         fhelp.qid = mq.id;
                         fhelp.type1 = 1;
@@ -172,6 +174,7 @@ namespace Exercise_form
                         fhelp.con = mq.con;
                         fhelp.objective = mq.objective;
                         fhelp.diff = mq.diff;
+                        fhelp.courseid = mq.courseid;
                         ////
                         fhelp.qid = mq.id;
                         fhelp.type1 = 2;
@@ -221,6 +224,7 @@ namespace Exercise_form
                         fhelp.con = mq.con;
                         fhelp.objective = mq.objective;
                         fhelp.diff = mq.diff;
+                        fhelp.courseid = mq.courseid;
                         ////
                         fhelp.qid = mq.id;
                         fhelp.type1 = 3;
@@ -275,6 +279,7 @@ namespace Exercise_form
                         fhelp.con = mq.con;
                         fhelp.objective = mq.objective;
                         fhelp.diff = mq.diff;
+                        fhelp.courseid = mq.courseid;
                         ////
                         fhelp.qid = mq.id;
                         fhelp.type1 =4;

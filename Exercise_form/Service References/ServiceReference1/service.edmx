@@ -244,6 +244,7 @@
         <Property Name="con" Type="Edm.Int32" />
         <Property Name="objective" Type="Edm.Int32" />
         <Property Name="diff" Type="Edm.Int32" />
+        <Property Name="courseid" Type="Edm.Int32" />
       </EntityType>
       <Association Name="FK_exerL_Course">
         <End Type="db_exerciseModel.Course" Role="Course" Multiplicity="1" />

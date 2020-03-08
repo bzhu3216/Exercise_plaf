@@ -21,5 +21,6 @@ namespace WCFDBservice
         public Nullable<int> con { get; set; }
         public Nullable<int> objective { get; set; }
         public Nullable<int> diff { get; set; }
+        public Nullable<int> courseid { get; set; }
     }
 }

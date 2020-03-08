@@ -444,7 +444,7 @@ namespace Exercise_form
                                   select o;
                         eQues mcq = q12.First<eQues>();
                         numofquestion[2] = numofquestion[2] + 1;
-                        totalscoreofques[2] = totalscoreofques[2] + (int)ed1.score;
+                        totalscoreofques[2] = totalscoreofques[2] + (int)ed1.score * mcq.emnum;
                         numofcon[(int)mcq.con - 1] = numofcon[(int)mcq.con - 1] + 1;
                         totalscoreofcon[(int)mcq.con - 1] = totalscoreofcon[(int)mcq.con - 1] + (int)ed1.score;
                         objectiveofcon[(int)mcq.objective - 1] = objectiveofcon[(int)mcq.objective - 1] + 1;
@@ -453,7 +453,7 @@ namespace Exercise_form
                         diffscore[(int)mcq.diff - 1] = diffscore[(int)mcq.diff - 1] + (int)ed1.score;
                         ///////////////////each
                         ((List<int>)objectiveofeach[(int)mcq.objective - 1])[2] = ((List<int>)objectiveofeach[(int)mcq.objective - 1])[2] + 1;
-                        ((List<int>)objectivescoreofofeach[(int)mcq.objective - 1])[2] = ((List<int>)objectivescoreofofeach[(int)mcq.objective - 1])[2] + (int)ed1.score;
+                        ((List<int>)objectivescoreofofeach[(int)mcq.objective - 1])[2] = ((List<int>)objectivescoreofofeach[(int)mcq.objective - 1])[2] + (int)ed1.score*mcq.emnum ;
 
                         /////////////////endeach
 
