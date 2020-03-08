@@ -267,7 +267,7 @@ namespace Exercise_form
                     if (mq == null || mq.IsDisposed)
                     {
                         // pp.showupcc  = 0;
-                        mq = UPA(pp, ted.qid);
+                        mq = new UPA(pp, ted.qid);
                         // mq.MdiParent = this;
                         mq.Show();
                     }
@@ -281,6 +281,11 @@ namespace Exercise_form
 
 
             }//end col
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
 
         /////////////////////////////
