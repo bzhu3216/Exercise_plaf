@@ -15,8 +15,9 @@ namespace Exercise_form
         List<exerL> ell;
         V_tea_course vcc;
         param pp;
-
-
+        List<Object> detailed = new List<object>(); 
+        List<int> numcom = new List<int>() ;
+        DataTable dt=null;
         public compare(List<exerL> ell1,V_tea_course vcc1,param p)
         {
             ell = ell1;
@@ -36,6 +37,18 @@ namespace Exercise_form
 
         private void button1_Click(object sender, EventArgs e)
         {
+            int counte = ell.Count();
+            //int orderi = 0;
+            for (int i = 0; i < counte - 1; i++)
+                for (int j = i + 1; j < counte; j++)
+                {
+                    int com=0;
+                    detailed.Add ( compareel(ell[i], ell[j], ref com));
+                    numcom.Add(com);
+                    DataRow row = dt.Rows[i];
+                    row[j] = com;
+                }
+
 
 
 
@@ -58,6 +71,7 @@ namespace Exercise_form
                      where o.lid == e2.id
                      select o;
             if (q2.Count() > 0) led2 = q2.ToList<exerDetail>();
+            if (led1!=null && led2 != null) { 
             foreach (exerDetail te1 in led1)
             {
                 foreach (exerDetail te2 in led2)
@@ -71,7 +85,8 @@ namespace Exercise_form
                             led.Add(te1);
                     }
                 }
-            }  
+            }
+            }
             return led;
         }
 
@@ -80,7 +95,7 @@ namespace Exercise_form
         {
             int num = ell.Count();
 
-            DataTable dt = new DataTable();//建立个数据表
+           dt = new DataTable();//建立个数据表
             for (int i = 0; i < num; i++)
             {
                 dt.Columns.Add(new DataColumn((i+1).ToString(), typeof(int)));//在表中添加int类型的列
