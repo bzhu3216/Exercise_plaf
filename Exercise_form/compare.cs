@@ -18,6 +18,7 @@ namespace Exercise_form
         List<Object> detailed = new List<object>(); 
         List<int> numcom = new List<int>() ;
         DataTable dt=null;
+        List<exerDetail> tled = new List<exerDetail>();
         public compare(List<exerL> ell1,V_tea_course vcc1,param p)
         {
             ell = ell1;
@@ -39,6 +40,7 @@ namespace Exercise_form
         {
             int counte = ell.Count();
             //int orderi = 0;
+            detailed .Clear();
             for (int i = 0; i < counte - 1; i++)
                 for (int j = i + 1; j < counte; j++)
                 {
@@ -76,7 +78,7 @@ namespace Exercise_form
             {
                 foreach (exerDetail te2 in led2)
                 {
-                    if(te1.typeq == te1.typeq && te1.qid ==te2.qid )
+                    if(te1.typeq == te2.typeq && te1.qid ==te2.qid )
                     {
                         num = num + 1;
                         if (te1.score > te2.score)
@@ -149,6 +151,136 @@ namespace Exercise_form
                 rectangle,
                 dataGridView1.RowHeadersDefaultCellStyle.ForeColor,
                 TextFormatFlags.VerticalCenter | TextFormatFlags.Right);
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {/*
+            if (e.RowIndex < e.ColumnIndex)
+            {
+                int indexorder = ell.Count * e.RowIndex + e.ColumnIndex - (e.RowIndex + 1) * (e.RowIndex + 2) / 2;
+                List<exerDetail> tled = (List<exerDetail>)detailed[indexorder];
+                dataGridView1.DataSource = tled;
+
+
+            }
+        */}
+
+        private void dataGridView2_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < e.ColumnIndex)
+            {
+                tled.Clear();
+                int indexorder = ell.Count * e.RowIndex + e.ColumnIndex - (e.RowIndex + 1) * (e.RowIndex + 2) / 2;
+               tled = (List<exerDetail>)detailed[indexorder];
+                dataGridView1.DataSource = tled;
+                textBox1.Text = EXtools.caltotalscore(null, tled, pp).ToString() ;
+
+
+            }
+        }
+
+        private void dataGridView1_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            { exerDetail ted = tled[e.RowIndex];
+
+                if (ted.typeq  == 0)
+                {
+
+                    UPmq mq = null;
+                    if (mq == null || mq.IsDisposed)
+                    {
+                        // pp.showupcc  = 0;
+                        mq = new UPmq(pp, ted.qid );
+                        // mq.MdiParent = this;
+                        mq.Show();
+                    }
+                    else
+                    {
+                        mq.Activate();
+                        mq.WindowState = FormWindowState.Normal;
+                    }
+                }
+
+                //////////////////////////////////////////
+
+                if (ted.typeq == 1)
+                {
+
+                    UPTF mq = null;
+                    if (mq == null || mq.IsDisposed)
+                    {
+                        // pp.showupcc  = 0;
+                        mq = new UPTF(pp, ted.qid);
+                        // mq.MdiParent = this;
+                        mq.Show();
+                    }
+                    else
+                    {
+                        mq.Activate();
+                        mq.WindowState = FormWindowState.Normal;
+                    }
+                }
+                ///////////////////////////
+                if (ted.typeq == 2)
+                {
+
+                    UPE mq = null;
+                    if (mq == null || mq.IsDisposed)
+                    {
+                        // pp.showupcc  = 0;
+                        mq = new UPE(pp, ted.qid);
+                        // mq.MdiParent = this;
+                        mq.Show();
+                    }
+                    else
+                    {
+                        mq.Activate();
+                        mq.WindowState = FormWindowState.Normal;
+                    }
+                }
+                ///////////////////////////////////////////////////
+
+                if (ted.typeq == 3)
+                {
+
+                    UPS mq = null;
+                    if (mq == null || mq.IsDisposed)
+                    {
+                        // pp.showupcc  = 0;
+                        mq = new UPS(pp, ted.qid);
+                        // mq.MdiParent = this;
+                        mq.Show();
+                    }
+                    else
+                    {
+                        mq.Activate();
+                        mq.WindowState = FormWindowState.Normal;
+                    }
+                }
+                ///////////////////////////////////////////////////
+
+                if (ted.typeq == 4)
+                {
+
+                    UPA mq = null;
+                    if (mq == null || mq.IsDisposed)
+                    {
+                        // pp.showupcc  = 0;
+                        mq = UPA(pp, ted.qid);
+                        // mq.MdiParent = this;
+                        mq.Show();
+                    }
+                    else
+                    {
+                        mq.Activate();
+                        mq.WindowState = FormWindowState.Normal;
+                    }
+                }
+
+
+
+            }//end col
         }
 
         /////////////////////////////

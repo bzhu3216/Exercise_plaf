@@ -989,7 +989,48 @@ namespace Exercise_form
         }
 
 
-////////////////////
+        ////////////////////
+        public static int caltotalscore(exerL el,List<exerDetail>  led,param pp)
+
+        {
+            int score = 0;           
+            List<exerDetail> led1 = null;
+            if (led == null)
+            {
+                var q1 = from o in pp.context.exerDetail
+                         where o.lid == el.id
+                         select o;
+                if (q1.Count() > 0) led1 = q1.ToList<exerDetail>();
+            }
+            else
+                led1 = led;
+            foreach (exerDetail edd in led1)
+            {
+
+                if (edd.typeq == 2)
+                {
+                    var q2 = from o in pp.context.eQues 
+                             where o.id == edd.qid 
+                             select o;
+                    if (q2.Count() > 0)
+                    {
+                        eQues ee = q2.First<eQues>();
+                        score = score + (int)edd.score * ee.emnum;
+                    } 
+
+                }
+                else
+                    score = score + (int)edd.score;
+
+
+            }
+
+
+            return score;
+        }
+
+
+        ///////////
 
     }//endclass
 }
