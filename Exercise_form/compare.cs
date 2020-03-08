@@ -183,7 +183,7 @@ namespace Exercise_form
         {
             if (e.RowIndex >= 0)
             { exerDetail ted = tled[e.RowIndex];
-
+              
                 if (ted.typeq  == 0)
                 {
 

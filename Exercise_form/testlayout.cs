@@ -61,6 +61,7 @@ namespace Exercise_form
         {
             if (comboBox7.SelectedIndex >= 0)
             {
+                pp.updataccid = lcs[comboBox7.SelectedIndex].couseid;
                 dataGridView2.Rows.Clear();
                 dataGridView3.Rows.Clear();
                 int numobjective = lcs[comboBox7.SelectedIndex].numobjective;
@@ -294,7 +295,8 @@ namespace Exercise_form
 
         private void button7_Click(object sender, EventArgs e)
         {
-            List<exerL> comel = new List<ServiceReference1.exerL>(); 
+           // pp.updataccid = lcs[comboBox7.SelectedIndex].couseid;
+           List <exerL> comel = new List<ServiceReference1.exerL>(); 
           
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
