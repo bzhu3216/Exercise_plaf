@@ -169,11 +169,11 @@ namespace Exercise_form
         {
             if (e.RowIndex < e.ColumnIndex)
             {
-                tled.Clear();
+                
                 int indexorder = ell.Count * e.RowIndex + e.ColumnIndex - (e.RowIndex + 1) * (e.RowIndex + 2) / 2;
                tled = (List<exerDetail>)detailed[indexorder];
                 dataGridView1.DataSource = tled;
-                textBox1.Text = EXtools.caltotalscore(null, tled, pp).ToString() ;
+                textBox1.Text = EXtools.caltotalscore(null, tled, pp).ToString() +"("+ (e.RowIndex+1)+@"/"+(e.ColumnIndex+1)+")";
 
 
             }
