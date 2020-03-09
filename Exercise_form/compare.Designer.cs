@@ -147,7 +147,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(257, 12);
             this.label1.TabIndex = 3;
-            this.label1.Text = "相同分数（在不同试卷中分数不同以少的计算）";
+            this.label1.Text = "相同题目（在不同试卷中分数不同以少的计算）";
             // 
             // compare
             // 

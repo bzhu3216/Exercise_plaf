@@ -229,6 +229,7 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "自动生成";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // splitContainer1
             // 
@@ -332,7 +333,7 @@
             this.radioButton2.Size = new System.Drawing.Size(71, 16);
             this.radioButton2.TabIndex = 41;
             this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "内容优先";
+            this.radioButton2.Text = "题数优先";
             this.radioButton2.UseVisualStyleBackColor = true;
             // 
             // radioButton1
