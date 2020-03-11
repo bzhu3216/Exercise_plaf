@@ -342,7 +342,7 @@ namespace Exercise_form
             {
 
             if (flag)
-            {
+            { List<int> lobjetive = new List<int>();
                 List<int> objectives = new List<int>();
                 int p = -1;int sump = 0;
                 for (int i = 0; i < dataGridView2.Rows.Count; i++)
@@ -352,7 +352,9 @@ namespace Exercise_form
                         p = 0;
                     objectives.Add(p);
                     sump = sump + p;
-                    
+                    lobjetive.Add(i + 1);
+
+
                 }
                 if (sump != 100) { MessageBox.Show("Sum must be 100");return; }
                 List<exerL> ell = new List<ServiceReference1.exerL>();
@@ -365,8 +367,19 @@ namespace Exercise_form
                 }
                 updatalist();
                 textBox1.Text = "";
-
-
+                List<int> numt = new List<int>();
+                numt.Add(int.Parse(textBox2.Text));
+                numt.Add(int.Parse(textBox3.Text));
+                numt.Add(int.Parse(textBox4.Text));
+                numt.Add(int.Parse(textBox5.Text));
+                numt.Add(int.Parse(textBox6.Text));
+                List<int> snum = new List<int>();
+                snum.Add(int.Parse(comboBox2.Text));
+                snum.Add(int.Parse(comboBox3.Text));
+                snum.Add(int.Parse(comboBox4.Text));
+                snum.Add(int.Parse(comboBox5.Text));
+                snum.Add(int.Parse(comboBox6.Text));
+                addexerdetail(lcs[comboBox7.SelectedIndex], ell, lobjetive, numt, snum);
 
 
 
@@ -429,9 +442,66 @@ namespace Exercise_form
         }
         /////
 
-        private void addexerdetail(List<exerDetail> ell1,List<int> obctivep,List<int> typenum,List<int>  typescore )
+        private void addexerdetail(V_tea_course vcc,List<exerL> ell1,List<int> obctivep,List<int> typenum,List<int>  typescore )
         {
+            List<object> testpaper = new List<object> ();
+            foreach (exerL eel in ell1)
+            {
+                List<featurehelp> paperf = new List<ServiceReference1.featurehelp>();
+                testpaper.Add(paperf); 
+
+            }
+
+            List<object > qlist = new List<object>();
+            /*
+            for (int i = 0; i < 5; i++)
+                for (int j = 0; j < obctivep.Count(); j++)
+                {
+                    var q1 = from o in pp.context.featurehelp
+                             where o.type1 == i && o.objective == j + 1 && o.courseid == vcc.couseid
+                             select o;
+                    List<featurehelp> fp = null;
+                    fp = q1.ToList();
+                    qlist.Add(fp); 
+
+                }*/
            
+                for (int j = 0; j < obctivep.Count(); j++)
+                {
+                    var q1 = from o in pp.context.featurehelp
+                             where   o.objective == j + 1 && o.courseid == vcc.couseid
+                             select o;
+                    List<featurehelp> fp = null;
+                    fp = q1.ToList();
+                    qlist.Add(fp);
+
+                }
+
+            int totalscore = 0;
+            for (int i = 0; i < typenum.Count(); i++)
+                totalscore = totalscore + typenum[i] * typescore[i];
+            List<int> scoreofobj = new List<int>();
+            for (int i = 0; i < obctivep.Count(); i++)
+            {
+                scoreofobj.Add((int)obctivep[i]* totalscore/100);
+            }
+
+            foreach (exerL el in ell1)
+            {
+
+
+
+
+
+
+
+
+
+
+
+            }
+
+
 
 
 

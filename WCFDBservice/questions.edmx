@@ -110,6 +110,7 @@
           <Property Name="objective" Type="int" />
           <Property Name="diff" Type="int" />
           <Property Name="courseid" Type="int" />
+          <Property Name="emnum" Type="int" />
         </EntityType>
         <EntityType Name="mchoiceQues">
           <Key>
@@ -609,6 +610,7 @@ FROM [dbo].[View_student] AS [View_student]</DefiningQuery>
           <Property Name="objective" Type="Int32" />
           <Property Name="diff" Type="Int32" />
           <Property Name="courseid" Type="Int32" />
+          <Property Name="emnum" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -848,6 +850,7 @@ FROM [dbo].[View_student] AS [View_student]</DefiningQuery>
           <EntitySetMapping Name="featurehelp">
             <EntityTypeMapping TypeName="db_exerciseModel.featurehelp">
               <MappingFragment StoreEntitySet="featurehelp">
+                <ScalarProperty Name="emnum" ColumnName="emnum" />
                 <ScalarProperty Name="courseid" ColumnName="courseid" />
                 <ScalarProperty Name="diff" ColumnName="diff" />
                 <ScalarProperty Name="objective" ColumnName="objective" />

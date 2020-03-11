@@ -178,6 +178,7 @@ namespace Exercise_form
                         ////
                         fhelp.qid = mq.id;
                         fhelp.type1 = 2;
+                        fhelp.emnum = mq.emnum;
                         fhelp.featurestr = fstr.ToString();
                         pp.context.AddTofeaturehelp(fhelp);
                     }
