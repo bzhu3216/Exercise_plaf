@@ -47,7 +47,6 @@
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.comboBox6 = new System.Windows.Forms.ComboBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
@@ -74,6 +73,7 @@
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button7 = new System.Windows.Forms.Button();
+            this.textBox7 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -296,7 +296,7 @@
             // 
             // splitContainer2.Panel1
             // 
-            this.splitContainer2.Panel1.Controls.Add(this.radioButton2);
+            this.splitContainer2.Panel1.Controls.Add(this.textBox7);
             this.splitContainer2.Panel1.Controls.Add(this.radioButton1);
             this.splitContainer2.Panel1.Controls.Add(this.comboBox6);
             this.splitContainer2.Panel1.Controls.Add(this.textBox6);
@@ -324,17 +324,6 @@
             this.splitContainer2.Size = new System.Drawing.Size(577, 530);
             this.splitContainer2.SplitterDistance = 172;
             this.splitContainer2.TabIndex = 0;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(157, 134);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(71, 16);
-            this.radioButton2.TabIndex = 41;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "题数优先";
-            this.radioButton2.UseVisualStyleBackColor = true;
             // 
             // radioButton1
             // 
@@ -384,6 +373,8 @@
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(64, 21);
             this.textBox6.TabIndex = 38;
+            this.textBox6.Text = "1";
+            this.textBox6.Visible = false;
             // 
             // label9
             // 
@@ -420,6 +411,8 @@
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(64, 21);
             this.textBox5.TabIndex = 35;
+            this.textBox5.Text = "1";
+            this.textBox5.Visible = false;
             // 
             // label8
             // 
@@ -449,6 +442,8 @@
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(64, 21);
             this.textBox4.TabIndex = 32;
+            this.textBox4.Text = "1";
+            this.textBox4.Visible = false;
             // 
             // label7
             // 
@@ -478,6 +473,8 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(64, 21);
             this.textBox3.TabIndex = 29;
+            this.textBox3.Text = "1";
+            this.textBox3.Visible = false;
             // 
             // label6
             // 
@@ -513,11 +510,11 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(29, 37);
+            this.label4.Location = new System.Drawing.Point(109, 136);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(29, 12);
             this.label4.TabIndex = 25;
-            this.label4.Text = "个数";
+            this.label4.Text = "总分";
             // 
             // textBox2
             // 
@@ -525,6 +522,8 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(64, 21);
             this.textBox2.TabIndex = 24;
+            this.textBox2.Text = "1";
+            this.textBox2.Visible = false;
             // 
             // label3
             // 
@@ -610,6 +609,14 @@
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(144, 133);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(100, 21);
+            this.textBox7.TabIndex = 41;
+            this.textBox7.Text = "100";
+            // 
             // testlayout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -673,7 +680,6 @@
         private System.Windows.Forms.SplitContainer splitContainer3;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.DataGridView dataGridView3;
-        private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.DataGridViewTextBoxColumn 目标;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
@@ -690,5 +696,6 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.TextBox textBox7;
     }
 }

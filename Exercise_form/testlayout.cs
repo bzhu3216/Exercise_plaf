@@ -333,12 +333,12 @@ namespace Exercise_form
 
         private void button1_Click(object sender, EventArgs e)
         {   if (!checke()) { MessageBox.Show("有参数为空");return; }
-            autogen(true, int.Parse(comboBox1.Text ));
+            autogen(true, int.Parse(comboBox1.Text ),int.Parse(textBox7.Text ));
         }
 
 
 
-        public void autogen(bool flag,int nums)
+        public void autogen(bool flag,int nums,int totalscore)
             {
 
             if (flag)
@@ -356,7 +356,21 @@ namespace Exercise_form
 
 
                 }
-                if (sump != 100) { MessageBox.Show("Sum must be 100");return; }
+                List<int> cons = new List<int>();
+                int q = -1; int sumq = 0;
+                for (int i = 0; i < dataGridView3.Rows.Count; i++)
+                {
+                    if (dataGridView3.Rows[i].Cells[1].Value != null)
+                        q = int.Parse(dataGridView3.Rows[i].Cells[1].Value.ToString());
+                    else
+                        q = 0;
+                    cons.Add(q);
+                    sumq = sumq + q;
+                    
+
+
+                }
+                if (sump != 100 || sumq!=100) { MessageBox.Show("Sum must be 100");return; }
                 List<exerL> ell = new List<ServiceReference1.exerL>();
                 for (int i = 0; i < nums; i++)
                 { exerL el= addexerL(textBox1.Text + i);
@@ -379,7 +393,7 @@ namespace Exercise_form
                 snum.Add(int.Parse(comboBox4.Text));
                 snum.Add(int.Parse(comboBox5.Text));
                 snum.Add(int.Parse(comboBox6.Text));
-                addexerdetail(lcs[comboBox7.SelectedIndex], ell, lobjetive, numt, snum);
+                addexerdetail(lcs[comboBox7.SelectedIndex], ell, objectives,cons, numt, snum, totalscore);
 
 
 
@@ -442,9 +456,10 @@ namespace Exercise_form
         }
         /////
 
-        private void addexerdetail(V_tea_course vcc,List<exerL> ell1,List<int> obctivep,List<int> typenum,List<int>  typescore )
+        private void addexerdetail(V_tea_course vcc,List<exerL> ell1,List<int> obctivep, List<int> comp, List<int> typenum,List<int>  typescore,int totalscore)
         {
-            List<object> testpaper = new List<object> ();
+            List<List<featurehelp>> testpaper = new List<List<featurehelp>> ();
+            int countell = ell1.Count();
             foreach (exerL eel in ell1)
             {
                 List<featurehelp> paperf = new List<ServiceReference1.featurehelp>();
@@ -452,7 +467,7 @@ namespace Exercise_form
 
             }
 
-            List<object > qlist = new List<object>();
+            List<List<featurehelp>> qlist = new List<List<featurehelp>>();
             /*
             for (int i = 0; i < 5; i++)
                 for (int j = 0; j < obctivep.Count(); j++)
@@ -477,43 +492,213 @@ namespace Exercise_form
 
                 }
 
-            int totalscore = 0;
-            for (int i = 0; i < typenum.Count(); i++)
-                totalscore = totalscore + typenum[i] * typescore[i];
+          //  int totalscore = 0;
+           // for (int i = 0; i < typenum.Count(); i++)
+              //  totalscore = totalscore + typenum[i] * typescore[i];
             List<int> scoreofobj = new List<int>();
+    
             for (int i = 0; i < obctivep.Count(); i++)
             {
                 scoreofobj.Add((int)obctivep[i]* totalscore/100);
             }
 
-            foreach (exerL el in ell1)
+            //  totalscore = totalscore + typenum[i] * typescore[i];
+            List<int> scoreofcon = new List<int>();
+
+            for (int i = 0; i < comp.Count(); i++)
             {
+                scoreofcon.Add((int)comp[i] * totalscore / 100);
+            }
 
 
+            /////////////////////////////////////随机化各类目标
+            List<List<featurehelp> > qlist2 = new List<List<featurehelp>>();
+            for (int i = 0; i < qlist.Count(); i++)
+            {
+                List<featurehelp> tfp;
+                tfp = RandomSortList<featurehelp>(qlist[i]);
+                qlist2.Add(tfp); 
 
+            }
 
+            /////////////////////////////////
+            //  List<featurehelp> templ;
+            //  templ= GetRandomQue((List<featurehelp>)qlist[0],2);
+            //////////////////////////////
+            List < List<featurehelp>> allqustion=new List<List<featurehelp>>() ;
+            ///////产生问题
+            for (int i = qlist2.Count()-1; i >=0 ; i--)
+            {
+               // int sumss = 0;
+               // int jj = 0;
+                List<bool> lflag =new List<bool> (countell);
+                for (int k = 0; k < lflag.Capacity ; k++) lflag.Add(false);
 
+                for (int j = 0; j < qlist2[i].Count(); j++)
+                {     
+                     int numel = j % countell;
+                    /* if (numel == 0 && sumss / countell >= scoreofobj[i]) break;
+                     testpaper[numel].Add(qlist2[i][j]);
+                     sumss = sumss + getscore(qlist2[i][j], typescore);*/
+                   // if (isobjectiveok(testpaper[numel], scoreofobj, i, typescore) )
+                    if (isobjectiveok(testpaper[numel], scoreofobj, i, typescore)   && isconok(testpaper[numel], scoreofcon, (int)qlist2[i][j].con ,i, typescore))
+                    {
+                        testpaper[numel].Add(qlist2[i][j]);
+                        
+                    }
+                    else
+                    {
+                        lflag[numel] = true;
+                        
+                    }
+                    if (!lflag.Exists(o=>o==false)) break;
 
-
-
-
-
+                }
 
             }
 
 
+            //////////////////////////////
+            int kk = 0;
+            foreach (exerL el in ell1)
+            {
+                toexerl(el, testpaper[kk], typescore);
+                kk++;
 
+            }
 
+        }
+        /// <summary>
+        /// ///
+      
+        public void toexerl(exerL  el, List<featurehelp> lfh,List<int> ss)
+        {
+            foreach (featurehelp fp in lfh)
+            { 
+            exerDetail edl = new exerDetail();
+            edl.lid = el.id;
+            edl.qid = fp.qid ;
+            edl.score = ss[fp.type1];
+            edl.typeq = fp.type1 ;
+             pp.context.AddToexerDetail(edl);               
+            }
+            pp.context.SaveChanges();
+        }
 
+        /// 
+        /// 
+        /// 
+        /// ///
+        public bool  isconok(List<featurehelp> lfp,List<int> cons,int index,int iobjective, List<int> ss)
+        {
+            bool result = true;
+            int isum = 0; int isum2 = 0;
+            foreach (featurehelp fp in lfp)
+            {
+                if (fp.con == index && fp.objective == (iobjective+1)) isum = isum + getscore(fp, ss);
+                if (fp.con == index ) isum2 = isum2 + getscore(fp, ss);
 
+            }
+            if ( isum2>= cons[index - 1] ) result = false;
 
+            return result;
 
 
         }
+
+        public bool isobjectiveok(List<featurehelp> lfp, List<int> objs, int index, List<int> ss)
+        {
+            bool result = true;
+            int isum = 0;
+            foreach (featurehelp fp in lfp)
+            {
+                if (fp.objective == index + 1) isum = isum + getscore(fp, ss);
+
+            }
+            if (isum >= objs[index]) result = false;
+
+            return result;
+
+
+        }
+
+
+        public int getscore(featurehelp fp ,List<int> ss)
+        {
+            int result = 0;
+            result = ss[fp.type1];
+            if (fp.type1 == 2) result = ss[fp.type1] * (int)fp.emnum;
+            return result;
+        }
+
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="ListT"></param>
+        /// <returns></returns>
+        /////////////////////////
+        public List<T> RandomSortList<T>(List<T> ListT)
+        {
+            Random random = new Random();
+            List<T> newList = new List<T>();
+            foreach (T item in ListT)
+            {
+                newList.Insert(random.Next(newList.Count + 1), item);
+
+            }
+            return newList;
+        }
+
+        /// <summary>
+        /// //////////////////////////////
+        public List<T> removeList<T>(List<T> ListT1, List<T> ListT2)
+        {
+            List<T> newList = new List<T>();
+            newList = ListT1.Except(ListT2).ToList<T>() ; 
+            return newList;
+        }
+        /// <returns></returns>
+
+
+
+        ///////////////////////////////////
+        public List<featurehelp> GetRandomQue(List<featurehelp> quelibraryList,int inum)
+        {  /*
+            List<string> names = new List<string>();
+            List<string> values = new List<string>();
+            string itemId = Config.QueType;
+            string hql = "from V_Quelibrary where state=1 and Item_Id=:Item_Id";
+            names.Add("Item_Id");
+            values.Add(itemId);
+            List<Entities.V_Quelibrary> quelibraryList = queService.GetListQuelibraryNoPage(hql, names, values);
+            */
+            List <featurehelp> queList = new List<featurehelp>();
+
+            //筛选分值为2的随机两道题
+            queList.AddRange(this.RandomSortList<featurehelp>(quelibraryList).Take(inum).ToList());
+
+            //筛选分值为5的随机两道题
+           // queList.AddRange(this.RandomSortList<featurehelp>(quelibraryList.Where(t => t.Score == 5).ToList()).Take(2).ToList());
+
+            //筛选分值为8的随机两道题
+            //queList.AddRange(this.RandomSortList<featurehelp>(quelibraryList.Where(t => t.Score == 8).ToList()).Take(2).ToList());
+
+            //筛选分值为12的随机两道题
+           // queList.AddRange(this.RandomSortList<Entities.V_Quelibrary>(quelibraryList.Where(t => t.Score == 12).ToList()).Take(2).ToList());
+
+            //筛选分值为20的随机两道题
+           // queList.AddRange(this.RandomSortList<Entities.V_Quelibrary>(quelibraryList.Where(t => t.Score == 20).ToList()).Take(2).ToList());
+
+            //获得的list再次随机排序
+            queList = this.RandomSortList<featurehelp>(queList);
+            return queList;
+        }
+
+
+        ///////////////////////////////////
 
 
 
 
         //////endcalsss
     }
-    }
+}
