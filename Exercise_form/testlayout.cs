@@ -525,7 +525,7 @@ namespace Exercise_form
             //  List<featurehelp> templ;
             //  templ= GetRandomQue((List<featurehelp>)qlist[0],2);
             //////////////////////////////
-            List < List<featurehelp>> allqustion=new List<List<featurehelp>>() ;
+            //List < List<featurehelp>> allqustion=new List<List<featurehelp>>() ;
             ///////产生问题
             for (int i = qlist2.Count()-1; i >=0 ; i--)
             {
@@ -551,9 +551,14 @@ namespace Exercise_form
                         lflag[numel] = true;
                         
                     }
-                    if (!lflag.Exists(o=>o==false)) break;
+                    // ??????if (!lflag.Exists(o=>o==false)) break;
+                 /*   bool flag2 = true;
+                    foreach (bool bl in lflag)
+                        if (!bl) flag2 = bl;
+                    if(flag2) break;*/
 
                 }
+                //MessageBox.Show(i.ToString());
 
             }
 
