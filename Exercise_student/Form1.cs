@@ -125,7 +125,9 @@ namespace Exercise_student
 
         private void button1_Click(object sender, EventArgs e)
 
-        {  if (c_l == 1) { MessageBox.Show("The time limit is not up!");return; }
+        {
+            if (c_l == 0) { MessageBox.Show("请点击列表最前面选择一个作业"); return; }
+            if (c_l == 1) { MessageBox.Show("The time limit is not up!");return; }
             sel2 = -1;
            if (c_l == 3) { MessageBox.Show("The due time has expired. You can only view your submission."); ; }
 
@@ -233,6 +235,11 @@ namespace Exercise_student
                 // erl = getexerl2(cin);
                 //  persons.Join(cities, p => p.CityID, c => c.ID, (p, c) => new { PersonName = p.Name, CityName = c.Name });
                 // var q1 = lce.Join(erl, p => p.eid, c => c.id, (p, c) => new { eid = p.eid, ename = c.name, stime = p.starttime, etime = p.endtime });
+                //////////
+                List<int> numofquestion = new List<int>(5);
+                for (int i = 0; i < 5; i++) numofquestion.Add(0);
+                int biaoti = 1;
+                /////////
                 richTextBox2.Text = "";
                 int selid3 = int.Parse(dataGridView1.Rows[sel2].Cells[0].Value.ToString());
                 exerL  tel1 = null;
@@ -291,8 +298,16 @@ namespace Exercise_student
                             this.richTextBox2.AppendText("\n(" + key1 + ")_____________________________\n");
                            // this.richTextBox2.AppendText("_____________________________\n");
                                 
+                               
+                                if (numofquestion[0] == 0)
+                                {
+                                    Paragraph para3 = s.AddParagraph();
+                                    para3.AppendText(biaoti + ".选择题");
+                                    biaoti++;
+                                }
                                 Paragraph para1 = s.AddParagraph();
-                                para1.AppendRTF(richTextBox2.Rtf );
+                                numofquestion[0] = numofquestion[0] + 1;
+                                para1.AppendRTF(numofquestion[0]+"."+richTextBox2.Rtf );
 
 
                             }
@@ -325,8 +340,18 @@ namespace Exercise_student
                                 this.richTextBox2.AppendText("\n(" + key1 + ")_____________________________\n");
                                 // this.richTextBox2.AppendText("\n_____________________________\n");
                                 // Section s = doc.AddSection();
+                                //  Paragraph para1 = s.AddParagraph();
+                                // para1.AppendRTF(richTextBox2.Rtf);
+
+                                if (numofquestion[1] == 0)
+                                {
+                                    Paragraph para3 = s.AddParagraph();
+                                    para3.AppendText(biaoti + ".判断题");
+                                    biaoti++;
+                                }
                                 Paragraph para1 = s.AddParagraph();
-                                para1.AppendRTF(richTextBox2.Rtf);
+                                numofquestion[1] = numofquestion[1] + 1;
+                                para1.AppendRTF(numofquestion[1] + "." + richTextBox2.Rtf);
 
                             }
 
@@ -366,10 +391,22 @@ namespace Exercise_student
                                     ms = new System.IO.MemoryStream(mybyte);
                                 Image im = Image.FromStream(ms);
                                     int w = im.Size.Width;
-                                    int h = im.Size.Height;                               
+                                    int h = im.Size.Height;
                                     //Section s = doc.AddSection();
+                                    // Paragraph para1 = s.AddParagraph();
+                                    // para1.AppendRTF(richTextBox2.Rtf);
+
+
+                                    if (numofquestion[3] == 0)
+                                    {
+                                        Paragraph para3 = s.AddParagraph();
+                                        para3.AppendText(biaoti + ".简答题");
+                                        biaoti++;
+                                    }
                                     Paragraph para1 = s.AddParagraph();
-                                    para1.AppendRTF(richTextBox2.Rtf);
+                                    numofquestion[3] = numofquestion[3] + 1;
+                                    para1.AppendRTF(numofquestion[3] + "." + richTextBox2.Rtf);
+
                                     //  para1.AppendPicture(im); 
                                     Paragraph para2 = s.AddParagraph();                                   
                                     DocPicture picture = para2.AppendPicture(im);
@@ -392,8 +429,18 @@ namespace Exercise_student
                             {
                                 this.richTextBox2.AppendText("\n(" + "Question not being attemped" + ")");
                                 this.richTextBox2.AppendText("\n_____________________________\n");
+                                    // Paragraph para1 = s.AddParagraph();
+                                    // para1.AppendRTF(richTextBox2.Rtf);
+
+                                    if (numofquestion[3] == 0)
+                                    {
+                                        Paragraph para3 = s.AddParagraph();
+                                        para3.AppendText(biaoti + ".简答题");
+                                        biaoti++;
+                                    }
                                     Paragraph para1 = s.AddParagraph();
-                                    para1.AppendRTF(richTextBox2.Rtf);
+                                    numofquestion[3] = numofquestion[3] + 1;
+                                    para1.AppendRTF(numofquestion[3] + "." + richTextBox2.Rtf);
 
                                 }
 
@@ -430,8 +477,19 @@ namespace Exercise_student
                                     int w = im.Size.Width;
                                     int h = im.Size.Height;
                                     //Section s = doc.AddSection();
+                                    // Paragraph para1 = s.AddParagraph();
+                                    // para1.AppendRTF(richTextBox2.Rtf);
+
+                                    if (numofquestion[4] == 0)
+                                    {
+                                        Paragraph para3 = s.AddParagraph();
+                                        para3.AppendText(biaoti + ".分析题");
+                                        biaoti++;
+                                    }
                                     Paragraph para1 = s.AddParagraph();
-                                    para1.AppendRTF(richTextBox2.Rtf);
+                                    numofquestion[4] = numofquestion[4] + 1;
+                                    para1.AppendRTF(numofquestion[4] + "." + richTextBox2.Rtf);
+
                                     //  para1.AppendPicture(im); 
                                     Paragraph para2 = s.AddParagraph();
                                     DocPicture picture = para2.AppendPicture(im);
@@ -454,8 +512,17 @@ namespace Exercise_student
                                 {
                                     this.richTextBox2.AppendText("\n(" + "Question not being attemped" + ")");
                                     this.richTextBox2.AppendText("\n_____________________________\n");
+                                    // Paragraph para1 = s.AddParagraph();
+                                    //para1.AppendRTF(richTextBox2.Rtf);
+                                    if (numofquestion[4] == 0)
+                                    {
+                                        Paragraph para3 = s.AddParagraph();
+                                        para3.AppendText(biaoti + ".分析题");
+                                        biaoti++;
+                                    }
                                     Paragraph para1 = s.AddParagraph();
-                                    para1.AppendRTF(richTextBox2.Rtf);
+                                    numofquestion[4] = numofquestion[4] + 1;
+                                    para1.AppendRTF(numofquestion[4] + "." + richTextBox2.Rtf);
 
                                 }
 
@@ -479,6 +546,7 @@ namespace Exercise_student
                     {
                        
                             doc.SaveToFile(saveFileDialog1.FileName, FileFormat.Docx2013);
+                            MessageBox.Show("WORD文件已生成！");
                         }
                     catch (Exception Err)
                     {

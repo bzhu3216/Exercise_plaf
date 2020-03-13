@@ -469,8 +469,10 @@ namespace Exercise_form
 
                     foreach (View_student vst in tlvst)
                   {
-
-                richTextBox1.Text = "";
+                        List<int> numofquestion = new List<int>(5);
+                        for (int i = 0; i < 5; i++) numofquestion.Add(0);
+                        int biaoti = 1;
+                        richTextBox1.Text = "";
                 this.richTextBox2.Text = "";
                  led = q11.ToList<exerDetail>();                
                         Document doc = new Document();
@@ -504,9 +506,17 @@ namespace Exercise_form
                                 this.richTextBox2.AppendText("\n(" + key1 + ")_____________________________\n");
                                 // this.richTextBox2.AppendText("_____________________________\n");
 
+                                // Paragraph para1 = s.AddParagraph();
+                                //para1.AppendRTF(richTextBox2.Rtf);
+                                if (numofquestion[0] == 0)
+                                {
+                                    Paragraph para3 = s.AddParagraph();
+                                    para3.AppendText(biaoti + ".选择题");
+                                    biaoti++;
+                                }
                                 Paragraph para1 = s.AddParagraph();
-                                para1.AppendRTF(richTextBox2.Rtf);
-
+                                numofquestion[0] = numofquestion[0] + 1;
+                                para1.AppendRTF(numofquestion[0] + "." + richTextBox2.Rtf);
 
                             }
                             if (ed1.typeq == 1)
@@ -538,8 +548,17 @@ namespace Exercise_form
                                 this.richTextBox2.AppendText("\n(" + key1 + ")_____________________________\n");
                                 // this.richTextBox2.AppendText("\n_____________________________\n");
                                 // Section s = doc.AddSection();
+                                // Paragraph para1 = s.AddParagraph();
+                                // para1.AppendRTF(richTextBox2.Rtf);
+                                if (numofquestion[1] == 0)
+                                {
+                                    Paragraph para3 = s.AddParagraph();
+                                    para3.AppendText(biaoti + ".判断题");
+                                    biaoti++;
+                                }
                                 Paragraph para1 = s.AddParagraph();
-                                para1.AppendRTF(richTextBox2.Rtf);
+                                numofquestion[1] = numofquestion[1] + 1;
+                                para1.AppendRTF(numofquestion[1] + "." + richTextBox2.Rtf);
 
                             }
 
@@ -581,8 +600,18 @@ namespace Exercise_form
                                     int w = im.Size.Width;
                                     int h = im.Size.Height;
                                     //Section s = doc.AddSection();
+                                    //  Paragraph para1 = s.AddParagraph();
+                                    //para1.AppendRTF(richTextBox2.Rtf);
+
+                                    if (numofquestion[3] == 0)
+                                    {
+                                        Paragraph para3 = s.AddParagraph();
+                                        para3.AppendText(biaoti + ".简答题");
+                                        biaoti++;
+                                    }
                                     Paragraph para1 = s.AddParagraph();
-                                    para1.AppendRTF(richTextBox2.Rtf);
+                                    numofquestion[3] = numofquestion[3] + 1;
+                                    para1.AppendRTF(numofquestion[3] + "." + richTextBox2.Rtf);
                                     //  para1.AppendPicture(im); 
                                     Paragraph para2 = s.AddParagraph();
                                     DocPicture picture = para2.AppendPicture(im);
@@ -605,8 +634,18 @@ namespace Exercise_form
                                 {
                                     this.richTextBox2.AppendText("\n(" + "Question not being attemped" + ")");
                                     this.richTextBox2.AppendText("\n_____________________________\n");
+                                    // Paragraph para1 = s.AddParagraph();
+                                    //para1.AppendRTF(richTextBox2.Rtf);
+
+                                    if (numofquestion[3] == 0)
+                                    {
+                                        Paragraph para3 = s.AddParagraph();
+                                        para3.AppendText(biaoti + ".简答题");
+                                        biaoti++;
+                                    }
                                     Paragraph para1 = s.AddParagraph();
-                                    para1.AppendRTF(richTextBox2.Rtf);
+                                    numofquestion[3] = numofquestion[3] + 1;
+                                    para1.AppendRTF(numofquestion[3] + "." + richTextBox2.Rtf);
 
                                 }
 
@@ -643,8 +682,18 @@ namespace Exercise_form
                                     int w = im.Size.Width;
                                     int h = im.Size.Height;
                                     //Section s = doc.AddSection();
+                                    // Paragraph para1 = s.AddParagraph();
+                                    //  para1.AppendRTF(richTextBox2.Rtf);
+                                    if (numofquestion[4] == 0)
+                                    {
+                                        Paragraph para3 = s.AddParagraph();
+                                        para3.AppendText(biaoti + ".分析题");
+                                        biaoti++;
+                                    }
                                     Paragraph para1 = s.AddParagraph();
-                                    para1.AppendRTF(richTextBox2.Rtf);
+                                    numofquestion[4] = numofquestion[4] + 1;
+                                    para1.AppendRTF(numofquestion[4] + "." + richTextBox2.Rtf);
+
                                     //  para1.AppendPicture(im); 
                                     Paragraph para2 = s.AddParagraph();
                                     DocPicture picture = para2.AppendPicture(im);
@@ -667,8 +716,18 @@ namespace Exercise_form
                                 {
                                     this.richTextBox2.AppendText("\n(" + "Question not being attemped" + ")");
                                     this.richTextBox2.AppendText("\n_____________________________\n");
+                                    // Paragraph para1 = s.AddParagraph();
+                                    // para1.AppendRTF(richTextBox2.Rtf);
+                                    if (numofquestion[4] == 0)
+                                    {
+                                        Paragraph para3 = s.AddParagraph();
+                                        para3.AppendText(biaoti + ".分析题");
+                                        biaoti++;
+                                    }
                                     Paragraph para1 = s.AddParagraph();
-                                    para1.AppendRTF(richTextBox2.Rtf);
+                                    numofquestion[4] = numofquestion[4] + 1;
+                                    para1.AppendRTF(numofquestion[4] + "." + richTextBox2.Rtf);
+
 
                                 }
 
