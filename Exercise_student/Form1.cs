@@ -248,7 +248,7 @@ namespace Exercise_student
                 List<exerDetail> led = null;
                 var q11 = from o in pp.context.exerDetail
                           where o.lid == tel1.id
-                          orderby o.typeq 
+                          orderby o.typeq, o.id
                           select o;
                 if (q11 != null)
                 {

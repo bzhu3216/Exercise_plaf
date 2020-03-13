@@ -194,6 +194,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DB_exceltool.cs" />
+    <Compile Include="Dcheck.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dcheck.Designer.cs">
+      <DependentUpon>Dcheck.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditererList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -359,6 +365,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="compare.resx">
       <DependentUpon>compare.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dcheck.resx">
+      <DependentUpon>Dcheck.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditererList.resx">
       <DependentUpon>EditererList.cs</DependentUpon>

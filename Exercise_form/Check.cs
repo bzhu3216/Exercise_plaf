@@ -482,6 +482,8 @@ namespace Exercise_form
                                 ed.qid = ths.sim;
                                 pp.context.UpdateObject(ed);
                                 MessageBox.Show("updata:" + ed.id);
+                                EXtools.checkd(pp,ed.lid); 
+                               
                             }             
 
                         }
@@ -507,6 +509,7 @@ namespace Exercise_form
                                 ed.qid = ths.sim;
                                 pp.context.UpdateObject(ed);
                                 MessageBox.Show("updata:" + ed.id);
+                                EXtools.checkd(pp, ed.lid);
                             }
 
                         }
@@ -530,6 +533,7 @@ namespace Exercise_form
                                 ed.qid = ths.sim;
                                 pp.context.UpdateObject(ed);
                                 MessageBox.Show("updata:" + ed.id);
+                                EXtools.checkd(pp, ed.lid);
                             }
 
                         }
@@ -553,6 +557,7 @@ namespace Exercise_form
                                 ed.qid = ths.sim;
                                 pp.context.UpdateObject(ed);
                                 MessageBox.Show("updata:" + ed.id);
+                                EXtools.checkd(pp, ed.lid);
                             }
 
                         }
@@ -576,6 +581,7 @@ namespace Exercise_form
                                 ed.qid = ths.sim;
                                 pp.context.UpdateObject(ed);
                                 MessageBox.Show("updata:" + ed.id);
+                                EXtools.checkd(pp, ed.lid);
                             }
 
                         }

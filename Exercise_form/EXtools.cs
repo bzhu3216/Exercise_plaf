@@ -51,7 +51,7 @@ namespace Exercise_form
             List<exerDetail> led = null;
             var q11 = from o in pp.context.exerDetail
                       where o.lid == tel1.id
-                      orderby o.typeq
+                      orderby o.typeq, o.id
                       select o;
            
             if (q11.Count<exerDetail>() > 0)
@@ -611,7 +611,7 @@ namespace Exercise_form
             List<exerDetail> led = null;
             var q11 = from o in pp.context.exerDetail
                       where o.lid == tel1.id
-                      orderby o.typeq
+                      orderby o.typeq, o.id
                       select o;
             if (q11 != null)
             {
@@ -1031,7 +1031,40 @@ namespace Exercise_form
 
 
         ///////////
+       public static List<exerDetail> checkd(param pp, int elid)
+        {
+            List<exerDetail> ledcom = new List<exerDetail>();
+            List<exerDetail> leddel = new List<exerDetail>();
+            var q1 = from o in pp.context.exerDetail
+                     where o.lid == elid
+                     select o;
+            if (q1.Count() > 0)
+            {
+                List<exerDetail> led1 = q1.ToList();
+                List<exerDetail> led2 = led1;
+                /*foreach (exerDetail e1 in led1)
+                    foreach (exerDetail e2 in led2)
+                    {
+                        if (e1.qid == e2.qid && e1.typeq == e2.typeq && e1.id != e2.id) { ledcom.Add(e1); ledcom.Add(e2); }
 
+                    }  */
+                for (int i = 0; i < led1.Count() - 1; i++)
+                    for (int j = i+1; j < led1.Count(); j++)
+                    {
+                        if (led1[i].qid == led2[j].qid && led1[i].typeq == led2[j].typeq && led1[i].id != led2[j].id) { ledcom.Add(led1[i]); ledcom.Add(led2[j]); leddel.Add(led2[j]); }
+
+                    }
+                foreach (exerDetail edd in leddel)
+                {
+                    pp.context.DeleteObject(edd); 
+
+                }
+                pp.context.SaveChanges();
+
+            }
+            return ledcom;
+
+        }
 
 
 

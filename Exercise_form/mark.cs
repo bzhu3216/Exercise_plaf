@@ -193,7 +193,7 @@ namespace Exercise_form
                     if (vel.typeq == 0)
                     {
                         var q1 = from o in pp.context.studAnsw
-                                 where o.did == vel.Expr1 && o.stid == vst.stid
+                                 where o.did == vel.Expr1 && o.stid == vst.stid &&o.lid ==el.id 
                                  select o;
                         if (q1.Count() > 0)
                         {
@@ -252,7 +252,7 @@ namespace Exercise_form
                     if (vel.typeq ==1)
                     {
                         var q1 = from o in pp.context.studAnsw
-                                 where o.did == vel.Expr1 && o.stid == vst.stid
+                                 where o.did == vel.Expr1 && o.stid == vst.stid && o.lid == el.id
                                  select o;
                         if (q1.Count() > 0)
                         {
@@ -314,7 +314,7 @@ namespace Exercise_form
                             //((System.Windows.Forms.DataGridViewComboBoxColumn)dataGridView1.Columns[4]).Items.Add(i.ToString());
                        // }
                         var q1 = from o in pp.context.studAnsw
-                                 where o.did == vel.Expr1 && o.stid == vst.stid
+                                 where o.did == vel.Expr1 && o.stid == vst.stid && o.lid == el.id
                                  select o;
                         if (q1.Count() > 0)
                         {
@@ -417,7 +417,7 @@ namespace Exercise_form
                     {
                        
                         var q1 = from o in pp.context.studAnsw
-                                 where o.did == vel.Expr1 && o.stid == vst.stid
+                                 where o.did == vel.Expr1 && o.stid == vst.stid && o.lid == el.id
                                  select o;
                         if (q1.Count() > 0)
                         {
@@ -683,6 +683,7 @@ namespace Exercise_form
         private void button4_Click(object sender, EventArgs e)
         {
             markmqandTF();
+            MessageBox.Show("客观题批改完成"); 
         }
 
         private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
@@ -697,7 +698,7 @@ namespace Exercise_form
                 string stid = lstv[dataGridView2.CurrentRow.Index].stid;
                 //  var q2 = ltvdl.Where(o => o.Expr1 == qid && o.typeq == 3);
                 var q3 = from o in pp.context.studAnsw
-                         where o.did == qid &&o.stid== stid
+                         where o.did == qid &&o.stid== stid&& o.lid==el.id 
                          select o;
                 if (q3.Count<studAnsw>() > 0)
                 {
@@ -715,12 +716,16 @@ namespace Exercise_form
             if (e.ColumnIndex == 4 && listBox1.SelectedIndex == 4)
             {
                 studAnsw stA = null;
+                //int qid = -1;
+                //string stid = lstv[dataGridView2.CurrentRow.Index].stid;
+                // int qid2 = (int)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
+                //qid = getidinansw(4, qid2);
                 int qid = -1;
-                string stid = lstv[dataGridView2.CurrentRow.Index].stid;
                 int qid2 = (int)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
                 qid = getidinansw(4, qid2);
+                string stid = lstv[dataGridView2.CurrentRow.Index].stid;
                 var q3 = from o in pp.context.studAnsw
-                         where o.did == qid && o.stid == stid
+                         where o.did == qid && o.stid == stid && o.lid == el.id
                          select o;
                 if (q3.Count<studAnsw>() > 0)
                 {
@@ -882,6 +887,11 @@ namespace Exercise_form
 
             return idinansw2;
 
+
+        }
+
+        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
+        {
 
         }
 

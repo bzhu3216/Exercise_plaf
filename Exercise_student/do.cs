@@ -92,6 +92,7 @@ namespace Exercise_student
 
                 var questionQuery1 = from o in pp.context.exerDetail
                                      where o.lid ==el.id && o.typeq==0
+                                     orderby o.id 
                                      select o;
                ell = questionQuery1.ToList<exerDetail>();
 
@@ -161,6 +162,7 @@ namespace Exercise_student
                 ell = null;
                 var questionQuery1 = from o in pp.context.exerDetail
                                      where o.lid == el.id && o.typeq == 1
+                                     orderby o.id
                                      select o;
                  ell = questionQuery1.ToList<exerDetail>();
 
@@ -235,6 +237,7 @@ namespace Exercise_student
 
                 var questionQuery1 = from o in pp.context.exerDetail
                                      where o.lid == el.id && o.typeq == 3
+                                     orderby o.id
                                      select o;
                 ell = questionQuery1.ToList<exerDetail>();
 
@@ -244,6 +247,7 @@ namespace Exercise_student
                 {
                     var questionQuery2 = from o in pp.context.SQues
                                          where o.id == eld.qid
+                                         orderby o.id
                                          select o;
                     SQues mcq = questionQuery2.First<SQues>();
                     System.IO.MemoryStream mstream = new System.IO.MemoryStream(mcq.question, false);
@@ -305,6 +309,7 @@ namespace Exercise_student
                 ell = null;
                 var questionQuery1 = from o in pp.context.exerDetail
                                      where o.lid == el.id && o.typeq == 4
+                                     orderby o.id
                                      select o;
                 ell = questionQuery1.ToList<exerDetail>();
 

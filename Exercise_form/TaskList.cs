@@ -457,13 +457,14 @@ namespace Exercise_form
             List<exerDetail> led = null;
             var q11 = from o in pp.context.exerDetail
                       where o.lid == tel1.id
-                      orderby o.typeq
+                      orderby o.typeq, o.id                   
                       select o;
             if (q11 != null)
             {
 
                 if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
+                    led = q11.ToList<exerDetail>();
                     string localFilePath = saveFileDialog1.FileName.ToString();
                     dirsave = localFilePath.Substring(0, localFilePath.LastIndexOf("\\"));
 
@@ -473,8 +474,8 @@ namespace Exercise_form
                         for (int i = 0; i < 5; i++) numofquestion.Add(0);
                         int biaoti = 1;
                         richTextBox1.Text = "";
-                this.richTextBox2.Text = "";
-                 led = q11.ToList<exerDetail>();                
+                      this.richTextBox2.Text = "";
+                     //               
                         Document doc = new Document();
                         Section s = doc.AddSection();
                         led = q11.ToList<exerDetail>();
