@@ -1066,6 +1066,29 @@ namespace Exercise_form
 
         }
 
+        ////////////////////////////
+        public static  List<class_student> nosubmit(param p,classinfo clinfo,exerL el)
+        {
+            List<class_student> nosubl = new List<class_student>();
+            List<class_student> cl = null;
+            var q1 = from o in p.context.class_student
+                     where o.classid == clinfo.classid
+                     select o;
+            if (q1.Count() > 0)
+            {
+                cl = q1.ToList();
+                foreach (class_student tcl in cl)
+                {
+                    var q2 = from o in p.context.studAnsw
+                             where o.stid == tcl.studentid && o.lid == el.id
+                             select o;
+                    if (q2.Count() <= 0) nosubl.Add(tcl);
+                }
+              
+            }  
+
+            return nosubl;
+        }
 
 
 

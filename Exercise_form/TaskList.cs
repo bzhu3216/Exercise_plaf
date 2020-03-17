@@ -837,6 +837,41 @@ namespace Exercise_form
 
         }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+            //  toRTF(lclinfo[sel1], ler[sel2]);
+            if (listBox1.SelectedIndex >= 0)
+            {
+                if (sel2 >= 0)
+                {
+
+                    nosubmit mq = null;
+                    if (mq == null || mq.IsDisposed)
+                    {
+                        mq = new nosubmit(pp,lclinfo[sel1], ler[sel2]);
+                        //  mq.MdiParent = this;
+                        mq.Show();
+                    }
+                    else
+                    {
+                        mq.Activate();
+                        mq.WindowState = FormWindowState.Normal;
+                    }
+                }
+                else
+                {
+
+                    MessageBox.Show("请选择一个作业");
+                }
+
+            }
+
+
+
+
+
+        }
+
         //////////////////////////////
         /////
         //      ////////////////////////////////////////////////////////////////////////////

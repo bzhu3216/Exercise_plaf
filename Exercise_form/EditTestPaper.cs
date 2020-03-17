@@ -404,11 +404,12 @@ namespace Exercise_form
 
 
             }
-
+            markselected();
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            pageNum = 0;
             display(comboBox1.SelectedIndex, true);
             reload2(comboBox1.SelectedIndex);
         }

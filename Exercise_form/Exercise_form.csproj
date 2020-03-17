@@ -262,6 +262,12 @@
     <Compile Include="NOMark.Designer.cs">
       <DependentUpon>NOMark.cs</DependentUpon>
     </Compile>
+    <Compile Include="nosubmit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="nosubmit.Designer.cs">
+      <DependentUpon>nosubmit.cs</DependentUpon>
+    </Compile>
     <Compile Include="param.cs" />
     <Compile Include="password.cs">
       <SubType>Form</SubType>
@@ -398,6 +404,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NOMark.resx">
       <DependentUpon>NOMark.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nosubmit.resx">
+      <DependentUpon>nosubmit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="password.resx">
       <DependentUpon>password.cs</DependentUpon>
