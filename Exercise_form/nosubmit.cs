@@ -29,9 +29,23 @@ namespace Exercise_form
         {
             lcs=EXtools.nosubmit(pp, cl, el);
             textBox1.Text = el.name;
-            listBox1.DataSource = lcs;
-            listBox1.ValueMember = "studentid";
+            dataGridView1.AutoGenerateColumns = false;
+            dataGridView1 .DataSource = lcs;
+           
+        }
 
+        private void dataGridView1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            Rectangle rectangle = new Rectangle(e.RowBounds.Location.X,
+                       e.RowBounds.Location.Y,
+                       dataGridView1.RowHeadersWidth,
+                       e.RowBounds.Height);
+
+            TextRenderer.DrawText(e.Graphics, (e.RowIndex + 1).ToString(),
+                dataGridView1.RowHeadersDefaultCellStyle.Font,
+                rectangle,
+                dataGridView1.RowHeadersDefaultCellStyle.ForeColor,
+                TextFormatFlags.VerticalCenter | TextFormatFlags.Right);
         }
     }
 }
