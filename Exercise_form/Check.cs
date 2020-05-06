@@ -455,161 +455,187 @@ namespace Exercise_form
 
         private void button7_Click(object sender, EventArgs e)
         {
-            int irow = -1;
-            if (dataGridView1.CurrentCell!=null)
-                irow = dataGridView1.CurrentCell.RowIndex;
-            DialogResult result =MessageBox.Show("确定删除吗？", "删除", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes&&irow >=0)
-            {  helpsimilar ths = hsl[irow];
-                if (ths.sim != -1)
+           
+                int irow = -1;
+                if (dataGridView1.CurrentCell != null)
+                    irow = dataGridView1.CurrentCell.RowIndex;
+                DialogResult result = MessageBox.Show("确定删除吗？", "删除", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes && irow >= 0)
                 {
-                    if (ths.type1 == 0)
+                    helpsimilar ths = hsl[irow];
+                    if (ths.sim != -1)
                     {
-                        var q1 = from o in pp.context.mchoiceQues
-                                 where o.id == ths.qid
-                                 select o;
-                        mchoiceQues m1 = q1.First();
-                        pp.context.DeleteObject(m1);
-                        var q2 = from o in pp.context.exerDetail
-                                 where o.qid == ths.qid &&o.typeq==0
-                                 select o;
-                        List < exerDetail > tl= null;
-                        if (q2.Count() > 0)
+                        if (ths.type1 == 0)
                         {
-                            tl = q2.ToList();
-                            foreach (exerDetail ed in tl)
+                            var q1 = from o in pp.context.mchoiceQues
+                                     where o.id == ths.qid
+                                     select o;
+                            mchoiceQues m1 = q1.First();
+                            pp.context.DeleteObject(m1);
+                            var q2 = from o in pp.context.exerDetail
+                                     where o.qid == ths.qid && o.typeq == 0
+                                     select o;
+                            List<exerDetail> tl = null;
+                            if (q2.Count() > 0)
                             {
-                                ed.qid = ths.sim;
-                                pp.context.UpdateObject(ed);
-                                MessageBox.Show("updata:" + ed.id);
-                                EXtools.checkd(pp,ed.lid); 
-                               
-                            }             
+                                tl = q2.ToList();
+                                foreach (exerDetail ed in tl)
+                                {
+                                    ed.qid = ths.sim;
+                                    pp.context.UpdateObject(ed);
+                                    MessageBox.Show("updata:" + ed.id);
+                                    EXtools.checkd(pp, ed.lid);
 
-                        }
+                                }
 
-
-                    }
-                    if (ths.type1 == 1)
-                    {
-                        var q1 = from o in pp.context.TFQues 
-                                 where o.id == ths.qid
-                                 select o;
-                        TFQues m1 = q1.First();
-                        pp.context.DeleteObject(m1);
-                        var q2 = from o in pp.context.exerDetail
-                                 where o.qid == ths.qid && o.typeq == 1
-                                 select o;
-                        List<exerDetail> tl = null;
-                        if (q2.Count() > 0)
-                        {
-                            tl = q2.ToList();
-                            foreach (exerDetail ed in tl)
-                            {
-                                ed.qid = ths.sim;
-                                pp.context.UpdateObject(ed);
-                                MessageBox.Show("updata:" + ed.id);
-                                EXtools.checkd(pp, ed.lid);
                             }
 
+
+                        }
+                    try
+                    {
+                        if (ths.type1 == 1)
+                        {
+                            var q1 = from o in pp.context.TFQues
+                                     where o.id == ths.qid
+                                     select o;
+                            TFQues m1 = q1.First();
+                            pp.context.DeleteObject(m1);
+                            var q2 = from o in pp.context.exerDetail
+                                     where o.qid == ths.qid && o.typeq == 1
+                                     select o;
+                            List<exerDetail> tl = null;
+                            if (q2.Count() > 0)
+                            {
+                                tl = q2.ToList();
+                                foreach (exerDetail ed in tl)
+                                {
+                                    ed.qid = ths.sim;
+                                    pp.context.UpdateObject(ed);
+                                    MessageBox.Show("updata:" + ed.id);
+                                    EXtools.checkd(pp, ed.lid);
+                                }
+
+                            }
                         }
                     }
+            catch (InvalidOperationException e1)
+            {
+                MessageBox.Show(e1.Message.ToString());
+            }
+             catch (ArgumentNullException  e1)
+             {
+                        MessageBox.Show(e1.Message.ToString());
+             }
+                    catch (Exception e1)
+                    {
+                        MessageBox.Show(e1.Message.ToString());
+                    }
+
+
                     if (ths.type1 == 2)
-                    {
-                        var q1 = from o in pp.context.eQues 
-                                 where o.id == ths.qid
-                                 select o;
-                        eQues m1 = q1.First();
-                        pp.context.DeleteObject(m1);
-                        var q2 = from o in pp.context.exerDetail
-                                 where o.qid == ths.qid && o.typeq == 2
-                                 select o;
-                        List<exerDetail> tl = null;
-                        if (q2.Count() > 0)
                         {
-                            tl = q2.ToList();
-                            foreach (exerDetail ed in tl)
+                            var q1 = from o in pp.context.eQues
+                                     where o.id == ths.qid
+                                     select o;
+                            eQues m1 = q1.First();
+                            pp.context.DeleteObject(m1);
+                            var q2 = from o in pp.context.exerDetail
+                                     where o.qid == ths.qid && o.typeq == 2
+                                     select o;
+                            List<exerDetail> tl = null;
+                            if (q2.Count() > 0)
                             {
-                                ed.qid = ths.sim;
-                                pp.context.UpdateObject(ed);
-                                MessageBox.Show("updata:" + ed.id);
-                                EXtools.checkd(pp, ed.lid);
-                            }
+                                tl = q2.ToList();
+                                foreach (exerDetail ed in tl)
+                                {
+                                    ed.qid = ths.sim;
+                                    pp.context.UpdateObject(ed);
+                                    MessageBox.Show("updata:" + ed.id);
+                                    EXtools.checkd(pp, ed.lid);
+                                }
 
+                            }
                         }
-                    }
-                    if (ths.type1 == 3)
-                    {
-                        var q1 = from o in pp.context.SQues 
-                                 where o.id == ths.qid
-                                 select o;
-                        SQues m1 = q1.First();
-                        pp.context.DeleteObject(m1);
-                        var q2 = from o in pp.context.exerDetail
-                                 where o.qid == ths.qid && o.typeq == 3
-                                 select o;
-                        List<exerDetail> tl = null;
-                        if (q2.Count() > 0)
+                        if (ths.type1 == 3)
                         {
-                            tl = q2.ToList();
-                            foreach (exerDetail ed in tl)
+                            var q1 = from o in pp.context.SQues
+                                     where o.id == ths.qid
+                                     select o;
+                            SQues m1 = q1.First();
+                            pp.context.DeleteObject(m1);
+                            var q2 = from o in pp.context.exerDetail
+                                     where o.qid == ths.qid && o.typeq == 3
+                                     select o;
+                            List<exerDetail> tl = null;
+                            if (q2.Count() > 0)
                             {
-                                ed.qid = ths.sim;
-                                pp.context.UpdateObject(ed);
-                                MessageBox.Show("updata:" + ed.id);
-                                EXtools.checkd(pp, ed.lid);
-                            }
+                                tl = q2.ToList();
+                                foreach (exerDetail ed in tl)
+                                {
+                                    ed.qid = ths.sim;
+                                    pp.context.UpdateObject(ed);
+                                    MessageBox.Show("updata:" + ed.id);
+                                    EXtools.checkd(pp, ed.lid);
+                                }
 
+                            }
                         }
-                    }
-                    if (ths.type1 == 4)
-                    {
-                        var q1 = from o in pp.context.AQues 
-                                 where o.id == ths.qid
-                                 select o;
-                        AQues m1 = q1.First();
-                        pp.context.DeleteObject(m1);
-                        var q2 = from o in pp.context.exerDetail
-                                 where o.qid == ths.qid && o.typeq == 4
-                                 select o;
-                        List<exerDetail> tl = null;
-                        if (q2.Count() > 0)
+                        if (ths.type1 == 4)
                         {
-                            tl = q2.ToList();
-                            foreach (exerDetail ed in tl)
+                            var q1 = from o in pp.context.AQues
+                                     where o.id == ths.qid
+                                     select o;
+                            AQues m1 = q1.First();
+                            pp.context.DeleteObject(m1);
+                            var q2 = from o in pp.context.exerDetail
+                                     where o.qid == ths.qid && o.typeq == 4
+                                     select o;
+                            List<exerDetail> tl = null;
+                            if (q2.Count() > 0)
                             {
-                                ed.qid = ths.sim;
-                                pp.context.UpdateObject(ed);
-                                MessageBox.Show("updata:" + ed.id);
-                                EXtools.checkd(pp, ed.lid);
-                            }
+                                tl = q2.ToList();
+                                foreach (exerDetail ed in tl)
+                                {
+                                    ed.qid = ths.sim;
+                                    pp.context.UpdateObject(ed);
+                                    MessageBox.Show("updata:" + ed.id);
+                                    EXtools.checkd(pp, ed.lid);
+                                }
 
+                            }
                         }
-                    }
                     //del question over updata over
                     //del theinformation
-                    var q3 = from o in pp.context.featurehelp 
-                             where o.id==ths.id 
-                             select o;
-                    featurehelp fp2 = q3.First();
-                    pp.context.DeleteObject(fp2);
-                    pp.context.SaveChanges();
-                    dataGridView1.DataSource = null;
-                    hsl.Remove(ths);
-                    dataGridView1.DataSource = hsl;
                     
-                   
+                    try
+                    {
+                        var q3 = from o in pp.context.featurehelp
+                                 where o.id == ths.id
+                                 select o;
+                        featurehelp fp2 = q3.First();
+                        pp.context.DeleteObject(fp2);
+                        pp.context.SaveChanges();
+                        dataGridView1.DataSource = null;
+                        hsl.Remove(ths);
+                        dataGridView1.DataSource = hsl;
+                    }
+                    catch (Exception e1)
+                    { MessageBox.Show(e1.ToString()); }
+
+
+                    }
+                    else
+                    {
+
+                        MessageBox.Show("Can not be deleted");
+                    }
+
                 }
-                else
-                {
-
-                    MessageBox.Show("Can not be deleted"); 
-                }
-
-           }
-
+            
 
         }
+
         //////////////////////////////////////////
 
     }

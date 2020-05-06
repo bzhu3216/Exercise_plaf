@@ -780,11 +780,18 @@ namespace Exercise_form
             }
             if (selid != -1)
             {
+                try
+                {
+                    exerDetail eed = ell.Find(x => x.qid == selid);
+                    eed.score = int.Parse(comboBox5.Text);
+                    pp.context.UpdateObject(eed);
+                    pp.context.SaveChanges();
+                }
+                catch (Exception e1)
+                {
+                    MessageBox.Show(e1.ToString()); 
+                }
 
-                exerDetail eed = ell.Find(x => x.qid == selid);
-                eed.score = int.Parse(comboBox5.Text);
-                pp.context.UpdateObject(eed);
-                pp.context.SaveChanges();
 
 
 
