@@ -698,6 +698,39 @@ namespace Exercise_form
             return queList;
         }
 
+        private void button8_Click(object sender, EventArgs e)
+        {
+            int irow = -1;
+            if (dataGridView1.CurrentRow != null)
+                irow = dataGridView1.CurrentRow.Index;
+
+            if (irow >= 0 && pp.teacher.teacherid == "1536")
+            {
+                Dcheck mq = null;
+
+
+                if (mq == null || mq.IsDisposed)
+                {
+
+                    mq = new Dcheck(pp, tlvedp[irow]);
+
+                    mq.ShowDialog();
+                    // mq.Show();
+                }
+                else
+                {
+                    mq.Activate();
+                    mq.WindowState = FormWindowState.Normal;
+                }
+            }
+            else
+            {
+
+                MessageBox.Show("没必要啊");
+            }
+
+        }
+
 
         ///////////////////////////////////
 

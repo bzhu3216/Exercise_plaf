@@ -1066,7 +1066,7 @@ namespace Exercise_form
             return ledcom;
 
         }
-
+       
         ////////////////////////////
         public static  List<class_student> nosubmit(param p,classinfo clinfo,exerL el)
         {

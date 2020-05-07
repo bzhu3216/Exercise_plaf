@@ -589,6 +589,9 @@ namespace Exercise_form
                     }
                     else
                     {
+                        pp.context.DeleteObject(tel);
+                        pp.context.SaveChanges();
+
                         MessageBox.Show("有问题联系管理员" + tel.qid.ToString());
                     }
 
