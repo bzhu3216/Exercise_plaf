@@ -442,6 +442,7 @@ namespace Exercise_form
                         var q12 = from o in pp.context.eQues 
                                   where o.id == ed1.qid
                                   select o;
+                        if(q12.Count()>0) { 
                         eQues mcq = q12.First<eQues>();
                         numofquestion[2] = numofquestion[2] + 1;
                         totalscoreofques[2] = totalscoreofques[2] + (int)ed1.score * mcq.emnum;
@@ -454,7 +455,7 @@ namespace Exercise_form
                         ///////////////////each
                         ((List<int>)objectiveofeach[(int)mcq.objective - 1])[2] = ((List<int>)objectiveofeach[(int)mcq.objective - 1])[2] + 1;
                         ((List<int>)objectivescoreofofeach[(int)mcq.objective - 1])[2] = ((List<int>)objectivescoreofofeach[(int)mcq.objective - 1])[2] + (int)ed1.score*mcq.emnum ;
-
+                        }
                         /////////////////endeach
 
                     }

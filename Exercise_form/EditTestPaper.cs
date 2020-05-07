@@ -184,7 +184,8 @@ namespace Exercise_form
                             {
                                 dgvr.Cells.Add(c.CellTemplate.Clone() as DataGridViewCell);
                             }
-                            dgvr.Cells[1].Value = richTextBox1.Rtf;
+                            dgvr.Cells[1].Value = mcq.objective ;
+                            dgvr.Cells[2].Value = richTextBox1.Rtf;
                             dgvr.Cells[0].Value = mcq.id ;
                             dgvr.Cells[0].ToolTipText = mcq.objective + @"/" + mcq.con;
                             // dgvr.Cells[0].Style.BackColor = Color.Yellow;
@@ -232,7 +233,8 @@ namespace Exercise_form
                             {
                                 dgvr.Cells.Add(c.CellTemplate.Clone() as DataGridViewCell);
                             }
-                            dgvr.Cells[1].Value = richTextBox1.Rtf;
+                            dgvr.Cells[1].Value = mcq.objective;
+                            dgvr.Cells[2].Value = richTextBox1.Rtf;
                             dgvr.Cells[0].Value = mcq.id;
                             // dgvr.Cells[0].Value = mcq.id + "|" + mcq.objective;
                             // dgvr.Cells[0].Style.BackColor = Color.Yellow;
@@ -280,7 +282,8 @@ namespace Exercise_form
                             {
                                 dgvr.Cells.Add(c.CellTemplate.Clone() as DataGridViewCell);
                             }
-                            dgvr.Cells[1].Value = richTextBox1.Rtf;
+                            dgvr.Cells[1].Value = mcq.objective;
+                            dgvr.Cells[2].Value = richTextBox1.Rtf;
                             dgvr.Cells[0].Value = mcq.id;
                             //dgvr.Cells[0].Value = mcq.id + "|" + mcq.objective;
                             // dgvr.Cells[0].Style.BackColor = Color.Yellow;
@@ -328,8 +331,9 @@ namespace Exercise_form
                             {
                                 dgvr.Cells.Add(c.CellTemplate.Clone() as DataGridViewCell);
                             }
-                            dgvr.Cells[1].Value = richTextBox1.Rtf;
-                             dgvr.Cells[0].Value = mcq.id;
+                            dgvr.Cells[1].Value = mcq.objective;
+                            dgvr.Cells[2].Value = richTextBox1.Rtf;
+                            dgvr.Cells[0].Value = mcq.id;
                            // dgvr.Cells[0].Value = mcq.id + "|" + mcq.objective;
                             // dgvr.Cells[0].Style.BackColor = Color.Yellow;
                             int hh = (int)(richTextBox1.Rtf.Length / 6);
@@ -376,7 +380,8 @@ namespace Exercise_form
                             {
                                 dgvr.Cells.Add(c.CellTemplate.Clone() as DataGridViewCell);
                             }
-                            dgvr.Cells[1].Value = richTextBox1.Rtf;
+                            dgvr.Cells[1].Value = mcq.objective;
+                            dgvr.Cells[2].Value = richTextBox1.Rtf;
                             dgvr.Cells[0].Value = mcq.id;
                            // dgvr.Cells[0].Value = mcq.id + "|" + mcq.objective;
                             // dgvr.Cells[0].Style.BackColor = Color.Yellow;
@@ -495,7 +500,8 @@ namespace Exercise_form
 
                             dgvr.Cells.Add(c.CellTemplate.Clone() as DataGridViewCell);
                         }
-                        dgvr.Cells[1].Value = richTextBox1.Rtf;
+                        dgvr.Cells[2].Value = richTextBox1.Rtf;
+                        dgvr.Cells[1].Value = mcq.objective ;
                         dgvr.Cells[0].Value = mcq.id;                        
                         int hh = (int)(richTextBox1.Rtf.Length / 8);
                         if (hh > 300) hh = 300;
@@ -533,7 +539,8 @@ namespace Exercise_form
 
                             dgvr.Cells.Add(c.CellTemplate.Clone() as DataGridViewCell);
                         }
-                        dgvr.Cells[1].Value = richTextBox1.Rtf;
+                        dgvr.Cells[2].Value = richTextBox1.Rtf;
+                        dgvr.Cells[1].Value = mcq.objective;
                         dgvr.Cells[0].Value = mcq.id;
                         int hh = (int)(richTextBox1.Rtf.Length / 8);
                         if (hh > 300) hh = 300;
@@ -572,7 +579,8 @@ namespace Exercise_form
 
                             dgvr.Cells.Add(c.CellTemplate.Clone() as DataGridViewCell);
                         }
-                        dgvr.Cells[1].Value = richTextBox1.Rtf;
+                        dgvr.Cells[2].Value = richTextBox1.Rtf;
+                        dgvr.Cells[1].Value = mcq.objective;
                         dgvr.Cells[0].Value = mcq.id;
                         int hh = (int)(richTextBox1.Rtf.Length / 8);
                         if (hh > 300) hh = 300;
@@ -611,7 +619,8 @@ namespace Exercise_form
 
                             dgvr.Cells.Add(c.CellTemplate.Clone() as DataGridViewCell);
                         }
-                        dgvr.Cells[1].Value = richTextBox1.Rtf;
+                        dgvr.Cells[2].Value = richTextBox1.Rtf;
+                        dgvr.Cells[1].Value = mcq.objective;
                         dgvr.Cells[0].Value = mcq.id;
                         int hh = (int)(richTextBox1.Rtf.Length / 8);
                         if (hh > 300) hh = 300;
@@ -651,7 +660,8 @@ namespace Exercise_form
 
                             dgvr.Cells.Add(c.CellTemplate.Clone() as DataGridViewCell);
                         }
-                        dgvr.Cells[1].Value = richTextBox1.Rtf;
+                        dgvr.Cells[2].Value = richTextBox1.Rtf;
+                        dgvr.Cells[1].Value = mcq.objective;
                         dgvr.Cells[0].Value = mcq.id;
                         int hh = (int)(richTextBox1.Rtf.Length / 8);
                         if (hh > 300) hh = 300;
@@ -802,7 +812,7 @@ namespace Exercise_form
         private void button6_Click(object sender, EventArgs e)
         {
             Exercise_Summary mq = null;
-
+            
 
 
             if (mq == null || mq.IsDisposed)
