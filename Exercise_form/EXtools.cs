@@ -447,11 +447,11 @@ namespace Exercise_form
                         numofquestion[2] = numofquestion[2] + 1;
                         totalscoreofques[2] = totalscoreofques[2] + (int)ed1.score * mcq.emnum;
                         numofcon[(int)mcq.con - 1] = numofcon[(int)mcq.con - 1] + 1;
-                        totalscoreofcon[(int)mcq.con - 1] = totalscoreofcon[(int)mcq.con - 1] + (int)ed1.score;
+                        totalscoreofcon[(int)mcq.con - 1] = totalscoreofcon[(int)mcq.con - 1] + (int)ed1.score * mcq.emnum;
                         objectiveofcon[(int)mcq.objective - 1] = objectiveofcon[(int)mcq.objective - 1] + 1;
-                        objectivescoreofofcon[(int)mcq.objective - 1] = objectivescoreofofcon[(int)mcq.objective - 1] + (int)ed1.score;
+                        objectivescoreofofcon[(int)mcq.objective - 1] = objectivescoreofofcon[(int)mcq.objective - 1] + (int)ed1.score * mcq.emnum;
                         diffof[(int)mcq.diff - 1] = diffof[(int)mcq.diff - 1] + 1;
-                        diffscore[(int)mcq.diff - 1] = diffscore[(int)mcq.diff - 1] + (int)ed1.score;
+                        diffscore[(int)mcq.diff - 1] = diffscore[(int)mcq.diff - 1] + (int)ed1.score * mcq.emnum;
                         ///////////////////each
                         ((List<int>)objectiveofeach[(int)mcq.objective - 1])[2] = ((List<int>)objectiveofeach[(int)mcq.objective - 1])[2] + 1;
                         ((List<int>)objectivescoreofofeach[(int)mcq.objective - 1])[2] = ((List<int>)objectivescoreofofeach[(int)mcq.objective - 1])[2] + (int)ed1.score*mcq.emnum ;
