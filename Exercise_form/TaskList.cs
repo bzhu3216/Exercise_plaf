@@ -784,10 +784,10 @@ namespace Exercise_form
                 if (q1.Count<studAnsw>()>0)
                 {
           
-                    MessageBox.Show("还有作业没批好!");
-                    return;
+                    MessageBox.Show("还有未批好的作业!");
+                    //return;
                 }
-                else
+               // else
                 { 
                 /////////////////////////
                 var q2 = from o in pp.context.Course

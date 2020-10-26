@@ -895,6 +895,31 @@ namespace Exercise_form
 
         }
 
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int CIndex = e.ColumnIndex;
+           // MessageBox.Show(CIndex.ToString());
+            if (CIndex == 3)
+            {
+
+                picZoom mq = null;
+                if (mq == null || mq.IsDisposed)
+                {
+                    DataGridViewRow dv = this.dataGridView1.CurrentRow;
+                    mq = new picZoom();
+                    mq.pictureBox1.Image = (Image)dv.Cells[3].Value;
+                    mq.Show();
+                }
+                else
+                {
+                    mq.Activate();
+                    mq.WindowState = FormWindowState.Normal;
+                }
+
+            }
+
+        }
+
 
         //////        ////////////////////////////////////////
     }
