@@ -766,7 +766,7 @@ namespace Exercise_form
                 NOMark  mq = null;
                 if (mq == null || mq.IsDisposed)
                 {
-                    mq = new NOMark(pp, el);
+                    mq = new NOMark(pp, el, lstv);
                     //  mq.MdiParent = this;
                     mq.Show();
                 }
