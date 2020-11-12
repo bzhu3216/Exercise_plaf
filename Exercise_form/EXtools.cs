@@ -51,7 +51,7 @@ namespace Exercise_form
             List<exerDetail> led = null;
             var q11 = from o in pp.context.exerDetail
                       where o.lid == tel1.id
-                      orderby o.typeq, o.id
+                      orderby o.typeq,o.id
                       select o;
            
             if (q11.Count<exerDetail>() > 0)
@@ -607,13 +607,371 @@ namespace Exercise_form
             V_tea_course cc = pp.vdlword;
             List<int> numofquestion = new List<int>(5);
             for (int i = 0; i < 5; i++) numofquestion.Add(0);
+
+            
+
+
+
+
             
 
             List<exerDetail> led = null;
+           
+
+            /////////////////////////////if paper
+
+
+            if (tel1.pub == 3)
+            {
+                int flagi = 0;
+                if (MessageBox.Show("简单答案？", "简单答案？ " ,
+                               MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    flagi = 1;
+                }
+                else
+                {
+                    flagi = 0;
+                }
+                //////////
+                var qt1 = from o in pp.context.exerDetail
+                          where o.lid == tel1.id
+                          orderby o.typeq, o.lorder, o.id
+                          select o;
+                if (qt1 != null)
+                {
+
+                    if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                    {
+                        string localFilePath = saveFileDialog1.FileName.ToString();
+                        dirsave = localFilePath;
+                        led = qt1.ToList<exerDetail>();
+                        Spire.Doc.Document doc = new Document();
+                        ParagraphStyle style1 = new ParagraphStyle(doc);
+                        style1.Name = "titleStyle";
+                        style1.CharacterFormat.Bold = true;
+                        style1.CharacterFormat.TextColor = Color.Purple;
+                        style1.CharacterFormat.FontName = "宋体";
+                        style1.CharacterFormat.FontSize = 24f;
+                        doc.Styles.Add(style1);
+                        Section s = doc.AddSection();
+                        Paragraph para2 = s.AddParagraph();
+                        para2.AppendText(tel1.name);
+                        para2.ApplyStyle("titleStyle");
+                        led = qt1.ToList<exerDetail>();
+                        int biaoti = 1;
+                        foreach (exerDetail ed1 in led)
+                        {
+                            if (ed1.typeq == 0)
+                            {
+
+                                var q12 = from o in pp.context.mchoiceQues
+                                          where o.id == ed1.qid
+                                          select o;
+                                mchoiceQues mcq = q12.First<mchoiceQues>();
+                                string keya = "";
+                                if (mcq.answ == 1) keya = "A";
+                                if (mcq.answ == 2) keya = "B";
+                                if (mcq.answ == 3) keya = "C";
+                                if (mcq.answ == 4) keya = "D";
+                                System.IO.MemoryStream mstream = new System.IO.MemoryStream(mcq.question, false);
+                                byte[] a = mstream.ToArray();
+                                // string sb = System.text.encoding.default.getstring(a);
+                                string sb = System.Text.Encoding.Default.GetString(a);
+                                var q13 = from o in pp.context.studAnsw
+                                          where o.did == ed1.id
+                                          select o;
+                                string keystr = "";
+                                DataObject myDataObject = new DataObject();
+                                if (needkey)
+                                {
+                                    keystr = "答案(" + keya + ")题号(" + mcq.id + ")章节(" + mcq.con + ")目标(" + mcq.objective + ")\n";
+                                    myDataObject.SetData(DataFormats.Rtf, keystr);
+                                    myDataObject.GetData(DataFormats.Rtf);
+                                }
+                                Paragraph para1 = s.AddParagraph();
+                                if (numofquestion[0] == 0)
+                                {
+                                    Paragraph para3 = s.AddParagraph();
+                                    para3.AppendText(biaoti + ".选择题");
+                                    biaoti++;
+                                }
+                                numofquestion[0] = numofquestion[0] + 1;
+                                sb = numofquestion[0] + ". " + sb;
+                                para1.AppendRTF(sb);
+                                if (needkey)
+                                    para1.AppendRTF(myDataObject.GetData(DataFormats.Rtf).ToString());
+                                TextSelection[] selections = doc.FindAllPattern(new System.Text.RegularExpressions.Regex("."));
+                                TextRange range = null;
+                                foreach (TextSelection selection in selections)
+                                {
+                                    range = selection.GetAsOneRange();
+                                    Font ft = range.CharacterFormat.Font;
+                                    Font newft = new Font(ft.SystemFontName, 10f, ft.Style);
+                                    range.CharacterFormat.Font = newft;
+                                }
+
+                            }
+                            if (ed1.typeq == 1)
+                            {
+                                var q12 = from o in pp.context.TFQues
+                                          where o.id == ed1.qid
+                                          select o;
+                                TFQues mcq = q12.First<TFQues>();
+                                string keya = "";
+                                if ((bool)mcq.answ) keya = "True";
+                                if (!(bool)mcq.answ) keya = "False";
+                                System.IO.MemoryStream mstream = new System.IO.MemoryStream(mcq.question, false);
+                                byte[] a = mstream.ToArray();
+                                string sb = System.Text.Encoding.Default.GetString(a);
+                                var q13 = from o in pp.context.studAnsw
+                                          where o.did == ed1.id
+                                          select o;
+                                string keystr = "";
+                                DataObject myDataObject = new DataObject();
+                                if (needkey)
+                                {
+                                    keystr = "答案(" + keya + ")题号(" + mcq.id + ")章节(" + mcq.con + ")目标(" + mcq.objective + ")\n";
+                                    myDataObject.SetData(DataFormats.Rtf, keystr);
+                                    myDataObject.GetData(DataFormats.Rtf);
+                                }
+                                Paragraph para1 = s.AddParagraph();
+                                if (numofquestion[1] == 0)
+                                {
+                                    Paragraph para3 = s.AddParagraph();
+                                    para3.AppendText(biaoti + ".判断题");
+                                    biaoti++;
+                                }
+                                numofquestion[1] = numofquestion[1] + 1;
+                                sb = numofquestion[1] + ". " + sb;
+                                para1.AppendRTF(sb);
+                                if (needkey)
+                                    para1.AppendRTF(myDataObject.GetData(DataFormats.Rtf).ToString());
+                                TextSelection[] selections = doc.FindAllPattern(new System.Text.RegularExpressions.Regex("."));
+                                TextRange range = null;
+                                foreach (TextSelection selection in selections)
+                                {
+                                    range = selection.GetAsOneRange();
+                                    Font ft = range.CharacterFormat.Font;
+                                    Font newft = new Font(ft.SystemFontName, 10f, ft.Style);
+                                    range.CharacterFormat.Font = newft;
+                                }
+
+                            }
+
+                            if (ed1.typeq == 2)
+                            {
+
+                                var q12 = from o in pp.context.eQues
+                                          where o.id == ed1.qid
+                                          select o;
+                                eQues mcq = q12.First<eQues>();
+                                string keya = "";
+                                keya = mcq.answ;
+                                System.IO.MemoryStream mstream = new System.IO.MemoryStream(mcq.question, false);
+                                byte[] a = mstream.ToArray();
+                                string sb = System.Text.Encoding.Default.GetString(a);
+                                var q13 = from o in pp.context.studAnsw
+                                          where o.did == ed1.id
+                                          select o;
+                                string keystr = "";
+                                DataObject myDataObject = new DataObject();
+                                if (needkey)
+                                {
+                                    keystr = "答案(" + keya + ")题号(" + mcq.id + ")章节(" + mcq.con + ")目标(" + mcq.objective + ")\n";
+                                    myDataObject.SetData(DataFormats.Rtf, keystr);
+                                    myDataObject.GetData(DataFormats.Rtf);
+                                }
+                                Paragraph para1 = s.AddParagraph();
+                                if (numofquestion[2] == 0)
+                                {
+                                    Paragraph para3 = s.AddParagraph();
+                                    para3.AppendText(biaoti + ".填空题");
+                                    biaoti++;
+                                }
+                                numofquestion[2] = numofquestion[2] + 1;
+                                sb = numofquestion[2] + ". " + sb;
+                                para1.AppendRTF(sb);
+                                if (needkey)
+                                    para1.AppendRTF(myDataObject.GetData(DataFormats.Rtf).ToString());
+                                TextSelection[] selections = doc.FindAllPattern(new System.Text.RegularExpressions.Regex("."));
+                                TextRange range = null;
+                                foreach (TextSelection selection in selections)
+                                {
+                                    range = selection.GetAsOneRange();
+                                    Font ft = range.CharacterFormat.Font;
+                                    Font newft = new Font(ft.SystemFontName, 10f, ft.Style);
+                                    range.CharacterFormat.Font = newft;
+                                }
+
+                            }
+
+                            if (ed1.typeq == 3)
+                            {
+                                var q12 = from o in pp.context.SQues
+                                          where o.id == ed1.qid
+                                          select o;
+                                SQues mcq = q12.First<SQues>();
+                                string keya = "";
+
+                                System.IO.MemoryStream mstream = new System.IO.MemoryStream(mcq.question, false);
+                                byte[] a = mstream.ToArray();
+                                string sb = System.Text.Encoding.Default.GetString(a);
+                                System.IO.MemoryStream mstream2 = new System.IO.MemoryStream(mcq.answ, false);
+                                byte[] b = mstream2.ToArray();
+                                keya = System.Text.Encoding.Default.GetString(b);
+                                var q13 = from o in pp.context.studAnsw
+                                          where o.did == ed1.id
+                                          select o;
+                                string keystr = "";
+                                DataObject myDataObject = new DataObject();
+                                if (needkey)
+                                {
+                                    keystr = "题号(" + mcq.id + ")章节(" + mcq.con + ")目标(" + mcq.objective + ")\n";
+                                    myDataObject.SetData(DataFormats.Rtf, keystr);
+                                    myDataObject.GetData(DataFormats.Rtf);
+                                }
+                                Paragraph para1 = s.AddParagraph();
+                                if (numofquestion[3] == 0)
+                                {
+                                    Paragraph para3 = s.AddParagraph();
+                                    para3.AppendText(biaoti + ".简答题");
+                                    biaoti++;
+                                }
+                                numofquestion[3] = numofquestion[3] + 1;
+                                sb = numofquestion[3] + ". " + sb;
+                                para1.AppendRTF(sb);
+                                if (needkey)
+                                {
+                                    para1.AppendRTF(keya);
+                                    para1.AppendRTF(myDataObject.GetData(DataFormats.Rtf).ToString());
+                                }
+                                TextSelection[] selections = doc.FindAllPattern(new System.Text.RegularExpressions.Regex("."));
+                                TextRange range = null;
+                                foreach (TextSelection selection in selections)
+                                {
+                                    range = selection.GetAsOneRange();
+                                    Font ft = range.CharacterFormat.Font;
+                                    Font newft = new Font(ft.SystemFontName, 10f, ft.Style);
+                                    range.CharacterFormat.Font = newft;
+                                }
+
+                            }
+                            //////////////////////////////////////end3
+
+                            if (ed1.typeq == 4)
+                            {
+                                var q12 = from o in pp.context.AQues
+                                          where o.id == ed1.qid
+                                          select o;
+                                AQues mcq = q12.First<AQues>();
+                                string keya = "";
+
+                                System.IO.MemoryStream mstream = new System.IO.MemoryStream(mcq.question, false);
+                                byte[] a = mstream.ToArray();
+                                string sb = System.Text.Encoding.Default.GetString(a);
+                                System.IO.MemoryStream mstream2 = new System.IO.MemoryStream(mcq.answ, false);
+                                byte[] b = mstream2.ToArray();
+                                keya = System.Text.Encoding.Default.GetString(b);
+                                var q13 = from o in pp.context.studAnsw
+                                          where o.did == ed1.id
+                                          select o;
+                                string keystr = "";
+                                DataObject myDataObject = new DataObject();
+                                if (needkey)
+                                {
+                                    keystr = "题号(" + mcq.id + ")章节(" + mcq.con + ")目标(" + mcq.objective + ")\n";
+                                    myDataObject.SetData(DataFormats.Rtf, keystr);
+                                    myDataObject.GetData(DataFormats.Rtf);
+                                }
+                                Paragraph para1 = s.AddParagraph();
+                                if (numofquestion[4] == 0)
+                                {
+                                    Paragraph para3 = s.AddParagraph();
+                                    para3.AppendText(biaoti + ".分析题");
+                                    biaoti++;
+                                }
+                                numofquestion[4] = numofquestion[4] + 1;
+                                sb = numofquestion[4] + ". " + sb;
+                                para1.AppendRTF(sb);
+                                if (needkey)
+                                {
+                                    para1.AppendRTF(keya);
+                                    para1.AppendRTF(myDataObject.GetData(DataFormats.Rtf).ToString());
+                                }
+                                TextSelection[] selections = doc.FindAllPattern(new System.Text.RegularExpressions.Regex("."));
+                                TextRange range = null;
+                                foreach (TextSelection selection in selections)
+                                {
+                                    range = selection.GetAsOneRange();
+                                    Font ft = range.CharacterFormat.Font;
+                                    Font newft = new Font(ft.SystemFontName, 10f, ft.Style);
+                                    range.CharacterFormat.Font = newft;
+                                }
+
+
+                            }
+
+                            ////end4
+
+
+
+
+
+
+                            // richTextBox2.SaveFile(saveFileDialog1.FileName);
+
+
+                        }//end eachstudent
+                        try
+                        {
+                            if (needkey)
+                            {
+                                string sumstr = toSummary(tel1, cc, pp);
+                                Paragraph para1 = s.AddParagraph();
+                                para1.AppendText(sumstr);
+
+                            }
+                            //////////////////savedoc//////////////////////
+                            doc.SaveToFile(dirsave, Spire.Doc.FileFormat.Docx2013);
+                            // MessageBox.Show("文档已经生成"); 
+                        }
+                        catch (Exception Err)
+                        {
+                            MessageBox.Show("WORD文件保存操作失败！" + Err.Message, "信息提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        MessageBox.Show("文档生成结束！");
+
+
+
+
+                    }
+                }
+
+
+                /////////////
+
+
+
+
+
+                return;
+            }
+
+
+
+
+
+
+
+            //////////end  paper /////////////////////////
+
             var q11 = from o in pp.context.exerDetail
                       where o.lid == tel1.id
-                      orderby o.typeq, o.id
+                      orderby o.typeq,  o.id
                       select o;
+
+
             if (q11 != null)
             {
 

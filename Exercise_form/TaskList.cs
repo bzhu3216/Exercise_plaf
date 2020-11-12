@@ -784,9 +784,12 @@ namespace Exercise_form
                 if (q1.Count<studAnsw>()>0)
                 {
           
-                    MessageBox.Show("还有未批好的作业!");
+                 //   MessageBox.Show("还有未批好的作业!");
                     //return;
                 }
+
+
+
                // else
                 { 
                 /////////////////////////
