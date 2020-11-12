@@ -451,6 +451,7 @@ namespace Exercise_form
                 exerDetail edl = new exerDetail();
                 edl.lid = el.id ;
                 edl.qid = selid;
+                edl.lorder = dataGridView2.RowCount + 1;
                 edl.score = int.Parse(comboBox5.Text);
                 edl.typeq = comboBox1.SelectedIndex;
                 saveExerD(edl);
@@ -480,6 +481,7 @@ namespace Exercise_form
             {
                 var questionQuery1 = from o in pp.context.exerDetail
                                      where o.lid == el.id && o.typeq == 0
+                                     orderby o.lorder 
                                      select o;
                 ell  = questionQuery1.ToList<exerDetail>();                
                 foreach (exerDetail tel in ell)
@@ -519,6 +521,7 @@ namespace Exercise_form
             {
                 var questionQuery1 = from o in pp.context.exerDetail
                                      where o.lid == el.id && o.typeq == 1
+                                     orderby o.lorder
                                      select o;
                 ell = questionQuery1.ToList<exerDetail>();
                 foreach (exerDetail tel in ell)
@@ -559,6 +562,7 @@ namespace Exercise_form
             {
                 var questionQuery1 = from o in pp.context.exerDetail
                                      where o.lid == el.id && o.typeq == 2
+                                     orderby o.lorder
                                      select o;
                 ell = questionQuery1.ToList<exerDetail>();
                 foreach (exerDetail tel in ell)
@@ -602,6 +606,7 @@ namespace Exercise_form
             {
                 var questionQuery1 = from o in pp.context.exerDetail
                                      where o.lid == el.id && o.typeq == 3
+                                     orderby o.lorder
                                      select o;
                 ell = questionQuery1.ToList<exerDetail>();
                 foreach (exerDetail tel in ell)
@@ -643,6 +648,7 @@ namespace Exercise_form
             {
                 var questionQuery1 = from o in pp.context.exerDetail
                                      where o.lid == el.id && o.typeq == 4
+                                     orderby o.lorder
                                      select o;
                 ell = questionQuery1.ToList<exerDetail>();
                 foreach (exerDetail tel in ell)
@@ -724,6 +730,22 @@ namespace Exercise_form
                 pp.context.DeleteObject(eed);
                 pp.context.SaveChanges();
                 reload2(comboBox1.SelectedIndex);
+                ////                Update lorder
+                int i = 0;
+                foreach (exerDetail e1 in ell)
+                {
+                    i = i + 1;
+                    e1.lorder = i;
+                    pp.context.UpdateObject(e1); 
+
+                }
+                pp.context.SaveChanges();
+
+
+                ////////
+
+
+
             }
 
         }
@@ -836,6 +858,86 @@ namespace Exercise_form
 
         }
 
+
+        //////////////////////////////////////////
+        private void changeorder(int id1, int id2)
+        {
+
+
+
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            int selid = -1;
+            selid = dataGridView2.CurrentRow.Index;
+            if (selid > 0)
+            {
+                /* foreach (exerDetail e1 in ell)
+                 {
+                     i = i + 1;
+                     e1.lorder = i;
+                    
+
+                 }*/
+             if (ell[selid].lorder != null) { 
+                int temp = (int) (ell[selid].lorder);
+                ell[selid].lorder = ell[selid - 1].lorder;
+                ell[selid - 1].lorder = temp;
+                pp.context.UpdateObject(ell[selid]);
+                pp.context.UpdateObject(ell[selid-1]);
+                pp.context.SaveChanges();
+                reload2(comboBox1.SelectedIndex);
+                }
+
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+
+
+            int selid = -1;
+            selid = dataGridView2.CurrentRow.Index;
+            if (selid < dataGridView2.RowCount - 1)
+            {
+                /* foreach (exerDetail e1 in ell)
+                 {
+                     i = i + 1;
+                     e1.lorder = i;
+                    
+
+                 }*/
+                if (ell[selid].lorder != null)
+                {
+                    int temp = (int)(ell[selid].lorder);
+                    ell[selid].lorder = ell[selid + 1].lorder;
+                    ell[selid + 1].lorder = temp;
+                    pp.context.UpdateObject(ell[selid]);
+                    pp.context.UpdateObject(ell[selid + 1]);
+                    pp.context.SaveChanges();
+                    reload2(comboBox1.SelectedIndex);
+                }
+
+            }
+        }
 
         //////////////////////////////////////////
 

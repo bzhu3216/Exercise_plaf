@@ -38,9 +38,6 @@
     <StartupObject>Exercise_form.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DataGridViewRichTextBox">
-      <HintPath>..\DataGridViewRichTextBox\bin\Debug\DataGridViewRichTextBox.exe</HintPath>
-    </Reference>
     <Reference Include="Exercise_DAL">
       <HintPath>..\Exercise_DAL\bin\Debug\Exercise_DAL.dll</HintPath>
     </Reference>

@@ -110,6 +110,7 @@
         <Property Name="lid" Type="Edm.Int32" Nullable="false" />
         <Property Name="score" Type="Edm.Int32" />
         <Property Name="id" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="lorder" Type="Edm.Int32" />
       </EntityType>
       <EntityType Name="studAnsw">
         <Key>
@@ -232,6 +233,7 @@
         <Property Name="name" Type="Edm.String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         <Property Name="teacherid" Type="Edm.String" Nullable="false" MaxLength="4" FixedLength="true" Unicode="true" />
         <Property Name="courseid" Type="Edm.Int32" Nullable="false" />
+        <Property Name="lorder" Type="Edm.Int32" />
       </EntityType>
       <EntityType Name="featurehelp">
         <Key>

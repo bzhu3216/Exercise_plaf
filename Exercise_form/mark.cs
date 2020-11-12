@@ -873,7 +873,7 @@ namespace Exercise_form
         private int getidinansw(int etype,int idinques)
         {
             int idinansw2 = -1;
-            if (ltvdl != null) ;
+            if (ltvdl != null) 
             {
                 var q1 = ltvdl.Where(o => o.typeq == etype && o.qid ==idinques);
                 if (q1.Count() > 0)
