@@ -616,22 +616,24 @@ namespace Exercise_form
             
 
             List<exerDetail> led = null;
-           
+
 
             /////////////////////////////if paper
-
+            if (tel1 == null) return;
 
             if (tel1.pub == 3)
             {
-                int flagi = 0;
-                if (MessageBox.Show("简单答案？", "简单答案？ " ,
+                int flagi = 1;
+                if (needkey) { 
+                    if (MessageBox.Show("简单答案？", "简单答案？ " ,
                                MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    flagi = 1;
+                   flagi =0;
                 }
                 else
                 {
-                    flagi = 0;
+                    flagi = 1;
+                }
                 }
                 //////////
                 var qt1 = from o in pp.context.exerDetail
@@ -677,7 +679,14 @@ namespace Exercise_form
                                 System.IO.MemoryStream mstream = new System.IO.MemoryStream(mcq.question, false);
                                 byte[] a = mstream.ToArray();
                                 // string sb = System.text.encoding.default.getstring(a);
-                                string sb = System.Text.Encoding.Default.GetString(a);
+                                string sb;
+                                if (flagi==1)
+                                   sb = System.Text.Encoding.Default.GetString(a);
+                                else
+                                     sb = " ";
+
+
+
                                 var q13 = from o in pp.context.studAnsw
                                           where o.did == ed1.id
                                           select o;
@@ -697,7 +706,7 @@ namespace Exercise_form
                                     biaoti++;
                                 }
                                 numofquestion[0] = numofquestion[0] + 1;
-                                sb = numofquestion[0] + ". " + sb;
+                                sb = numofquestion[0] + ". (" + ed1.score+ "分)"+ sb;
                                 para1.AppendRTF(sb);
                                 if (needkey)
                                     para1.AppendRTF(myDataObject.GetData(DataFormats.Rtf).ToString());
@@ -723,7 +732,12 @@ namespace Exercise_form
                                 if (!(bool)mcq.answ) keya = "False";
                                 System.IO.MemoryStream mstream = new System.IO.MemoryStream(mcq.question, false);
                                 byte[] a = mstream.ToArray();
-                                string sb = System.Text.Encoding.Default.GetString(a);
+                                // string sb = System.Text.Encoding.Default.GetString(a);
+                                string sb;
+                                if (flagi == 1)
+                                    sb = System.Text.Encoding.Default.GetString(a);
+                                else
+                                    sb = " ";
                                 var q13 = from o in pp.context.studAnsw
                                           where o.did == ed1.id
                                           select o;
@@ -743,7 +757,7 @@ namespace Exercise_form
                                     biaoti++;
                                 }
                                 numofquestion[1] = numofquestion[1] + 1;
-                                sb = numofquestion[1] + ". " + sb;
+                                sb = numofquestion[1] + ". (" + ed1.score + "分)" + sb;
                                 para1.AppendRTF(sb);
                                 if (needkey)
                                     para1.AppendRTF(myDataObject.GetData(DataFormats.Rtf).ToString());
@@ -770,7 +784,12 @@ namespace Exercise_form
                                 keya = mcq.answ;
                                 System.IO.MemoryStream mstream = new System.IO.MemoryStream(mcq.question, false);
                                 byte[] a = mstream.ToArray();
-                                string sb = System.Text.Encoding.Default.GetString(a);
+                                // string sb = System.Text.Encoding.Default.GetString(a);
+                                string sb;
+                                if (flagi == 1)
+                                    sb = System.Text.Encoding.Default.GetString(a);
+                                else
+                                    sb = " ";
                                 var q13 = from o in pp.context.studAnsw
                                           where o.did == ed1.id
                                           select o;
@@ -790,7 +809,7 @@ namespace Exercise_form
                                     biaoti++;
                                 }
                                 numofquestion[2] = numofquestion[2] + 1;
-                                sb = numofquestion[2] + ". " + sb;
+                                sb = numofquestion[2] + ". (" + ed1.score*mcq.emnum  + "分)" + sb;
                                 para1.AppendRTF(sb);
                                 if (needkey)
                                     para1.AppendRTF(myDataObject.GetData(DataFormats.Rtf).ToString());
@@ -816,7 +835,12 @@ namespace Exercise_form
 
                                 System.IO.MemoryStream mstream = new System.IO.MemoryStream(mcq.question, false);
                                 byte[] a = mstream.ToArray();
-                                string sb = System.Text.Encoding.Default.GetString(a);
+                                // string sb = System.Text.Encoding.Default.GetString(a);
+                                string sb;
+                                if (flagi == 1)
+                                    sb = System.Text.Encoding.Default.GetString(a);
+                                else
+                                    sb = " ";
                                 System.IO.MemoryStream mstream2 = new System.IO.MemoryStream(mcq.answ, false);
                                 byte[] b = mstream2.ToArray();
                                 keya = System.Text.Encoding.Default.GetString(b);
@@ -839,7 +863,7 @@ namespace Exercise_form
                                     biaoti++;
                                 }
                                 numofquestion[3] = numofquestion[3] + 1;
-                                sb = numofquestion[3] + ". " + sb;
+                                sb = numofquestion[3] + ". (" + ed1.score + "分)" + sb;
                                 para1.AppendRTF(sb);
                                 if (needkey)
                                 {
@@ -869,7 +893,12 @@ namespace Exercise_form
 
                                 System.IO.MemoryStream mstream = new System.IO.MemoryStream(mcq.question, false);
                                 byte[] a = mstream.ToArray();
-                                string sb = System.Text.Encoding.Default.GetString(a);
+                                // string sb = System.Text.Encoding.Default.GetString(a);
+                                string sb;
+                                if (flagi == 1)
+                                    sb = System.Text.Encoding.Default.GetString(a);
+                                else
+                                    sb = " ";
                                 System.IO.MemoryStream mstream2 = new System.IO.MemoryStream(mcq.answ, false);
                                 byte[] b = mstream2.ToArray();
                                 keya = System.Text.Encoding.Default.GetString(b);
@@ -892,7 +921,7 @@ namespace Exercise_form
                                     biaoti++;
                                 }
                                 numofquestion[4] = numofquestion[4] + 1;
-                                sb = numofquestion[4] + ". " + sb;
+                                sb = numofquestion[4] + ". (" + ed1.score + "分)" + sb;
                                 para1.AppendRTF(sb);
                                 if (needkey)
                                 {
