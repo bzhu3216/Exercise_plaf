@@ -17,5 +17,8 @@ namespace Exercise_DAL
         public int classid { get; set; }
         public string classinfo1 { get; set; }
         public Nullable<int> courseid { get; set; }
+        public string teacher { get; set; }
+        public Nullable<System.DateTime> addtime { get; set; }
+        public Nullable<int> finish { get; set; }
     }
 }

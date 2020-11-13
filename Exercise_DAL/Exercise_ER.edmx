@@ -18,9 +18,12 @@
           <Key>
             <PropertyRef Name="classid" />
           </Key>
-          <Property Name="classid" Type="int" Nullable="false" />
-          <Property Name="classinfo" Type="varchar" MaxLength="50" />
+          <Property Name="classid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="classinfo" Type="varchar" MaxLength="100" />
           <Property Name="courseid" Type="int" />
+          <Property Name="teacher" Type="nchar" MaxLength="4" />
+          <Property Name="addtime" Type="date" />
+          <Property Name="finish" Type="int" />
         </EntityType>
         <EntityType Name="StudInfo">
           <Key>
@@ -66,8 +69,11 @@
             <PropertyRef Name="classid" />
           </Key>
           <Property Name="classid" Type="Int32" Nullable="false" />
-          <Property Name="classinfo1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="classinfo1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="courseid" Type="Int32" />
+          <Property Name="teacher" Type="String" MaxLength="4" FixedLength="true" Unicode="true" />
+          <Property Name="addtime" Type="DateTime" Precision="0" />
+          <Property Name="finish" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -96,6 +102,9 @@
           <EntitySetMapping Name="classinfo">
             <EntityTypeMapping TypeName="Exercise_ER.classinfo">
               <MappingFragment StoreEntitySet="classinfo">
+                <ScalarProperty Name="finish" ColumnName="finish" />
+                <ScalarProperty Name="addtime" ColumnName="addtime" />
+                <ScalarProperty Name="teacher" ColumnName="teacher" />
                 <ScalarProperty Name="courseid" ColumnName="courseid" />
                 <ScalarProperty Name="classinfo1" ColumnName="classinfo" />
                 <ScalarProperty Name="classid" ColumnName="classid" />
