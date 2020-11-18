@@ -933,6 +933,7 @@ namespace Exercise_form
                     pp.context.UpdateObject(ell[selid]);
                     pp.context.UpdateObject(ell[selid + 1]);
                     pp.context.SaveChanges();
+                  
                     reload2(comboBox1.SelectedIndex);
                 }
 

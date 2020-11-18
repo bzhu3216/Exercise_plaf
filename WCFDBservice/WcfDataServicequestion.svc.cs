@@ -22,6 +22,7 @@ namespace WCFDBservice
             // Examples:
             config.SetEntitySetAccessRule("*", EntitySetRights.All);
             // config.SetServiceOperationAccessRule("MyServiceOperation", ServiceOperationRights.All);
+           // config.SetServiceOperationAccessRule("WcfDataServicequestion", ServiceOperationRights.All);
             config.DataServiceBehavior.MaxProtocolVersion = DataServiceProtocolVersion.V3;
              
         }
