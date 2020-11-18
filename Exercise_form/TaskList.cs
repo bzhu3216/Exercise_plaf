@@ -20,6 +20,8 @@ namespace Exercise_form
         public List<classinfo> lclinfo = null;
         public List<classExer> lce = null;
         public List<exerL> ler = new List<exerL>();
+        public List<Object> ler_how = new List<Object>();
+
         public int sel1 = -1;
         public int sel2 = -1;
         public TaskList(param p)
@@ -83,12 +85,14 @@ namespace Exercise_form
             
             lce = tlce(tcl);
             ler.Clear() ;
+            ler_how.Clear(); 
             if (lce != null){
                 foreach (classExer ce in lce)
                 {
 
                     var q1 = from o in pp.context.exerL
-                             where o.id == ce.eid 
+                             where o.id == ce.eid
+                             // select new { o.id ,o.name,ce.endtime };
                              select o;
                     if (q1.Count<exerL>() > 0)
                     {
@@ -100,7 +104,28 @@ namespace Exercise_form
 
                 }
             }
+            ////////////////////////////////////////
+            if (lce != null)
+            {
+                foreach (classExer ce in lce)
+                {
 
+                    var q2 = from o in pp.context.exerL
+                             where o.id == ce.eid
+                              select new { o.id ,o.name,ce.endtime };
+                    List<Object> tll = q2.ToList<Object>();
+                    //  if (q2.Count<Object>()> 0)
+                    if (tll.Count==1)
+                    {
+
+                       object tel = tll[0];
+                        ler_how.Add(tel);
+
+                    }
+                    
+
+                }
+            }
 
         }
 
@@ -834,8 +859,9 @@ namespace Exercise_form
             dataGridView1.Rows.Clear();           
             tlel(lclinfo[sel1]);
             dataGridView1.AutoGenerateColumns = false;
-            dataGridView1.DataSource = ler;
-            pp.updataccid = (int)lclinfo[sel1].courseid;
+                // dataGridView1.DataSource = ler;
+                dataGridView1.DataSource = ler_how;
+                pp.updataccid = (int)lclinfo[sel1].courseid;
             }
 
         }
