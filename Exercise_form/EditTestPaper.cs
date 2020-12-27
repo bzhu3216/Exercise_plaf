@@ -483,7 +483,31 @@ namespace Exercise_form
                                      where o.lid == el.id && o.typeq == 0
                                      orderby o.lorder 
                                      select o;
-                ell  = questionQuery1.ToList<exerDetail>();                
+                ell  = questionQuery1.ToList<exerDetail>();
+                //add lorder
+                int fflag = 0;
+                foreach (exerDetail tel in ell)
+                {
+                    if (tel.lorder == null) fflag = 1;
+
+                }
+
+                if (fflag == 1)
+                {
+                    int ilorder = 1;
+                    foreach (exerDetail tel in ell)
+                    {
+                        tel.lorder = ilorder; ;
+                        pp.context.UpdateObject(tel);
+
+                        ilorder++;
+
+                    }
+
+                    pp.context.SaveChanges();
+                }
+
+                //end lorder             
                 foreach (exerDetail tel in ell)
                 {
                     var questionQuery2 = from o in pp.context.mchoiceQues
@@ -524,6 +548,32 @@ namespace Exercise_form
                                      orderby o.lorder
                                      select o;
                 ell = questionQuery1.ToList<exerDetail>();
+                //add lorder
+                int fflag = 0;
+                foreach (exerDetail tel in ell)
+                {
+                    if (tel.lorder == null) fflag = 1;
+
+                }
+                
+                if (fflag == 1)
+                {
+                    int ilorder = 1;
+                    foreach (exerDetail tel in ell)
+                    {
+                        tel.lorder = ilorder; ;
+                        pp.context.UpdateObject(tel);
+
+                        ilorder++;
+
+                    }
+
+                    pp.context.SaveChanges();
+                }
+
+                //end lorder
+
+
                 foreach (exerDetail tel in ell)
                 {
                     var questionQuery2 = from o in pp.context.TFQues 
@@ -565,6 +615,30 @@ namespace Exercise_form
                                      orderby o.lorder
                                      select o;
                 ell = questionQuery1.ToList<exerDetail>();
+                //add lorder
+                int fflag = 0;
+                foreach (exerDetail tel in ell)
+                {
+                    if (tel.lorder == null) fflag = 1;
+
+                }
+
+                if (fflag == 1)
+                {
+                    int ilorder = 1;
+                    foreach (exerDetail tel in ell)
+                    {
+                        tel.lorder = ilorder; ;
+                        pp.context.UpdateObject(tel);
+
+                        ilorder++;
+
+                    }
+
+                    pp.context.SaveChanges();
+                }
+
+                //end lorder   
                 foreach (exerDetail tel in ell)
                 {
                     var questionQuery2 = from o in pp.context.eQues 
@@ -609,6 +683,30 @@ namespace Exercise_form
                                      orderby o.lorder
                                      select o;
                 ell = questionQuery1.ToList<exerDetail>();
+                //add lorder
+                int fflag = 0;
+                foreach (exerDetail tel in ell)
+                {
+                    if (tel.lorder == null) fflag = 1;
+
+                }
+
+                if (fflag == 1)
+                {
+                    int ilorder = 1;
+                    foreach (exerDetail tel in ell)
+                    {
+                        tel.lorder = ilorder; ;
+                        pp.context.UpdateObject(tel);
+
+                        ilorder++;
+
+                    }
+
+                    pp.context.SaveChanges();
+                }
+
+                //end lorder   
                 foreach (exerDetail tel in ell)
                 {
                     var questionQuery2 = from o in pp.context.SQues 
@@ -651,6 +749,30 @@ namespace Exercise_form
                                      orderby o.lorder
                                      select o;
                 ell = questionQuery1.ToList<exerDetail>();
+                //add lorder
+                int fflag = 0;
+                foreach (exerDetail tel in ell)
+                {
+                    if (tel.lorder == null) fflag = 1;
+
+                }
+
+                if (fflag == 1)
+                {
+                    int ilorder = 1;
+                    foreach (exerDetail tel in ell)
+                    {
+                        tel.lorder = ilorder; ;
+                        pp.context.UpdateObject(tel);
+
+                        ilorder++;
+
+                    }
+
+                    pp.context.SaveChanges();
+                }
+
+                //end lorder   
                 foreach (exerDetail tel in ell)
                 {
                     var questionQuery2 = from o in pp.context.AQues 

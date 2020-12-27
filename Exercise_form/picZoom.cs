@@ -19,12 +19,15 @@ namespace Exercise_form
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
+            
+
 
         }
 
         private void pictureBox1_DoubleClick(object sender, EventArgs e)
         {
-           
+            this.Height = 2 * this.Height;
+            this.Width = 2 * this.Width;
         }
 
         private void picZoom_Load(object sender, EventArgs e)
