@@ -50,16 +50,20 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
       <HintPath>..\..\dll\Microsoft.Office.Interop.Word.dll</HintPath>
     </Reference>
-    <Reference Include="Spire.Doc, Version=7.11.0.41040, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
-      <HintPath>..\packages\FreeSpire.Doc.7.11.0\lib\net40\Spire.Doc.dll</HintPath>
+    <Reference Include="Spire.Doc, Version=7.1.7.4040, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\FreeSpire.DocViewer.4.1.0\lib\net40\Spire.Doc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Spire.DocViewer.Forms, Version=4.1.2.50040, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\FreeSpire.DocViewer.4.1.0\lib\net40\Spire.DocViewer.Forms.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Spire.License, Version=1.3.7.40, Culture=neutral, PublicKeyToken=b1144360237c8b3f, processorArchitecture=MSIL">
-      <HintPath>..\packages\FreeSpire.Doc.7.11.0\lib\net40\Spire.License.dll</HintPath>
+      <HintPath>..\packages\FreeSpire.DocViewer.4.1.0\lib\net40\Spire.License.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Spire.Pdf, Version=5.11.0.2040, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
-      <HintPath>..\packages\FreeSpire.Doc.7.11.0\lib\net40\Spire.Pdf.dll</HintPath>
+    <Reference Include="Spire.Pdf, Version=5.1.7.20040, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\FreeSpire.DocViewer.4.1.0\lib\net40\Spire.Pdf.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />

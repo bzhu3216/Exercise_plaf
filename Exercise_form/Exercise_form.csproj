@@ -82,20 +82,20 @@
       <HintPath>..\packages\FreeSpire.Office.4.3.1\lib\net40\Spire.DataExport.ResourceMgr.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Spire.Doc, Version=7.2.8.19040, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
-      <HintPath>..\packages\FreeSpire.Office.4.3.1\lib\net40\Spire.Doc.dll</HintPath>
+    <Reference Include="Spire.Doc, Version=7.1.7.4040, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\FreeSpire.DocViewer.4.1.0\lib\net40\Spire.Doc.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Spire.DocViewer.Forms, Version=4.1.10.19040, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
-      <HintPath>..\packages\FreeSpire.Office.4.3.1\lib\net40\Spire.DocViewer.Forms.dll</HintPath>
+    <Reference Include="Spire.DocViewer.Forms, Version=4.1.2.50040, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\FreeSpire.DocViewer.4.1.0\lib\net40\Spire.DocViewer.Forms.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Spire.License, Version=1.3.7.40, Culture=neutral, PublicKeyToken=b1144360237c8b3f, processorArchitecture=MSIL">
-      <HintPath>..\packages\FreeSpire.Office.4.3.1\lib\net40\Spire.License.dll</HintPath>
+      <HintPath>..\packages\FreeSpire.DocViewer.4.1.0\lib\net40\Spire.License.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Spire.Pdf, Version=5.2.17.19040, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
-      <HintPath>..\packages\FreeSpire.Office.4.3.1\lib\net40\Spire.Pdf.dll</HintPath>
+    <Reference Include="Spire.Pdf, Version=5.1.7.20040, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\FreeSpire.DocViewer.4.1.0\lib\net40\Spire.Pdf.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Spire.PdfViewer.Forms, Version=4.2.7.19040, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
@@ -280,6 +280,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Results summary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Results summary.Designer.cs">
+      <DependentUpon>Results summary.cs</DependentUpon>
+    </Compile>
     <Compile Include="RichTextBoxPrinter.cs" />
     <Compile Include="Service References\ServiceReference1\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -341,6 +347,12 @@
     </Compile>
     <Compile Include="Uptatamcq.Designer.cs">
       <DependentUpon>Uptatamcq.cs</DependentUpon>
+    </Compile>
+    <Compile Include="实验录入.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="实验录入.Designer.cs">
+      <DependentUpon>实验录入.cs</DependentUpon>
     </Compile>
     <Compile Include="班级和名单.cs">
       <SubType>Form</SubType>
@@ -427,6 +439,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Results summary.resx">
+      <DependentUpon>Results summary.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TaskList.resx">
       <DependentUpon>TaskList.cs</DependentUpon>
     </EmbeddedResource>
@@ -450,6 +465,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Uptatamcq.resx">
       <DependentUpon>Uptatamcq.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="实验录入.resx">
+      <DependentUpon>实验录入.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="班级和名单.resx">
       <DependentUpon>班级和名单.cs</DependentUpon>

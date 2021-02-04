@@ -88,7 +88,7 @@
             this.maskedTextBox1.PasswordChar = '*';
             this.maskedTextBox1.Size = new System.Drawing.Size(100, 21);
             this.maskedTextBox1.TabIndex = 6;
-            this.maskedTextBox1.Text = "11111111";
+            this.maskedTextBox1.Text = "12344321";
             // 
             // Login
             // 

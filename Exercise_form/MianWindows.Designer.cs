@@ -54,6 +54,8 @@
             this.批改习题ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.试卷管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.生成试卷ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.习题汇总ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.输入实验ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -123,7 +125,8 @@
             this.题库管理ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.输入题目ToolStripMenuItem,
             this.修改土木ToolStripMenuItem,
-            this.checkToolStripMenuItem});
+            this.checkToolStripMenuItem,
+            this.输入实验ToolStripMenuItem});
             this.题库管理ToolStripMenuItem.Name = "题库管理ToolStripMenuItem";
             this.题库管理ToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
             this.题库管理ToolStripMenuItem.Text = "题库管理";
@@ -233,7 +236,8 @@
             // 
             this.习题管理ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.习题生成ToolStripMenuItem,
-            this.批改习题ToolStripMenuItem});
+            this.批改习题ToolStripMenuItem,
+            this.习题汇总ToolStripMenuItem});
             this.习题管理ToolStripMenuItem.Name = "习题管理ToolStripMenuItem";
             this.习题管理ToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
             this.习题管理ToolStripMenuItem.Text = "习题管理";
@@ -241,14 +245,14 @@
             // 习题生成ToolStripMenuItem
             // 
             this.习题生成ToolStripMenuItem.Name = "习题生成ToolStripMenuItem";
-            this.习题生成ToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.习题生成ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.习题生成ToolStripMenuItem.Text = "习题生成";
             this.习题生成ToolStripMenuItem.Click += new System.EventHandler(this.习题生成ToolStripMenuItem_Click);
             // 
             // 批改习题ToolStripMenuItem
             // 
             this.批改习题ToolStripMenuItem.Name = "批改习题ToolStripMenuItem";
-            this.批改习题ToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.批改习题ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.批改习题ToolStripMenuItem.Text = "批改习题";
             this.批改习题ToolStripMenuItem.Click += new System.EventHandler(this.批改习题ToolStripMenuItem_Click);
             // 
@@ -263,9 +267,22 @@
             // 生成试卷ToolStripMenuItem
             // 
             this.生成试卷ToolStripMenuItem.Name = "生成试卷ToolStripMenuItem";
-            this.生成试卷ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.生成试卷ToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.生成试卷ToolStripMenuItem.Text = "生成试卷";
             this.生成试卷ToolStripMenuItem.Click += new System.EventHandler(this.生成试卷ToolStripMenuItem_Click);
+            // 
+            // 习题汇总ToolStripMenuItem
+            // 
+            this.习题汇总ToolStripMenuItem.Name = "习题汇总ToolStripMenuItem";
+            this.习题汇总ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.习题汇总ToolStripMenuItem.Text = "习题汇总";
+            // 
+            // 输入实验ToolStripMenuItem
+            // 
+            this.输入实验ToolStripMenuItem.Name = "输入实验ToolStripMenuItem";
+            this.输入实验ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.输入实验ToolStripMenuItem.Text = "输入实验";
+            this.输入实验ToolStripMenuItem.Click += new System.EventHandler(this.输入实验ToolStripMenuItem_Click);
             // 
             // MianWindows
             // 
@@ -313,5 +330,7 @@
         private System.Windows.Forms.ToolStripMenuItem 试卷管理ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem checkToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 生成试卷ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 习题汇总ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 输入实验ToolStripMenuItem;
     }
 }

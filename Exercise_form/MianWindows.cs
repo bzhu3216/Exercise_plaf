@@ -387,5 +387,25 @@ namespace Exercise_form
 
 
         }
+
+        private void 输入实验ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            shiya mq = null;
+            if (mq == null || mq.IsDisposed)
+            {
+                mq = new shiya();
+                // mq.MdiParent = this;
+                mq.Show();
+            }
+            else
+            {
+                mq.Activate();
+                mq.WindowState = FormWindowState.Normal;
+            }
+
+
+
+        }
     }
 }
