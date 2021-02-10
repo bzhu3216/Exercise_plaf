@@ -407,5 +407,23 @@ namespace Exercise_form
 
 
         }
+
+        private void 实验关联ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Edit_cal_exp mq = null;
+            if (mq == null || mq.IsDisposed)
+            {
+                mq = new Edit_cal_exp(pp);
+                // mq.MdiParent = this;
+                mq.Show();
+            }
+            else
+            {
+                mq.Activate();
+                mq.WindowState = FormWindowState.Normal;
+            }
+
+
+        }
     }
 }

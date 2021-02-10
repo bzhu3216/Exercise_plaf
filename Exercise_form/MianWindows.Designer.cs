@@ -291,6 +291,7 @@
             this.实验关联ToolStripMenuItem.Name = "实验关联ToolStripMenuItem";
             this.实验关联ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.实验关联ToolStripMenuItem.Text = "实验关联";
+            this.实验关联ToolStripMenuItem.Click += new System.EventHandler(this.实验关联ToolStripMenuItem_Click);
             // 
             // MianWindows
             // 
