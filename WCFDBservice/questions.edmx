@@ -40,6 +40,20 @@
           <Property Name="endtime" Type="date" />
           <Property Name="dispaly" Type="int" />
         </EntityType>
+        <EntityType Name="classExp">
+          <Key>
+            <PropertyRef Name="cid" />
+            <PropertyRef Name="expid" />
+          </Key>
+          <Property Name="cid" Type="int" Nullable="false" />
+          <Property Name="expid" Type="int" Nullable="false" />
+          <Property Name="starttime" Type="date" />
+          <Property Name="endtime" Type="date" />
+          <Property Name="attach" Type="bit" />
+          <Property Name="dispaly" Type="int" />
+          <Property Name="maxfile" Type="int" />
+          <Property Name="maxatta" Type="int" />
+        </EntityType>
         <EntityType Name="classinfo">
           <Key>
             <PropertyRef Name="classid" />
@@ -98,6 +112,20 @@
           <Property Name="pub" Type="int" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="courseid" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="exp_q">
+          <Key>
+            <PropertyRef Name="idexp" />
+          </Key>
+          <Property Name="idexp" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="expdoc" Type="varbinary(max)" Nullable="false" />
+          <Property Name="courseid" Type="int" Nullable="false" />
+          <Property Name="anserdoc" Type="varbinary(max)" />
+          <Property Name="diff" Type="int" Nullable="false" />
+          <Property Name="objective" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="con" Type="int" Nullable="false" />
+          <Property Name="exname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="attachment" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="featurehelp">
           <Key>
@@ -273,11 +301,13 @@
           <EntitySet Name="AQues" EntityType="Self.AQues" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="class_student" EntityType="Self.class_student" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="classExer" EntityType="Self.classExer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="classExp" EntityType="Self.classExp" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="classinfo" EntityType="Self.classinfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="eQues" EntityType="Self.eQues" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="exerDetail" EntityType="Self.exerDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="exerL" EntityType="Self.exerL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="exp_q" EntityType="Self.exp_q" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="featurehelp" EntityType="Self.featurehelp" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="mchoiceQues" EntityType="Self.mchoiceQues" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SQues" EntityType="Self.SQues" Schema="dbo" store:Type="Tables" />
@@ -356,6 +386,8 @@ FROM [dbo].[View_student] AS [View_student]</DefiningQuery>
           </AssociationSet>
           <EntitySet Name="View_detai_exerL" EntityType="db_exerciseModel.View_detai_exerL" />
           <EntitySet Name="featurehelp" EntityType="db_exerciseModel.featurehelp" />
+          <EntitySet Name="exp_q" EntityType="db_exerciseModel.exp_q" />
+          <EntitySet Name="classExp" EntityType="db_exerciseModel.classExp" />
         </EntityContainer>
         <EntityType Name="mchoiceQues">
           <Key>
@@ -617,6 +649,34 @@ FROM [dbo].[View_student] AS [View_student]</DefiningQuery>
           <Property Name="courseid" Type="Int32" />
           <Property Name="emnum" Type="Int32" />
         </EntityType>
+        <EntityType Name="exp_q">
+          <Key>
+            <PropertyRef Name="idexp" />
+          </Key>
+          <Property Name="idexp" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="expdoc" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="courseid" Type="Int32" Nullable="false" />
+          <Property Name="anserdoc" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="diff" Type="Int32" Nullable="false" />
+          <Property Name="objective" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="con" Type="Int32" Nullable="false" />
+          <Property Name="exname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="attachment" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="classExp">
+          <Key>
+            <PropertyRef Name="cid" />
+            <PropertyRef Name="expid" />
+          </Key>
+          <Property Name="cid" Type="Int32" Nullable="false" />
+          <Property Name="expid" Type="Int32" Nullable="false" />
+          <Property Name="starttime" Type="DateTime" Precision="0" />
+          <Property Name="endtime" Type="DateTime" Precision="0" />
+          <Property Name="attach" Type="Boolean" />
+          <Property Name="dispaly" Type="Int32" />
+          <Property Name="maxfile" Type="Int32" />
+          <Property Name="maxatta" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -866,6 +926,35 @@ FROM [dbo].[View_student] AS [View_student]</DefiningQuery>
                 <ScalarProperty Name="qid" ColumnName="qid" />
                 <ScalarProperty Name="type1" ColumnName="type1" />
                 <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="exp_q">
+            <EntityTypeMapping TypeName="db_exerciseModel.exp_q">
+              <MappingFragment StoreEntitySet="exp_q">
+                <ScalarProperty Name="attachment" ColumnName="attachment" />
+                <ScalarProperty Name="exname" ColumnName="exname" />
+                <ScalarProperty Name="con" ColumnName="con" />
+                <ScalarProperty Name="objective" ColumnName="objective" />
+                <ScalarProperty Name="diff" ColumnName="diff" />
+                <ScalarProperty Name="anserdoc" ColumnName="anserdoc" />
+                <ScalarProperty Name="courseid" ColumnName="courseid" />
+                <ScalarProperty Name="expdoc" ColumnName="expdoc" />
+                <ScalarProperty Name="idexp" ColumnName="idexp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="classExp">
+            <EntityTypeMapping TypeName="db_exerciseModel.classExp">
+              <MappingFragment StoreEntitySet="classExp">
+                <ScalarProperty Name="maxatta" ColumnName="maxatta" />
+                <ScalarProperty Name="maxfile" ColumnName="maxfile" />
+                <ScalarProperty Name="dispaly" ColumnName="dispaly" />
+                <ScalarProperty Name="attach" ColumnName="attach" />
+                <ScalarProperty Name="endtime" ColumnName="endtime" />
+                <ScalarProperty Name="starttime" ColumnName="starttime" />
+                <ScalarProperty Name="expid" ColumnName="expid" />
+                <ScalarProperty Name="cid" ColumnName="cid" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

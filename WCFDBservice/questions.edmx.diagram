@@ -25,6 +25,8 @@
         <AssociationConnector Association="db_exerciseModel.FK_exerL_Course" />
         <EntityTypeShape EntityType="db_exerciseModel.View_detai_exerL" Width="1.5" PointX="11.375" PointY="0.75" />
         <EntityTypeShape EntityType="db_exerciseModel.featurehelp" Width="1.5" PointX="7.375" PointY="11.75" />
+        <EntityTypeShape EntityType="db_exerciseModel.exp_q" Width="1.5" PointX="9.375" PointY="11.75" />
+        <EntityTypeShape EntityType="db_exerciseModel.classExp" Width="1.5" PointX="11.375" PointY="11.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -44,5 +44,7 @@ namespace WCFDBservice
         public DbSet<exerL> exerL { get; set; }
         public DbSet<View_detai_exerL> View_detai_exerL { get; set; }
         public DbSet<featurehelp> featurehelp { get; set; }
+        public DbSet<exp_q> exp_q { get; set; }
+        public DbSet<classExp> classExp { get; set; }
     }
 }

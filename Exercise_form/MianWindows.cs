@@ -394,7 +394,7 @@ namespace Exercise_form
             shiya mq = null;
             if (mq == null || mq.IsDisposed)
             {
-                mq = new shiya();
+                mq = new shiya(pp);
                 // mq.MdiParent = this;
                 mq.Show();
             }

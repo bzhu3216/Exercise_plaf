@@ -133,6 +133,9 @@
     <Compile Include="classExer.cs">
       <DependentUpon>questions.tt</DependentUpon>
     </Compile>
+    <Compile Include="classExp.cs">
+      <DependentUpon>questions.tt</DependentUpon>
+    </Compile>
     <Compile Include="classinfo.cs">
       <DependentUpon>questions.tt</DependentUpon>
     </Compile>
@@ -149,6 +152,9 @@
       <DependentUpon>questions.tt</DependentUpon>
     </Compile>
     <Compile Include="exerL.cs">
+      <DependentUpon>questions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="exp_q.cs">
       <DependentUpon>questions.tt</DependentUpon>
     </Compile>
     <Compile Include="featurehelp.cs">
