@@ -23,7 +23,7 @@ namespace Exercise_form
         int sel3 = -1;
         List<classinfo> Lcs = null;
         List<exp_q> Lexp1 = null;
-        List<exp_q> Lexp2 = null;
+        List<View_class_exp> Lexp2 = null;
         List<exp_q> Lexp3 = null;
    
         public Edit_cal_exp(param p)
@@ -55,8 +55,37 @@ namespace Exercise_form
         }
 
         private void button1_Click(object sender, EventArgs e)
-        { 
+        {
+            if (sel1 >= 0 && sel2 >= 0)
+            {
+                Exercise_form.ServiceReference1.classExp mcq = new classExp();
+                mcq.attach = checkBox1.Checked;
+                mcq.maxatta = int.Parse(comboBox2.Text);
+                mcq.maxfile = int.Parse(comboBox1.Text);
+                mcq.starttime = dateTimePicker1.Value;
+                mcq.endtime = dateTimePicker2.Value;
+                mcq.cid = ((classinfo)Lcs[sel1]).classid;
+                mcq.expid = ((exp_q)Lexp1[sel2]).idexp;
+               
 
+                try
+                {
+                    pp.context.AddToclassExp(mcq);
+                    pp.context.SaveChanges();
+                }
+                catch
+                {
+                    pp.context.DeleteObject(mcq);
+                    MessageBox.Show("关联已经存在");
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("请选择班级和实验");
+            }
+
+            displayexp2();
 
 
 
@@ -125,16 +154,34 @@ namespace Exercise_form
         }
 
         private void button2_Click(object sender, EventArgs e)
-        { 
+        {
+
+            if (listBox3.SelectedIndex >= 0)
+            {
+
+                int cid2 = Lexp2[sel3].classid;
+                int expid2 = Lexp2[sel3].expid;
+                var q4 = from o in pp.context.classExp
+                         where o.cid == cid2 && o.expid == expid2
+                         select o;
+                classExp eed = q4.First<classExp>();
+                pp.context.DeleteObject(eed);
+                pp.context.SaveChanges();
+
+                displayexp2();
 
 
+
+
+            }
 
 
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            sel1 = listBox1.SelectedIndex;
+            displayexp2();
         }
 
         private void Edit_cal_exerL_Shown(object sender, EventArgs e)
@@ -142,20 +189,22 @@ namespace Exercise_form
         }
 
         private void button3_Click(object sender, EventArgs e)
-        {/*
-            if (listBox2.SelectedIndex >= 0)
-            {                   
-                classExer ce=null;
-                var q1 = from o in pp.context.classExer
-                         where o.cid == Lcs2[listBox2.SelectedIndex].classid && o.eid == lid
+        {
+            if (listBox3.SelectedIndex >= 0)
+            {
+                int cid2 = Lexp2[sel3].classid;
+                int expid2 = Lexp2[sel3].expid;
+                var q4 = from o in pp.context.classExp
+                         where o.cid == cid2 && o.expid == expid2
                          select o;
-                ce = q1.First<classExer>();
+                classExp eed = q4.First<classExp>();
 
-                ce.cid = Lcs2[listBox2.SelectedIndex].classid;
-              //  ce.eid = lid;
-                ce.starttime = dateTimePicker1.Value;
-                ce.endtime = dateTimePicker2.Value;
-                pp.context.UpdateObject(ce) ;
+                eed.attach = checkBox1.Checked;
+                eed.maxatta = int.Parse(comboBox2.Text);
+                eed.maxfile = int.Parse(comboBox1.Text);
+                eed.starttime = dateTimePicker1.Value;
+                eed.endtime = dateTimePicker2.Value;
+                pp.context.UpdateObject(eed) ;
                 pp.context.SaveChanges();
 
                 dispalylist();
@@ -169,7 +218,7 @@ namespace Exercise_form
 
                 MessageBox.Show("please select a list");
             }
-            */
+            
 
 
 
@@ -177,6 +226,9 @@ namespace Exercise_form
 
         private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+
+            sel2 = listBox2.SelectedIndex;
             /*
             if (listBox2.SelectedIndex >= 0)
             {
@@ -252,13 +304,16 @@ namespace Exercise_form
         {
             if(comboBox3.SelectedIndex >=0)cid = (int)lvtc[comboBox3.SelectedIndex].couseid;
             displayclass();
+            displayexp();
+            displayexp2();
+
         }
         //
 
         private void displayclass()
         {   
             var q1 = from o in pp.context.classinfo
-                     where o.courseid == cid && o.teacher==pp.teacher.teacherid
+                     where o.courseid == cid && o.teacher==pp.teacher.teacherid && o.finish==0
                      select o;
             if (q1.Count() > 0)
             {
@@ -267,14 +322,106 @@ namespace Exercise_form
                 listBox1.ValueMember = "classinfo1";
             }
 
-
+            
         }
 
+        private void displayexp()
+        {
+            var q1 = from o in pp.context.exp_q
+                     where o.courseid == cid 
+                     orderby o.con
+                     select o;
+            if (q1.Count() > 0)
+            {
+                Lexp1 = q1.ToList<exp_q>();
+                listBox2.DataSource = Lexp1;
+                listBox2.ValueMember = "exname";
+              
+            }
 
+            
+        }
 
 
         //
 
+
+
+
+        private void displayexp2()
+        {
+            listBox3.DataSource = null;
+            listBox3.Items.Clear();
+            Lexp2 = null;
+         // List<View_class_exp> Lexp21 = null;
+         ;
+            if (sel1 >= 0) { 
+            var q1 = from o in pp.context.View_class_exp
+                     where o.classid == ((classinfo)Lcs[sel1]).classid
+                     orderby o.con
+                     select o;
+            if (q1.Count() > 0)
+            {
+                Lexp2 = q1.ToList<View_class_exp>();
+                
+
+            }
+
+
+        }
+           // listBox3.ValueMember = "exname";
+            listBox3.DisplayMember = "exname";
+            listBox3.DataSource = Lexp2;
+            
+        }
+
+        
+
+
+
+
+
+
+        private void listBox1_Click(object sender, EventArgs e)
+        {
+            sel1 = listBox1.SelectedIndex;
+            displayexp2();
+        }
+
+        private void listBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            sel3 = listBox3.SelectedIndex;
+
+            //
+
+            if (listBox3.SelectedIndex >= 0)
+            {
+                int cid2 = Lexp2[sel3].classid;
+                int expid2 = Lexp2[sel3].expid;
+                var q4 = from o in pp.context.classExp
+                         where o.cid == cid2 && o.expid == expid2
+                         select o;
+                classExp eed = q4.First<classExp>();
+
+                // eed.attach = checkBox1.Checked;
+                //eed.maxatta = int.Parse(comboBox2.Text);
+                //eed.maxfile = int.Parse(comboBox1.Text);
+                //eed.starttime = dateTimePicker1.Value;
+                //eed.endtime = dateTimePicker2.Value;
+                checkBox1.Checked = (bool)eed.attach;
+                comboBox2.Text = eed.maxatta.ToString();
+                comboBox1.Text= eed.maxfile.ToString();
+                dateTimePicker1.Value = (DateTime)eed.starttime;
+                dateTimePicker2.Value = (DateTime)eed.endtime;
+
+            }
+
+            //
+
+
+
+
+        }
         ///////////////////////////////
 
 

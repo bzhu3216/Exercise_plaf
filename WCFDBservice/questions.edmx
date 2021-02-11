@@ -247,6 +247,38 @@
           <Property Name="relid" Type="int" Nullable="false" />
         </EntityType>
         <!--生成过程中发现错误:
+警告 6002: 表/视图“db_exercise.dbo.View_class_exp”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="View_class_exp">
+          <Key>
+            <PropertyRef Name="classid" />
+            <PropertyRef Name="expid" />
+            <PropertyRef Name="idexp" />
+            <PropertyRef Name="exname" />
+            <PropertyRef Name="courseid" />
+            <PropertyRef Name="cid" />
+            <PropertyRef Name="diff" />
+            <PropertyRef Name="objective" />
+            <PropertyRef Name="con" />
+          </Key>
+          <Property Name="classid" Type="int" Nullable="false" />
+          <Property Name="expid" Type="int" Nullable="false" />
+          <Property Name="idexp" Type="int" Nullable="false" />
+          <Property Name="exname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="starttime" Type="date" />
+          <Property Name="endtime" Type="date" />
+          <Property Name="maxfile" Type="int" />
+          <Property Name="maxatta" Type="int" />
+          <Property Name="attach" Type="bit" />
+          <Property Name="finish" Type="int" />
+          <Property Name="teacher" Type="nchar" MaxLength="4" />
+          <Property Name="classinfo" Type="varchar" MaxLength="100" />
+          <Property Name="courseid" Type="int" Nullable="false" />
+          <Property Name="cid" Type="int" Nullable="false" />
+          <Property Name="diff" Type="int" Nullable="false" />
+          <Property Name="objective" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="con" Type="int" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
 警告 6002: 表/视图“db_exercise.dbo.View_detai_exerL”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
         <EntityType Name="View_detai_exerL">
           <Key>
@@ -329,6 +361,27 @@
 [V_tea_course].[relid] AS [relid]
 FROM [dbo].[V_tea_course] AS [V_tea_course]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="View_class_exp" EntityType="Self.View_class_exp" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[View_class_exp].[classid] AS [classid], 
+[View_class_exp].[expid] AS [expid], 
+[View_class_exp].[idexp] AS [idexp], 
+[View_class_exp].[exname] AS [exname], 
+[View_class_exp].[starttime] AS [starttime], 
+[View_class_exp].[endtime] AS [endtime], 
+[View_class_exp].[maxfile] AS [maxfile], 
+[View_class_exp].[maxatta] AS [maxatta], 
+[View_class_exp].[attach] AS [attach], 
+[View_class_exp].[finish] AS [finish], 
+[View_class_exp].[teacher] AS [teacher], 
+[View_class_exp].[classinfo] AS [classinfo], 
+[View_class_exp].[courseid] AS [courseid], 
+[View_class_exp].[cid] AS [cid], 
+[View_class_exp].[diff] AS [diff], 
+[View_class_exp].[objective] AS [objective], 
+[View_class_exp].[con] AS [con]
+FROM [dbo].[View_class_exp] AS [View_class_exp]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="View_detai_exerL" EntityType="Self.View_detai_exerL" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
 [View_detai_exerL].[id] AS [id], 
@@ -388,6 +441,7 @@ FROM [dbo].[View_student] AS [View_student]</DefiningQuery>
           <EntitySet Name="featurehelp" EntityType="db_exerciseModel.featurehelp" />
           <EntitySet Name="exp_q" EntityType="db_exerciseModel.exp_q" />
           <EntitySet Name="classExp" EntityType="db_exerciseModel.classExp" />
+          <EntitySet Name="View_class_exp" EntityType="db_exerciseModel.View_class_exp" />
         </EntityContainer>
         <EntityType Name="mchoiceQues">
           <Key>
@@ -677,6 +731,36 @@ FROM [dbo].[View_student] AS [View_student]</DefiningQuery>
           <Property Name="maxfile" Type="Int32" />
           <Property Name="maxatta" Type="Int32" />
         </EntityType>
+        <EntityType Name="View_class_exp">
+          <Key>
+            <PropertyRef Name="cid" />
+            <PropertyRef Name="classid" />
+            <PropertyRef Name="expid" />
+            <PropertyRef Name="idexp" />
+            <PropertyRef Name="exname" />
+            <PropertyRef Name="courseid" />
+            <PropertyRef Name="diff" />
+            <PropertyRef Name="objective" />
+            <PropertyRef Name="con" />
+          </Key>
+          <Property Name="cid" Type="Int32" Nullable="false" />
+          <Property Name="classid" Type="Int32" Nullable="false" />
+          <Property Name="expid" Type="Int32" Nullable="false" />
+          <Property Name="idexp" Type="Int32" Nullable="false" />
+          <Property Name="exname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="starttime" Type="DateTime" Precision="0" />
+          <Property Name="endtime" Type="DateTime" Precision="0" />
+          <Property Name="maxfile" Type="Int32" />
+          <Property Name="maxatta" Type="Int32" />
+          <Property Name="attach" Type="Boolean" />
+          <Property Name="finish" Type="Int32" />
+          <Property Name="teacher" Type="String" MaxLength="4" FixedLength="true" Unicode="true" />
+          <Property Name="classinfo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="courseid" Type="Int32" Nullable="false" />
+          <Property Name="diff" Type="Int32" Nullable="false" />
+          <Property Name="objective" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="con" Type="Int32" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -954,6 +1038,29 @@ FROM [dbo].[View_student] AS [View_student]</DefiningQuery>
                 <ScalarProperty Name="endtime" ColumnName="endtime" />
                 <ScalarProperty Name="starttime" ColumnName="starttime" />
                 <ScalarProperty Name="expid" ColumnName="expid" />
+                <ScalarProperty Name="cid" ColumnName="cid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_class_exp">
+            <EntityTypeMapping TypeName="db_exerciseModel.View_class_exp">
+              <MappingFragment StoreEntitySet="View_class_exp">
+                <ScalarProperty Name="con" ColumnName="con" />
+                <ScalarProperty Name="objective" ColumnName="objective" />
+                <ScalarProperty Name="diff" ColumnName="diff" />
+                <ScalarProperty Name="courseid" ColumnName="courseid" />
+                <ScalarProperty Name="classinfo" ColumnName="classinfo" />
+                <ScalarProperty Name="teacher" ColumnName="teacher" />
+                <ScalarProperty Name="finish" ColumnName="finish" />
+                <ScalarProperty Name="attach" ColumnName="attach" />
+                <ScalarProperty Name="maxatta" ColumnName="maxatta" />
+                <ScalarProperty Name="maxfile" ColumnName="maxfile" />
+                <ScalarProperty Name="endtime" ColumnName="endtime" />
+                <ScalarProperty Name="starttime" ColumnName="starttime" />
+                <ScalarProperty Name="exname" ColumnName="exname" />
+                <ScalarProperty Name="idexp" ColumnName="idexp" />
+                <ScalarProperty Name="expid" ColumnName="expid" />
+                <ScalarProperty Name="classid" ColumnName="classid" />
                 <ScalarProperty Name="cid" ColumnName="cid" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -52,16 +52,19 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(122, 21);
             this.textBox1.TabIndex = 1;
+            this.textBox1.Text = "20154830136";
             // 
             // maskedTextBox1
             // 
             this.maskedTextBox1.BeepOnError = true;
             this.maskedTextBox1.CausesValidation = false;
+            this.maskedTextBox1.Culture = new System.Globalization.CultureInfo("zh-CN");
             this.maskedTextBox1.Location = new System.Drawing.Point(83, 89);
             this.maskedTextBox1.Name = "maskedTextBox1";
             this.maskedTextBox1.PasswordChar = '*';
             this.maskedTextBox1.Size = new System.Drawing.Size(122, 21);
             this.maskedTextBox1.TabIndex = 2;
+            this.maskedTextBox1.Text = "11111111";
             // 
             // 学号
             // 

@@ -60,6 +60,7 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(188, 466);
             this.listBox1.TabIndex = 0;
+            this.listBox1.Click += new System.EventHandler(this.listBox1_Click);
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // listBox2
@@ -152,7 +153,7 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(176, 31);
             this.button3.TabIndex = 10;
-            this.button3.Text = "选择右边改变日期";
+            this.button3.Text = "选择右边改变日期等\r\n";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -268,15 +269,16 @@
             this.listBox3.Name = "listBox3";
             this.listBox3.Size = new System.Drawing.Size(202, 466);
             this.listBox3.TabIndex = 20;
+            this.listBox3.SelectedIndexChanged += new System.EventHandler(this.listBox3_SelectedIndexChanged);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(226, 19);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(49, 14);
+            this.label10.Size = new System.Drawing.Size(63, 14);
             this.label10.TabIndex = 21;
-            this.label10.Text = "未关联";
+            this.label10.Text = "所有实验";
             // 
             // Edit_cal_exp
             // 

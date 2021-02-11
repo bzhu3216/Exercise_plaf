@@ -197,6 +197,9 @@
     <Compile Include="TFQues.cs">
       <DependentUpon>questions.tt</DependentUpon>
     </Compile>
+    <Compile Include="View_class_exp.cs">
+      <DependentUpon>questions.tt</DependentUpon>
+    </Compile>
     <Compile Include="View_detai_exerL.cs">
       <DependentUpon>questions.tt</DependentUpon>
     </Compile>
