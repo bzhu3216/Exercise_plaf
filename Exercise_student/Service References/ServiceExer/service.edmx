@@ -314,7 +314,7 @@
           <PropertyRef Name="stid" />
         </Key>
         <Property Name="classid" Type="Edm.Int32" Nullable="false" />
-        <Property Name="stid" Type="Edm.Int32" Nullable="false" />
+        <Property Name="stid" Type="Edm.String" Nullable="false" />
         <Property Name="expid" Type="Edm.Int32" Nullable="false" />
         <Property Name="rep" Type="Edm.Binary" MaxLength="Max" FixedLength="false" />
         <Property Name="atta" Type="Edm.Binary" MaxLength="Max" FixedLength="false" />

@@ -200,7 +200,7 @@
             <PropertyRef Name="expid" />
           </Key>
           <Property Name="classid" Type="int" Nullable="false" />
-          <Property Name="stid" Type="int" Nullable="false" />
+          <Property Name="stid" Type="nvarchar" MaxLength="11" Nullable="false" />
           <Property Name="expid" Type="int" Nullable="false" />
           <Property Name="rep" Type="varbinary(max)" />
           <Property Name="atta" Type="varbinary(max)" />
@@ -783,7 +783,7 @@ FROM [dbo].[View_student] AS [View_student]</DefiningQuery>
             <PropertyRef Name="expid" />
           </Key>
           <Property Name="classid" Type="Int32" Nullable="false" />
-          <Property Name="stid" Type="Int32" Nullable="false" />
+          <Property Name="stid" Type="String" Nullable="false" />
           <Property Name="expid" Type="Int32" Nullable="false" />
           <Property Name="rep" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="atta" Type="Binary" MaxLength="Max" FixedLength="false" />

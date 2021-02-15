@@ -15,7 +15,7 @@ namespace WCFDBservice
     public partial class studreport
     {
         public int classid { get; set; }
-        public int stid { get; set; }
+        public string stid { get; set; }
         public int expid { get; set; }
         public byte[] rep { get; set; }
         public byte[] atta { get; set; }

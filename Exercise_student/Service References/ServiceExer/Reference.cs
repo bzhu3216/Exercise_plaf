@@ -9,7 +9,7 @@
 //------------------------------------------------------------------------------
 
 // 原始文件名:
-// 生成日期: 02/15/2021 19:42:23
+// 生成日期: 02/15/2021 21:20:14
 namespace Exercise_student.ServiceExer
 {
     
@@ -836,41 +836,42 @@ namespace Exercise_student.ServiceExer
                 "nt32\" Nullable=\"false\" /></EntityType><EntityType Name=\"studreport\"><Key><Proper" +
                 "tyRef Name=\"classid\" /><PropertyRef Name=\"expid\" /><PropertyRef Name=\"stid\" /></" +
                 "Key><Property Name=\"classid\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=" +
-                "\"stid\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"expid\" Type=\"Edm.Int3" +
-                "2\" Nullable=\"false\" /><Property Name=\"rep\" Type=\"Edm.Binary\" MaxLength=\"Max\" Fix" +
-                "edLength=\"false\" /><Property Name=\"atta\" Type=\"Edm.Binary\" MaxLength=\"Max\" Fixed" +
-                "Length=\"false\" /><Property Name=\"score\" Type=\"Edm.Int32\" /></EntityType><Associa" +
-                "tion Name=\"FK_exerL_Course\"><End Type=\"db_exerciseModel.Course\" Role=\"Course\" Mu" +
-                "ltiplicity=\"1\" /><End Type=\"db_exerciseModel.exerL\" Role=\"exerL\" Multiplicity=\"*" +
-                "\" /><ReferentialConstraint><Principal Role=\"Course\"><PropertyRef Name=\"id\" /></P" +
-                "rincipal><Dependent Role=\"exerL\"><PropertyRef Name=\"courseid\" /></Dependent></Re" +
-                "ferentialConstraint></Association></Schema><Schema Namespace=\"WCFDBservice\" xmln" +
-                "s=\"http://schemas.microsoft.com/ado/2009/11/edm\"><EntityContainer Name=\"db_exerc" +
-                "iseEntities\" m:IsDefaultEntityContainer=\"true\" p6:LazyLoadingEnabled=\"true\" xmln" +
-                "s:p6=\"http://schemas.microsoft.com/ado/2009/02/edm/annotation\"><EntitySet Name=\"" +
-                "mchoiceQues\" EntityType=\"db_exerciseModel.mchoiceQues\" /><EntitySet Name=\"Course" +
-                "\" EntityType=\"db_exerciseModel.Course\" /><EntitySet Name=\"teacherinfo\" EntityTyp" +
-                "e=\"db_exerciseModel.teacherinfo\" /><EntitySet Name=\"TFQues\" EntityType=\"db_exerc" +
-                "iseModel.TFQues\" /><EntitySet Name=\"SQues\" EntityType=\"db_exerciseModel.SQues\" /" +
-                "><EntitySet Name=\"AQues\" EntityType=\"db_exerciseModel.AQues\" /><EntitySet Name=\"" +
-                "classExer\" EntityType=\"db_exerciseModel.classExer\" /><EntitySet Name=\"class_stud" +
-                "ent\" EntityType=\"db_exerciseModel.class_student\" /><EntitySet Name=\"exerDetail\" " +
-                "EntityType=\"db_exerciseModel.exerDetail\" /><EntitySet Name=\"studAnsw\" EntityType" +
-                "=\"db_exerciseModel.studAnsw\" /><EntitySet Name=\"tech_course\" EntityType=\"db_exer" +
-                "ciseModel.tech_course\" /><EntitySet Name=\"classinfo\" EntityType=\"db_exerciseMode" +
-                "l.classinfo\" /><EntitySet Name=\"StudInfo\" EntityType=\"db_exerciseModel.StudInfo\"" +
-                " /><EntitySet Name=\"View_student\" EntityType=\"db_exerciseModel.View_student\" /><" +
-                "EntitySet Name=\"V_tea_course\" EntityType=\"db_exerciseModel.V_tea_course\" /><Enti" +
-                "tySet Name=\"eQues\" EntityType=\"db_exerciseModel.eQues\" /><EntitySet Name=\"exerL\"" +
-                " EntityType=\"db_exerciseModel.exerL\" /><EntitySet Name=\"View_detai_exerL\" Entity" +
-                "Type=\"db_exerciseModel.View_detai_exerL\" /><EntitySet Name=\"featurehelp\" EntityT" +
-                "ype=\"db_exerciseModel.featurehelp\" /><EntitySet Name=\"exp_q\" EntityType=\"db_exer" +
-                "ciseModel.exp_q\" /><EntitySet Name=\"classExp\" EntityType=\"db_exerciseModel.class" +
-                "Exp\" /><EntitySet Name=\"View_class_exp\" EntityType=\"db_exerciseModel.View_class_" +
-                "exp\" /><EntitySet Name=\"studreport\" EntityType=\"db_exerciseModel.studreport\" /><" +
-                "AssociationSet Name=\"FK_exerL_Course\" Association=\"db_exerciseModel.FK_exerL_Cou" +
-                "rse\"><End Role=\"Course\" EntitySet=\"Course\" /><End Role=\"exerL\" EntitySet=\"exerL\"" +
-                " /></AssociationSet></EntityContainer></Schema></edmx:DataServices></edmx:Edmx>";
+                "\"stid\" Type=\"Edm.String\" Nullable=\"false\" /><Property Name=\"expid\" Type=\"Edm.Int" +
+                "32\" Nullable=\"false\" /><Property Name=\"rep\" Type=\"Edm.Binary\" MaxLength=\"Max\" Fi" +
+                "xedLength=\"false\" /><Property Name=\"atta\" Type=\"Edm.Binary\" MaxLength=\"Max\" Fixe" +
+                "dLength=\"false\" /><Property Name=\"score\" Type=\"Edm.Int32\" /></EntityType><Associ" +
+                "ation Name=\"FK_exerL_Course\"><End Type=\"db_exerciseModel.Course\" Role=\"Course\" M" +
+                "ultiplicity=\"1\" /><End Type=\"db_exerciseModel.exerL\" Role=\"exerL\" Multiplicity=\"" +
+                "*\" /><ReferentialConstraint><Principal Role=\"Course\"><PropertyRef Name=\"id\" /></" +
+                "Principal><Dependent Role=\"exerL\"><PropertyRef Name=\"courseid\" /></Dependent></R" +
+                "eferentialConstraint></Association></Schema><Schema Namespace=\"WCFDBservice\" xml" +
+                "ns=\"http://schemas.microsoft.com/ado/2009/11/edm\"><EntityContainer Name=\"db_exer" +
+                "ciseEntities\" m:IsDefaultEntityContainer=\"true\" p6:LazyLoadingEnabled=\"true\" xml" +
+                "ns:p6=\"http://schemas.microsoft.com/ado/2009/02/edm/annotation\"><EntitySet Name=" +
+                "\"mchoiceQues\" EntityType=\"db_exerciseModel.mchoiceQues\" /><EntitySet Name=\"Cours" +
+                "e\" EntityType=\"db_exerciseModel.Course\" /><EntitySet Name=\"teacherinfo\" EntityTy" +
+                "pe=\"db_exerciseModel.teacherinfo\" /><EntitySet Name=\"TFQues\" EntityType=\"db_exer" +
+                "ciseModel.TFQues\" /><EntitySet Name=\"SQues\" EntityType=\"db_exerciseModel.SQues\" " +
+                "/><EntitySet Name=\"AQues\" EntityType=\"db_exerciseModel.AQues\" /><EntitySet Name=" +
+                "\"classExer\" EntityType=\"db_exerciseModel.classExer\" /><EntitySet Name=\"class_stu" +
+                "dent\" EntityType=\"db_exerciseModel.class_student\" /><EntitySet Name=\"exerDetail\"" +
+                " EntityType=\"db_exerciseModel.exerDetail\" /><EntitySet Name=\"studAnsw\" EntityTyp" +
+                "e=\"db_exerciseModel.studAnsw\" /><EntitySet Name=\"tech_course\" EntityType=\"db_exe" +
+                "rciseModel.tech_course\" /><EntitySet Name=\"classinfo\" EntityType=\"db_exerciseMod" +
+                "el.classinfo\" /><EntitySet Name=\"StudInfo\" EntityType=\"db_exerciseModel.StudInfo" +
+                "\" /><EntitySet Name=\"View_student\" EntityType=\"db_exerciseModel.View_student\" />" +
+                "<EntitySet Name=\"V_tea_course\" EntityType=\"db_exerciseModel.V_tea_course\" /><Ent" +
+                "itySet Name=\"eQues\" EntityType=\"db_exerciseModel.eQues\" /><EntitySet Name=\"exerL" +
+                "\" EntityType=\"db_exerciseModel.exerL\" /><EntitySet Name=\"View_detai_exerL\" Entit" +
+                "yType=\"db_exerciseModel.View_detai_exerL\" /><EntitySet Name=\"featurehelp\" Entity" +
+                "Type=\"db_exerciseModel.featurehelp\" /><EntitySet Name=\"exp_q\" EntityType=\"db_exe" +
+                "rciseModel.exp_q\" /><EntitySet Name=\"classExp\" EntityType=\"db_exerciseModel.clas" +
+                "sExp\" /><EntitySet Name=\"View_class_exp\" EntityType=\"db_exerciseModel.View_class" +
+                "_exp\" /><EntitySet Name=\"studreport\" EntityType=\"db_exerciseModel.studreport\" />" +
+                "<AssociationSet Name=\"FK_exerL_Course\" Association=\"db_exerciseModel.FK_exerL_Co" +
+                "urse\"><End Role=\"Course\" EntitySet=\"Course\" /><End Role=\"exerL\" EntitySet=\"exerL" +
+                "\" /></AssociationSet></EntityContainer></Schema></edmx:DataServices></edmx:Edmx>" +
+                "";
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
             private static string GetConcatenatedEdmxString()
             {
@@ -5534,7 +5535,7 @@ namespace Exercise_student.ServiceExer
         /// <param name="stid">stid 的初始值。</param>
         /// <param name="expid">expid 的初始值。</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public static studreport Createstudreport(int classid, int stid, int expid)
+        public static studreport Createstudreport(int classid, string stid, int expid)
         {
             studreport studreport = new studreport();
             studreport.classid = classid;
@@ -5568,7 +5569,7 @@ namespace Exercise_student.ServiceExer
         /// 架构中不存在属性 stid 的注释。
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        public int stid
+        public string stid
         {
             get
             {
@@ -5583,8 +5584,8 @@ namespace Exercise_student.ServiceExer
             }
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
-        private int _stid;
-        partial void OnstidChanging(int value);
+        private string _stid;
+        partial void OnstidChanging(string value);
         partial void OnstidChanged();
         /// <summary>
         /// 架构中不存在属性 expid 的注释。
