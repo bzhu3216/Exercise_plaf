@@ -193,6 +193,19 @@
           <Property Name="name" Type="varchar" MaxLength="50" />
           <Property Name="pd" Type="varchar" MaxLength="8" />
         </EntityType>
+        <EntityType Name="studreport">
+          <Key>
+            <PropertyRef Name="classid" />
+            <PropertyRef Name="stid" />
+            <PropertyRef Name="expid" />
+          </Key>
+          <Property Name="classid" Type="int" Nullable="false" />
+          <Property Name="stid" Type="int" Nullable="false" />
+          <Property Name="expid" Type="int" Nullable="false" />
+          <Property Name="rep" Type="varbinary(max)" />
+          <Property Name="atta" Type="varbinary(max)" />
+          <Property Name="score" Type="int" />
+        </EntityType>
         <EntityType Name="teacherinfo">
           <Key>
             <PropertyRef Name="teacherid" />
@@ -345,6 +358,7 @@
           <EntitySet Name="SQues" EntityType="Self.SQues" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="studAnsw" EntityType="Self.studAnsw" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StudInfo" EntityType="Self.StudInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="studreport" EntityType="Self.studreport" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="teacherinfo" EntityType="Self.teacherinfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tech_course" EntityType="Self.tech_course" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TFQues" EntityType="Self.TFQues" Schema="dbo" store:Type="Tables" />
@@ -442,6 +456,7 @@ FROM [dbo].[View_student] AS [View_student]</DefiningQuery>
           <EntitySet Name="exp_q" EntityType="db_exerciseModel.exp_q" />
           <EntitySet Name="classExp" EntityType="db_exerciseModel.classExp" />
           <EntitySet Name="View_class_exp" EntityType="db_exerciseModel.View_class_exp" />
+          <EntitySet Name="studreport" EntityType="db_exerciseModel.studreport" />
         </EntityContainer>
         <EntityType Name="mchoiceQues">
           <Key>
@@ -761,6 +776,19 @@ FROM [dbo].[View_student] AS [View_student]</DefiningQuery>
           <Property Name="objective" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
           <Property Name="con" Type="Int32" Nullable="false" />
         </EntityType>
+        <EntityType Name="studreport">
+          <Key>
+            <PropertyRef Name="classid" />
+            <PropertyRef Name="stid" />
+            <PropertyRef Name="expid" />
+          </Key>
+          <Property Name="classid" Type="Int32" Nullable="false" />
+          <Property Name="stid" Type="Int32" Nullable="false" />
+          <Property Name="expid" Type="Int32" Nullable="false" />
+          <Property Name="rep" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="atta" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="score" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1062,6 +1090,18 @@ FROM [dbo].[View_student] AS [View_student]</DefiningQuery>
                 <ScalarProperty Name="expid" ColumnName="expid" />
                 <ScalarProperty Name="classid" ColumnName="classid" />
                 <ScalarProperty Name="cid" ColumnName="cid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="studreport">
+            <EntityTypeMapping TypeName="db_exerciseModel.studreport">
+              <MappingFragment StoreEntitySet="studreport">
+                <ScalarProperty Name="score" ColumnName="score" />
+                <ScalarProperty Name="atta" ColumnName="atta" />
+                <ScalarProperty Name="rep" ColumnName="rep" />
+                <ScalarProperty Name="expid" ColumnName="expid" />
+                <ScalarProperty Name="stid" ColumnName="stid" />
+                <ScalarProperty Name="classid" ColumnName="classid" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

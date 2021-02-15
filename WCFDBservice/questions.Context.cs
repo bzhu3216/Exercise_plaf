@@ -47,5 +47,6 @@ namespace WCFDBservice
         public DbSet<exp_q> exp_q { get; set; }
         public DbSet<classExp> classExp { get; set; }
         public DbSet<View_class_exp> View_class_exp { get; set; }
+        public DbSet<studreport> studreport { get; set; }
     }
 }

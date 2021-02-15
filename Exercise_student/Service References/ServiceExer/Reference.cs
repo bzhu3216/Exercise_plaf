@@ -9,7 +9,7 @@
 //------------------------------------------------------------------------------
 
 // 原始文件名:
-// 生成日期: 02/15/2021 16:15:34
+// 生成日期: 02/15/2021 19:42:23
 namespace Exercise_student.ServiceExer
 {
     
@@ -435,6 +435,23 @@ namespace Exercise_student.ServiceExer
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         private global::System.Data.Services.Client.DataServiceQuery<View_class_exp> _View_class_exp;
         /// <summary>
+        /// 架构中不存在 studreport 的注释。
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Data.Services.Client.DataServiceQuery<studreport> studreport
+        {
+            get
+            {
+                if ((this._studreport == null))
+                {
+                    this._studreport = base.CreateQuery<studreport>("studreport");
+                }
+                return this._studreport;
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Data.Services.Client.DataServiceQuery<studreport> _studreport;
+        /// <summary>
         /// 架构中不存在 mchoiceQues 的注释。
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
@@ -609,6 +626,14 @@ namespace Exercise_student.ServiceExer
         public void AddToView_class_exp(View_class_exp view_class_exp)
         {
             base.AddObject("View_class_exp", view_class_exp);
+        }
+        /// <summary>
+        /// 架构中不存在 studreport 的注释。
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public void AddTostudreport(studreport studreport)
+        {
+            base.AddObject("studreport", studreport);
         }
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         private abstract class GeneratedEdmModel
@@ -808,37 +833,44 @@ namespace Exercise_student.ServiceExer
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
             private const string ModelPart2 = "ble=\"false\" /><Property Name=\"objective\" Type=\"Edm.String\" Nullable=\"false\" MaxLe" +
                 "ngth=\"60\" FixedLength=\"false\" Unicode=\"false\" /><Property Name=\"con\" Type=\"Edm.I" +
-                "nt32\" Nullable=\"false\" /></EntityType><Association Name=\"FK_exerL_Course\"><End T" +
-                "ype=\"db_exerciseModel.Course\" Role=\"Course\" Multiplicity=\"1\" /><End Type=\"db_exe" +
-                "rciseModel.exerL\" Role=\"exerL\" Multiplicity=\"*\" /><ReferentialConstraint><Princi" +
-                "pal Role=\"Course\"><PropertyRef Name=\"id\" /></Principal><Dependent Role=\"exerL\"><" +
-                "PropertyRef Name=\"courseid\" /></Dependent></ReferentialConstraint></Association>" +
-                "</Schema><Schema Namespace=\"WCFDBservice\" xmlns=\"http://schemas.microsoft.com/ad" +
-                "o/2009/11/edm\"><EntityContainer Name=\"db_exerciseEntities\" m:IsDefaultEntityCont" +
-                "ainer=\"true\" p6:LazyLoadingEnabled=\"true\" xmlns:p6=\"http://schemas.microsoft.com" +
-                "/ado/2009/02/edm/annotation\"><EntitySet Name=\"mchoiceQues\" EntityType=\"db_exerci" +
-                "seModel.mchoiceQues\" /><EntitySet Name=\"Course\" EntityType=\"db_exerciseModel.Cou" +
-                "rse\" /><EntitySet Name=\"teacherinfo\" EntityType=\"db_exerciseModel.teacherinfo\" /" +
-                "><EntitySet Name=\"TFQues\" EntityType=\"db_exerciseModel.TFQues\" /><EntitySet Name" +
-                "=\"SQues\" EntityType=\"db_exerciseModel.SQues\" /><EntitySet Name=\"AQues\" EntityTyp" +
-                "e=\"db_exerciseModel.AQues\" /><EntitySet Name=\"classExer\" EntityType=\"db_exercise" +
-                "Model.classExer\" /><EntitySet Name=\"class_student\" EntityType=\"db_exerciseModel." +
-                "class_student\" /><EntitySet Name=\"exerDetail\" EntityType=\"db_exerciseModel.exerD" +
-                "etail\" /><EntitySet Name=\"studAnsw\" EntityType=\"db_exerciseModel.studAnsw\" /><En" +
-                "titySet Name=\"tech_course\" EntityType=\"db_exerciseModel.tech_course\" /><EntitySe" +
-                "t Name=\"classinfo\" EntityType=\"db_exerciseModel.classinfo\" /><EntitySet Name=\"St" +
-                "udInfo\" EntityType=\"db_exerciseModel.StudInfo\" /><EntitySet Name=\"View_student\" " +
-                "EntityType=\"db_exerciseModel.View_student\" /><EntitySet Name=\"V_tea_course\" Enti" +
-                "tyType=\"db_exerciseModel.V_tea_course\" /><EntitySet Name=\"eQues\" EntityType=\"db_" +
-                "exerciseModel.eQues\" /><EntitySet Name=\"exerL\" EntityType=\"db_exerciseModel.exer" +
-                "L\" /><EntitySet Name=\"View_detai_exerL\" EntityType=\"db_exerciseModel.View_detai_" +
-                "exerL\" /><EntitySet Name=\"featurehelp\" EntityType=\"db_exerciseModel.featurehelp\"" +
-                " /><EntitySet Name=\"exp_q\" EntityType=\"db_exerciseModel.exp_q\" /><EntitySet Name" +
-                "=\"classExp\" EntityType=\"db_exerciseModel.classExp\" /><EntitySet Name=\"View_class" +
-                "_exp\" EntityType=\"db_exerciseModel.View_class_exp\" /><AssociationSet Name=\"FK_ex" +
-                "erL_Course\" Association=\"db_exerciseModel.FK_exerL_Course\"><End Role=\"Course\" En" +
-                "titySet=\"Course\" /><End Role=\"exerL\" EntitySet=\"exerL\" /></AssociationSet></Enti" +
-                "tyContainer></Schema></edmx:DataServices></edmx:Edmx>";
+                "nt32\" Nullable=\"false\" /></EntityType><EntityType Name=\"studreport\"><Key><Proper" +
+                "tyRef Name=\"classid\" /><PropertyRef Name=\"expid\" /><PropertyRef Name=\"stid\" /></" +
+                "Key><Property Name=\"classid\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=" +
+                "\"stid\" Type=\"Edm.Int32\" Nullable=\"false\" /><Property Name=\"expid\" Type=\"Edm.Int3" +
+                "2\" Nullable=\"false\" /><Property Name=\"rep\" Type=\"Edm.Binary\" MaxLength=\"Max\" Fix" +
+                "edLength=\"false\" /><Property Name=\"atta\" Type=\"Edm.Binary\" MaxLength=\"Max\" Fixed" +
+                "Length=\"false\" /><Property Name=\"score\" Type=\"Edm.Int32\" /></EntityType><Associa" +
+                "tion Name=\"FK_exerL_Course\"><End Type=\"db_exerciseModel.Course\" Role=\"Course\" Mu" +
+                "ltiplicity=\"1\" /><End Type=\"db_exerciseModel.exerL\" Role=\"exerL\" Multiplicity=\"*" +
+                "\" /><ReferentialConstraint><Principal Role=\"Course\"><PropertyRef Name=\"id\" /></P" +
+                "rincipal><Dependent Role=\"exerL\"><PropertyRef Name=\"courseid\" /></Dependent></Re" +
+                "ferentialConstraint></Association></Schema><Schema Namespace=\"WCFDBservice\" xmln" +
+                "s=\"http://schemas.microsoft.com/ado/2009/11/edm\"><EntityContainer Name=\"db_exerc" +
+                "iseEntities\" m:IsDefaultEntityContainer=\"true\" p6:LazyLoadingEnabled=\"true\" xmln" +
+                "s:p6=\"http://schemas.microsoft.com/ado/2009/02/edm/annotation\"><EntitySet Name=\"" +
+                "mchoiceQues\" EntityType=\"db_exerciseModel.mchoiceQues\" /><EntitySet Name=\"Course" +
+                "\" EntityType=\"db_exerciseModel.Course\" /><EntitySet Name=\"teacherinfo\" EntityTyp" +
+                "e=\"db_exerciseModel.teacherinfo\" /><EntitySet Name=\"TFQues\" EntityType=\"db_exerc" +
+                "iseModel.TFQues\" /><EntitySet Name=\"SQues\" EntityType=\"db_exerciseModel.SQues\" /" +
+                "><EntitySet Name=\"AQues\" EntityType=\"db_exerciseModel.AQues\" /><EntitySet Name=\"" +
+                "classExer\" EntityType=\"db_exerciseModel.classExer\" /><EntitySet Name=\"class_stud" +
+                "ent\" EntityType=\"db_exerciseModel.class_student\" /><EntitySet Name=\"exerDetail\" " +
+                "EntityType=\"db_exerciseModel.exerDetail\" /><EntitySet Name=\"studAnsw\" EntityType" +
+                "=\"db_exerciseModel.studAnsw\" /><EntitySet Name=\"tech_course\" EntityType=\"db_exer" +
+                "ciseModel.tech_course\" /><EntitySet Name=\"classinfo\" EntityType=\"db_exerciseMode" +
+                "l.classinfo\" /><EntitySet Name=\"StudInfo\" EntityType=\"db_exerciseModel.StudInfo\"" +
+                " /><EntitySet Name=\"View_student\" EntityType=\"db_exerciseModel.View_student\" /><" +
+                "EntitySet Name=\"V_tea_course\" EntityType=\"db_exerciseModel.V_tea_course\" /><Enti" +
+                "tySet Name=\"eQues\" EntityType=\"db_exerciseModel.eQues\" /><EntitySet Name=\"exerL\"" +
+                " EntityType=\"db_exerciseModel.exerL\" /><EntitySet Name=\"View_detai_exerL\" Entity" +
+                "Type=\"db_exerciseModel.View_detai_exerL\" /><EntitySet Name=\"featurehelp\" EntityT" +
+                "ype=\"db_exerciseModel.featurehelp\" /><EntitySet Name=\"exp_q\" EntityType=\"db_exer" +
+                "ciseModel.exp_q\" /><EntitySet Name=\"classExp\" EntityType=\"db_exerciseModel.class" +
+                "Exp\" /><EntitySet Name=\"View_class_exp\" EntityType=\"db_exerciseModel.View_class_" +
+                "exp\" /><EntitySet Name=\"studreport\" EntityType=\"db_exerciseModel.studreport\" /><" +
+                "AssociationSet Name=\"FK_exerL_Course\" Association=\"db_exerciseModel.FK_exerL_Cou" +
+                "rse\"><End Role=\"Course\" EntitySet=\"Course\" /><End Role=\"exerL\" EntitySet=\"exerL\"" +
+                " /></AssociationSet></EntityContainer></Schema></edmx:DataServices></edmx:Edmx>";
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
             private static string GetConcatenatedEdmxString()
             {
@@ -5472,6 +5504,190 @@ namespace Exercise_student.ServiceExer
         private int _con;
         partial void OnconChanging(int value);
         partial void OnconChanged();
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        protected virtual void OnPropertyChanged(string property)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new global::System.ComponentModel.PropertyChangedEventArgs(property));
+            }
+        }
+    }
+    /// <summary>
+    /// 架构中不存在 db_exerciseModel.studreport 的注释。
+    /// </summary>
+    /// <KeyProperties>
+    /// classid
+    /// expid
+    /// stid
+    /// </KeyProperties>
+    [global::System.Data.Services.Common.EntitySetAttribute("studreport")]
+    [global::System.Data.Services.Common.DataServiceKeyAttribute("classid", "expid", "stid")]
+    public partial class studreport : global::System.ComponentModel.INotifyPropertyChanged
+    {
+        /// <summary>
+        /// 创建新的 studreport 对象。
+        /// </summary>
+        /// <param name="classid">classid 的初始值。</param>
+        /// <param name="stid">stid 的初始值。</param>
+        /// <param name="expid">expid 的初始值。</param>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public static studreport Createstudreport(int classid, int stid, int expid)
+        {
+            studreport studreport = new studreport();
+            studreport.classid = classid;
+            studreport.stid = stid;
+            studreport.expid = expid;
+            return studreport;
+        }
+        /// <summary>
+        /// 架构中不存在属性 classid 的注释。
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public int classid
+        {
+            get
+            {
+                return this._classid;
+            }
+            set
+            {
+                this.OnclassidChanging(value);
+                this._classid = value;
+                this.OnclassidChanged();
+                this.OnPropertyChanged("classid");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private int _classid;
+        partial void OnclassidChanging(int value);
+        partial void OnclassidChanged();
+        /// <summary>
+        /// 架构中不存在属性 stid 的注释。
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public int stid
+        {
+            get
+            {
+                return this._stid;
+            }
+            set
+            {
+                this.OnstidChanging(value);
+                this._stid = value;
+                this.OnstidChanged();
+                this.OnPropertyChanged("stid");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private int _stid;
+        partial void OnstidChanging(int value);
+        partial void OnstidChanged();
+        /// <summary>
+        /// 架构中不存在属性 expid 的注释。
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public int expid
+        {
+            get
+            {
+                return this._expid;
+            }
+            set
+            {
+                this.OnexpidChanging(value);
+                this._expid = value;
+                this.OnexpidChanged();
+                this.OnPropertyChanged("expid");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private int _expid;
+        partial void OnexpidChanging(int value);
+        partial void OnexpidChanged();
+        /// <summary>
+        /// 架构中不存在属性 rep 的注释。
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public byte[] rep
+        {
+            get
+            {
+                if ((this._rep != null))
+                {
+                    return ((byte[])(this._rep.Clone()));
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            set
+            {
+                this.OnrepChanging(value);
+                this._rep = value;
+                this.OnrepChanged();
+                this.OnPropertyChanged("rep");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private byte[] _rep;
+        partial void OnrepChanging(byte[] value);
+        partial void OnrepChanged();
+        /// <summary>
+        /// 架构中不存在属性 atta 的注释。
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public byte[] atta
+        {
+            get
+            {
+                if ((this._atta != null))
+                {
+                    return ((byte[])(this._atta.Clone()));
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            set
+            {
+                this.OnattaChanging(value);
+                this._atta = value;
+                this.OnattaChanged();
+                this.OnPropertyChanged("atta");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private byte[] _atta;
+        partial void OnattaChanging(byte[] value);
+        partial void OnattaChanged();
+        /// <summary>
+        /// 架构中不存在属性 score 的注释。
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        public global::System.Nullable<int> score
+        {
+            get
+            {
+                return this._score;
+            }
+            set
+            {
+                this.OnscoreChanging(value);
+                this._score = value;
+                this.OnscoreChanged();
+                this.OnPropertyChanged("score");
+            }
+        }
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
+        private global::System.Nullable<int> _score;
+        partial void OnscoreChanging(global::System.Nullable<int> value);
+        partial void OnscoreChanged();
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]
         public event global::System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Services.Design", "1.0.0")]

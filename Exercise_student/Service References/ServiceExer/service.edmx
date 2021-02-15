@@ -307,6 +307,19 @@
         <Property Name="objective" Type="Edm.String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
         <Property Name="con" Type="Edm.Int32" Nullable="false" />
       </EntityType>
+      <EntityType Name="studreport">
+        <Key>
+          <PropertyRef Name="classid" />
+          <PropertyRef Name="expid" />
+          <PropertyRef Name="stid" />
+        </Key>
+        <Property Name="classid" Type="Edm.Int32" Nullable="false" />
+        <Property Name="stid" Type="Edm.Int32" Nullable="false" />
+        <Property Name="expid" Type="Edm.Int32" Nullable="false" />
+        <Property Name="rep" Type="Edm.Binary" MaxLength="Max" FixedLength="false" />
+        <Property Name="atta" Type="Edm.Binary" MaxLength="Max" FixedLength="false" />
+        <Property Name="score" Type="Edm.Int32" />
+      </EntityType>
       <Association Name="FK_exerL_Course">
         <End Type="db_exerciseModel.Course" Role="Course" Multiplicity="1" />
         <End Type="db_exerciseModel.exerL" Role="exerL" Multiplicity="*" />
@@ -344,6 +357,7 @@
         <EntitySet Name="exp_q" EntityType="db_exerciseModel.exp_q" />
         <EntitySet Name="classExp" EntityType="db_exerciseModel.classExp" />
         <EntitySet Name="View_class_exp" EntityType="db_exerciseModel.View_class_exp" />
+        <EntitySet Name="studreport" EntityType="db_exerciseModel.studreport" />
         <AssociationSet Name="FK_exerL_Course" Association="db_exerciseModel.FK_exerL_Course">
           <End Role="Course" EntitySet="Course" />
           <End Role="exerL" EntitySet="exerL" />

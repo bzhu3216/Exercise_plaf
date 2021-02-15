@@ -606,11 +606,20 @@ namespace Exercise_student
 
         private void button5_Click(object sender, EventArgs e)
         {
+            classinfo clin2;
+            StudInfo stin2=pp.st;
+            if (lclinfo != null && comboBox1.SelectedIndex >= 0)
+                clin2 = lclinfo[comboBox1.SelectedIndex];
+            else
+            {
+                MessageBox.Show("请选择班级");
+                return;
+            }
 
            shiyan mq = null;
             if (mq == null || mq.IsDisposed)
             {
-                mq = new shiyan(pp);
+                mq = new shiyan(pp,clin2,stin2);
                 mq.Show();
             }
             else
@@ -621,6 +630,20 @@ namespace Exercise_student
 
 
 
+        }
+
+        private void dataGridView1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            Rectangle rectangle = new Rectangle(e.RowBounds.Location.X,
+                                 e.RowBounds.Location.Y,
+                                 dataGridView1.RowHeadersWidth,
+                                 e.RowBounds.Height);
+
+            TextRenderer.DrawText(e.Graphics, (e.RowIndex + 1).ToString(),
+                dataGridView1.RowHeadersDefaultCellStyle.Font,
+                rectangle,
+                dataGridView1.RowHeadersDefaultCellStyle.ForeColor,
+                TextFormatFlags.VerticalCenter | TextFormatFlags.Right);
         }
     }
 }

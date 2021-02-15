@@ -188,6 +188,9 @@
     <Compile Include="StudInfo.cs">
       <DependentUpon>questions.tt</DependentUpon>
     </Compile>
+    <Compile Include="studreport.cs">
+      <DependentUpon>questions.tt</DependentUpon>
+    </Compile>
     <Compile Include="teacherinfo.cs">
       <DependentUpon>questions.tt</DependentUpon>
     </Compile>
