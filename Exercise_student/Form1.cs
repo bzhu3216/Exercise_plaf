@@ -603,5 +603,24 @@ namespace Exercise_student
         {
 
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+           shiyan mq = null;
+            if (mq == null || mq.IsDisposed)
+            {
+                mq = new shiyan(pp);
+                mq.Show();
+            }
+            else
+            {
+                mq.Activate();
+                mq.WindowState = FormWindowState.Normal;
+            }
+
+
+
+        }
     }
 }

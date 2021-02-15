@@ -249,6 +249,64 @@
         <Property Name="courseid" Type="Edm.Int32" />
         <Property Name="emnum" Type="Edm.Int32" />
       </EntityType>
+      <EntityType Name="exp_q">
+        <Key>
+          <PropertyRef Name="idexp" />
+        </Key>
+        <Property Name="idexp" Type="Edm.Int32" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        <Property Name="expdoc" Type="Edm.Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+        <Property Name="courseid" Type="Edm.Int32" Nullable="false" />
+        <Property Name="anserdoc" Type="Edm.Binary" MaxLength="Max" FixedLength="false" />
+        <Property Name="diff" Type="Edm.Int32" Nullable="false" />
+        <Property Name="objective" Type="Edm.String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+        <Property Name="con" Type="Edm.Int32" Nullable="false" />
+        <Property Name="exname" Type="Edm.String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        <Property Name="attachment" Type="Edm.Binary" MaxLength="Max" FixedLength="false" />
+      </EntityType>
+      <EntityType Name="classExp">
+        <Key>
+          <PropertyRef Name="cid" />
+          <PropertyRef Name="expid" />
+        </Key>
+        <Property Name="cid" Type="Edm.Int32" Nullable="false" />
+        <Property Name="expid" Type="Edm.Int32" Nullable="false" />
+        <Property Name="starttime" Type="Edm.DateTime" Precision="0" />
+        <Property Name="endtime" Type="Edm.DateTime" Precision="0" />
+        <Property Name="attach" Type="Edm.Boolean" />
+        <Property Name="dispaly" Type="Edm.Int32" />
+        <Property Name="maxfile" Type="Edm.Int32" />
+        <Property Name="maxatta" Type="Edm.Int32" />
+      </EntityType>
+      <EntityType Name="View_class_exp">
+        <Key>
+          <PropertyRef Name="cid" />
+          <PropertyRef Name="classid" />
+          <PropertyRef Name="con" />
+          <PropertyRef Name="courseid" />
+          <PropertyRef Name="diff" />
+          <PropertyRef Name="exname" />
+          <PropertyRef Name="expid" />
+          <PropertyRef Name="idexp" />
+          <PropertyRef Name="objective" />
+        </Key>
+        <Property Name="cid" Type="Edm.Int32" Nullable="false" />
+        <Property Name="classid" Type="Edm.Int32" Nullable="false" />
+        <Property Name="expid" Type="Edm.Int32" Nullable="false" />
+        <Property Name="idexp" Type="Edm.Int32" Nullable="false" />
+        <Property Name="exname" Type="Edm.String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        <Property Name="starttime" Type="Edm.DateTime" Precision="0" />
+        <Property Name="endtime" Type="Edm.DateTime" Precision="0" />
+        <Property Name="maxfile" Type="Edm.Int32" />
+        <Property Name="maxatta" Type="Edm.Int32" />
+        <Property Name="attach" Type="Edm.Boolean" />
+        <Property Name="finish" Type="Edm.Int32" />
+        <Property Name="teacher" Type="Edm.String" MaxLength="4" FixedLength="true" Unicode="true" />
+        <Property Name="classinfo" Type="Edm.String" MaxLength="100" FixedLength="false" Unicode="false" />
+        <Property Name="courseid" Type="Edm.Int32" Nullable="false" />
+        <Property Name="diff" Type="Edm.Int32" Nullable="false" />
+        <Property Name="objective" Type="Edm.String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+        <Property Name="con" Type="Edm.Int32" Nullable="false" />
+      </EntityType>
       <Association Name="FK_exerL_Course">
         <End Type="db_exerciseModel.Course" Role="Course" Multiplicity="1" />
         <End Type="db_exerciseModel.exerL" Role="exerL" Multiplicity="*" />
@@ -283,6 +341,9 @@
         <EntitySet Name="exerL" EntityType="db_exerciseModel.exerL" />
         <EntitySet Name="View_detai_exerL" EntityType="db_exerciseModel.View_detai_exerL" />
         <EntitySet Name="featurehelp" EntityType="db_exerciseModel.featurehelp" />
+        <EntitySet Name="exp_q" EntityType="db_exerciseModel.exp_q" />
+        <EntitySet Name="classExp" EntityType="db_exerciseModel.classExp" />
+        <EntitySet Name="View_class_exp" EntityType="db_exerciseModel.View_class_exp" />
         <AssociationSet Name="FK_exerL_Course" Association="db_exerciseModel.FK_exerL_Course">
           <End Role="Course" EntitySet="Course" />
           <End Role="exerL" EntitySet="exerL" />
