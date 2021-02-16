@@ -262,6 +262,8 @@
         <Property Name="con" Type="Edm.Int32" Nullable="false" />
         <Property Name="exname" Type="Edm.String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         <Property Name="attachment" Type="Edm.Binary" MaxLength="Max" FixedLength="false" />
+        <Property Name="docfilename" Type="Edm.String" MaxLength="50" FixedLength="false" Unicode="false" />
+        <Property Name="attachmentname" Type="Edm.String" MaxLength="50" FixedLength="false" Unicode="false" />
       </EntityType>
       <EntityType Name="classExp">
         <Key>
@@ -314,11 +316,13 @@
           <PropertyRef Name="stid" />
         </Key>
         <Property Name="classid" Type="Edm.Int32" Nullable="false" />
-        <Property Name="stid" Type="Edm.Int32" Nullable="false" />
+        <Property Name="stid" Type="Edm.String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="true" />
         <Property Name="expid" Type="Edm.Int32" Nullable="false" />
         <Property Name="rep" Type="Edm.Binary" MaxLength="Max" FixedLength="false" />
         <Property Name="atta" Type="Edm.Binary" MaxLength="Max" FixedLength="false" />
         <Property Name="score" Type="Edm.Int32" />
+        <Property Name="fname" Type="Edm.String" MaxLength="50" FixedLength="false" Unicode="false" />
+        <Property Name="aname" Type="Edm.String" MaxLength="50" FixedLength="false" Unicode="false" />
       </EntityType>
       <Association Name="FK_exerL_Course">
         <End Type="db_exerciseModel.Course" Role="Course" Multiplicity="1" />

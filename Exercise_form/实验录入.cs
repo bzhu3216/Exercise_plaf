@@ -173,7 +173,7 @@ namespace Exercise_form
             {
                 Exercise_form.ServiceReference1.exp_q mcq2 = (exp_q)LTF[listBox1.SelectedIndex];
                 // if (!comboBox2.Text.Equals("") && !comboBox4.Text.Equals("") && !fileDirectory.Equals("") && !textBox2.Text.Equals(""))
-                if (!comboBox2.Text.Equals("") && !comboBox4.Text.Equals("")&& !(mcq2==null))
+                if (!comboBox2.Text.Equals("") && !comboBox4.Text.Equals("")&& !(mcq2==null)&& !textBox2.Text.Equals(""))
                 {
                     mcq2.con = Convert.ToInt16(comboBox2.Text);
                     mcq2.diff = Convert.ToInt16(comboBox4.Text);
@@ -209,6 +209,10 @@ namespace Exercise_form
                             bytContent2 = br2.ReadBytes((int)intLength2);
 
                             mcq2.attachment = bytContent2;
+                            String[] fnames = attaDirectory.Split('\\');
+                            String filenamestr = fnames[fnames.Length - 1];
+                            mcq2.attachmentname  = filenamestr;
+
 
 
                         }
@@ -220,6 +224,10 @@ namespace Exercise_form
                         bytContent = new byte[intLength];
                         bytContent = br.ReadBytes((int)intLength);
                         mcq2.expdoc = bytContent;
+                         String[] fnames = fileDirectory.Split('\\');
+                        String filenamestr = fnames[fnames.Length - 1] ;
+                            mcq2.docfilename = filenamestr;
+                        //        MessageBox.Show(fileDirectory+"   "+ filenamestr);
                         if ((intLength + intLength2) < pp.maxsize)
                         {
                             pp.context.UpdateObject(mcq2);
@@ -285,8 +293,12 @@ namespace Exercise_form
                         bytContent2 = br2.ReadBytes((int)intLength2);                      
                        
                             mcq.attachment = bytContent2;
-
                         
+                        String[] fnames2 = attaDirectory.Split('\\');
+                        String filenamestr2 = fnames2[fnames2.Length - 1];
+                        mcq.attachmentname = filenamestr2;
+
+
                     }
                     fs = new FileStream(fileDirectory, System.IO.FileMode.Open);
                     br = new BinaryReader((Stream)fs);
@@ -294,6 +306,9 @@ namespace Exercise_form
                     bytContent = new byte[intLength];
                     bytContent = br.ReadBytes((int) intLength);
                     mcq.expdoc = bytContent;
+                    String[] fnames = fileDirectory.Split('\\');
+                    String filenamestr = fnames[fnames.Length - 1];
+                    mcq.docfilename = filenamestr;
                     if ((intLength +intLength2) < pp.maxsize)
                     {
                         pp.context.AddToexp_q(mcq);                       

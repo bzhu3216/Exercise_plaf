@@ -126,6 +126,8 @@
           <Property Name="con" Type="int" Nullable="false" />
           <Property Name="exname" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="attachment" Type="varbinary(max)" />
+          <Property Name="docfilename" Type="varchar" MaxLength="50" />
+          <Property Name="attachmentname" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="featurehelp">
           <Key>
@@ -205,6 +207,8 @@
           <Property Name="rep" Type="varbinary(max)" />
           <Property Name="atta" Type="varbinary(max)" />
           <Property Name="score" Type="int" />
+          <Property Name="fname" Type="varchar" MaxLength="50" />
+          <Property Name="aname" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="teacherinfo">
           <Key>
@@ -731,6 +735,8 @@ FROM [dbo].[View_student] AS [View_student]</DefiningQuery>
           <Property Name="con" Type="Int32" Nullable="false" />
           <Property Name="exname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="attachment" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="docfilename" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="attachmentname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="classExp">
           <Key>
@@ -783,11 +789,13 @@ FROM [dbo].[View_student] AS [View_student]</DefiningQuery>
             <PropertyRef Name="expid" />
           </Key>
           <Property Name="classid" Type="Int32" Nullable="false" />
-          <Property Name="stid" Type="String" Nullable="false" />
+          <Property Name="stid" Type="String" Nullable="false" MaxLength="11" Unicode="true" FixedLength="false" />
           <Property Name="expid" Type="Int32" Nullable="false" />
           <Property Name="rep" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="atta" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="score" Type="Int32" />
+          <Property Name="fname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="aname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1044,6 +1052,8 @@ FROM [dbo].[View_student] AS [View_student]</DefiningQuery>
           <EntitySetMapping Name="exp_q">
             <EntityTypeMapping TypeName="db_exerciseModel.exp_q">
               <MappingFragment StoreEntitySet="exp_q">
+                <ScalarProperty Name="attachmentname" ColumnName="attachmentname" />
+                <ScalarProperty Name="docfilename" ColumnName="docfilename" />
                 <ScalarProperty Name="attachment" ColumnName="attachment" />
                 <ScalarProperty Name="exname" ColumnName="exname" />
                 <ScalarProperty Name="con" ColumnName="con" />
@@ -1096,6 +1106,8 @@ FROM [dbo].[View_student] AS [View_student]</DefiningQuery>
           <EntitySetMapping Name="studreport">
             <EntityTypeMapping TypeName="db_exerciseModel.studreport">
               <MappingFragment StoreEntitySet="studreport">
+                <ScalarProperty Name="aname" ColumnName="aname" />
+                <ScalarProperty Name="fname" ColumnName="fname" />
                 <ScalarProperty Name="score" ColumnName="score" />
                 <ScalarProperty Name="atta" ColumnName="atta" />
                 <ScalarProperty Name="rep" ColumnName="rep" />

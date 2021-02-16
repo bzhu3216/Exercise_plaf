@@ -23,5 +23,7 @@ namespace WCFDBservice
         public int con { get; set; }
         public string exname { get; set; }
         public byte[] attachment { get; set; }
+        public string docfilename { get; set; }
+        public string attachmentname { get; set; }
     }
 }

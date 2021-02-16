@@ -20,5 +20,7 @@ namespace WCFDBservice
         public byte[] rep { get; set; }
         public byte[] atta { get; set; }
         public Nullable<int> score { get; set; }
+        public string fname { get; set; }
+        public string aname { get; set; }
     }
 }
