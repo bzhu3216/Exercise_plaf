@@ -425,5 +425,25 @@ namespace Exercise_form
 
 
         }
+
+        private void 实验批改ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            shiayanpigai mq = null;
+            if (mq == null || mq.IsDisposed)
+            {
+                mq = new shiayanpigai(pp);
+                // mq.MdiParent = this;
+                mq.Show();
+            }
+            else
+            {
+                mq.Activate();
+                mq.WindowState = FormWindowState.Normal;
+            }
+
+
+
+        }
     }
 }

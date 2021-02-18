@@ -320,9 +320,28 @@
         <Property Name="expid" Type="Edm.Int32" Nullable="false" />
         <Property Name="rep" Type="Edm.Binary" MaxLength="Max" FixedLength="false" />
         <Property Name="atta" Type="Edm.Binary" MaxLength="Max" FixedLength="false" />
-        <Property Name="score" Type="Edm.Int32" />
+        <Property Name="score" Type="Edm.String" />
         <Property Name="fname" Type="Edm.String" MaxLength="50" FixedLength="false" Unicode="false" />
         <Property Name="aname" Type="Edm.String" MaxLength="50" FixedLength="false" Unicode="false" />
+      </EntityType>
+      <EntityType Name="View_class_student">
+        <Key>
+          <PropertyRef Name="classid" />
+          <PropertyRef Name="Expr1" />
+          <PropertyRef Name="Expr2" />
+          <PropertyRef Name="studentid" />
+        </Key>
+        <Property Name="classid" Type="Edm.Int32" Nullable="false" />
+        <Property Name="classinfo" Type="Edm.String" MaxLength="100" FixedLength="false" Unicode="false" />
+        <Property Name="courseid" Type="Edm.Int32" />
+        <Property Name="teacher" Type="Edm.String" MaxLength="4" FixedLength="true" Unicode="true" />
+        <Property Name="addtime" Type="Edm.DateTime" Precision="0" />
+        <Property Name="classno" Type="Edm.Int32" />
+        <Property Name="studentid" Type="Edm.String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+        <Property Name="Expr1" Type="Edm.Int32" Nullable="false" />
+        <Property Name="name" Type="Edm.String" MaxLength="50" FixedLength="false" Unicode="false" />
+        <Property Name="pd" Type="Edm.String" MaxLength="8" FixedLength="false" Unicode="false" />
+        <Property Name="Expr2" Type="Edm.String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="true" />
       </EntityType>
       <Association Name="FK_exerL_Course">
         <End Type="db_exerciseModel.Course" Role="Course" Multiplicity="1" />
@@ -362,6 +381,7 @@
         <EntitySet Name="classExp" EntityType="db_exerciseModel.classExp" />
         <EntitySet Name="View_class_exp" EntityType="db_exerciseModel.View_class_exp" />
         <EntitySet Name="studreport" EntityType="db_exerciseModel.studreport" />
+        <EntitySet Name="View_class_student" EntityType="db_exerciseModel.View_class_student" />
         <AssociationSet Name="FK_exerL_Course" Association="db_exerciseModel.FK_exerL_Course">
           <End Role="Course" EntitySet="Course" />
           <End Role="exerL" EntitySet="exerL" />

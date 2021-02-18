@@ -241,6 +241,12 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="helpsimilar.cs" />
+    <Compile Include="shiayanpigai.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="shiayanpigai.Designer.cs">
+      <DependentUpon>shiayanpigai.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -303,8 +309,27 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="shiweipi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="shiweipi.Designer.cs">
+      <DependentUpon>shiweipi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="shiweijiao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="shiweijiao.Designer.cs">
+      <DependentUpon>shiweijiao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="shiyanpgui.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="shiyanpgui.Designer.cs">
+      <DependentUpon>shiyanpgui.cs</DependentUpon>
+    </Compile>
     <Compile Include="stkey.cs" />
     <Compile Include="stkey2.cs" />
+    <Compile Include="stu.cs" />
     <Compile Include="Student.cs" />
     <Compile Include="TaskList.cs">
       <SubType>Form</SubType>
@@ -417,6 +442,10 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="shiayanpigai.resx">
+      <DependentUpon>shiayanpigai.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
@@ -450,6 +479,15 @@
     </Compile>
     <EmbeddedResource Include="Results summary.resx">
       <DependentUpon>Results summary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="shiweipi.resx">
+      <DependentUpon>shiweipi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="shiweijiao.resx">
+      <DependentUpon>shiweijiao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="shiyanpgui.resx">
+      <DependentUpon>shiyanpgui.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TaskList.resx">
       <DependentUpon>TaskList.cs</DependentUpon>

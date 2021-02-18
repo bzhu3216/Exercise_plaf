@@ -12,15 +12,18 @@ namespace WCFDBservice
     using System;
     using System.Collections.Generic;
     
-    public partial class studreport
+    public partial class View_class_student
     {
         public int classid { get; set; }
-        public string stid { get; set; }
-        public int expid { get; set; }
-        public byte[] rep { get; set; }
-        public byte[] atta { get; set; }
-        public string score { get; set; }
-        public string fname { get; set; }
-        public string aname { get; set; }
+        public string classinfo { get; set; }
+        public Nullable<int> courseid { get; set; }
+        public string teacher { get; set; }
+        public Nullable<System.DateTime> addtime { get; set; }
+        public Nullable<int> classno { get; set; }
+        public string studentid { get; set; }
+        public int Expr1 { get; set; }
+        public string name { get; set; }
+        public string pd { get; set; }
+        public string Expr2 { get; set; }
     }
 }

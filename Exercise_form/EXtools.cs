@@ -1483,5 +1483,26 @@ namespace Exercise_form
 
         ////////////
 
+        public static String getstuname(param p, String stuid)
+        {
+            String name = null;
+            StudInfo stuinfo = null;
+            var q1 = from o in p.context.StudInfo
+                     where o.studentid == stuid
+                     select o;
+            if (q1.Count() > 0)
+            {
+                stuinfo = q1.First<StudInfo>();
+                name = stuinfo.name;
+
+            }
+
+            return name;
+        }
+
+
+
+        ////////////
+
     }//endclass
 }

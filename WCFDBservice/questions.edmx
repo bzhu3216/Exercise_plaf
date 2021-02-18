@@ -206,7 +206,7 @@
           <Property Name="expid" Type="int" Nullable="false" />
           <Property Name="rep" Type="varbinary(max)" />
           <Property Name="atta" Type="varbinary(max)" />
-          <Property Name="score" Type="int" />
+          <Property Name="score" Type="varchar" MaxLength="50" />
           <Property Name="fname" Type="varchar" MaxLength="50" />
           <Property Name="aname" Type="varchar" MaxLength="50" />
         </EntityType>
@@ -294,6 +294,27 @@
           <Property Name="diff" Type="int" Nullable="false" />
           <Property Name="objective" Type="varchar" MaxLength="60" Nullable="false" />
           <Property Name="con" Type="int" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“db_exercise.dbo.View_class_student”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="View_class_student">
+          <Key>
+            <PropertyRef Name="classid" />
+            <PropertyRef Name="studentid" />
+            <PropertyRef Name="Expr1" />
+            <PropertyRef Name="Expr2" />
+          </Key>
+          <Property Name="classid" Type="int" Nullable="false" />
+          <Property Name="classinfo" Type="varchar" MaxLength="100" />
+          <Property Name="courseid" Type="int" />
+          <Property Name="teacher" Type="nchar" MaxLength="4" />
+          <Property Name="addtime" Type="date" />
+          <Property Name="classno" Type="int" />
+          <Property Name="studentid" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="Expr1" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="pd" Type="varchar" MaxLength="8" />
+          <Property Name="Expr2" Type="nvarchar" MaxLength="11" Nullable="false" />
         </EntityType>
         <!--生成过程中发现错误:
 警告 6002: 表/视图“db_exercise.dbo.View_detai_exerL”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
@@ -400,6 +421,21 @@ FROM [dbo].[V_tea_course] AS [V_tea_course]</DefiningQuery>
 [View_class_exp].[con] AS [con]
 FROM [dbo].[View_class_exp] AS [View_class_exp]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="View_class_student" EntityType="Self.View_class_student" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[View_class_student].[classid] AS [classid], 
+[View_class_student].[classinfo] AS [classinfo], 
+[View_class_student].[courseid] AS [courseid], 
+[View_class_student].[teacher] AS [teacher], 
+[View_class_student].[addtime] AS [addtime], 
+[View_class_student].[classno] AS [classno], 
+[View_class_student].[studentid] AS [studentid], 
+[View_class_student].[Expr1] AS [Expr1], 
+[View_class_student].[name] AS [name], 
+[View_class_student].[pd] AS [pd], 
+[View_class_student].[Expr2] AS [Expr2]
+FROM [dbo].[View_class_student] AS [View_class_student]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="View_detai_exerL" EntityType="Self.View_detai_exerL" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
 [View_detai_exerL].[id] AS [id], 
@@ -461,6 +497,7 @@ FROM [dbo].[View_student] AS [View_student]</DefiningQuery>
           <EntitySet Name="classExp" EntityType="db_exerciseModel.classExp" />
           <EntitySet Name="View_class_exp" EntityType="db_exerciseModel.View_class_exp" />
           <EntitySet Name="studreport" EntityType="db_exerciseModel.studreport" />
+          <EntitySet Name="View_class_student" EntityType="db_exerciseModel.View_class_student" />
         </EntityContainer>
         <EntityType Name="mchoiceQues">
           <Key>
@@ -793,9 +830,28 @@ FROM [dbo].[View_student] AS [View_student]</DefiningQuery>
           <Property Name="expid" Type="Int32" Nullable="false" />
           <Property Name="rep" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="atta" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="score" Type="Int32" />
+          <Property Name="score" Type="String" />
           <Property Name="fname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="aname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="View_class_student">
+          <Key>
+            <PropertyRef Name="classid" />
+            <PropertyRef Name="studentid" />
+            <PropertyRef Name="Expr1" />
+            <PropertyRef Name="Expr2" />
+          </Key>
+          <Property Name="classid" Type="Int32" Nullable="false" />
+          <Property Name="classinfo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="courseid" Type="Int32" />
+          <Property Name="teacher" Type="String" MaxLength="4" FixedLength="true" Unicode="true" />
+          <Property Name="addtime" Type="DateTime" Precision="0" />
+          <Property Name="classno" Type="Int32" />
+          <Property Name="studentid" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="Expr1" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="pd" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="Expr2" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1113,6 +1169,23 @@ FROM [dbo].[View_student] AS [View_student]</DefiningQuery>
                 <ScalarProperty Name="rep" ColumnName="rep" />
                 <ScalarProperty Name="expid" ColumnName="expid" />
                 <ScalarProperty Name="stid" ColumnName="stid" />
+                <ScalarProperty Name="classid" ColumnName="classid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_class_student">
+            <EntityTypeMapping TypeName="db_exerciseModel.View_class_student">
+              <MappingFragment StoreEntitySet="View_class_student">
+                <ScalarProperty Name="Expr2" ColumnName="Expr2" />
+                <ScalarProperty Name="pd" ColumnName="pd" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+                <ScalarProperty Name="studentid" ColumnName="studentid" />
+                <ScalarProperty Name="classno" ColumnName="classno" />
+                <ScalarProperty Name="addtime" ColumnName="addtime" />
+                <ScalarProperty Name="teacher" ColumnName="teacher" />
+                <ScalarProperty Name="courseid" ColumnName="courseid" />
+                <ScalarProperty Name="classinfo" ColumnName="classinfo" />
                 <ScalarProperty Name="classid" ColumnName="classid" />
               </MappingFragment>
             </EntityTypeMapping>

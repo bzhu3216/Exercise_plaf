@@ -144,7 +144,7 @@ namespace Exercise_form
         //////////////////////start score
 
 
-      
+
 
 
 
@@ -156,7 +156,10 @@ namespace Exercise_form
 
 
         ////endscore
+      
 
+
+      
 
 
 
