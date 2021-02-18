@@ -130,8 +130,25 @@ namespace Exercise_form
                         }
 
                        String cj = cstrep.score;
+                        cjs = null;
                        if(cj!=null)  cjs = cj.Split('|');
-                        if (cjs != null && strobjectives!=null) { 
+                        if (cjs == null)
+                        {
+                            if (strobjectives != null)
+                            {
+                                int numobjective = strobjectives.Length - 1;
+                                for (int i = 0; i < numobjective; i++)
+                                {
+
+                                    TextBox tt = (TextBox)tableLayoutPanel1.Controls[2 * i + 1];
+                                    tt.Text = "";
+                                }
+
+                            }
+
+                        }
+                        if (cjs != null && strobjectives!=null&&cjs.Length==strobjectives.Length)
+                        { 
                         int numobjective = strobjectives.Length - 1;
                          for (int i = 0; i < numobjective; i++)
                         {

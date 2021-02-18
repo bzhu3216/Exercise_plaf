@@ -122,10 +122,14 @@ namespace Exercise_student
                                     select o;
 
                 if (questionQuery.Count<studreport>() > 0) {
-                    button5.Enabled = true;
+                    if (questionQuery.First<studreport>().rep  != null) button5.Enabled = true;  else button5.Enabled = false;
                     if (questionQuery.First<studreport>().atta == null) button6.Enabled = false; else button6.Enabled = true;
                 }
                 else { button5.Enabled = false; button6.Enabled = false; }
+
+
+
+
                 var questionQuery2= from o in pp.context.exp_q
                                     where (o.idexp== vp.expid)
 
