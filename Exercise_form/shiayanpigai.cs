@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Exercise_form.ServiceReference1;
 using System.IO;
+using Spire.Xls;
 
 namespace Exercise_form
 {
@@ -216,7 +217,7 @@ namespace Exercise_form
         {
             String dirsave = null;
             List<View_class_student> lstwei = new List<View_class_student>();
-            List<View_class_student> lstall = null;
+           // List<View_class_student> lstall = null;
 
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -275,7 +276,166 @@ namespace Exercise_form
 
             }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+            /*
+             * 
+             var q2 = from o in pp.context.Course
+                                     where o.id == lclinfo[sel1].courseid
+                                     select o;
+                            //
+                            int iobj = 0;
+                            if (q2.Count<Course>() > 0)
+                            {
+                                    //
 
+                                    saveFileDialog2.DefaultExt = ".xlsx";
+                                    saveFileDialog2.Filter = "EXCEL file|*.xlsx";
+
+                                    if (saveFileDialog2.ShowDialog() == DialogResult.OK)
+                                    {
+                                        //
+
+                                        iobj = q2.First<Course>().numobjective;
+                                        EXtools.toScore(lclinfo[sel1], ler[sel2], saveFileDialog2.FileName , pp, iobj);
+                                    }
+                            }
+                            else
+                            {
+                                MessageBox.Show("未关联任何习题或有问题联系管理员!");
+                            }
+             * 
+             */
+            exportsum(lcl[listBox1.SelectedIndex], lvce[sel1], lvtc[comboBox1.SelectedIndex], 3);
+
+
+
+
+
+        }
+        //////////////////////////
+        private void exportsum(classinfo cl1, View_class_exp vst1, V_tea_course vcourse, int poscol)
+        {
+            String dirsave = null;
+            List<View_class_student> lstwei = new List<View_class_student>();
+            // List<View_class_student> lstall = null;
+            saveFileDialog2.DefaultExt = ".xlsx";
+            saveFileDialog2.Filter = "EXCEL file|*.xlsx";
+            if (saveFileDialog2.ShowDialog() == DialogResult.OK)
+            {
+                string localFilePath = saveFileDialog2.FileName.ToString();
+                // dirsave = localFilePath.Substring(0, localFilePath.LastIndexOf("\\"));
+                dirsave = localFilePath;
+            }
+
+            //////////////////////excel
+
+            Spire.Xls.Workbook wb = new Spire.Xls.Workbook();
+            //清除默认的工作表
+            wb.Worksheets.Clear();
+            //添加一个工作表并指定表名
+            Worksheet sheet = wb.Worksheets.Add("score");
+             sheet.Range[2, 2].Text = "序号";
+            sheet.Range[3, 2].Text = "分值";
+            sheet.Range[4, 2].Text = "指标";
+            sheet.Range[5, 1].Text = "学号";
+            sheet.Range[5, 2].Text = "姓名";
+
+            int intobjective =vcourse.numobjective;
+            String expobjective = vst1.objective;
+            String[] strexpobj = expobjective.Split('|'); 
+
+            for (int i = 1; i <= intobjective+1; i++)
+            {  if (i<intobjective+1)
+                sheet.Range[4, poscol + i - 1].Text = i.ToString();
+            else
+                    sheet.Range[4, poscol + i - 1].Text ="已交";
+
+            }
+            int irow = 6;
+            int icol = poscol;
+            var questionQuery1 = from o in pp.context.View_class_student
+                                 where o.classid == cl1.classid
+                                 orderby o.classno
+                                 select o;
+            List<View_class_student> lstall=null;
+
+               if (questionQuery1.Count<View_class_student>() > 0)   lstall = questionQuery1.ToList<View_class_student>();
+               ///
+               /// 
+              if( lstall !=null)
+            { 
+               foreach (View_class_student itvst in lstall)
+                  {
+                    sheet.Range[irow , 1].Text = itvst.studentid;
+                    sheet.Range[irow, 2].Text = itvst.name;
+                  
+
+                    var questionQuery2 = from o in pp.context.studreport
+                                         where o.classid == cl1.classid && o.expid == vst1.expid && o.stid ==itvst.studentid 
+                                         select o;
+
+                    studreport isturep = null;
+                    if (questionQuery2.Count<studreport>() > 0)
+                    {
+                        isturep = questionQuery2.First<studreport>();
+                        String strmarks = isturep.score;
+                        String[] strmark = strmarks.Split('|');
+                        for (int i = 1; i <= intobjective+1; i++)
+                        {
+                            if (i < intobjective + 1)
+                            { sheet.Range[irow, poscol + i - 1].Value2 = 0;
+                                for (int j = 1; j < strexpobj.Length;j++)
+                                {
+                                    if (i == int.Parse(strexpobj[j])) sheet.Range[irow, poscol + i - 1].Value2 = int.Parse(strmark[j]);
+                                }
+
+
+
+                            }
+                           // else
+                               // sheet.Range[irow, poscol + i - 1].Text = "NO";
+
+                        }
+
+
+                    }
+                    else
+                    {
+                        for (int i = 1; i <= intobjective + 1; i++)
+                        {
+                            if (i < intobjective + 1)
+                                sheet.Range[irow, poscol + i - 1].Value2  =0;
+                            else
+                                sheet.Range[irow, poscol + i - 1].Text = "NO";
+
+                        }
+
+
+                    }
+
+
+
+
+                    irow = irow + 1;
+
+                }//foreach (View_class_stu
+            }  /// end if( lstall !=null)
+               ///
+
+
+
+
+
+
+            sheet.AllocatedRange.AutoFitColumns();
+            wb.SaveToFile(dirsave, ExcelVersion.Version2013);
+            MessageBox.Show("excel生成好了");
+
+
+
+
+        }
         /////////////////
 
 
@@ -284,5 +444,5 @@ namespace Exercise_form
 
 
 
-    }
+    }//endclass
 }
