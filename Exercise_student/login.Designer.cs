@@ -52,7 +52,6 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(122, 21);
             this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "20171112727";
             // 
             // maskedTextBox1
             // 
@@ -64,7 +63,6 @@
             this.maskedTextBox1.PasswordChar = '*';
             this.maskedTextBox1.Size = new System.Drawing.Size(122, 21);
             this.maskedTextBox1.TabIndex = 2;
-            this.maskedTextBox1.Text = "11111111";
             // 
             // 学号
             // 

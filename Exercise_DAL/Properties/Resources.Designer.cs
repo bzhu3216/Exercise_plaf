@@ -59,5 +59,14 @@ namespace Exercise_DAL.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   查找类似 dfgfd 的本地化字符串。
+        /// </summary>
+        internal static string fdgfd {
+            get {
+                return ResourceManager.GetString("fdgfd", resourceCulture);
+            }
+        }
     }
 }
