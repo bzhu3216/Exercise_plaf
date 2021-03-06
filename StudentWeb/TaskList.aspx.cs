@@ -20,7 +20,7 @@ namespace StudentWeb
         public List<classExer> lce = null;
         public List<exerL> erl = null;
         int sel1 = -1;
-        List<Object> ltemp = null;
+        List<extime> ltemp = null;
         protected void Page_Load(object sender, EventArgs e)
         {
             gb = Session["gb"] as Global; ;
@@ -134,9 +134,9 @@ namespace StudentWeb
               GridView1.DataBind();
             //  persons.Join(cities, p => p.CityID, c => c.ID, (p, c) => new { PersonName = p.Name, CityName = c.Name });
 
-            var q1 = lce.Join(erl, p => p.eid, c => c.id, (p, c) => new { eid = p.eid, ename = c.name, stime = p.starttime, etime = p.endtime });
+            var q1 = lce.Join(erl, p => p.eid, c => c.id, (p, c) => new extime(  p.eid,  c.name,  p.starttime,  p.endtime));
 
-                ltemp = q1.OrderBy(s => s.stime).ToList<Object>();
+                ltemp = q1.OrderBy(s => s.stime).ToList<extime>();
                 GridView1.DataSource = ltemp;
                 GridView1.DataBind();
                 Session.Add("ltemp", ltemp);

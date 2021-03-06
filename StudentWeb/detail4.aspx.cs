@@ -37,7 +37,25 @@ namespace StudentWeb
 
 
             int numm = 0;
-
+            ///////////////////////////////////////////////////////////
+            List<extime> ltemp = Session["ltemp"] as List<extime>;
+            DateTime dtnow = DateTime.Now;
+            // DateTime stime = new DateTime();
+            // DateTime etime = new DateTime();
+            //"{ eid = 3164, ename = 20-21绪论, stime = 2020/10/12 0:00:00, etime = 2020/11/6 0:00:00 }
+            bool benable = true;
+            foreach (extime o in ltemp)
+            {
+                int lexid = o.eid;
+                if (lexid == int.Parse(exeriseid))
+                {
+                    DateTime stime = (DateTime)o.stime;
+                    DateTime etime = (DateTime)o.etime;
+                    if (dtnow < stime || dtnow > etime) benable = false;
+                }
+            }
+            // if (!benable) Button1.Enabled = false;
+            ////////////////////////////////////
             foreach (exerDetail eld in ell)
             {
                 var questionQuery2 = from o in pp.context.AQues
@@ -57,6 +75,7 @@ namespace StudentWeb
                 HtmlGenericControl Div4 = new HtmlGenericControl();
                 Div4.ID = "pdiv" + numm;
                 Button rbl = new Button ();
+                if (!benable) rbl.Enabled = false;
                 rbl.Click += new System.EventHandler(this.but_Click);
                 rbl.CommandArgument = numm.ToString();
                 HtmlInputFile  fbutton = new HtmlInputFile();

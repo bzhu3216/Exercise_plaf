@@ -8,12 +8,14 @@ using StudentWeb.ServiceReference1;
 using RtfPipe;
 using System.IO;
 using System.Web.UI.HtmlControls;
+using System.Reflection;
 
 namespace StudentWeb
 {
     public partial class detail : System.Web.UI.Page
     {   StudInfo st = null;
         String exeriseid = null;
+        List<extime> ltemp = null;
         List<RadioButtonList> lrb = new List<RadioButtonList>();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -22,7 +24,25 @@ namespace StudentWeb
             Label1.Text = Session["Lexserise"] as String;
             exeriseid = Session["Lexserise"] as String;
             st = Session["user"] as StudInfo;
-            
+            ///////////////////////////////////////////////////////////
+            ltemp= Session["ltemp"] as List<extime>;
+            DateTime dtnow = DateTime.Now;
+            // DateTime stime = new DateTime();
+            // DateTime etime = new DateTime();
+            //"{ eid = 3164, ename = 20-21绪论, stime = 2020/10/12 0:00:00, etime = 2020/11/6 0:00:00 }
+            bool benable = true;
+            foreach (extime o in ltemp)
+            {   
+                int lexid = o.eid;
+                if (lexid ==int.Parse(exeriseid))
+                {
+                    DateTime stime = (DateTime)o.stime;
+                    DateTime etime = (DateTime)o.etime;
+                    if (dtnow < stime || dtnow > etime) benable = false;
+                }
+              }
+            ////////////////////////////////////
+
             var questionQuery1 = from o in gb.pp.context.exerDetail
                                  where o.lid == int.Parse(exeriseid) && o.typeq == 0
                                  orderby o.id
@@ -98,13 +118,19 @@ namespace StudentWeb
                 if (q2.Count<studAnsw>() > 0) { answ1 = q2.First<studAnsw>(); Lmqansw.Add(answ1); }
                 ell = questionQuery1.ToList<exerDetail>();
                 */
-
+                
 
             }
+            if (!benable) Button1.Enabled = false;
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+            
+
+
+
+
             String URLstr = null;
             URLstr = @"result.aspx?";
             int i = 0;
@@ -118,6 +144,8 @@ namespace StudentWeb
             }
 
             Response.Redirect(URLstr);
+
+
 
 
 

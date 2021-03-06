@@ -475,6 +475,7 @@
     <Compile Include="detail2.aspx.designer.cs">
       <DependentUpon>detail2.aspx</DependentUpon>
     </Compile>
+    <Compile Include="extime.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

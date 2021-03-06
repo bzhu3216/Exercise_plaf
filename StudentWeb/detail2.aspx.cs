@@ -23,6 +23,25 @@ namespace StudentWeb
             Label1.Text = Session["Lexserise"] as String;
             exeriseid = Session["Lexserise"] as String;
             st = Session["user"] as StudInfo;
+            ///////////////////////////////////////////////////////////
+            List<extime> ltemp = Session["ltemp"] as List<extime>;
+            DateTime dtnow = DateTime.Now;
+            // DateTime stime = new DateTime();
+            // DateTime etime = new DateTime();
+            //"{ eid = 3164, ename = 20-21绪论, stime = 2020/10/12 0:00:00, etime = 2020/11/6 0:00:00 }
+            bool benable = true;
+            foreach (extime o in ltemp)
+            {
+                int lexid = o.eid;
+                if (lexid == int.Parse(exeriseid))
+                {
+                    DateTime stime = (DateTime)o.stime;
+                    DateTime etime = (DateTime)o.etime;
+                    if (dtnow < stime || dtnow > etime) benable = false;
+                }
+            }
+            if (!benable) Button1.Enabled = false;
+            ////////////////////////////////////
 
             var questionQuery1 = from o in pp.context.exerDetail
                                  where o.lid == int.Parse(exeriseid) && o.typeq == 1
