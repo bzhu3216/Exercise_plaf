@@ -155,35 +155,41 @@ namespace StudentWeb
 
                 else
                 {
-                    exerDetail tel = ell[indexp];
-                    var questionQuery3 = from o in pp.context.studAnsw
-                                         where o.did == tel.id && o.lid == tel.lid && o.stid == st.studentid
-                                         select o;
-                    if (questionQuery3.Count<studAnsw>() > 0)
+                    if (file.FileName == "" || file.ContentLength == 0)
                     {
-                        studAnsw tst = questionQuery3.First<studAnsw>();
-                        if (tst.answ3 != null)
-                        {
-                            tst.answ3 = byteFile;
-                            pp.context.UpdateObject(tst);
-                            pp.context.SaveChanges();
-                            Response.AddHeader("Refresh", "0");
-                        }
-
+                        Response.Write("<script>window.alert('请选择文件')</script>");
                     }
                     else
                     {
-                        studAnsw tst = new studAnsw ();
-                        tst.did = tel.id;
-                        tst.lid = tel.lid;
-                        tst.stid = st.studentid;
-                        tst.answ3 = byteFile;
-                        pp.context.AddTostudAnsw(tst);
-                        pp.context.SaveChanges();
-                        Response.AddHeader("Refresh", "0");
+                        exerDetail tel = ell[indexp];
+                        var questionQuery3 = from o in pp.context.studAnsw
+                                             where o.did == tel.id && o.lid == tel.lid && o.stid == st.studentid
+                                             select o;
+                        if (questionQuery3.Count<studAnsw>() > 0)
+                        {
+                            studAnsw tst = questionQuery3.First<studAnsw>();
+                            if (tst.answ3 != null)
+                            {
+                                tst.answ3 = byteFile;
+                                pp.context.UpdateObject(tst);
+                                pp.context.SaveChanges();
+                                Response.AddHeader("Refresh", "0");
+                            }
 
+                        }
+                        else
+                        {
+                            studAnsw tst = new studAnsw();
+                            tst.did = tel.id;
+                            tst.lid = tel.lid;
+                            tst.stid = st.studentid;
+                            tst.answ3 = byteFile;
+                            pp.context.AddTostudAnsw(tst);
+                            pp.context.SaveChanges();
+                            Response.AddHeader("Refresh", "0");
+
+                        }
                     }
-
 
 
 

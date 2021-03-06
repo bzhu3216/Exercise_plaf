@@ -154,7 +154,11 @@ namespace StudentWeb
                 if (objFile.Length>350*1024) Response.Write("<script>window.alert('图片文件大于300k了')</script>");
 
                 else
-                {
+                { if (file.FileName == "" || file.ContentLength == 0)
+                    {
+                        Response.Write("<script>window.alert('请选择文件')</script>");
+                    }
+                    else { 
                     exerDetail tel = ell[indexp];
                     var questionQuery3 = from o in pp.context.studAnsw
                                          where o.did == tel.id && o.lid == tel.lid && o.stid == st.studentid
@@ -184,7 +188,7 @@ namespace StudentWeb
 
                     }
 
-
+                    }
 
 
 
