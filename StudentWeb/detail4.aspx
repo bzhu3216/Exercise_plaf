@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="detail2.aspx.cs" Inherits="StudentWeb.detail2" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="detail4.aspx.cs" Inherits="StudentWeb.detail4" %>
 
 <!DOCTYPE html>
 
@@ -12,15 +12,17 @@
           <div>
               <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
     </div>
-    <div id="viewDiv"  runat="server" >    
+    <div id="viewDiv" runat="server" >    
     
 
 
         &nbsp;---------------------------------------------------------------------<br />
     </div>
-   &nbsp;<asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Submit" />
+  
     </form>
 
+
+   
 
    
     </body>

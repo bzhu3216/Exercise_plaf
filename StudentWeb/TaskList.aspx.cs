@@ -12,7 +12,8 @@ namespace StudentWeb
     {
         public StudInfo st;
         public String stid = null;
-        Global gb = new Global();
+        // Global gb = new Global();
+        Global gb;
         paramst pp;
         public List<class_student> lcsl = null;
         public List<classinfo> lclinfo = null;
@@ -22,6 +23,7 @@ namespace StudentWeb
         List<Object> ltemp = null;
         protected void Page_Load(object sender, EventArgs e)
         {
+            gb = Session["gb"] as Global; ;
             st = Session["user"] as StudInfo;
             stid = st.studentid;
             Label1.Text = "欢迎：" + stid;
@@ -164,9 +166,20 @@ namespace StudentWeb
             Response.Write("<script>window.open('detail.aspx','_blank')</script>");
             if (RadioButtonList1.SelectedValue == "1")
                 Response.Write("<script>window.open('detail2.aspx','_blank')</script>");
+            if (RadioButtonList1.SelectedValue == "2")
+                Response.Write("<script>window.open('detail3.aspx','_blank')</script>");
+            if (RadioButtonList1.SelectedValue == "3")
+                Response.Write("<script>window.open('detail4.aspx','_blank')</script>");
 
         }
 
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+
+            Response.Write("<script>window.open('change password.aspx','_blank')</script>");
+
+
+        }
     }
 
 

@@ -12,7 +12,7 @@
           <div>
               <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
     </div>
-    <div id="viewDiv" name="viewDiv" runat="server" >    
+    <div id="viewDiv"  runat="server" >    
     
 
 

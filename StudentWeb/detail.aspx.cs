@@ -17,14 +17,13 @@ namespace StudentWeb
         List<RadioButtonList> lrb = new List<RadioButtonList>();
         protected void Page_Load(object sender, EventArgs e)
         {
-           
-            Global gb = new Global();
-            paramst pp = gb.pp;
+
+            Global gb = Session["gb"] as Global; ;
             Label1.Text = Session["Lexserise"] as String;
             exeriseid = Session["Lexserise"] as String;
             st = Session["user"] as StudInfo;
             
-            var questionQuery1 = from o in pp.context.exerDetail
+            var questionQuery1 = from o in gb.pp.context.exerDetail
                                  where o.lid == int.Parse(exeriseid) && o.typeq == 0
                                  orderby o.id
                                  select o;
@@ -35,7 +34,7 @@ namespace StudentWeb
 
             foreach (exerDetail eld in ell)
             {  
-                var questionQuery2 = from o in pp.context.mchoiceQues 
+                var questionQuery2 = from o in gb.pp.context.mchoiceQues 
                                      where o.id == eld.qid
                                      select o;
                 mchoiceQues mcq = questionQuery2.First<mchoiceQues>();
@@ -62,7 +61,7 @@ namespace StudentWeb
                     Div2.Style.Add("lcs", "OVERFLOW: auto; WIDTH: 400px; HEIGHT: 400px;color: balck;font-size:16px");
                 rbl.RepeatDirection = RepeatDirection.Horizontal;
                 ///读取答案
-                var questionQuery3 = from o in pp.context.studAnsw
+                var questionQuery3 = from o in gb.pp.context.studAnsw
                                      where o.did== eld.id && o.lid == eld.lid && o.stid==st.studentid
                                      select o;
                 if (questionQuery3.Count<studAnsw>() > 0)

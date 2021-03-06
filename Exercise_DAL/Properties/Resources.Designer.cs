@@ -61,11 +61,11 @@ namespace Exercise_DAL.Properties {
         }
         
         /// <summary>
-        ///   查找类似 dfgfd 的本地化字符串。
+        ///   查找类似  的本地化字符串。
         /// </summary>
-        internal static string fdgfd {
+        internal static string ewrew {
             get {
-                return ResourceManager.GetString("fdgfd", resourceCulture);
+                return ResourceManager.GetString("ewrew", resourceCulture);
             }
         }
     }

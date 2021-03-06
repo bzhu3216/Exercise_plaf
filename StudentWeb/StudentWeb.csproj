@@ -232,11 +232,14 @@
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
     <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
     <Content Include="Account\VerifyPhoneNumber.aspx" />
+    <Content Include="change password.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="detail.aspx" />
+    <Content Include="detail4.aspx" />
+    <Content Include="detail3.aspx" />
     <Content Include="detail2.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -249,7 +252,7 @@
     <Content Include="result.aspx" />
     <Content Include="result2.aspx" />
     <Content Include="TaskList.aspx" />
-    <Content Include="WebForm2.aspx" />
+    <Content Include="Login.aspx" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
@@ -422,6 +425,13 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="change password.aspx.cs">
+      <DependentUpon>change password.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="change password.aspx.designer.cs">
+      <DependentUpon>change password.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -442,6 +452,20 @@
     </Compile>
     <Compile Include="detail.aspx.designer.cs">
       <DependentUpon>detail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="detail4.aspx.cs">
+      <DependentUpon>detail4.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="detail4.aspx.designer.cs">
+      <DependentUpon>detail4.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="detail3.aspx.cs">
+      <DependentUpon>detail3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="detail3.aspx.designer.cs">
+      <DependentUpon>detail3.aspx</DependentUpon>
     </Compile>
     <Compile Include="detail2.aspx.cs">
       <DependentUpon>detail2.aspx</DependentUpon>
@@ -504,12 +528,12 @@
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
-    <Compile Include="WebForm2.aspx.cs">
-      <DependentUpon>WebForm2.aspx</DependentUpon>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WebForm2.aspx.designer.cs">
-      <DependentUpon>WebForm2.aspx</DependentUpon>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

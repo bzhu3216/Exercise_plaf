@@ -19,7 +19,7 @@ namespace StudentWeb
             // String str= Request.QueryString["r0"];
             // Label1.Text = str;
             List<String> keystrl = new List<string>();
-            Global gb = new Global();
+            Global gb = Session["gb"] as Global; ; ;
             paramst pp = gb.pp;
             exeriseid = Session["Lexserise"] as String;
             st = Session["user"] as StudInfo;
@@ -48,30 +48,57 @@ namespace StudentWeb
                                      select o;
                 if (questionQuery3.Count<studAnsw>() > 0)
                 {
-                    if (questionQuery3.First<studAnsw>().answ2 != null)
-                    {
+                    //if (questionQuery3.First<studAnsw>().answ2 != null)
+                   // {
                         int cs = -1;
                         studAnsw stanser = questionQuery3.First<studAnsw>();
                         if (keystrl[num] == "False") cs = 0;
                         if (keystrl[num] == "True") cs = 1;
 
-                        if (cs != -1) {
-                            if(cs==1)
-                            stanser.answ2 = true;
+                        if (cs != -1)
+                        {
+                            if (cs == 1)
+                                stanser.answ2 = true;
                             else
                                 stanser.answ2 = false;
                         }
 
                         pp.context.UpdateObject(stanser);
 
-                    }
+                   // }
+                    
                 }
-                num++;
-            }//endeach
-            pp.context.SaveChanges();
+                else
+                {
+
+                   
+                        int cs2 = -1;
+                        if (keystrl[num] == "False") cs2 = 0;
+                        if (keystrl[num] == "True") cs2 = 1;
+                        studAnsw tst = new studAnsw();
+                        if (cs2 != -1)
+                        {
+                          
+                            if (cs2 == 1)
+                                   tst.answ2 = true;
+                             else
+                                   tst.answ2 = false;
+                           
+                            tst.did = eld.id;
+                            tst.lid = eld.lid;
+                            tst.stid = st.studentid;
+                            pp.context.AddTostudAnsw(tst);
+                            //pp.context.SaveChanges();
+                        }
+                    
+
+                }
+                    num++;
+                }//endeach
+                pp.context.SaveChanges();
 
 
-
+            
 
 
         }

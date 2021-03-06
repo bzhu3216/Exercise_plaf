@@ -19,6 +19,7 @@ namespace StudentWeb
         {
             Global gb = new Global();
             paramst p = gb.pp;
+            Session.Add("gb", gb);
             var questionQuery = from o in p.context.StudInfo
                                 where (o.studentid == TextBox1.Text) && (o.pd == TextBox2.Text)
                                 select o;

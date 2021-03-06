@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm2.aspx.cs" Inherits="StudentWeb.WebForm2" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="StudentWeb.WebForm2" %>
 
 <!DOCTYPE html>
 
@@ -32,11 +32,18 @@
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td>&nbsp;</td>
+                <td></td>
                 <td>
                     <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="登录" />
                 </td>
-                <td>&nbsp;</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                   初始密码11111111 
+                </td>
+                <td></td>
             </tr>
         </table>
     

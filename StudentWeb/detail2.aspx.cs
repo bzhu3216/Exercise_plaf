@@ -18,7 +18,7 @@ namespace StudentWeb
         protected void Page_Load(object sender, EventArgs e)
         {
             ////
-            Global gb = new Global();
+            Global gb = Session["gb"] as Global; ;
             paramst pp = gb.pp;
             Label1.Text = Session["Lexserise"] as String;
             exeriseid = Session["Lexserise"] as String;
@@ -105,7 +105,7 @@ namespace StudentWeb
         protected void Button1_Click(object sender, EventArgs e)
         {
             String URLstr = null;
-            URLstr = @"result.aspx?";
+            URLstr = @"result2.aspx?";
             int i = 0;
             if (lrb != null && lrb.Count() != 0)
             {
