@@ -21,6 +21,10 @@ namespace StudentWeb
         public List<exerL> erl = null;
         int sel1 = -1;
         List<extime> ltemp = null;
+        //
+       
+        List<View_class_exp> lvce;
+        //
         protected void Page_Load(object sender, EventArgs e)
         {
             gb = Session["gb"] as Global; ;
@@ -31,7 +35,7 @@ namespace StudentWeb
 
             lcsl = getcsl(stid);
             lclinfo = getclassinfo(lcsl);
-           
+
             /*
             DropDownList1.DataSource= lclinfo;
             //DropDownList1.DataSourceID   = "classinfo1";
@@ -42,6 +46,11 @@ namespace StudentWeb
             GridView1.DataSource = ltemp;
             GridView1.DataBind();
             */
+            //////////////////////////////////////////
+
+
+
+
 
         }
        
@@ -58,6 +67,11 @@ namespace StudentWeb
             // DropDownList1.SelectedIndex = 1;
             GridView1.DataSource = ltemp;
             GridView1.DataBind();
+            //
+            
+            
+            //
+
             DropDownList1_SelectedIndexChanged(sender, e);
 
         }
@@ -140,11 +154,23 @@ namespace StudentWeb
                 GridView1.DataSource = ltemp;
                 GridView1.DataBind();
                 Session.Add("ltemp", ltemp);
+                //
 
-           }
+                var questionQuery = from o in pp.context.View_class_exp
+                                    where (o.classid == cin.classid)
+                                    orderby o.con
+                                    select o;
+                if (questionQuery.Count() > 0) lvce = questionQuery.ToList<View_class_exp>();
+                GridView2.DataSource = lvce;
+                GridView2.DataBind();
+                Session.Add("lvce",lvce);
+
+                //
+
+            }
 
 
-         }
+        }
 
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -170,6 +196,27 @@ namespace StudentWeb
                 Response.Write("<script>window.open('detail3.aspx','_blank')</script>");
             if (RadioButtonList1.SelectedValue == "3")
                 Response.Write("<script>window.open('detail4.aspx','_blank')</script>");
+
+        }
+        protected void lbtnPhoneHide2_Click(object sender, EventArgs e)
+        {
+           
+           
+            LinkButton lb = (LinkButton)sender;
+            DataControlFieldCell dcf = (DataControlFieldCell)lb.Parent;
+            GridViewRow gvr = (GridViewRow)dcf.Parent;
+            GridView2.SelectedIndex = gvr.RowIndex;
+            int tsel = gvr.RowIndex;
+            List<View_class_exp> lvce2 = Session["lvce"] as List<View_class_exp>;
+            Session.Add("expid", lb.Text);
+            Session.Add("vce", lvce2[tsel]);
+            // Response.Write(@"<script>window.alert('" + sender.ToString() + @"')</script>");
+
+            //  Response.Redirect("detail.aspx",false ) ;
+            // Server.Transfer("detail.aspx");
+
+            Response.Write("<script>window.open('experiment.aspx','_blank')</script>");
+            
 
         }
 

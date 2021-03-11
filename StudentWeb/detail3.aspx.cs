@@ -21,7 +21,7 @@ namespace StudentWeb
         protected void Page_Load(object sender, EventArgs e)
         {
             ////
-            Global gb = gb = Session["gb"] as Global; ; ;
+            Global gb = Session["gb"] as Global; ; ;
             pp = gb.pp;
             Label1.Text = Session["Lexserise"] as String;
             exeriseid = Session["Lexserise"] as String;
@@ -78,6 +78,7 @@ namespace StudentWeb
                 rbl.CommandArgument = numm.ToString();
                 HtmlInputFile  fbutton = new HtmlInputFile();
                 fbutton.Accept = "image/*";
+                fbutton.ID = numm.ToString();
                 lfb.Add(fbutton);
                 // CommandArgument = "Descending"
                 // OnCommand = "CommandBtn_Click"
@@ -160,6 +161,7 @@ namespace StudentWeb
             Button rbl = (Button)sender;
             int indexp = int.Parse(rbl.CommandArgument);
             HtmlInputFile tfb = lfb[indexp];
+           
             HttpPostedFile file = tfb.PostedFile;
             try
             {
@@ -187,8 +189,11 @@ namespace StudentWeb
                         {
                             tst.answ3 = byteFile;
                             pp.context.UpdateObject(tst);
-                            pp.context.SaveChanges();
-                            Response.AddHeader("Refresh", "0");
+                                
+                                pp.context.SaveChanges();
+                                
+
+                           Response.AddHeader("Refresh", "0");
                         }
 
                     }
@@ -199,9 +204,12 @@ namespace StudentWeb
                         tst.lid = tel.lid;
                         tst.stid = st.studentid;
                         tst.answ3 = byteFile;
+
                         pp.context.AddTostudAnsw(tst);
-                        pp.context.SaveChanges();
-                        Response.AddHeader("Refresh", "0");
+                            
+                            pp.context.SaveChanges();
+                            
+                            Response.AddHeader("Refresh", "0");
 
                     }
 
@@ -221,7 +229,9 @@ namespace StudentWeb
             }
             catch (Exception ex)
             {
-                Response.Write("<script>window.alert('请使用jpg文件')</script>");
+                // Response.Write(@"<script>window.alert('"+ ex .Message+ @"')</script>");
+                System.Threading.Thread.Sleep(3000);
+                Response.AddHeader("Refresh", "0");
             }
 
 

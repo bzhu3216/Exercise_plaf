@@ -50,9 +50,31 @@
             </Columns>
         </asp:GridView>
     
+        <br />
+    
     </div>
-
-        
+<div>
+    实验部分
+     
+    <br />
+    <br />
+    </div>
+       <div>
+    
+        <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
+            <Columns>
+                <asp:TemplateField HeaderText="编号" ShowHeader="False">
+                    <ItemTemplate>
+                        <asp:LinkButton ID="LinkButton2" runat="server" CausesValidation="false" CommandName="" OnClick="lbtnPhoneHide2_Click" Text='<%# Eval("expid") %>'></asp:LinkButton>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:BoundField DataField="exname" HeaderText="名称" />
+                <asp:BoundField DataField="starttime" HeaderText="开始日期" />
+                <asp:BoundField DataField="endtime" HeaderText="结束日期（不包含）" />
+            </Columns>
+        </asp:GridView>
+    
+    </div> 
     </form>
 </body>
 </html>
