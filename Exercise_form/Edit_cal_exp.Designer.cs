@@ -55,10 +55,11 @@
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
+            this.listBox1.HorizontalScrollbar = true;
             this.listBox1.ItemHeight = 14;
-            this.listBox1.Location = new System.Drawing.Point(17, 44);
+            this.listBox1.Location = new System.Drawing.Point(12, 43);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(188, 466);
+            this.listBox1.Size = new System.Drawing.Size(219, 466);
             this.listBox1.TabIndex = 0;
             this.listBox1.Click += new System.EventHandler(this.listBox1_Click);
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
@@ -67,9 +68,9 @@
             // 
             this.listBox2.FormattingEnabled = true;
             this.listBox2.ItemHeight = 14;
-            this.listBox2.Location = new System.Drawing.Point(217, 44);
+            this.listBox2.Location = new System.Drawing.Point(247, 44);
             this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(202, 466);
+            this.listBox2.Size = new System.Drawing.Size(180, 466);
             this.listBox2.TabIndex = 1;
             this.listBox2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listBox2_MouseClick);
             this.listBox2.SelectedIndexChanged += new System.EventHandler(this.listBox2_SelectedIndexChanged);
@@ -185,7 +186,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(94, 22);
             this.comboBox1.TabIndex = 12;
-            this.comboBox1.Text = "5";
+            this.comboBox1.Text = "2";
             // 
             // comboBox2
             // 
@@ -205,7 +206,7 @@
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(94, 22);
             this.comboBox2.TabIndex = 13;
-            this.comboBox2.Text = "5";
+            this.comboBox2.Text = "2";
             // 
             // label5
             // 
@@ -265,16 +266,16 @@
             // 
             this.listBox3.FormattingEnabled = true;
             this.listBox3.ItemHeight = 14;
-            this.listBox3.Location = new System.Drawing.Point(435, 43);
+            this.listBox3.Location = new System.Drawing.Point(444, 43);
             this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(202, 466);
+            this.listBox3.Size = new System.Drawing.Size(193, 466);
             this.listBox3.TabIndex = 20;
             this.listBox3.SelectedIndexChanged += new System.EventHandler(this.listBox3_SelectedIndexChanged);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(226, 19);
+            this.label10.Location = new System.Drawing.Point(244, 19);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(63, 14);
             this.label10.TabIndex = 21;

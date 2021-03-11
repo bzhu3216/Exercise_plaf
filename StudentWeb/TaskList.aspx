@@ -35,6 +35,18 @@
              <asp:ListItem Value="3">分析题</asp:ListItem>
          </asp:RadioButtonList>
     </div>
+<div style="font-size: 25px; color: #FF0000">
+    作业部分：选择题型并点击编号
+     
+     
+    <br />
+    <br />
+     
+    <br />
+    </div>
+
+
+
     <div>
     
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
@@ -53,8 +65,8 @@
         <br />
     
     </div>
-<div>
-    实验部分
+<div style="font-size: 25px; color: #FF0000">
+    实验部分：点击编号
      
     <br />
     <br />

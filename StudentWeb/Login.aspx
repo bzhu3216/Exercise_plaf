@@ -13,11 +13,18 @@
     </style>
 </head>
 <body>
+    
     <form id="form1" runat="server">
     <div>
     
         <table style="width:100%; background-color: #00FFFF; vertical-align: middle; text-align: center;">
-            <tr>
+           <tr>
+                <td></td>
+                <td style="font-family: 宋体, Arial, Helvetica, sans-serif; font-size: 60px; font-weight: normal; font-style: normal; color: #FF0000">学生作业实验提交小工具
+                </td>
+                <td></td>
+            </tr>
+             <tr>
                 <td class="auto-style1">用户名</td>
                 <td class="auto-style1">
                     <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>

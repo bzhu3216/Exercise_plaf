@@ -248,7 +248,7 @@ namespace Exercise_form
                 }
                 else
                     MessageBox.Show("输入不完整！");
-
+                textBox2.Text = "";
                 return;
             }
 
@@ -403,6 +403,7 @@ namespace Exercise_form
             comboBox2.Text = ((exp_q)LTF[lindex]).con.ToString();
             comboBox4.Text=((exp_q)LTF[lindex]).diff.ToString();
             textBox1.Text = ((exp_q)LTF[lindex]).idexp.ToString();
+            textBox2.Text = ((exp_q)LTF[lindex]).exname;
             String strobjs = ((exp_q)LTF[lindex]).objective;
             String[]  strobj = strobjs.Split('|');
 

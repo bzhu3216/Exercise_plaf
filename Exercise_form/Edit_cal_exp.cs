@@ -39,12 +39,32 @@ namespace Exercise_form
         {
             comboBox3.DataSource = lvtc;
             comboBox3.ValueMember = "CourseName";
-            comboBox3.Text = "";
+           // comboBox3.Text = "";
 
             //dispalylist();
         }
 
-
+        private void DisplayHScroll()
+        {
+            // Make sure no items are displayed partially.
+            listBox1.IntegralHeight = true;          
+            listBox1.HorizontalScrollbar = true;            
+            Graphics g = listBox1.CreateGraphics();            
+            int hzSize = (int)g.MeasureString(listBox1.Items[listBox1.Items.Count - 1].ToString(), listBox1.Font).Width;            
+            listBox1.HorizontalExtent = hzSize;
+            //2
+            listBox2.IntegralHeight = true;
+            listBox2.HorizontalScrollbar = true;
+            Graphics g2 = listBox2.CreateGraphics();
+            int hzSize2 = (int)g2.MeasureString(listBox2.Items[listBox2.Items.Count - 1].ToString(), listBox2.Font).Width;
+            listBox2.HorizontalExtent = hzSize2;
+            //3
+            listBox3.IntegralHeight = true;
+            listBox3.HorizontalScrollbar = true;
+            Graphics g3 = listBox3.CreateGraphics();
+            int hzSize3 = (int)g3.MeasureString(listBox3.Items[listBox3.Items.Count - 1].ToString(), listBox3.Font).Width;
+            listBox3.HorizontalExtent = hzSize3;
+        }
 
 
 

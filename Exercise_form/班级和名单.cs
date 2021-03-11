@@ -70,7 +70,7 @@ namespace Exercise_form
             { 
 
                dirup = openFileDialog1.FileName;
-                DB_exceltool.getstudentsfromexcel(dirup);
+                DB_exceltool.getstudentsfromexcel2(dirup);
                 DB_exceltool.savestudents(cls[selindex].classid );
 
                 // studentlist = DB_exceltool.studentList;

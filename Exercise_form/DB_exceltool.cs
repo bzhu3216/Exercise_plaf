@@ -16,6 +16,7 @@ using System.Diagnostics;
 using Exercise_DAL;
 using System.Windows.Forms;
 using Exercise_form.ServiceReference2;
+using Spire.Xls;
 
 namespace Exercise_form
 {
@@ -23,7 +24,7 @@ namespace Exercise_form
     {
 
         //  public static ObservableCollection<Student> studentList=new ObservableCollection<Student>();
-        public static ObservableCollection<Student> studentList =null;
+        public static ObservableCollection<Student> studentList = null;
         //////////////////////////addstudent form excel
         public static void getstudentsfromexcel(String updir)
         {
@@ -36,7 +37,7 @@ namespace Exercise_form
             {
                 // MessageBox.Show("没安装EXCEL？");
                 string messageBoxText = "没安装EXCEL？";
-              //  string caption = "提示";
+                //  string caption = "提示";
                 // MessageBoxButton button = MessageBoxButton.YesNoCancel;
                 // MessageBoxImage icon = MessageBoxImage.Warning;
                 //显示消息框              
@@ -60,7 +61,7 @@ namespace Exercise_form
                 Excel.Range rng0 = ws.Cells.get_Range("a3", "c152");
                 Excel.Range rng1 = ws.Cells.get_Range("c3", "c152"); //id
                 Excel.Range rng2 = ws.Cells.get_Range("d3", "d152"); //MANE
-                object[,] noss= (object[,])rng0.Value2;
+                object[,] noss = (object[,])rng0.Value2;
                 object[,] studentidss = (object[,])rng1.Value2;   //get range's value
                 object[,] namess = (object[,])rng2.Value2;
 
@@ -70,11 +71,11 @@ namespace Exercise_form
                 {
                     {
                         if (studentidss[i, 1] != null)
-                            studentList.Add(new Student(studentidss[i, 1].ToString(),namess[i,1].ToString(), int.Parse(noss[i,1].ToString()),"11111111" ,-1,-1));
+                            studentList.Add(new Student(studentidss[i, 1].ToString(), namess[i, 1].ToString(), int.Parse(noss[i, 1].ToString()), "11111111", -1, -1));
                     }
 
                 }
-                
+
             }
 
             excel.Quit(); excel = null;
@@ -86,6 +87,51 @@ namespace Exercise_form
             GC.Collect();
         }
         ////endfromexcel//////////////////
+        private static bool isxuehao(String xuehao)
+
+        {
+            bool flag = true;
+
+            string pattern = "^[0-9]+$";
+            // System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex(pattern);
+            flag = System.Text.RegularExpressions.Regex.IsMatch(xuehao, pattern);
+            if (xuehao.Length != 11) flag = false;
+
+            return flag;
+        }
+        public static void getstudentsfromexcel2(String updir)
+        {
+            studentList = null;
+            studentList = new ObservableCollection<Student>();
+            string strFileName = updir;
+            Spire.Xls.Workbook wb = new Spire.Xls.Workbook();
+            wb.LoadFromFile(strFileName);
+            Spire.Xls.CellRange range;
+            Worksheet sheet = wb.Worksheets[0];
+           
+            for (int i = 1; i <= 150; i++)
+
+            {
+                range = sheet.Range["A"+i.ToString()];
+                String Strxvhao = range.DisplayedText.ToString().Trim();
+                range = sheet.Range["C" + i.ToString()];
+                String Strxuehao = range.DisplayedText.ToString().Trim();
+                range = sheet.Range["D" + i.ToString()];
+                String Strxm = range.DisplayedText.ToString().Trim();
+
+                {
+                    if (isxuehao( Strxuehao) )
+                        studentList.Add(new Student(Strxuehao, Strxm, int.Parse(Strxvhao), "11111111", -1, -1));
+                }
+
+            }
+
+        }
+
+   
+        ////endfromexcel//////////////////
+
+        /////save student to db
 
         /////save student to db
 
